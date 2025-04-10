@@ -1,0 +1,69 @@
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-07T10:02:11.690Z"}
+{"level":"info","message":"Router-----adminLogin","timestamp":"2025-04-07T10:02:19.586Z"}
+{"level":"info","message":"Router-----adminLogin","timestamp":"2025-04-07T10:02:19.921Z"}
+{"level":"info","message":"Router-----adminLogin","timestamp":"2025-04-07T10:02:27.257Z"}
+{"level":"info","message":"Router-----get Customer and Agent","timestamp":"2025-04-07T10:02:28.055Z"}
+{"level":"info","message":"Router-----get Customer and Agent","timestamp":"2025-04-07T10:03:03.593Z"}
+{"level":"info","message":"Router-----get bank account","timestamp":"2025-04-07T10:03:06.696Z"}
+{"level":"info","message":"Router-----view bank fund list","timestamp":"2025-04-07T10:03:08.307Z"}
+{"level":"info","message":"Router-----list the product","timestamp":"2025-04-07T10:03:09.560Z"}
+{"level":"info","message":"Router-----view loan list","timestamp":"2025-04-07T10:03:12.605Z"}
+{"level":"info","message":"Router-----view loan list","timestamp":"2025-04-07T10:03:14.248Z"}
+{"level":"info","message":"Router-----get Customer and Agent","timestamp":"2025-04-07T10:03:32.214Z"}
+{"level":"info","message":"Router-----adminLogin","timestamp":"2025-04-07T10:09:04.648Z"}
+{"level":"info","message":"Router-----get Customer and Agent","timestamp":"2025-04-07T10:09:05.509Z"}
+{"level":"info","message":"Router-----adminLogin","timestamp":"2025-04-07T10:12:06.049Z"}
+{"level":"info","message":"Router-----get Customer and Agent","timestamp":"2025-04-07T10:12:06.624Z"}
+{"level":"info","message":"Router-----get Customer and Agent","timestamp":"2025-04-07T10:15:00.739Z"}
+{"level":"info","message":"Router-----get Customer and Agent","timestamp":"2025-04-07T10:15:37.895Z"}
+{"level":"info","message":"Router-----get Customer and Agent","timestamp":"2025-04-07T10:16:09.402Z"}
+{"level":"info","message":"Router-----get Customer and Agent","timestamp":"2025-04-07T10:16:32.945Z"}
+{"level":"info","message":"Router-----get Customer and Agent","timestamp":"2025-04-07T10:17:00.636Z"}
+{"level":"info","message":"Router-----get Customer and Agent","timestamp":"2025-04-07T10:20:43.403Z"}
+{"level":"info","message":"Router-----view bank fund list","timestamp":"2025-04-07T10:21:33.342Z"}
+{"level":"info","message":"Router-----get bank account","timestamp":"2025-04-07T10:21:33.992Z"}
+{"level":"info","message":"Router-----list the product","timestamp":"2025-04-07T10:21:34.932Z"}
+{"level":"info","message":"Router-----get Customer and Agent","timestamp":"2025-04-07T10:21:47.612Z"}
+{"level":"info","message":"Router-----get Customer and Agent","timestamp":"2025-04-07T10:21:48.030Z"}
+{"level":"info","message":"Router-----view loan list","timestamp":"2025-04-07T10:21:49.946Z"}
+{"level":"info","message":"Router-----view loan list","timestamp":"2025-04-07T10:21:52.126Z"}
+{"level":"info","message":"Router-----get Customer and Agent","timestamp":"2025-04-07T10:22:21.276Z"}
+{"level":"info","message":"Router-----get Customer and Agent","timestamp":"2025-04-07T10:22:50.044Z"}
+{"level":"info","message":"Router-----get Customer and Agent","timestamp":"2025-04-07T10:22:52.343Z"}
+{"level":"info","message":"Router-----get Customer and Agent","timestamp":"2025-04-07T10:23:58.694Z"}
+{"level":"info","message":"Router-----store Address","timestamp":"2025-04-07T10:24:23.420Z"}
+{"level":"info","message":"Router-----Add New agent or customer","timestamp":"2025-04-07T10:24:23.439Z"}
+{"level":"info","message":"Router-----get Customer and Agent","timestamp":"2025-04-07T10:24:23.604Z"}
+{"level":"info","message":"Router-----get Customer and Agent","timestamp":"2025-04-07T10:24:25.068Z"}
+{"level":"info","message":"Router-----get bank account","timestamp":"2025-04-07T10:24:58.330Z"}
+{"level":"info","message":"Router-----view bank fund list","timestamp":"2025-04-07T10:25:14.812Z"}
+{"level":"info","message":"Router-----add bank fund","timestamp":"2025-04-07T10:25:16.631Z"}
+{"level":"info","message":"Router-----get bank account","timestamp":"2025-04-07T10:25:26.103Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-07T10:25:44.736Z"}
+{"level":"info","message":"Router-----list the product","timestamp":"2025-04-07T10:25:46.646Z"}
+{"level":"info","message":"Router-----view bank fund list","timestamp":"2025-04-07T10:25:48.779Z"}
+{"level":"info","message":"Router-----list the product","timestamp":"2025-04-07T10:25:49.949Z"}
+{"level":"info","message":"Router-----view bank fund list","timestamp":"2025-04-07T10:25:52.422Z"}
+{"level":"info","message":"Router-----add bank fund","timestamp":"2025-04-07T10:25:53.538Z"}
+{"level":"info","message":"Router-----get bank account","timestamp":"2025-04-07T10:25:57.836Z"}
+{"level":"info","message":"Router-----list the product","timestamp":"2025-04-07T10:26:05.406Z"}
+{"level":"info","message":"Router-----view loan list","timestamp":"2025-04-07T10:26:15.691Z"}
+{"level":"info","message":"Router-----view loan list","timestamp":"2025-04-07T10:26:18.070Z"}
+{"level":"info","message":"Router-----get bank account","timestamp":"2025-04-07T10:28:18.102Z"}
+{"level":"info","message":"Router-----view bank fund list","timestamp":"2025-04-07T10:28:19.179Z"}
+{"level":"info","message":"Router-----get bank account","timestamp":"2025-04-07T10:28:34.374Z"}
+{"level":"info","message":"Router-----view bank fund list","timestamp":"2025-04-07T10:28:39.077Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-07T10:28:55.325Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-07T10:29:05.768Z"}
+{"level":"info","message":"Router-----view bank fund list","timestamp":"2025-04-07T10:29:13.209Z"}
+{"level":"info","message":"Router-----get bank account","timestamp":"2025-04-07T10:29:34.910Z"}
+{"level":"info","message":"Router-----view bank fund list","timestamp":"2025-04-07T10:29:55.478Z"}
+{"level":"info","message":"Router-----get bank account","timestamp":"2025-04-07T10:30:03.787Z"}
+{"level":"info","message":"Router-----view bank fund list","timestamp":"2025-04-07T10:30:45.781Z"}
+{"level":"info","message":"Router-----view loan list","timestamp":"2025-04-07T10:32:04.892Z"}
+{"level":"info","message":"Router-----view loan list","timestamp":"2025-04-07T10:32:06.346Z"}
+{"level":"info","message":"Router-----view bank fund list","timestamp":"2025-04-07T10:32:09.868Z"}
+{"level":"info","message":"Router-----get bank account","timestamp":"2025-04-07T10:32:31.923Z"}
+{"level":"info","message":"Router-----view bank fund list","timestamp":"2025-04-07T10:32:41.967Z"}
+{"level":"info","message":"Router-----adminLogin","timestamp":"2025-04-07T10:34:23.290Z"}
+{"level":"info","message":"Router-----get Customer and Agent","timestamp":"2025-04-07T10:34:23.991Z"}
