@@ -563,3 +563,45 @@ export const getBankQuery = `SELECT * FROM public."refBankAccounts" rba
 WHERE rba."refBankId" = $1;
 
 `;
+
+export const getUnPaidUserQuery = `SELECT
+  u."refUserId",
+  u."refUserFname",
+  rc."refUserMobileNo",
+  rc."refUserAddress",
+  rp."refProductName",
+  rl."refLoanAmount",
+  rl."refLoanBalance"
+FROM
+  public."refRepaymentSchedule" rs
+  LEFT JOIN public."refLoan" rl ON CAST(rl."refLoanId" AS INTEGER) = rs."refLoanId"::INTEGER
+  LEFT JOIN public."users" u ON CAST(u."refUserId" AS INTEGER) = rl."refUserId"::INTEGER
+  LEFT JOIN public."refCommunication" rc ON CAST ( rc."refUserId" AS INTEGER) = u."refUserId"
+  LEFT JOIN public."refProducts" rp ON CAST ( rp."refProductId" AS INTEGER) = rl."refProductId"::INTEGER
+WHERE
+  rs."refReStatus" IS NOT null
+
+`;
+
+
+export const getAmountDataQuery = `
+SELECT
+  rl."refLoanId",
+  rl."refUserId",
+  rl."refProductId",
+  rl."refLoanAmount" AS "PrincipleAmount",
+  rl."refLoanStatus",
+  rl."refLoanBalance",
+  rp."refProductName",
+  rp."refProductInterest",
+  rp."refProductDuration",
+  rl."refRepaymentStartDate",
+  rl."refLoanStartDate",
+  rl."refLoanDueDate",
+  rl."isInterestFirst"
+FROM
+  public."refLoan" rl
+  LEFT JOIN public."refProducts" rp ON CAST(rp."refProductId" AS INTEGER) = rl."refProductId"::INTEGER
+WHERE
+  "refUserId" = $1;
+`;

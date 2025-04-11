@@ -351,6 +351,17 @@ export class adminRoutes implements IRoute {
             auth: false,
           },
         },
+        {
+          method: "GET",
+          path: "/api/v1/adminRoutes/listUnPaid",
+          config: {
+            pre: [{ method: validateToken, assign: "token" }],
+            handler: controller.listUnPaid,
+            description: "list UnPaid",
+            tags: ["api", "Users"],
+            auth: false,
+          },
+        },
       ]);
       resolve(true);
     });

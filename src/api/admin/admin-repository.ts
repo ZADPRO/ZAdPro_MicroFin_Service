@@ -65,12 +65,15 @@ import {
   updateRepaymentScheduleQuery,
   getBankQuery,
   updateBankFundQuery,
+  getUnPaidUserQuery,
+  getAmountDataQuery,
 } from "./query";
 import { buildUpdateQuery, getChanges } from "../../helper/buildquery";
 import { reLabelText } from "../../helper/Label";
 
 export class adminRepository {
   public async adminLoginV1(user_data: any, domain_code?: any): Promise<any> {
+console.log("Repository Started");
     const client: PoolClient = await getClient();
 
     try {
@@ -86,7 +89,8 @@ export class adminRepository {
 
         if (!user.refUserHashPassword) {
           console.error("Error: User has no hashed password stored.");
-          return encrypt(
+          console.log("Repository return Responce");
+return encrypt(
             {
               success: false,
               message: "Invalid login credentials",
@@ -102,7 +106,8 @@ export class adminRepository {
         if (validPassword) {
           const tokenData = { id: user.refUserId };
 
-          return encrypt(
+          console.log("Repository return Responce");
+return encrypt(
             {
               success: true,
               message: "Login successful",
@@ -114,7 +119,8 @@ export class adminRepository {
         }
       }
 
-      return encrypt(
+      console.log("Repository return Responce");
+return encrypt(
         {
           success: false,
           message: "Invalid login credentials",
@@ -123,7 +129,8 @@ export class adminRepository {
       );
     } catch (error) {
       console.error("Error during login:", error);
-      return encrypt(
+      console.log("Repository return Responce");
+return encrypt(
         {
           success: false,
           message: "Internal server error",
@@ -135,6 +142,7 @@ export class adminRepository {
     }
   }
   public async addNewPersonV1(user_data: any, tokendata: any): Promise<any> {
+console.log("Repository Started");
     const client: PoolClient = await getClient();
     const token = { id: tokendata.id };
 
@@ -252,7 +260,8 @@ export class adminRepository {
 
       await client.query("COMMIT");
 
-      return encrypt(
+      console.log("Repository return Responce");
+return encrypt(
         {
           success: true,
           message:
@@ -267,7 +276,8 @@ export class adminRepository {
     } catch (error) {
       console.log("Error:", error);
       await client.query("ROLLBACK");
-      return encrypt(
+      console.log("Repository return Responce");
+return encrypt(
         {
           success: false,
           message: "Data insertion failed. Please try again.",
@@ -280,6 +290,7 @@ export class adminRepository {
     }
   }
   public async getPersonV1(userData: any, tokendata: any): Promise<any> {
+console.log("Repository Started");
     const client: PoolClient = await getClient();
     const token = { id: tokendata.id }; // Extract token ID
     try {
@@ -371,15 +382,12 @@ export class adminRepository {
           }
         })
       );
-
       // Return success response with data
-      return encrypt(
+      console.log("Repository return Responce");
+return encrypt(
         {
           success: true,
-          message:
-            roleId === 2
-              ? "Returned Agent successfully"
-              : "Returned Customer successfully",
+          message: roleId === 2 ? "Returned Agent successfully" : "Returned Customer successfully",
           data: dataWithImages,
           getReference: getReference,
           getAudit: getAudit,
@@ -393,7 +401,8 @@ export class adminRepository {
         error instanceof Error ? error.message : "An unknown error occurred";
       console.error("Error during data retrieval:", error);
 
-      return encrypt(
+      console.log("Repository return Responce");
+return encrypt(
         {
           success: false,
           message: "Data retrieval failed",
@@ -407,6 +416,7 @@ export class adminRepository {
     }
   }
   public async getPersonListV1(userData: any, tokendata: any): Promise<any> {
+console.log("Repository Started");
     const client: PoolClient = await getClient();
     const token = { id: tokendata.id }; // Extract token ID
     console.log("tokendata.id", tokendata.id);
@@ -439,7 +449,8 @@ export class adminRepository {
       console.log("name", name);
 
       // Return success response with the result
-      return encrypt(
+      console.log("Repository return Responce");
+return encrypt(
         {
           success: true,
           message:
@@ -459,7 +470,8 @@ export class adminRepository {
       console.error("Error during data retrieval:", error);
 
       // Return error response
-      return encrypt(
+      console.log("Repository return Responce");
+return encrypt(
         {
           success: false,
           message: "Data retrieval failed",
@@ -553,6 +565,7 @@ export class adminRepository {
   //   }
   // }
   public async updatePersonV1(user_data: any, tokendata: any): Promise<any> {
+console.log("Repository Started");
     const client: PoolClient = await getClient();
     const token = { id: tokendata.id };
     try {
@@ -566,7 +579,8 @@ export class adminRepository {
       const userExistsResult = await client.query(userExistsQuery, [userId]);
       if (parseInt(userExistsResult.rows[0]?.count || "0") === 0) {
         await client.query("ROLLBACK");
-        return encrypt(
+        console.log("Repository return Responce");
+return encrypt(
           {
             success: false,
             message: "Invalid user ID",
@@ -687,7 +701,8 @@ export class adminRepository {
 
       await client.query("COMMIT");
 
-      return encrypt(
+      console.log("Repository return Responce");
+return encrypt(
         {
           success: true,
           message: "User updated successfully",
@@ -698,7 +713,8 @@ export class adminRepository {
     } catch (error) {
       console.error("Error updating user:", error);
       await client.query("ROLLBACK");
-      return encrypt(
+      console.log("Repository return Responce");
+return encrypt(
         {
           success: false,
           message: "Update failed",
@@ -711,6 +727,7 @@ export class adminRepository {
     }
   }
   public async profileUploadV1(userData: any, tokendata: any): Promise<any> {
+console.log("Repository Started");
     const token = { id: tokendata.id };
 
     try {
@@ -761,7 +778,8 @@ export class adminRepository {
       }
 
       // Return success response with stored images
-      return encrypt(
+      console.log("Repository return Responce");
+return encrypt(
         {
           success: true,
           message: "Images Stored Successfully",
@@ -773,7 +791,8 @@ export class adminRepository {
       );
     } catch (error) {
       console.error("Error occurred:", error);
-      return encrypt(
+      console.log("Repository return Responce");
+return encrypt(
         {
           success: false,
           message: "Error In Storing the Images",
@@ -784,6 +803,7 @@ export class adminRepository {
     }
   }
   public async addBankAccountV1(userData: any, tokendata: any): Promise<any> {
+console.log("Repository Started");
     console.log("userData", userData);
     const client: PoolClient = await getClient();
     const token = { id: tokendata.id }; // Extract token ID
@@ -811,7 +831,8 @@ export class adminRepository {
       // Commit transaction
       await client.query("COMMIT");
 
-      return encrypt(
+      console.log("Repository return Responce");
+return encrypt(
         {
           success: true,
           message: "Bank account details successfully inserted.",
@@ -825,7 +846,8 @@ export class adminRepository {
 
       console.error("Error inserting bank account:", error);
 
-      return encrypt(
+      console.log("Repository return Responce");
+return encrypt(
         {
           success: false,
           message: "Bank account insertion failed",
@@ -842,6 +864,7 @@ export class adminRepository {
     user_data: any,
     tokendata: any
   ): Promise<any> {
+console.log("Repository Started");
     const client: PoolClient = await getClient();
     const token = { id: tokendata.id }; // Extract token ID
     try {
@@ -874,7 +897,8 @@ export class adminRepository {
       await client.query("COMMIT");
 
       // Return the success response
-      return encrypt(
+      console.log("Repository return Responce");
+return encrypt(
         {
           success: true,
           message: "Bank account details updated successfully.",
@@ -890,7 +914,8 @@ export class adminRepository {
       console.error("Error updating bank account:", error);
 
       // Return the error response
-      return encrypt(
+      console.log("Repository return Responce");
+return encrypt(
         {
           success: false,
           message: "Bank account update failed",
@@ -908,20 +933,23 @@ export class adminRepository {
     userData: any,
     tokendata: any
   ): Promise<any> {
+console.log("Repository Started");
     const token = { id: tokendata.id }; // Extract token ID
     console.log("token", token);
-    const client: PoolClient = await getClient();
+    // const client: PoolClient = await getClient();
     try {
       const allBankAccountList = await executeQuery(getAllBankAccountQuery);
 
-      const name = await client.query(nameQuery, [tokendata.id]);
+      const name = await executeQuery(nameQuery, [tokendata.id]);
+      console.log('nam line ----944', name)
 
       // Return success response
-      return encrypt(
+      console.log("Repository return Responce");
+return encrypt(
         {
           success: true,
           message: "Returned Bank Account list successfully",
-          name: name.rows,
+          name: name,
           BankAccount: allBankAccountList,
           token: generateTokenWithoutExpire(token, true)
         },
@@ -934,7 +962,8 @@ export class adminRepository {
       console.error("Error during data retrieval:", error);
 
       // Return error response
-      return encrypt(
+      console.log("Repository return Responce");
+return encrypt(
         {
           success: false,
           message: "Data retrieval failed",
@@ -946,6 +975,7 @@ export class adminRepository {
     }
   }
   public async addProductV1(userData: any, tokendata: any): Promise<any> {
+console.log("Repository Started");
     const client: PoolClient = await getClient();
     const token = { id: tokendata.id }; // Extract token ID
     try {
@@ -974,7 +1004,8 @@ export class adminRepository {
 
       await client.query("COMMIT"); // Commit Transaction
 
-      return encrypt(
+      console.log("Repository return Responce");
+return encrypt(
         {
           success: true,
           message: "Product details inserted successfully.",
@@ -988,7 +1019,8 @@ export class adminRepository {
 
       console.error("Error inserting product details:", error);
 
-      return encrypt(
+      console.log("Repository return Responce");
+return encrypt(
         {
           success: false,
           message: "product insertion failed",
@@ -1002,6 +1034,7 @@ export class adminRepository {
     }
   }
   public async updateProductV1(userData: any, tokendata: any): Promise<any> {
+console.log("Repository Started");
     const client: PoolClient = await getClient();
     const token = { id: tokendata.id }; // Extract token ID
     try {
@@ -1029,7 +1062,8 @@ export class adminRepository {
 
       await client.query("COMMIT");
 
-      return encrypt(
+      console.log("Repository return Responce");
+return encrypt(
         {
           success: true,
           message: "product updated successfully",
@@ -1042,7 +1076,8 @@ export class adminRepository {
 
       await client.query("ROLLBACK");
 
-      return encrypt(
+      console.log("Repository return Responce");
+return encrypt(
         {
           success: false,
           message: "Update failed",
@@ -1055,6 +1090,7 @@ export class adminRepository {
     }
   }
   public async productListV1(userData: any, tokendata: any): Promise<any> {
+console.log("Repository Started");
     const client: PoolClient = await getClient();
     const token = { id: tokendata.id }; // Extract token ID
     try {
@@ -1062,7 +1098,8 @@ export class adminRepository {
       const name = await client.query(nameQuery, [tokendata.id]);
 
       // Return success response
-      return encrypt(
+      console.log("Repository return Responce");
+return encrypt(
         {
           success: true,
           message: "Returned list of products successfully",
@@ -1079,7 +1116,8 @@ export class adminRepository {
       console.error("Error during data retrieval:", error);
 
       // Return error response
-      return encrypt(
+      console.log("Repository return Responce");
+return encrypt(
         {
           success: false,
           message: "Data retrieval failed",
@@ -1091,6 +1129,7 @@ export class adminRepository {
     }
   }
   public async getProductV1(userData: any, tokendata: any): Promise<any> {
+console.log("Repository Started");
     const token = { id: tokendata.id }; // Extract token ID
 
     try {
@@ -1104,7 +1143,8 @@ export class adminRepository {
       const product = await executeQuery(getProductsQuery, params);
 
       // Return success response
-      return encrypt(
+      console.log("Repository return Responce");
+return encrypt(
         {
           success: true,
           message: "Returned products by name successfully",
@@ -1120,7 +1160,8 @@ export class adminRepository {
       console.error("Error during data retrieval:", error);
 
       // Return error response
-      return encrypt(
+      console.log("Repository return Responce");
+return encrypt(
         {
           success: false,
           message: "Data retrieval failed",
@@ -1135,6 +1176,7 @@ export class adminRepository {
     userData: any,
     tokendata: any
   ): Promise<any> {
+console.log("Repository Started");
     const token = { id: tokendata.id };
     try {
       // Extract the image from userData
@@ -1163,7 +1205,8 @@ export class adminRepository {
       });
 
       // Return success response
-      return encrypt(
+      console.log("Repository return Responce");
+return encrypt(
         {
           success: true,
           message: "Image Stored Successfully",
@@ -1186,6 +1229,7 @@ export class adminRepository {
     }
   }
   public async addReferenceV1(user_data: any, tokendata: any): Promise<any> {
+console.log("Repository Started");
     const client: PoolClient = await getClient();
     const token = { id: tokendata.id };
 
@@ -1229,7 +1273,8 @@ export class adminRepository {
 
       await client.query("COMMIT");
 
-      return encrypt(
+      console.log("Repository return Responce");
+return encrypt(
         {
           success: true,
           message: "All references added successfully",
@@ -1241,7 +1286,8 @@ export class adminRepository {
     } catch (error: any) {
       console.log("Error:", error);
       await client.query("ROLLBACK");
-      return encrypt(
+      console.log("Repository return Responce");
+return encrypt(
         {
           success: false,
           message: "Data insertion failed. Please try again.",
@@ -1255,6 +1301,7 @@ export class adminRepository {
     }
   }
   public async getReferenceV1(userData: any, tokendata: any): Promise<any> {
+console.log("Repository Started");
     const token = { id: tokendata.id }; // Extract token ID
 
     try {
@@ -1268,7 +1315,8 @@ export class adminRepository {
       const reference = await executeQuery(getReferenceQuery, params);
 
       // Return success response
-      return encrypt(
+      console.log("Repository return Responce");
+return encrypt(
         {
           success: true,
           message: "Returned reference by user successfully",
@@ -1284,7 +1332,8 @@ export class adminRepository {
       console.error("Error during data retrieval:", error);
 
       // Return error response
-      return encrypt(
+      console.log("Repository return Responce");
+return encrypt(
         {
           success: false,
           message: "Data retrieval failed",
@@ -1296,6 +1345,7 @@ export class adminRepository {
     }
   }
   public async addBankFundV1(userData: any, tokendata: any): Promise<any> {
+console.log("Repository Started");
     const client: PoolClient = await getClient();
     const token = { id: tokendata.id }; // Extract token ID
 
@@ -1370,7 +1420,8 @@ export class adminRepository {
       // Commit transaction
       await client.query("COMMIT");
 
-      return encrypt(
+      console.log("Repository return Responce");
+return encrypt(
         {
           success: true,
           message: "Bank fund successfully inserted and balance updated.",
@@ -1384,7 +1435,8 @@ export class adminRepository {
 
       console.error("Error inserting bank fund and updating balance:", error);
 
-      return encrypt(
+      console.log("Repository return Responce");
+return encrypt(
         {
           success: false,
           message: "Bank fund insertion or balance update failed",
@@ -1398,6 +1450,7 @@ export class adminRepository {
     }
   }
   public async getBankListV1(userData: any, tokendata: any): Promise<any> {
+console.log("Repository Started");
     const client: PoolClient = await getClient();
     const token = { id: tokendata.id }; // Extract token ID
 
@@ -1405,7 +1458,8 @@ export class adminRepository {
       const BankList = await client.query(getBankListQuery);
 
       // Return success response
-      return encrypt(
+      console.log("Repository return Responce");
+return encrypt(
         {
           success: true,
           message: "Returned list of documents successfully",
@@ -1421,7 +1475,8 @@ export class adminRepository {
       console.error("Error during data retrieval:", error);
 
       // Return error response
-      return encrypt(
+      console.log("Repository return Responce");
+return encrypt(
         {
           success: false,
           message: "Data retrieval failed",
@@ -1433,6 +1488,7 @@ export class adminRepository {
     }
   }
   public async viewBankFundV1(userData: any, tokendata: any): Promise<any> {
+console.log("Repository Started");
     const client: PoolClient = await getClient();
     const token = { id: tokendata.id }; // Extract token ID
 
@@ -1464,7 +1520,8 @@ export class adminRepository {
 
       // Check if no records were found
       if (bankFund.length === 0) {
-        return encrypt(
+        console.log("Repository return Responce");
+return encrypt(
           {
             success: false,
             message: "No bank fund found",
@@ -1475,7 +1532,8 @@ export class adminRepository {
       }
 
       // Return success response
-      return encrypt(
+      console.log("Repository return Responce");
+return encrypt(
         {
           success: true,
           message: "Returned bank fund successfully",
@@ -1490,7 +1548,8 @@ export class adminRepository {
         error instanceof Error ? error.message : "An unknown error occurred";
       console.error("Error during data retrieval:", error);
 
-      return encrypt(
+      console.log("Repository return Responce");
+return encrypt(
         {
           success: false,
           message: "Data retrieval failed",
@@ -1502,6 +1561,7 @@ export class adminRepository {
     }
   }
   public async getBankFundListV1(userData: any, tokendata: any): Promise<any> {
+console.log("Repository Started");
     const client: PoolClient = await getClient();
     const token = { id: tokendata.id }; // Extract token ID
     try {
@@ -1509,7 +1569,8 @@ export class adminRepository {
 
       const name = await client.query(nameQuery, [tokendata.id]);
       // Return success response
-      return encrypt(
+      console.log("Repository return Responce");
+return encrypt(
         {
           success: true,
           message: "Returned list of products successfully",
@@ -1526,7 +1587,8 @@ export class adminRepository {
       console.error("Error during data retrieval:", error);
 
       // Return error response
-      return encrypt(
+      console.log("Repository return Responce");
+return encrypt(
         {
           success: false,
           message: "Data retrieval failed",
@@ -1538,6 +1600,7 @@ export class adminRepository {
     }
   }
   public async addLoanV1(userData: any, tokendata: any): Promise<any> {
+console.log("Repository Started");
     const client: PoolClient = await getClient();
     const token = { id: tokendata.id }; // Extract token ID
     try {
@@ -1723,7 +1786,8 @@ export class adminRepository {
 
       await client.query("COMMIT"); // Commit Transaction
 
-      return encrypt(
+      console.log("Repository return Responce");
+return encrypt(
         {
           success: true,
           message: "loan details inserted successfully.",
@@ -1737,7 +1801,8 @@ export class adminRepository {
 
       console.error("Error inserting loan details:", error);
 
-      return encrypt(
+      console.log("Repository return Responce");
+return encrypt(
         {
           success: false,
           message: "loan insertion failed",
@@ -1795,6 +1860,7 @@ export class adminRepository {
   //   }
   // }
   public async updateLoanV1(userData: any, tokendata: any): Promise<any> {
+console.log("Repository Started");
     const client: PoolClient = await getClient();
     const token = { id: tokendata.id }; // Extract token ID
     try {
@@ -1811,7 +1877,8 @@ export class adminRepository {
       console.log("loanData", loanData);
 
       if (loanData.length === 0) {
-        return encrypt(
+        console.log("Repository return Responce");
+return encrypt(
           {
             success: false,
             message: "No loan data found",
@@ -1836,7 +1903,8 @@ export class adminRepository {
         );
       }
 
-      return encrypt(
+      console.log("Repository return Responce");
+return encrypt(
         {
           success: true,
           message: "Loan updated successfully",
@@ -1848,7 +1916,8 @@ export class adminRepository {
       console.error("Error updating loan:", error);
       await client.query("ROLLBACK");
 
-      return encrypt(
+      console.log("Repository return Responce");
+return encrypt(
         {
           success: false,
           message: error.message || "Update failed",
@@ -1862,6 +1931,7 @@ export class adminRepository {
   }
 
   public async getLoanListV1(userData: any, tokendata: any): Promise<any> {
+console.log("Repository Started");
     const client: PoolClient = await getClient();
     const token = { id: tokendata.id }; // Extract token ID
     try {
@@ -1869,7 +1939,8 @@ export class adminRepository {
       const name = await client.query(nameQuery, [tokendata.id]);
 
       // Return success response
-      return encrypt(
+      console.log("Repository return Responce");
+return encrypt(
         {
           success: true,
           message: "Returned list of loan successfully",
@@ -1886,7 +1957,8 @@ export class adminRepository {
       console.error("Error during data retrieval:", error);
 
       // Return error response
-      return encrypt(
+      console.log("Repository return Responce");
+return encrypt(
         {
           success: false,
           message: "Data retrieval failed",
@@ -1898,6 +1970,7 @@ export class adminRepository {
     }
   }
   public async getLoanAndUserV1(userData: any, tokendata: any): Promise<any> {
+console.log("Repository Started");
     const client: PoolClient = await getClient();
     const token = { id: tokendata.id }; // Extract token ID
 
@@ -1908,7 +1981,8 @@ export class adminRepository {
       const getLoanAndUser = await executeQuery(getloanUserListQuery);
 
       // Return success response
-      return encrypt(
+      console.log("Repository return Responce");
+return encrypt(
         {
           success: true,
           message: "Returned list of loan successfully",
@@ -1926,7 +2000,8 @@ export class adminRepository {
       console.error("Error during data retrieval:", error);
 
       // Return error response
-      return encrypt(
+      console.log("Repository return Responce");
+return encrypt(
         {
           success: false,
           message: "Data retrieval failed",
@@ -1938,6 +2013,7 @@ export class adminRepository {
     }
   }
   public async getLoanV1(userData: any, tokendata: any): Promise<any> {
+console.log("Repository Started");
     const client: PoolClient = await getClient();
     const token = { id: tokendata.id }; // Extract token ID
 
@@ -1950,7 +2026,8 @@ export class adminRepository {
       const productList = await client.query(getProductsListQuery);
 
       // Return success response
-      return encrypt(
+      console.log("Repository return Responce");
+return encrypt(
         {
           success: true,
           message: "Returned list of loan successfully",
@@ -1968,7 +2045,8 @@ export class adminRepository {
       console.error("Error during data retrieval:", error);
 
       // Return error response
-      return encrypt(
+      console.log("Repository return Responce");
+return encrypt(
         {
           success: false,
           message: "Data retrieval failed",
@@ -1979,46 +2057,157 @@ export class adminRepository {
       );
     }
   }
+  // public async rePaymentScheduleV1(
+  //   userData: any,
+  //   tokendata: any
+  // ): Promise<any> {
+  //   const client: PoolClient = await getClient();
+  //   const token = { id: tokendata.id };
+
+  //   try {
+  //     await client.query("BEGIN");
+
+  //     const { refLoanId, refRepaymentNumber } = userData;
+
+  //     // Fetch loan details
+  //     const loanResult = await client.query(loanQuery, [refLoanId]);
+
+  //     if (loanResult.rows.length === 0) {
+  //       throw new Error("Loan not found.");
+  //     }
+
+  //     const {
+  //       refLoanAmount,
+  //       refRepaymentStartDate,
+  //       refLoanDueDate,
+  //       isInterestFirst,
+  //       refProductId,
+  //     } = loanResult.rows[0];
+
+  //     // Fetch product interest from refProducts table
+  //     const productResult = await client.query(getProductInterestQuery, [
+  //       refProductId,
+  //     ]);
+
+  //     if (productResult.rows.length === 0) {
+  //       throw new Error("Product not found.");
+  //     }
+
+  //     const { refProductInterest } = productResult.rows[0];
+
+  //     // Calculate total interest amount for the loan
+  //     const totalInterestAmount = (refProductInterest / 100) * refLoanAmount;
+
+  //     // Calculate total repayment months
+  //     const monthDifference =
+  //       getMonthDifference(refRepaymentStartDate, refLoanDueDate) + 1;
+
+  //     // Monthly interest amount (split equally across months)
+  //     const monthlyInterest =
+  //       Math.round((totalInterestAmount / monthDifference) * 100) / 100; // Rounded to 2 decimal places
+
+  //     // Monthly principal amount (if not interest first)
+  //     const monthlyPrincipal =
+  //       Math.round((refLoanAmount / monthDifference) * 100) / 100; // Rounded to 2 decimal places
+
+  //     const repaymentParams = [];
+  //     let currentRepaymentDate = new Date(refRepaymentStartDate);
+
+  //     for (let i = 0; i < monthDifference; i++) {
+  //       const repaymentYear = currentRepaymentDate.getFullYear();
+  //       const repaymentMonth = currentRepaymentDate.getMonth() + 1;
+  //       const repaymentDate = `${repaymentYear}-${repaymentMonth
+  //         .toString()
+  //         .padStart(2, "0")}`;
+
+  //       // Split the interest across all months
+  //       const interestAmount = monthlyInterest; // Already rounded
+  //       const principalAmount =
+  //         isInterestFirst && i === 0 ? refLoanAmount : monthlyPrincipal; // Already rounded
+
+  //       repaymentParams.push([
+  //         refLoanId,
+  //         repaymentDate,
+  //         refLoanAmount,
+  //         principalAmount,
+  //         interestAmount,
+  //         "Pending",
+  //         refRepaymentNumber + i,
+  //         Math.round((interestAmount + principalAmount) * 100) / 100, // Ensure sum is also rounded
+  //         CurrentTime(),
+  //         "Admin",
+  //       ]);
+
+  //       currentRepaymentDate.setMonth(currentRepaymentDate.getMonth() + 1);
+  //     }
+
+  //     // Insert repayment schedules into the database
+  //     for (const params of repaymentParams) {
+  //       await client.query(insertRepaymentQuery, params);
+  //     }
+
+  //     await client.query("COMMIT");
+
+  //     return encrypt(
+  //       {
+  //         success: true,
+  //         message: `${monthDifference} repayment schedules inserted successfully.`,
+  //         token: generateTokenWithoutExpire(token, true)
+  //       },
+  //       true
+  //     );
+  //   } catch (error: any) {
+  //     await client.query("ROLLBACK");
+
+  //     console.error("Error inserting rePayment Schedule", error);
+
+  //     return encrypt(
+  //       {
+  //         success: false,
+  //         message: "rePayment Schedule insertion failed",
+  //         error: error.message || "An unknown error occurred",
+  //         token: generateTokenWithoutExpire(token, true)
+  //       },
+  //       true
+  //     );
+  //   } finally {
+  //     client.release();
+  //   }
+  // }
+
   public async rePaymentScheduleV1(
     userData: any,
     tokendata: any
   ): Promise<any> {
+console.log("Repository Started");
     const client: PoolClient = await getClient();
     const token = { id: tokendata.id };
 
     try {
       await client.query("BEGIN");
 
-      const { refLoanId, refRepaymentNumber } = userData;
+      const { userId,  } = userData;
 
-      // Fetch loan details
-      const loanResult = await client.query(loanQuery, [refLoanId]);
-
-      if (loanResult.rows.length === 0) {
-        throw new Error("Loan not found.");
-      }
-
+      const getAmountData:any = await executeQuery (getAmountDataQuery,[userId])
+      
+      // const balanceAmount =  
+    
       const {
+        refLoanId,
+        refLoanBalance,
+        refProductInterest,
         refLoanAmount,
         refRepaymentStartDate,
         refLoanDueDate,
-        isInterestFirst,
-        refProductId,
-      } = loanResult.rows[0];
-
-      // Fetch product interest from refProducts table
-      const productResult = await client.query(getProductInterestQuery, [
-        refProductId,
-      ]);
-
-      if (productResult.rows.length === 0) {
-        throw new Error("Product not found.");
-      }
-
-      const { refProductInterest } = productResult.rows[0];
+        isInterestFirst
+      } = getAmountData.rows[0];
 
       // Calculate total interest amount for the loan
       const totalInterestAmount = (refProductInterest / 100) * refLoanAmount;
+      console.log('totalInterestAmount', totalInterestAmount)
+
+      // set refRepaymentNumber is always start 1
+      const refRepaymentNumber = 1;
 
       // Calculate total repayment months
       const monthDifference =
@@ -2068,9 +2257,11 @@ export class adminRepository {
         await client.query(insertRepaymentQuery, params);
       }
 
+
       await client.query("COMMIT");
 
-      return encrypt(
+      console.log("Repository return Responce");
+return encrypt(
         {
           success: true,
           message: `${monthDifference} repayment schedules inserted successfully.`,
@@ -2083,7 +2274,8 @@ export class adminRepository {
 
       console.error("Error inserting rePayment Schedule", error);
 
-      return encrypt(
+      console.log("Repository return Responce");
+return encrypt(
         {
           success: false,
           message: "rePayment Schedule insertion failed",
@@ -2097,6 +2289,7 @@ export class adminRepository {
     }
   }
   public async userFollowUpV1(userData: any, tokendata: any): Promise<any> {
+console.log("Repository Started");
     const token = { id: tokendata.id };
     try {
       const updateUserStatusResult = await executeQuery(updateUserStatusQuery, [
@@ -2110,7 +2303,8 @@ export class adminRepository {
 
       console.log("updateUserStatusResult", updateUserStatusResult);
 
-      return encrypt(
+      console.log("Repository return Responce");
+return encrypt(
         {
           success: true,
           message: "Client FollowUp Data is Updated Successfully",
@@ -2131,6 +2325,7 @@ export class adminRepository {
     }
   }
   public async updateFollowUpV1(userData: any, tokendata: any): Promise<any> {
+console.log("Repository Started");
     const client: PoolClient = await getClient();
     const token = { id: tokendata.id }; // Extract token ID
     try {
@@ -2150,7 +2345,8 @@ export class adminRepository {
 
       await client.query("COMMIT");
 
-      return encrypt(
+      console.log("Repository return Responce");
+return encrypt(
         {
           success: true,
           message: "updated successfully",
@@ -2163,7 +2359,8 @@ export class adminRepository {
 
       await client.query("ROLLBACK");
 
-      return encrypt(
+      console.log("Repository return Responce");
+return encrypt(
         {
           success: false,
           message: "Update failed",
@@ -2179,6 +2376,7 @@ export class adminRepository {
     userData: any,
     tokendata: any
   ): Promise<any> {
+console.log("Repository Started");
     const client: PoolClient = await getClient();
     const token = { id: tokendata.id }; // Extract token ID
 
@@ -2189,7 +2387,8 @@ export class adminRepository {
       const name = await client.query(nameQuery, [tokendata.id]);
 
       // Return success response
-      return encrypt(
+      console.log("Repository return Responce");
+return encrypt(
         {
           success: true,
           message: "Returned list of products successfully",
@@ -2206,7 +2405,8 @@ export class adminRepository {
       console.error("Error during data retrieval:", error);
 
       // Return error response
-      return encrypt(
+      console.log("Repository return Responce");
+return encrypt(
         {
           success: false,
           message: "Data retrieval failed",
@@ -2218,6 +2418,7 @@ export class adminRepository {
     }
   }
   public async addPaymentV1(paymentData: any, tokendata: any): Promise<any> {
+console.log("Repository Started");
     const client: PoolClient = await getClient();
     const token = { id: tokendata.id };
 
@@ -2270,7 +2471,8 @@ export class adminRepository {
       }
       await client.query("COMMIT");
 
-      return encrypt(
+      console.log("Repository return Responce");
+return encrypt(
         {
           success: true,
           message: "Payment added and repayment status updated successfully.",
@@ -2283,7 +2485,8 @@ export class adminRepository {
 
       console.error("Error processing payment", error);
 
-      return encrypt(
+      console.log("Repository return Responce");
+return encrypt(
         {
           success: false,
           message: "Payment processing failed",
@@ -2294,6 +2497,43 @@ export class adminRepository {
       );
     } finally {
       client.release();
+    }
+  }
+  public async listUnPaidV1(userData: any, tokendata: any): Promise<any> {
+console.log("Repository Started");
+    const client: PoolClient = await getClient();
+    const token = { id: tokendata.id }; // Extract token ID
+
+    try {
+      const getUnPaidUser = await executeQuery(getUnPaidUserQuery);
+      // Return success response
+      console.log("Repository return Responce");
+return encrypt(
+        {
+          success: true,
+          message: "Returned list of unpaid interest successfully",
+          getUnPaidUser:getUnPaidUser,
+          token: generateTokenWithoutExpire(token, true)
+        },
+        true
+      );
+    } catch (error) {
+      // Error handling
+      const errorMessage =
+        error instanceof Error ? error.message : "An unknown error occurred";
+      console.error("Error during data retrieval:", error);
+
+      // Return error response
+      console.log("Repository return Responce");
+return encrypt(
+        {
+          success: false,
+          message: "Data retrieval failed",
+          error: errorMessage,
+          token: generateTokenWithoutExpire(token, true)
+        },
+        true
+      );
     }
   }
 }

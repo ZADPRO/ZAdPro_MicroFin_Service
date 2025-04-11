@@ -15,11 +15,10 @@ export class adminProfile {
     request: any,
     response: Hapi.ResponseToolkit
   ): Promise<any> => {
-    logger.info("Router-----adminLogin");
+    logger.info(`ROUTE API CALL => \n ${request.url.href}`);
 
     try {
-      let entity;
-      entity = await this.resolver.adminLoginV1(request.payload);
+      const entity = await this.resolver.adminLoginV1(request.payload);
       if (entity.success) {
         return response.response(entity).code(201); // Created
       }
@@ -41,14 +40,13 @@ export class adminProfile {
     request: any,
     response: Hapi.ResponseToolkit
   ): Promise<any> => {
-    logger.info("Router-----Add New agent or customer");
+    logger.info(`ROUTE API CALL => \n ${request.url.href}`);
     try {
       const decodedToken = {
         id: request.plugins.token.id,
       };
       console.log("decodedToken", decodedToken);
-      let entity;
-      entity = await this.resolver.addNewPersonV1(
+      const entity = await this.resolver.addNewPersonV1(
         request.payload,
         decodedToken
       );
@@ -74,13 +72,12 @@ export class adminProfile {
     request: any,
     response: Hapi.ResponseToolkit
   ): Promise<any> => {
-    logger.info("Router-----get Customer and Agent");
+    logger.info(`ROUTE API CALL => \n ${request.url.href}`);
     try {
       const decodedToken = {
         id: request.plugins.token.id,
       };
-      let entity;
-      entity = await this.resolver.getPersonV1(request.payload, decodedToken);
+      const entity = await this.resolver.getPersonV1(request.payload, decodedToken);
       if (entity.success) {
         return response.response(entity).code(201); // Created
       }
@@ -98,17 +95,17 @@ export class adminProfile {
         .code(500);
     }
   };
+
   public getPersonList = async (
     request: any,
     response: Hapi.ResponseToolkit
   ): Promise<any> => {
-    logger.info("Router-----get Customer and Agent");
+    logger.info(`ROUTE API CALL => \n ${request.url.href}`);
     try {
       const decodedToken = {
         id: request.plugins.token.id,
       };
-      let entity;
-      entity = await this.resolver.getPersonListV1(
+      const entity = await this.resolver.getPersonListV1(
         request.payload,
         decodedToken
       );
@@ -129,11 +126,12 @@ export class adminProfile {
         .code(500);
     }
   };
+
   public updatePerson = async (
     request: any,
     response: Hapi.ResponseToolkit
   ): Promise<any> => {
-    logger.info("Router-----Add New agent or customer");
+    logger.info(`ROUTE API CALL => \n ${request.url.href}`);
     try {
       const decodedToken = {
         id: request.plugins.token.id,
@@ -141,8 +139,7 @@ export class adminProfile {
       // const decodedToken = {id:1};
 
       console.log("decodedToken", decodedToken);
-      let entity;
-      entity = await this.resolver.updatePersonV1(
+      const entity = await this.resolver.updatePersonV1(
         request.payload,
         decodedToken
       );
@@ -168,13 +165,13 @@ export class adminProfile {
     request: any,
     response: Hapi.ResponseToolkit
   ): Promise<any> => {
-    logger.info("Router-----store Address");
+    logger.info(`ROUTE API CALL => \n ${request.url.href}`);
+    
     const decodedToken = {
       id: request.plugins.token.id,
     };
     try {
-      let entity;
-      entity = await this.resolver.profileUploadV1(
+      const entity = await this.resolver.profileUploadV1(
         request.payload,
         decodedToken
       );
@@ -200,14 +197,13 @@ export class adminProfile {
     request: any,
     response: Hapi.ResponseToolkit
   ): Promise<any> => {
-    logger.info("Router-----Add bank account");
+    logger.info(`ROUTE API CALL => \n ${request.url.href}`);
     try {
       const decodedToken = {
         id: request.plugins.token.id,
       };
       console.log("decodedToken", decodedToken);
-      let entity;
-      entity = await this.resolver.addBankAccountV1(
+      const entity = await this.resolver.addBankAccountV1(
         request.payload,
         decodedToken
       );
@@ -233,14 +229,13 @@ export class adminProfile {
     request: any,
     response: Hapi.ResponseToolkit
   ): Promise<any> => {
-    logger.info("Router-----update bank account");
+    logger.info(`ROUTE API CALL => \n ${request.url.href}`);
     try {
       const decodedToken = {
         id: request.plugins.token.id,
       };
       console.log("decodedToken", decodedToken);
-      let entity;
-      entity = await this.resolver.updateBankAccountV1(
+      const entity = await this.resolver.updateBankAccountV1(
         request.payload,
         decodedToken
       );
@@ -266,14 +261,13 @@ export class adminProfile {
     request: any,
     response: Hapi.ResponseToolkit
   ): Promise<any> => {
-    logger.info("Router-----get bank account");
+    logger.info(`ROUTE API CALL => \n ${request.url.href}`);
     try {
       const decodedToken = {
         id: request.plugins.token.id,
       };
       console.log("decodedToken", decodedToken);
-      let entity;
-      entity = await this.resolver.getBankAccountListV1(
+      const entity = await this.resolver.getBankAccountListV1(
         request.payload,
         decodedToken
       );
@@ -299,14 +293,13 @@ export class adminProfile {
     request: any,
     response: Hapi.ResponseToolkit
   ): Promise<any> => {
-    logger.info("Router-----add product");
+    logger.info(`ROUTE API CALL => \n ${request.url.href}`);
     try {
       const decodedToken = {
         id: request.plugins.token.id,
       };
       console.log("decodedToken", decodedToken);
-      let entity;
-      entity = await this.resolver.addProductV1(request.payload, decodedToken);
+      const entity = await this.resolver.addProductV1(request.payload, decodedToken);
       if (entity.success) {
         return response.response(entity).code(201); // Created
       }
@@ -328,13 +321,12 @@ export class adminProfile {
     request: any,
     response: Hapi.ResponseToolkit
   ): Promise<any> => {
-    logger.info("Router-----update product");
+    logger.info(`ROUTE API CALL => \n ${request.url.href}`);
     try {
       const decodedToken = {
         id: request.plugins.token.id,
       };
-      let entity;
-      entity = await this.resolver.updateProductV1(
+      const entity = await this.resolver.updateProductV1(
         request.payload,
         decodedToken
       );
@@ -359,13 +351,12 @@ export class adminProfile {
     request: any,
     response: Hapi.ResponseToolkit
   ): Promise<any> => {
-    logger.info("Router-----list the product");
+    logger.info(`ROUTE API CALL => \n ${request.url.href}`);
     try {
       const decodedToken = {
         id: request.plugins.token.id,
       };
-      let entity;
-      entity = await this.resolver.productListV1(request.payload, decodedToken);
+      const entity = await this.resolver.productListV1(request.payload, decodedToken);
       if (entity.success) {
         return response.response(entity).code(201); // Created
       }
@@ -387,13 +378,12 @@ export class adminProfile {
     request: any,
     response: Hapi.ResponseToolkit
   ): Promise<any> => {
-    logger.info("Router-----getproduct");
+    logger.info(`ROUTE API CALL => \n ${request.url.href}`);
     try {
       const decodedToken = {
         id: request.plugins.token.id,
       };
-      let entity;
-      entity = await this.resolver.getProductV1(request.payload, decodedToken);
+      const entity = await this.resolver.getProductV1(request.payload, decodedToken);
       if (entity.success) {
         return response.response(entity).code(201); // Created
       }
@@ -415,13 +405,12 @@ export class adminProfile {
     request: any,
     response: Hapi.ResponseToolkit
   ): Promise<any> => {
-    logger.info("Router-----reference Aadhar Upload");
+    logger.info(`ROUTE API CALL => \n ${request.url.href}`);
     const decodedToken = {
       id: request.plugins.token.id,
     };
     try {
-      let entity;
-      entity = await this.resolver.referenceAadharUploadV1(
+      const entity = await this.resolver.referenceAadharUploadV1(
         request.payload,
         decodedToken
       );
@@ -447,13 +436,12 @@ export class adminProfile {
     request: any,
     response: Hapi.ResponseToolkit
   ): Promise<any> => {
-    logger.info("Router-----add Reference");
+    logger.info(`ROUTE API CALL => \n ${request.url.href}`);
     try {
       const decodedToken = {
         id: request.plugins.token.id,
       };
-      let entity;
-      entity = await this.resolver.addReferenceV1(
+      const entity = await this.resolver.addReferenceV1(
         request.payload,
         decodedToken
       );
@@ -478,13 +466,12 @@ export class adminProfile {
     request: any,
     response: Hapi.ResponseToolkit
   ): Promise<any> => {
-    logger.info("Router-----add Reference");
+    logger.info(`ROUTE API CALL => \n ${request.url.href}`);
     try {
       const decodedToken = {
         id: request.plugins.token.id,
       };
-      let entity;
-      entity = await this.resolver.getReferenceV1(
+      const entity = await this.resolver.getReferenceV1(
         request.payload,
         decodedToken
       );
@@ -509,14 +496,13 @@ export class adminProfile {
     request: any,
     response: Hapi.ResponseToolkit
   ): Promise<any> => {
-    logger.info("Router-----add bank fund");
+    logger.info(`ROUTE API CALL => \n ${request.url.href}`);
     try {
       const decodedToken = {
         id: request.plugins.token.id,
       };
       console.log("decodedToken", decodedToken);
-      let entity;
-      entity = await this.resolver.addBankFundV1(request.payload, decodedToken);
+      const entity = await this.resolver.addBankFundV1(request.payload, decodedToken);
       if (entity.success) {
         return response.response(entity).code(201); // Created
       }
@@ -538,20 +524,19 @@ export class adminProfile {
     request: any,
     response: Hapi.ResponseToolkit
   ): Promise<any> => {
-    logger.info("Router-----add bank fund");
+    logger.info(`ROUTE API CALL => \n ${request.url.href}`);
     try {
       const decodedToken = {
         id: request.plugins.token.id,
       };
       console.log("decodedToken", decodedToken);
-      let entity;
-      entity = await this.resolver.getBankListV1(request.payload, decodedToken);
+      const entity = await this.resolver.getBankListV1(request.payload, decodedToken);
       if (entity.success) {
         return response.response(entity).code(201); // Created
       }
       return response.response(entity).code(200); // Bad Request if failed
     } catch (error) {
-      logger.error("Error in add bank fund", error);
+      logger.error("Error in get bank list", error);
       return response
         .response({
           success: false,
@@ -567,7 +552,7 @@ export class adminProfile {
     request: any,
     response: Hapi.ResponseToolkit
   ): Promise<any> => {
-    logger.info("Router-----view bank fund");
+    logger.info(`ROUTE API CALL => \n ${request.url.href}`);
     try {
       const decodedToken = {
         id: request.plugins.token.id
@@ -575,8 +560,7 @@ export class adminProfile {
       // const decodedToken = {
       //   id: 1,
       // };
-      let entity;
-      entity = await this.resolver.viewBankFundV1(
+      const entity = await this.resolver.viewBankFundV1(
         request.payload,
         decodedToken
       );
@@ -601,14 +585,13 @@ export class adminProfile {
     request: any,
     response: Hapi.ResponseToolkit
   ): Promise<any> => {
-    logger.info("Router-----view bank fund list");
+    logger.info(`ROUTE API CALL => \n ${request.url.href}`);
     try {
       const decodedToken = {
         id: request.plugins.token.id,
       };
       console.log("decodedToken line ------- 609", decodedToken)
-      let entity;
-      entity = await this.resolver.getBankFundListV1(
+      const entity = await this.resolver.getBankFundListV1(
         request.payload,
         decodedToken
       );
@@ -633,13 +616,12 @@ export class adminProfile {
     request: any,
     response: Hapi.ResponseToolkit
   ): Promise<any> => {
-    logger.info("Router-----add Loan");
+    logger.info(`ROUTE API CALL => \n ${request.url.href}`);
     try {
       const decodedToken = {
         id: request.plugins.token.id,
       };
-      let entity;
-      entity = await this.resolver.addLoanV1(request.payload, decodedToken);
+      const entity = await this.resolver.addLoanV1(request.payload, decodedToken);
       if (entity.success) {
         return response.response(entity).code(201); // Created
       }
@@ -661,13 +643,12 @@ export class adminProfile {
     request: any,
     response: Hapi.ResponseToolkit
   ): Promise<any> => {
-    logger.info("Router-----update Loan ");
+    logger.info(`ROUTE API CALL => \n ${request.url.href}`);
     try {
       const decodedToken = {
         id: request.plugins.token.id,
       };
-      let entity;
-      entity = await this.resolver.updateLoanV1(
+      const entity = await this.resolver.updateLoanV1(
         request.payload,
         decodedToken
       );
@@ -692,14 +673,13 @@ export class adminProfile {
     request: any,
     response: Hapi.ResponseToolkit
   ): Promise<any> => {
-    logger.info("Router-----view loan list 695");
+    logger.info(`ROUTE API CALL => \n ${request.url.href}`);
     try {
       const decodedToken = {
         id: request.plugins.token.id,
       };
 
-      let entity;
-      entity = await this.resolver.getLoanListV1(request.payload, decodedToken);
+      const entity = await this.resolver.getLoanListV1(request.payload, decodedToken);
       if (entity.success) {
         return response.response(entity).code(201); // Created
       }
@@ -721,14 +701,13 @@ export class adminProfile {
     request: any,
     response: Hapi.ResponseToolkit
   ): Promise<any> => {
-    logger.info("Router-----view loan list 724");
+    logger.info(`ROUTE API CALL => \n ${request.url.href}`);
     try {
       const decodedToken = {
         id: request.plugins.token.id,
       };
 
-      let entity;
-      entity = await this.resolver.getLoanAndUserV1(
+      const entity = await this.resolver.getLoanAndUserV1(
         request.payload,
         decodedToken
       );
@@ -753,14 +732,13 @@ export class adminProfile {
     request: any,
     response: Hapi.ResponseToolkit
   ): Promise<any> => {
-    logger.info("Router-----view loan list 756");
+    logger.info(`ROUTE API CALL => \n ${request.url.href}`);
     try {
       const decodedToken = {
         id: request.plugins.token.id
       }
 
-      let entity;
-      entity = await this.resolver.getLoanV1(request.payload, decodedToken);
+      const entity = await this.resolver.getLoanV1(request.payload, decodedToken);
       if (entity.success) {
         return response.response(entity).code(201); // Created
       }
@@ -783,13 +761,12 @@ export class adminProfile {
     request: any,
     response: Hapi.ResponseToolkit
   ): Promise<any> => {
-    logger.info("Router-----rePayment Schedule");
+    logger.info(`ROUTE API CALL => \n ${request.url.href}`);
     try {
       const decodedToken = {
         id: request.plugins.token.id,
       };
-      let entity;
-      entity = await this.resolver.rePaymentScheduleV1(
+      const entity = await this.resolver.rePaymentScheduleV1(
         request.payload,
         decodedToken
       );
@@ -814,15 +791,14 @@ export class adminProfile {
     request: any,
     response: Hapi.ResponseToolkit
   ): Promise<any> => {
-    logger.info("Router-----rePayment Schedule");
+    logger.info(`ROUTE API CALL => \n ${request.url.href}`);
     try {
       const decodedToken = {
         id: request.plugins.token.id,
       };
       // const decodedToken = {id:1};
 
-      let entity;
-      entity = await this.resolver.userFollowUpV1(
+      const entity = await this.resolver.userFollowUpV1(
         request.payload,
         decodedToken
       );
@@ -847,15 +823,14 @@ export class adminProfile {
     request: any,
     response: Hapi.ResponseToolkit
   ): Promise<any> => {
-    logger.info("Router-----rePayment Schedule");
+    logger.info(`ROUTE API CALL => \n ${request.url.href}`);
     try {
       const decodedToken = {
         id: request.plugins.token.id,
       };
       // const decodedToken = {id:1};
 
-      let entity;
-      entity = await this.resolver.updateFollowUpV1(
+      const entity = await this.resolver.updateFollowUpV1(
         request.payload,
         decodedToken
       );
@@ -880,13 +855,12 @@ export class adminProfile {
     request: any,
     response: Hapi.ResponseToolkit
   ): Promise<any> => {
-    logger.info("Router-----list rePayment Schedule");
+    logger.info(`ROUTE API CALL => \n ${request.url.href}`);
     try {
       const decodedToken = {
         id: request.plugins.token.id,
       };
-      let entity;
-      entity = await this.resolver.ListRePaymentScheduleV1(
+      const entity = await this.resolver.ListRePaymentScheduleV1(
         request.payload,
         decodedToken
       );
@@ -911,19 +885,45 @@ export class adminProfile {
     request: any,
     response: Hapi.ResponseToolkit
   ): Promise<any> => {
-    logger.info("Router-----add Payment");
+    logger.info(`ROUTE API CALL => \n ${request.url.href}`);
     try {
       const decodedToken = {
         id: request.plugins.token.id,
       };
-      let entity;
-      entity = await this.resolver.addPaymentV1(request.payload, decodedToken);
+      const entity = await this.resolver.addPaymentV1(request.payload, decodedToken);
       if (entity.success) {
         return response.response(entity).code(201); // Created
       }
       return response.response(entity).code(200); // Bad Request if failed
     } catch (error) {
       logger.error("Error in add Payment ", error);
+      return response
+        .response({
+          success: false,
+          message:
+            error instanceof Error
+              ? error.message
+              : "An unknown error occurred in controller",
+        })
+        .code(500);
+    }
+  };
+  public listUnPaid = async (
+    request: any,
+    response: Hapi.ResponseToolkit
+  ): Promise<any> => {
+    logger.info(`ROUTE API CALL => \n ${request.url.href}`);
+    try {
+      const decodedToken = {
+        id: request.plugins.token.id,
+      };
+      const entity = await this.resolver.listUnPaidV1(request.payload, decodedToken);
+      if (entity.success) {
+        return response.response(entity).code(201); // Created
+      }
+      return response.response(entity).code(200); // Bad Request if failed
+    } catch (error) {
+      logger.error("Error in list UnPaid", error);
       return response
         .response({
           success: false,

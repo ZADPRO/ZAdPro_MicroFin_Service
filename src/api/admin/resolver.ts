@@ -6,14 +6,16 @@ export class AdminResolver {
     this.adminRepository = new adminRepository();
   }
   public async adminLoginV1(user_data: any, domain_code: any): Promise<any> {
-    return await this.adminRepository.adminLoginV1(user_data, domain_code);
+    console.log("Resolver Sarted");
+return await this.adminRepository.adminLoginV1(user_data, domain_code);
   }
   public async addNewPersonV1(
     user_data: any,
     token_data: any,
     domain_code: any
   ): Promise<any> {
-    return await this.adminRepository.addNewPersonV1(
+    console.log("Resolver Sarted");
+return await this.adminRepository.addNewPersonV1(
       user_data,
       token_data,
       domain_code
@@ -24,7 +26,8 @@ export class AdminResolver {
     token_data: any,
     domain_code: any
   ): Promise<any> {
-    return await this.adminRepository.getPersonV1(
+    console.log("Resolver Sarted");
+return await this.adminRepository.getPersonV1(
       user_data,
       token_data,
       domain_code
@@ -35,7 +38,8 @@ export class AdminResolver {
     token_data: any,
     domain_code: any
   ): Promise<any> {
-    return await this.adminRepository.getPersonListV1(
+    console.log("Resolver Sarted");
+return await this.adminRepository.getPersonListV1(
       user_data,
       token_data,
       domain_code
@@ -46,7 +50,8 @@ export class AdminResolver {
     token_data: any,
     domain_code: any
   ): Promise<any> {
-    return await this.adminRepository.updatePersonV1(
+    console.log("Resolver Sarted");
+return await this.adminRepository.updatePersonV1(
       user_data,
       token_data,
       domain_code
@@ -57,7 +62,8 @@ export class AdminResolver {
     token_data: any,
     domain_code: any
   ): Promise<any> {
-    return await this.adminRepository.profileUploadV1(
+    console.log("Resolver Sarted");
+return await this.adminRepository.profileUploadV1(
       user_data,
       token_data,
       domain_code
@@ -68,7 +74,8 @@ export class AdminResolver {
     token_data: any,
     domain_code: any
   ): Promise<any> {
-    return await this.adminRepository.addBankAccountV1(
+    console.log("Resolver Sarted");
+return await this.adminRepository.addBankAccountV1(
       user_data,
       token_data,
       domain_code
@@ -79,7 +86,8 @@ export class AdminResolver {
     token_data: any,
     domain_code: any
   ): Promise<any> {
-    return await this.adminRepository.updateBankAccountV1(
+    console.log("Resolver Sarted");
+return await this.adminRepository.updateBankAccountV1(
       user_data,
       token_data,
       domain_code
@@ -90,7 +98,8 @@ export class AdminResolver {
     token_data: any,
     domain_code: any
   ): Promise<any> {
-    return await this.adminRepository.getBankAccountListV1(
+    console.log("Resolver Sarted");
+return await this.adminRepository.getBankAccountListV1(
       user_data,
       token_data,
       domain_code
@@ -101,7 +110,8 @@ export class AdminResolver {
     token_data: any,
     domain_code: any
   ): Promise<any> {
-    return await this.adminRepository.addProductV1(
+    console.log("Resolver Sarted");
+return await this.adminRepository.addProductV1(
       user_data,
       token_data,
       domain_code
@@ -112,7 +122,8 @@ export class AdminResolver {
     token_data: any,
     domain_code: any
   ): Promise<any> {
-    return await this.adminRepository.updateProductV1(
+    console.log("Resolver Sarted");
+return await this.adminRepository.updateProductV1(
       user_data,
       token_data,
       domain_code
@@ -123,7 +134,8 @@ export class AdminResolver {
     token_data: any,
     domain_code: any
   ): Promise<any> {
-    return await this.adminRepository.productListV1(
+    console.log("Resolver Sarted");
+return await this.adminRepository.productListV1(
       user_data,
       token_data,
       domain_code
@@ -134,7 +146,8 @@ export class AdminResolver {
     token_data: any,
     domain_code: any
   ): Promise<any> {
-    return await this.adminRepository.getProductV1(
+    console.log("Resolver Sarted");
+return await this.adminRepository.getProductV1(
       user_data,
       token_data,
       domain_code
@@ -145,7 +158,8 @@ export class AdminResolver {
     token_data: any,
     domain_code: any
   ): Promise<any> {
-    return await this.adminRepository.referenceAadharUploadV1(
+    console.log("Resolver Sarted");
+return await this.adminRepository.referenceAadharUploadV1(
       user_data,
       token_data,
       domain_code
@@ -156,7 +170,8 @@ export class AdminResolver {
     token_data: any,
     domain_code: any
   ): Promise<any> {
-    return await this.adminRepository.addReferenceV1(
+    console.log("Resolver Sarted");
+return await this.adminRepository.addReferenceV1(
       user_data,
       token_data,
       domain_code
@@ -167,7 +182,8 @@ export class AdminResolver {
     token_data: any,
     domain_code: any
   ): Promise<any> {
-    return await this.adminRepository.getReferenceV1(
+    console.log("Resolver Sarted");
+return await this.adminRepository.getReferenceV1(
       user_data,
       token_data,
       domain_code
@@ -178,7 +194,8 @@ export class AdminResolver {
     token_data: any,
     domain_code: any
   ): Promise<any> {
-    return await this.adminRepository.addBankFundV1(
+    console.log("Resolver Sarted");
+return await this.adminRepository.addBankFundV1(
       user_data,
       token_data,
       domain_code
@@ -189,7 +206,8 @@ export class AdminResolver {
     token_data: any,
     domain_code: any
   ): Promise<any> {
-    return await this.adminRepository.getBankListV1(
+    console.log("Resolver Sarted");
+return await this.adminRepository.getBankListV1(
       user_data,
       token_data,
       domain_code
@@ -200,7 +218,8 @@ export class AdminResolver {
     token_data: any,
     domain_code: any
   ): Promise<any> {
-    return await this.adminRepository.viewBankFundV1(
+    console.log("Resolver Sarted");
+return await this.adminRepository.viewBankFundV1(
       user_data,
       token_data,
       domain_code
@@ -212,7 +231,8 @@ export class AdminResolver {
     domain_code: any
   ): Promise<any> {
     console.log("line ------ 214")
-    return await this.adminRepository.getBankFundListV1(
+    console.log("Resolver Sarted");
+return await this.adminRepository.getBankFundListV1(
       user_data,
       token_data,
       domain_code
@@ -223,7 +243,8 @@ export class AdminResolver {
     token_data: any,
     domain_code: any
   ): Promise<any> {
-    return await this.adminRepository.addLoanV1(
+    console.log("Resolver Sarted");
+return await this.adminRepository.addLoanV1(
       user_data,
       token_data,
       domain_code
@@ -234,7 +255,8 @@ export class AdminResolver {
     token_data: any,
     domain_code: any
   ): Promise<any> {
-    return await this.adminRepository.updateLoanV1(
+    console.log("Resolver Sarted");
+return await this.adminRepository.updateLoanV1(
       user_data,
       token_data,
       domain_code
@@ -245,7 +267,8 @@ export class AdminResolver {
     token_data: any,
     domain_code: any
   ): Promise<any> {
-    return await this.adminRepository.getLoanListV1(
+    console.log("Resolver Sarted");
+return await this.adminRepository.getLoanListV1(
       user_data,
       token_data,
       domain_code
@@ -256,21 +279,24 @@ export class AdminResolver {
     token_data: any,
     domain_code: any
   ): Promise<any> {
-    return await this.adminRepository.getLoanAndUserV1(
+    console.log("Resolver Sarted");
+return await this.adminRepository.getLoanAndUserV1(
       user_data,
       token_data,
       domain_code
     );
   }
   public async getLoanV1(user_data: any, token_data: any, domain_code: any,): Promise<any> {
-    return await this.adminRepository.getLoanV1(user_data, token_data, domain_code);
+    console.log("Resolver Sarted");
+return await this.adminRepository.getLoanV1(user_data, token_data, domain_code);
   }
   public async rePaymentScheduleV1(
     user_data: any,
     token_data: any,
     domain_code: any
   ): Promise<any> {
-    return await this.adminRepository.rePaymentScheduleV1(
+    console.log("Resolver Sarted");
+return await this.adminRepository.rePaymentScheduleV1(
       user_data,
       token_data,
       domain_code
@@ -281,7 +307,8 @@ export class AdminResolver {
     token_data: any,
     domain_code: any
   ): Promise<any> {
-    return await this.adminRepository.userFollowUpV1(
+    console.log("Resolver Sarted");
+return await this.adminRepository.userFollowUpV1(
       user_data,
       token_data,
       domain_code
@@ -292,7 +319,8 @@ export class AdminResolver {
     token_data: any,
     domain_code: any
   ): Promise<any> {
-    return await this.adminRepository.updateFollowUpV1(
+    console.log("Resolver Sarted");
+return await this.adminRepository.updateFollowUpV1(
       user_data,
       token_data,
       domain_code
@@ -303,7 +331,8 @@ export class AdminResolver {
     token_data: any,
     domain_code: any
   ): Promise<any> {
-    return await this.adminRepository.ListRePaymentScheduleV1(
+    console.log("Resolver Sarted");
+return await this.adminRepository.ListRePaymentScheduleV1(
       user_data,
       token_data,
       domain_code
@@ -314,7 +343,20 @@ export class AdminResolver {
     token_data: any,
     domain_code: any
   ): Promise<any> {
-    return await this.adminRepository.addPaymentV1(
+    console.log("Resolver Sarted");
+return await this.adminRepository.addPaymentV1(
+      user_data,
+      token_data,
+      domain_code
+    );
+  }
+  public async listUnPaidV1(
+    user_data: any,
+    token_data: any,
+    domain_code: any
+  ): Promise<any> {
+    console.log("Resolver Sarted");
+return await this.adminRepository.listUnPaidV1(
       user_data,
       token_data,
       domain_code
