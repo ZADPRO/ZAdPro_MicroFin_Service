@@ -243,6 +243,17 @@ export class adminRoutes implements IRoute {
         },
         {
           method: "POST",
+          path: "/api/v1/adminRoutes/addLoanOption",
+          config: {
+            pre: [{ method: validateToken, assign: "token" }],
+            handler: controller.addLoanOption,
+            description: "add Loan",
+            tags: ["api", "Users"],
+            auth: false,
+          },
+        },
+        {
+          method: "POST",
           path: "/api/v1/adminRoutes/addLoan",
           config: {
             pre: [{ method: validateToken, assign: "token" }],
@@ -362,9 +373,19 @@ export class adminRoutes implements IRoute {
             auth: false,
           },
         },
+        {
+          method: "POST",
+          path: "/api/v1/adminRoutes/listOfUnPaidUsers",
+          config: {
+            // pre: [{ method: validateToken, assign: "token" }],
+            handler: controller.listOfUnPaidUsers,
+            description: "list Unpaid User List",
+            tags: ["api", "Users"],
+            auth: false,
+          },
+        },
       ]);
       resolve(true);
     });
   }
 }
-

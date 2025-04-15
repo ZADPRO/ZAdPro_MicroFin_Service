@@ -33,6 +33,56 @@ export const CurrentTime = (): string => {
   return new Intl.DateTimeFormat("en-IN", options).format(systemTime);
 };
 
+export function formatDate(dateStr: string): string {
+  const date = new Date(dateStr);
+
+  const options: Intl.DateTimeFormatOptions = {
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+    hour12: true,
+    timeZone: "Asia/Kolkata", // Change if needed
+  };
+
+  return date.toLocaleString("en-IN", options);
+}
+
+export function formatToYearMonth(inputDate: string): string {
+  const [datePart, timePart, period] = inputDate.split(/[, ]+/); // split by comma and space
+  const [day, month, year] = datePart.split("/").map(Number);
+  let [hours, minutes, seconds] = timePart.split(":").map(Number);
+
+  if (period.toLowerCase() === "pm" && hours < 12) {
+    hours += 12;
+  } else if (period.toLowerCase() === "am" && hours === 12) {
+    hours = 0;
+  }
+
+  const date = new Date(year, month - 1, day, hours, minutes, seconds);
+  const formattedYear = date.getFullYear();
+  const formattedMonth = String(date.getMonth() + 1).padStart(2, "0");
+
+  return `${formattedYear}-${formattedMonth}`;
+}
+
+export function formatYearMonthDate(dateStr: string): string {
+  // Parse DD/MM/YYYY, hh:mm:ss AM/PM
+  const [datePart, timePart] = dateStr.split(',');
+  const [day, month, year] = datePart.trim().split('/').map(Number);
+  
+  const formattedDate = new Date(`${year}-${month}-${day} ${timePart.trim()}`);
+  
+  const yyyy = formattedDate.getFullYear();
+  const mm = String(formattedDate.getMonth() + 1).padStart(2, '0');
+  const dd = String(formattedDate.getDate()).padStart(2, '0');
+
+  return `${yyyy}-${mm}-${dd}`;
+}
+
+
 export function getMonthDifference(startDate: string, endDate: string): number {
   if (!startDate || !endDate) {
     throw new Error("Start date or end date is undefined or invalid.");

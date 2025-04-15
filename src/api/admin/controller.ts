@@ -77,7 +77,10 @@ export class adminProfile {
       const decodedToken = {
         id: request.plugins.token.id,
       };
-      const entity = await this.resolver.getPersonV1(request.payload, decodedToken);
+      const entity = await this.resolver.getPersonV1(
+        request.payload,
+        decodedToken
+      );
       if (entity.success) {
         return response.response(entity).code(201); // Created
       }
@@ -166,7 +169,7 @@ export class adminProfile {
     response: Hapi.ResponseToolkit
   ): Promise<any> => {
     logger.info(`ROUTE API CALL => \n ${request.url.href}`);
-    
+
     const decodedToken = {
       id: request.plugins.token.id,
     };
@@ -299,7 +302,10 @@ export class adminProfile {
         id: request.plugins.token.id,
       };
       console.log("decodedToken", decodedToken);
-      const entity = await this.resolver.addProductV1(request.payload, decodedToken);
+      const entity = await this.resolver.addProductV1(
+        request.payload,
+        decodedToken
+      );
       if (entity.success) {
         return response.response(entity).code(201); // Created
       }
@@ -356,7 +362,10 @@ export class adminProfile {
       const decodedToken = {
         id: request.plugins.token.id,
       };
-      const entity = await this.resolver.productListV1(request.payload, decodedToken);
+      const entity = await this.resolver.productListV1(
+        request.payload,
+        decodedToken
+      );
       if (entity.success) {
         return response.response(entity).code(201); // Created
       }
@@ -383,7 +392,10 @@ export class adminProfile {
       const decodedToken = {
         id: request.plugins.token.id,
       };
-      const entity = await this.resolver.getProductV1(request.payload, decodedToken);
+      const entity = await this.resolver.getProductV1(
+        request.payload,
+        decodedToken
+      );
       if (entity.success) {
         return response.response(entity).code(201); // Created
       }
@@ -502,7 +514,10 @@ export class adminProfile {
         id: request.plugins.token.id,
       };
       console.log("decodedToken", decodedToken);
-      const entity = await this.resolver.addBankFundV1(request.payload, decodedToken);
+      const entity = await this.resolver.addBankFundV1(
+        request.payload,
+        decodedToken
+      );
       if (entity.success) {
         return response.response(entity).code(201); // Created
       }
@@ -530,7 +545,10 @@ export class adminProfile {
         id: request.plugins.token.id,
       };
       console.log("decodedToken", decodedToken);
-      const entity = await this.resolver.getBankListV1(request.payload, decodedToken);
+      const entity = await this.resolver.getBankListV1(
+        request.payload,
+        decodedToken
+      );
       if (entity.success) {
         return response.response(entity).code(201); // Created
       }
@@ -555,8 +573,8 @@ export class adminProfile {
     logger.info(`ROUTE API CALL => \n ${request.url.href}`);
     try {
       const decodedToken = {
-        id: request.plugins.token.id
-      }
+        id: request.plugins.token.id,
+      };
       // const decodedToken = {
       //   id: 1,
       // };
@@ -590,7 +608,7 @@ export class adminProfile {
       const decodedToken = {
         id: request.plugins.token.id,
       };
-      console.log("decodedToken line ------- 609", decodedToken)
+      console.log("decodedToken line ------- 609", decodedToken);
       const entity = await this.resolver.getBankFundListV1(
         request.payload,
         decodedToken
@@ -621,13 +639,46 @@ export class adminProfile {
       const decodedToken = {
         id: request.plugins.token.id,
       };
-      const entity = await this.resolver.addLoanV1(request.payload, decodedToken);
+      const entity = await this.resolver.addLoanV1(
+        request.payload,
+        decodedToken
+      );
       if (entity.success) {
         return response.response(entity).code(201); // Created
       }
       return response.response(entity).code(200); // Bad Request if failed
     } catch (error) {
       logger.error("Error in add Loan ", error);
+      return response
+        .response({
+          success: false,
+          message:
+            error instanceof Error
+              ? error.message
+              : "An unknown error occurred in controller",
+        })
+        .code(500);
+    }
+  };
+  public addLoanOption = async (
+    request: any,
+    response: Hapi.ResponseToolkit
+  ): Promise<any> => {
+    logger.info(`ROUTE API CALL => \n ${request.url.href}`);
+    try {
+      const decodedToken = {
+        id: request.plugins.token.id,
+      };
+      const entity = await this.resolver.addLoanOptionV1(
+        request.payload,
+        decodedToken
+      );
+      if (entity.success) {
+        return response.response(entity).code(201); // Created
+      }
+      return response.response(entity).code(200); // Bad Request if failed
+    } catch (error) {
+      logger.error("Error in get Loan option", error);
       return response
         .response({
           success: false,
@@ -679,7 +730,10 @@ export class adminProfile {
         id: request.plugins.token.id,
       };
 
-      const entity = await this.resolver.getLoanListV1(request.payload, decodedToken);
+      const entity = await this.resolver.getLoanListV1(
+        request.payload,
+        decodedToken
+      );
       if (entity.success) {
         return response.response(entity).code(201); // Created
       }
@@ -735,15 +789,17 @@ export class adminProfile {
     logger.info(`ROUTE API CALL => \n ${request.url.href}`);
     try {
       const decodedToken = {
-        id: request.plugins.token.id
-      }
+        id: request.plugins.token.id,
+      };
 
-      const entity = await this.resolver.getLoanV1(request.payload, decodedToken);
+      const entity = await this.resolver.getLoanV1(
+        request.payload,
+        decodedToken
+      );
       if (entity.success) {
         return response.response(entity).code(201); // Created
       }
       return response.response(entity).code(200); // Bad Request if failed
-
     } catch (error) {
       logger.error("Error in view loan list 770", error);
       return response
@@ -890,7 +946,10 @@ export class adminProfile {
       const decodedToken = {
         id: request.plugins.token.id,
       };
-      const entity = await this.resolver.addPaymentV1(request.payload, decodedToken);
+      const entity = await this.resolver.addPaymentV1(
+        request.payload,
+        decodedToken
+      );
       if (entity.success) {
         return response.response(entity).code(201); // Created
       }
@@ -917,13 +976,46 @@ export class adminProfile {
       const decodedToken = {
         id: request.plugins.token.id,
       };
-      const entity = await this.resolver.listUnPaidV1(request.payload, decodedToken);
+      const entity = await this.resolver.listUnPaidV1(
+        request.payload,
+        decodedToken
+      );
       if (entity.success) {
         return response.response(entity).code(201); // Created
       }
       return response.response(entity).code(200); // Bad Request if failed
     } catch (error) {
       logger.error("Error in list UnPaid", error);
+      return response
+        .response({
+          success: false,
+          message:
+            error instanceof Error
+              ? error.message
+              : "An unknown error occurred in controller",
+        })
+        .code(500);
+    }
+  };
+  public listOfUnPaidUsers = async (
+    request: any,
+    response: Hapi.ResponseToolkit
+  ): Promise<any> => {
+    logger.info(`ROUTE API CALL => \n ${request.url.href}`);
+    try {
+      const decodedToken = {
+        id: request.plugins.token.id,
+      };
+      const entity = await this.resolver.listOfUnPaidUsersV1(
+        request.payload,
+        decodedToken
+      );
+      if (entity.success) {
+        return response.response(entity).code(201);
+      }
+      return response.response(entity).code(200);
+    } catch (error) {
+      logger.error("Error in list of UnPaid Users", error);
       return response
         .response({
           success: false,

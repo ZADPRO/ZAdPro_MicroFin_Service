@@ -67,13 +67,14 @@ import {
   updateBankFundQuery,
   getUnPaidUserQuery,
   getAmountDataQuery,
+  getLoanDataOption,
 } from "./query";
 import { buildUpdateQuery, getChanges } from "../../helper/buildquery";
 import { reLabelText } from "../../helper/Label";
 
 export class adminRepository {
   public async adminLoginV1(user_data: any, domain_code?: any): Promise<any> {
-console.log("Repository Started");
+    console.log("Repository Started");
     const client: PoolClient = await getClient();
 
     try {
@@ -90,7 +91,7 @@ console.log("Repository Started");
         if (!user.refUserHashPassword) {
           console.error("Error: User has no hashed password stored.");
           console.log("Repository return Responce");
-return encrypt(
+          return encrypt(
             {
               success: false,
               message: "Invalid login credentials",
@@ -107,7 +108,7 @@ return encrypt(
           const tokenData = { id: user.refUserId };
 
           console.log("Repository return Responce");
-return encrypt(
+          return encrypt(
             {
               success: true,
               message: "Login successful",
@@ -120,7 +121,7 @@ return encrypt(
       }
 
       console.log("Repository return Responce");
-return encrypt(
+      return encrypt(
         {
           success: false,
           message: "Invalid login credentials",
@@ -130,7 +131,7 @@ return encrypt(
     } catch (error) {
       console.error("Error during login:", error);
       console.log("Repository return Responce");
-return encrypt(
+      return encrypt(
         {
           success: false,
           message: "Internal server error",
@@ -142,12 +143,11 @@ return encrypt(
     }
   }
   public async addNewPersonV1(user_data: any, tokendata: any): Promise<any> {
-console.log("Repository Started");
+    console.log("Repository Started");
     const client: PoolClient = await getClient();
     const token = { id: tokendata.id };
 
     try {
-
       const basicDetails = user_data.BasicInfo;
       console.log("basicDetails", basicDetails);
       const roleType = basicDetails.user.refRollId;
@@ -261,7 +261,7 @@ console.log("Repository Started");
       await client.query("COMMIT");
 
       console.log("Repository return Responce");
-return encrypt(
+      return encrypt(
         {
           success: true,
           message:
@@ -277,11 +277,11 @@ return encrypt(
       console.log("Error:", error);
       await client.query("ROLLBACK");
       console.log("Repository return Responce");
-return encrypt(
+      return encrypt(
         {
           success: false,
           message: "Data insertion failed. Please try again.",
-          token: generateTokenWithoutExpire(token, true)
+          token: generateTokenWithoutExpire(token, true),
         },
         true
       );
@@ -290,7 +290,7 @@ return encrypt(
     }
   }
   public async getPersonV1(userData: any, tokendata: any): Promise<any> {
-console.log("Repository Started");
+    console.log("Repository Started");
     const client: PoolClient = await getClient();
     const token = { id: tokendata.id }; // Extract token ID
     try {
@@ -384,14 +384,17 @@ console.log("Repository Started");
       );
       // Return success response with data
       console.log("Repository return Responce");
-return encrypt(
+      return encrypt(
         {
           success: true,
-          message: roleId === 2 ? "Returned Agent successfully" : "Returned Customer successfully",
+          message:
+            roleId === 2
+              ? "Returned Agent successfully"
+              : "Returned Customer successfully",
           data: dataWithImages,
           getReference: getReference,
           getAudit: getAudit,
-          token: generateTokenWithoutExpire(token, true)
+          token: generateTokenWithoutExpire(token, true),
         },
         true
       );
@@ -402,7 +405,7 @@ return encrypt(
       console.error("Error during data retrieval:", error);
 
       console.log("Repository return Responce");
-return encrypt(
+      return encrypt(
         {
           success: false,
           message: "Data retrieval failed",
@@ -416,7 +419,7 @@ return encrypt(
     }
   }
   public async getPersonListV1(userData: any, tokendata: any): Promise<any> {
-console.log("Repository Started");
+    console.log("Repository Started");
     const client: PoolClient = await getClient();
     const token = { id: tokendata.id }; // Extract token ID
     console.log("tokendata.id", tokendata.id);
@@ -450,7 +453,7 @@ console.log("Repository Started");
 
       // Return success response with the result
       console.log("Repository return Responce");
-return encrypt(
+      return encrypt(
         {
           success: true,
           message:
@@ -459,7 +462,7 @@ return encrypt(
               : "Returned Customer successfully",
           name: name.rows,
           data: result, // Return data with base64 images
-          token: generateTokenWithoutExpire(token, true)
+          token: generateTokenWithoutExpire(token, true),
         },
         true
       );
@@ -471,12 +474,12 @@ return encrypt(
 
       // Return error response
       console.log("Repository return Responce");
-return encrypt(
+      return encrypt(
         {
           success: false,
           message: "Data retrieval failed",
           error: errorMessage,
-          token: generateTokenWithoutExpire(token, true)
+          token: generateTokenWithoutExpire(token, true),
         },
         true
       );
@@ -565,12 +568,11 @@ return encrypt(
   //   }
   // }
   public async updatePersonV1(user_data: any, tokendata: any): Promise<any> {
-console.log("Repository Started");
+    console.log("Repository Started");
     const client: PoolClient = await getClient();
     const token = { id: tokendata.id };
     try {
       await client.query("BEGIN");
-
 
       const userId = user_data.userId;
       const { user, Communtication } = user_data.BasicInfo || {};
@@ -580,11 +582,11 @@ console.log("Repository Started");
       if (parseInt(userExistsResult.rows[0]?.count || "0") === 0) {
         await client.query("ROLLBACK");
         console.log("Repository return Responce");
-return encrypt(
+        return encrypt(
           {
             success: false,
             message: "Invalid user ID",
-            token: generateTokenWithoutExpire(token, true)
+            token: generateTokenWithoutExpire(token, true),
           },
           true
         );
@@ -702,11 +704,11 @@ return encrypt(
       await client.query("COMMIT");
 
       console.log("Repository return Responce");
-return encrypt(
+      return encrypt(
         {
           success: true,
           message: "User updated successfully",
-          token: generateTokenWithoutExpire(token, true)
+          token: generateTokenWithoutExpire(token, true),
         },
         true
       );
@@ -714,11 +716,11 @@ return encrypt(
       console.error("Error updating user:", error);
       await client.query("ROLLBACK");
       console.log("Repository return Responce");
-return encrypt(
+      return encrypt(
         {
           success: false,
           message: "Update failed",
-          token: generateTokenWithoutExpire(token, true)
+          token: generateTokenWithoutExpire(token, true),
         },
         true
       );
@@ -727,7 +729,7 @@ return encrypt(
     }
   }
   public async profileUploadV1(userData: any, tokendata: any): Promise<any> {
-console.log("Repository Started");
+    console.log("Repository Started");
     const token = { id: tokendata.id };
 
     try {
@@ -779,31 +781,31 @@ console.log("Repository Started");
 
       // Return success response with stored images
       console.log("Repository return Responce");
-return encrypt(
+      return encrypt(
         {
           success: true,
           message: "Images Stored Successfully",
           filePaths: filePaths,
           files: storedFiles,
-          token: generateTokenWithoutExpire(token, true)
+          token: generateTokenWithoutExpire(token, true),
         },
         true
       );
     } catch (error) {
       console.error("Error occurred:", error);
       console.log("Repository return Responce");
-return encrypt(
+      return encrypt(
         {
           success: false,
           message: "Error In Storing the Images",
-          token: generateTokenWithoutExpire(token, true)
+          token: generateTokenWithoutExpire(token, true),
         },
         true
       );
     }
   }
   public async addBankAccountV1(userData: any, tokendata: any): Promise<any> {
-console.log("Repository Started");
+    console.log("Repository Started");
     console.log("userData", userData);
     const client: PoolClient = await getClient();
     const token = { id: tokendata.id }; // Extract token ID
@@ -832,12 +834,12 @@ console.log("Repository Started");
       await client.query("COMMIT");
 
       console.log("Repository return Responce");
-return encrypt(
+      return encrypt(
         {
           success: true,
           message: "Bank account details successfully inserted.",
           data: result,
-          token: generateTokenWithoutExpire(token, true)
+          token: generateTokenWithoutExpire(token, true),
         },
         true
       );
@@ -847,12 +849,12 @@ return encrypt(
       console.error("Error inserting bank account:", error);
 
       console.log("Repository return Responce");
-return encrypt(
+      return encrypt(
         {
           success: false,
           message: "Bank account insertion failed",
           error: error.message || "An unknown error occurred",
-          token: generateTokenWithoutExpire(token, true)
+          token: generateTokenWithoutExpire(token, true),
         },
         true
       );
@@ -864,7 +866,7 @@ return encrypt(
     user_data: any,
     tokendata: any
   ): Promise<any> {
-console.log("Repository Started");
+    console.log("Repository Started");
     const client: PoolClient = await getClient();
     const token = { id: tokendata.id }; // Extract token ID
     try {
@@ -898,12 +900,12 @@ console.log("Repository Started");
 
       // Return the success response
       console.log("Repository return Responce");
-return encrypt(
+      return encrypt(
         {
           success: true,
           message: "Bank account details updated successfully.",
           updateResult: updateResult,
-          token: generateTokenWithoutExpire(token, true)
+          token: generateTokenWithoutExpire(token, true),
         },
         true
       );
@@ -915,12 +917,12 @@ return encrypt(
 
       // Return the error response
       console.log("Repository return Responce");
-return encrypt(
+      return encrypt(
         {
           success: false,
           message: "Bank account update failed",
           error: error.message || "An unknown error occurred",
-          token: generateTokenWithoutExpire(token, true)
+          token: generateTokenWithoutExpire(token, true),
         },
         true
       );
@@ -933,7 +935,7 @@ return encrypt(
     userData: any,
     tokendata: any
   ): Promise<any> {
-console.log("Repository Started");
+    console.log("Repository Started");
     const token = { id: tokendata.id }; // Extract token ID
     console.log("token", token);
     // const client: PoolClient = await getClient();
@@ -941,17 +943,17 @@ console.log("Repository Started");
       const allBankAccountList = await executeQuery(getAllBankAccountQuery);
 
       const name = await executeQuery(nameQuery, [tokendata.id]);
-      console.log('nam line ----944', name)
+      console.log("nam line ----944", name);
 
       // Return success response
       console.log("Repository return Responce");
-return encrypt(
+      return encrypt(
         {
           success: true,
           message: "Returned Bank Account list successfully",
           name: name,
           BankAccount: allBankAccountList,
-          token: generateTokenWithoutExpire(token, true)
+          token: generateTokenWithoutExpire(token, true),
         },
         true
       );
@@ -963,19 +965,19 @@ return encrypt(
 
       // Return error response
       console.log("Repository return Responce");
-return encrypt(
+      return encrypt(
         {
           success: false,
           message: "Data retrieval failed",
           error: errorMessage,
-          token: generateTokenWithoutExpire(token, true)
+          token: generateTokenWithoutExpire(token, true),
         },
         true
       );
     }
   }
   public async addProductV1(userData: any, tokendata: any): Promise<any> {
-console.log("Repository Started");
+    console.log("Repository Started");
     const client: PoolClient = await getClient();
     const token = { id: tokendata.id }; // Extract token ID
     try {
@@ -1005,12 +1007,12 @@ console.log("Repository Started");
       await client.query("COMMIT"); // Commit Transaction
 
       console.log("Repository return Responce");
-return encrypt(
+      return encrypt(
         {
           success: true,
           message: "Product details inserted successfully.",
           data: result,
-          token: generateTokenWithoutExpire(token, true)
+          token: generateTokenWithoutExpire(token, true),
         },
         true
       );
@@ -1020,12 +1022,12 @@ return encrypt(
       console.error("Error inserting product details:", error);
 
       console.log("Repository return Responce");
-return encrypt(
+      return encrypt(
         {
           success: false,
           message: "product insertion failed",
           error: error.message || "An unknown error occurred",
-          token: generateTokenWithoutExpire(token, true)
+          token: generateTokenWithoutExpire(token, true),
         },
         true
       );
@@ -1034,7 +1036,7 @@ return encrypt(
     }
   }
   public async updateProductV1(userData: any, tokendata: any): Promise<any> {
-console.log("Repository Started");
+    console.log("Repository Started");
     const client: PoolClient = await getClient();
     const token = { id: tokendata.id }; // Extract token ID
     try {
@@ -1063,11 +1065,11 @@ console.log("Repository Started");
       await client.query("COMMIT");
 
       console.log("Repository return Responce");
-return encrypt(
+      return encrypt(
         {
           success: true,
           message: "product updated successfully",
-          token: generateTokenWithoutExpire(token, true)
+          token: generateTokenWithoutExpire(token, true),
         },
         true
       );
@@ -1077,11 +1079,11 @@ return encrypt(
       await client.query("ROLLBACK");
 
       console.log("Repository return Responce");
-return encrypt(
+      return encrypt(
         {
           success: false,
           message: "Update failed",
-          token: generateTokenWithoutExpire(token, true)
+          token: generateTokenWithoutExpire(token, true),
         },
         true
       );
@@ -1090,7 +1092,7 @@ return encrypt(
     }
   }
   public async productListV1(userData: any, tokendata: any): Promise<any> {
-console.log("Repository Started");
+    console.log("Repository Started");
     const client: PoolClient = await getClient();
     const token = { id: tokendata.id }; // Extract token ID
     try {
@@ -1099,13 +1101,13 @@ console.log("Repository Started");
 
       // Return success response
       console.log("Repository return Responce");
-return encrypt(
+      return encrypt(
         {
           success: true,
           message: "Returned list of products successfully",
           name: name.rows,
           products: productList.rows, // Make sure to use .rows to get the data
-          token: generateTokenWithoutExpire(token, true)
+          token: generateTokenWithoutExpire(token, true),
         },
         true
       );
@@ -1117,19 +1119,19 @@ return encrypt(
 
       // Return error response
       console.log("Repository return Responce");
-return encrypt(
+      return encrypt(
         {
           success: false,
           message: "Data retrieval failed",
           error: errorMessage,
-          token: generateTokenWithoutExpire(token, true)
+          token: generateTokenWithoutExpire(token, true),
         },
         true
       );
     }
   }
   public async getProductV1(userData: any, tokendata: any): Promise<any> {
-console.log("Repository Started");
+    console.log("Repository Started");
     const token = { id: tokendata.id }; // Extract token ID
 
     try {
@@ -1144,12 +1146,12 @@ console.log("Repository Started");
 
       // Return success response
       console.log("Repository return Responce");
-return encrypt(
+      return encrypt(
         {
           success: true,
           message: "Returned products by name successfully",
           product: product, // Make sure to use .rows to get the data
-          token: generateTokenWithoutExpire(token, true)
+          token: generateTokenWithoutExpire(token, true),
         },
         true
       );
@@ -1161,12 +1163,12 @@ return encrypt(
 
       // Return error response
       console.log("Repository return Responce");
-return encrypt(
+      return encrypt(
         {
           success: false,
           message: "Data retrieval failed",
           error: errorMessage,
-          token: generateTokenWithoutExpire(token, true)
+          token: generateTokenWithoutExpire(token, true),
         },
         true
       );
@@ -1176,7 +1178,7 @@ return encrypt(
     userData: any,
     tokendata: any
   ): Promise<any> {
-console.log("Repository Started");
+    console.log("Repository Started");
     const token = { id: tokendata.id };
     try {
       // Extract the image from userData
@@ -1206,13 +1208,13 @@ console.log("Repository Started");
 
       // Return success response
       console.log("Repository return Responce");
-return encrypt(
+      return encrypt(
         {
           success: true,
           message: "Image Stored Successfully",
           filePath: filePath,
           files: storedFiles,
-          token: generateTokenWithoutExpire(token, true)
+          token: generateTokenWithoutExpire(token, true),
         },
         true
       );
@@ -1222,14 +1224,14 @@ return encrypt(
         {
           success: false,
           message: "Error in Storing the Image",
-          token: generateTokenWithoutExpire(token, true)
+          token: generateTokenWithoutExpire(token, true),
         },
         true
       );
     }
   }
   public async addReferenceV1(user_data: any, tokendata: any): Promise<any> {
-console.log("Repository Started");
+    console.log("Repository Started");
     const client: PoolClient = await getClient();
     const token = { id: tokendata.id };
 
@@ -1274,12 +1276,12 @@ console.log("Repository Started");
       await client.query("COMMIT");
 
       console.log("Repository return Responce");
-return encrypt(
+      return encrypt(
         {
           success: true,
           message: "All references added successfully",
           insertedReferences: insertedReferences,
-          token: generateTokenWithoutExpire(token, true)
+          token: generateTokenWithoutExpire(token, true),
         },
         true
       );
@@ -1287,12 +1289,12 @@ return encrypt(
       console.log("Error:", error);
       await client.query("ROLLBACK");
       console.log("Repository return Responce");
-return encrypt(
+      return encrypt(
         {
           success: false,
           message: "Data insertion failed. Please try again.",
           error: error.message || "Unknown error",
-          token: generateTokenWithoutExpire(token, true)
+          token: generateTokenWithoutExpire(token, true),
         },
         true
       );
@@ -1301,7 +1303,7 @@ return encrypt(
     }
   }
   public async getReferenceV1(userData: any, tokendata: any): Promise<any> {
-console.log("Repository Started");
+    console.log("Repository Started");
     const token = { id: tokendata.id }; // Extract token ID
 
     try {
@@ -1316,12 +1318,12 @@ console.log("Repository Started");
 
       // Return success response
       console.log("Repository return Responce");
-return encrypt(
+      return encrypt(
         {
           success: true,
           message: "Returned reference by user successfully",
           reference: reference, // Make sure to use .rows to get the data
-          token: generateTokenWithoutExpire(token, true)
+          token: generateTokenWithoutExpire(token, true),
         },
         true
       );
@@ -1333,19 +1335,19 @@ return encrypt(
 
       // Return error response
       console.log("Repository return Responce");
-return encrypt(
+      return encrypt(
         {
           success: false,
           message: "Data retrieval failed",
           error: errorMessage,
-          token: generateTokenWithoutExpire(token, true)
+          token: generateTokenWithoutExpire(token, true),
         },
         true
       );
     }
   }
   public async addBankFundV1(userData: any, tokendata: any): Promise<any> {
-console.log("Repository Started");
+    console.log("Repository Started");
     const client: PoolClient = await getClient();
     const token = { id: tokendata.id }; // Extract token ID
 
@@ -1421,12 +1423,12 @@ console.log("Repository Started");
       await client.query("COMMIT");
 
       console.log("Repository return Responce");
-return encrypt(
+      return encrypt(
         {
           success: true,
           message: "Bank fund successfully inserted and balance updated.",
           data: insertBankFundResult,
-          token: generateTokenWithoutExpire(token, true)
+          token: generateTokenWithoutExpire(token, true),
         },
         true
       );
@@ -1436,12 +1438,12 @@ return encrypt(
       console.error("Error inserting bank fund and updating balance:", error);
 
       console.log("Repository return Responce");
-return encrypt(
+      return encrypt(
         {
           success: false,
           message: "Bank fund insertion or balance update failed",
           error: error.message || "An unknown error occurred",
-          token: generateTokenWithoutExpire(token, true)
+          token: generateTokenWithoutExpire(token, true),
         },
         true
       );
@@ -1450,7 +1452,7 @@ return encrypt(
     }
   }
   public async getBankListV1(userData: any, tokendata: any): Promise<any> {
-console.log("Repository Started");
+    console.log("Repository Started");
     const client: PoolClient = await getClient();
     const token = { id: tokendata.id }; // Extract token ID
 
@@ -1459,12 +1461,12 @@ console.log("Repository Started");
 
       // Return success response
       console.log("Repository return Responce");
-return encrypt(
+      return encrypt(
         {
           success: true,
           message: "Returned list of documents successfully",
           BankFund: BankList.rows, // Make sure to use .rows to get the data
-          token: generateTokenWithoutExpire(token, true)
+          token: generateTokenWithoutExpire(token, true),
         },
         true
       );
@@ -1476,19 +1478,19 @@ return encrypt(
 
       // Return error response
       console.log("Repository return Responce");
-return encrypt(
+      return encrypt(
         {
           success: false,
           message: "Data retrieval failed",
           error: errorMessage,
-          token: generateTokenWithoutExpire(token, true)
+          token: generateTokenWithoutExpire(token, true),
         },
         true
       );
     }
   }
   public async viewBankFundV1(userData: any, tokendata: any): Promise<any> {
-console.log("Repository Started");
+    console.log("Repository Started");
     const client: PoolClient = await getClient();
     const token = { id: tokendata.id }; // Extract token ID
 
@@ -1521,11 +1523,11 @@ console.log("Repository Started");
       // Check if no records were found
       if (bankFund.length === 0) {
         console.log("Repository return Responce");
-return encrypt(
+        return encrypt(
           {
             success: false,
             message: "No bank fund found",
-            token: generateTokenWithoutExpire(token, true)
+            token: generateTokenWithoutExpire(token, true),
           },
           true
         );
@@ -1533,12 +1535,12 @@ return encrypt(
 
       // Return success response
       console.log("Repository return Responce");
-return encrypt(
+      return encrypt(
         {
           success: true,
           message: "Returned bank fund successfully",
           bankFund: bankFund, // If bankFund is an array
-          token: generateTokenWithoutExpire(token, true)
+          token: generateTokenWithoutExpire(token, true),
         },
         true
       );
@@ -1549,19 +1551,19 @@ return encrypt(
       console.error("Error during data retrieval:", error);
 
       console.log("Repository return Responce");
-return encrypt(
+      return encrypt(
         {
           success: false,
           message: "Data retrieval failed",
           error: errorMessage,
-          token: generateTokenWithoutExpire(token, true)
+          token: generateTokenWithoutExpire(token, true),
         },
         true
       );
     }
   }
   public async getBankFundListV1(userData: any, tokendata: any): Promise<any> {
-console.log("Repository Started");
+    console.log("Repository Started");
     const client: PoolClient = await getClient();
     const token = { id: tokendata.id }; // Extract token ID
     try {
@@ -1570,13 +1572,13 @@ console.log("Repository Started");
       const name = await client.query(nameQuery, [tokendata.id]);
       // Return success response
       console.log("Repository return Responce");
-return encrypt(
+      return encrypt(
         {
           success: true,
           message: "Returned list of products successfully",
           name: name.rows,
           BankFund: BankFundList.rows, // Make sure to use .rows to get the data
-          token: generateTokenWithoutExpire(token, true)
+          token: generateTokenWithoutExpire(token, true),
         },
         true
       );
@@ -1588,22 +1590,55 @@ return encrypt(
 
       // Return error response
       console.log("Repository return Responce");
-return encrypt(
+      return encrypt(
         {
           success: false,
           message: "Data retrieval failed",
           error: errorMessage,
-          token: generateTokenWithoutExpire(token, true)
+          token: generateTokenWithoutExpire(token, true),
+        },
+        true
+      );
+    }
+  }
+  public async addLoanOptionV1(userData: any, tokendata: any): Promise<any> {
+    console.log("Repository Started");
+    const token = { id: tokendata.id }; // Extract token ID
+
+    try {
+      const loanOption = await executeQuery(getLoanDataOption, [
+        userData.userId,
+      ]);
+      return encrypt(
+        {
+          success: true,
+          message: "Loan Option passed Successfully",
+          token: generateTokenWithoutExpire(token, true),
+          data: loanOption,
+        },
+        true
+      );
+    } catch (error: any) {
+      console.error("Error inserting loan details:", error);
+
+      console.log("Repository return Responce");
+      return encrypt(
+        {
+          success: false,
+          message: "loan insertion failed",
+          error: error.message || "An unknown error occurred",
+          token: generateTokenWithoutExpire(token, true),
         },
         true
       );
     }
   }
   public async addLoanV1(userData: any, tokendata: any): Promise<any> {
-console.log("Repository Started");
+    console.log("Repository Started");
     const client: PoolClient = await getClient();
     const token = { id: tokendata.id }; // Extract token ID
     try {
+      console.log("userData line ----- 1641", userData);
       await client.query("BEGIN");
 
       const {
@@ -1617,6 +1652,8 @@ console.log("Repository Started");
         isInterestFirst,
         interest,
         userId,
+        refLoanExt,
+        refExLoanId,
       } = userData;
 
       const productDetails = await executeQuery(getProductsDurationQuery, [
@@ -1691,6 +1728,8 @@ console.log("Repository Started");
         getPayable,
         CurrentTime(),
         "Admin",
+        refLoanExt,
+        refExLoanId,
       ]);
 
       const { refLoanId } = result.rows[0]; // Access refLoanId from the result
@@ -1763,15 +1802,27 @@ console.log("Repository Started");
         const principalAmount =
           isInterestFirst && i === 0 ? refLoanAmount : monthlyPrincipal; // Already rounded
 
+        // repaymentParams.push([
+        //   refLoanId,
+        //   repaymentDate,
+        //   refLoanAmount,
+        //   null,
+        //   null,
+        //   "Pending",
+        //   1 + i,
+        //   Math.round((interestAmount + principalAmount) * 100) / 100, // Ensure sum is also rounded
+        //   CurrentTime(),
+        //   "Admin",
+        // ]);
         repaymentParams.push([
           refLoanId,
           repaymentDate,
           refLoanAmount,
-          principalAmount,
-          interestAmount,
+          null,
+          null,
           "Pending",
           1 + i,
-          Math.round((interestAmount + principalAmount) * 100) / 100, // Ensure sum is also rounded
+          0, // Ensure sum is also rounded
           CurrentTime(),
           "Admin",
         ]);
@@ -1787,12 +1838,12 @@ console.log("Repository Started");
       await client.query("COMMIT"); // Commit Transaction
 
       console.log("Repository return Responce");
-return encrypt(
+      return encrypt(
         {
           success: true,
           message: "loan details inserted successfully.",
           data: result,
-          token: generateTokenWithoutExpire(token, true)
+          token: generateTokenWithoutExpire(token, true),
         },
         true
       );
@@ -1802,12 +1853,12 @@ return encrypt(
       console.error("Error inserting loan details:", error);
 
       console.log("Repository return Responce");
-return encrypt(
+      return encrypt(
         {
           success: false,
           message: "loan insertion failed",
           error: error.message || "An unknown error occurred",
-          token: generateTokenWithoutExpire(token, true)
+          token: generateTokenWithoutExpire(token, true),
         },
         true
       );
@@ -1860,7 +1911,7 @@ return encrypt(
   //   }
   // }
   public async updateLoanV1(userData: any, tokendata: any): Promise<any> {
-console.log("Repository Started");
+    console.log("Repository Started");
     const client: PoolClient = await getClient();
     const token = { id: tokendata.id }; // Extract token ID
     try {
@@ -1878,11 +1929,11 @@ console.log("Repository Started");
 
       if (loanData.length === 0) {
         console.log("Repository return Responce");
-return encrypt(
+        return encrypt(
           {
             success: false,
             message: "No loan data found",
-            token: generateTokenWithoutExpire(token, true)
+            token: generateTokenWithoutExpire(token, true),
           },
           true
         );
@@ -1904,11 +1955,11 @@ return encrypt(
       }
 
       console.log("Repository return Responce");
-return encrypt(
+      return encrypt(
         {
           success: true,
           message: "Loan updated successfully",
-          token: generateTokenWithoutExpire(token, true)
+          token: generateTokenWithoutExpire(token, true),
         },
         true
       );
@@ -1917,11 +1968,11 @@ return encrypt(
       await client.query("ROLLBACK");
 
       console.log("Repository return Responce");
-return encrypt(
+      return encrypt(
         {
           success: false,
           message: error.message || "Update failed",
-          token: generateTokenWithoutExpire(token, true)
+          token: generateTokenWithoutExpire(token, true),
         },
         true
       );
@@ -1931,7 +1982,7 @@ return encrypt(
   }
 
   public async getLoanListV1(userData: any, tokendata: any): Promise<any> {
-console.log("Repository Started");
+    console.log("Repository Started");
     const client: PoolClient = await getClient();
     const token = { id: tokendata.id }; // Extract token ID
     try {
@@ -1940,13 +1991,13 @@ console.log("Repository Started");
 
       // Return success response
       console.log("Repository return Responce");
-return encrypt(
+      return encrypt(
         {
           success: true,
           message: "Returned list of loan successfully",
           name: name.rows,
           products: productList.rows, // Make sure to use .rows to get the data
-          token: generateTokenWithoutExpire(token, true)
+          token: generateTokenWithoutExpire(token, true),
         },
         true
       );
@@ -1958,19 +2009,19 @@ return encrypt(
 
       // Return error response
       console.log("Repository return Responce");
-return encrypt(
+      return encrypt(
         {
           success: false,
           message: "Data retrieval failed",
           error: errorMessage,
-          token: generateTokenWithoutExpire(token, true)
+          token: generateTokenWithoutExpire(token, true),
         },
         true
       );
     }
   }
   public async getLoanAndUserV1(userData: any, tokendata: any): Promise<any> {
-console.log("Repository Started");
+    console.log("Repository Started");
     const client: PoolClient = await getClient();
     const token = { id: tokendata.id }; // Extract token ID
 
@@ -1982,13 +2033,13 @@ console.log("Repository Started");
 
       // Return success response
       console.log("Repository return Responce");
-return encrypt(
+      return encrypt(
         {
           success: true,
           message: "Returned list of loan successfully",
           name: name.rows,
           getLoanAndUser: getLoanAndUser,
-          token: generateTokenWithoutExpire(token, true)
+          token: generateTokenWithoutExpire(token, true),
           // products: productList, // Make sure to use .rows to get the data
         },
         true
@@ -2001,19 +2052,19 @@ return encrypt(
 
       // Return error response
       console.log("Repository return Responce");
-return encrypt(
+      return encrypt(
         {
           success: false,
           message: "Data retrieval failed",
           error: errorMessage,
-          token: generateTokenWithoutExpire(token, true)
+          token: generateTokenWithoutExpire(token, true),
         },
         true
       );
     }
   }
   public async getLoanV1(userData: any, tokendata: any): Promise<any> {
-console.log("Repository Started");
+    console.log("Repository Started");
     const client: PoolClient = await getClient();
     const token = { id: tokendata.id }; // Extract token ID
 
@@ -2027,14 +2078,14 @@ console.log("Repository Started");
 
       // Return success response
       console.log("Repository return Responce");
-return encrypt(
+      return encrypt(
         {
           success: true,
           message: "Returned list of loan successfully",
           loanData: getLoanData,
           allBankAccountList: allBankAccountList,
           productList: productList.rows,
-          token: generateTokenWithoutExpire(token, true)
+          token: generateTokenWithoutExpire(token, true),
         },
         true
       );
@@ -2046,12 +2097,12 @@ return encrypt(
 
       // Return error response
       console.log("Repository return Responce");
-return encrypt(
+      return encrypt(
         {
           success: false,
           message: "Data retrieval failed",
           error: errorMessage,
-          token: generateTokenWithoutExpire(token, true)
+          token: generateTokenWithoutExpire(token, true),
         },
         true
       );
@@ -2179,19 +2230,21 @@ return encrypt(
     userData: any,
     tokendata: any
   ): Promise<any> {
-console.log("Repository Started");
+    console.log("Repository Started");
     const client: PoolClient = await getClient();
     const token = { id: tokendata.id };
 
     try {
       await client.query("BEGIN");
 
-      const { userId,  } = userData;
+      const { userId } = userData;
 
-      const getAmountData:any = await executeQuery (getAmountDataQuery,[userId])
-      
-      // const balanceAmount =  
-    
+      const getAmountData: any = await executeQuery(getAmountDataQuery, [
+        userId,
+      ]);
+
+      // const balanceAmount =
+
       const {
         refLoanId,
         refLoanBalance,
@@ -2199,12 +2252,12 @@ console.log("Repository Started");
         refLoanAmount,
         refRepaymentStartDate,
         refLoanDueDate,
-        isInterestFirst
+        isInterestFirst,
       } = getAmountData.rows[0];
 
       // Calculate total interest amount for the loan
       const totalInterestAmount = (refProductInterest / 100) * refLoanAmount;
-      console.log('totalInterestAmount', totalInterestAmount)
+      console.log("totalInterestAmount", totalInterestAmount);
 
       // set refRepaymentNumber is always start 1
       const refRepaymentNumber = 1;
@@ -2257,15 +2310,14 @@ console.log("Repository Started");
         await client.query(insertRepaymentQuery, params);
       }
 
-
       await client.query("COMMIT");
 
       console.log("Repository return Responce");
-return encrypt(
+      return encrypt(
         {
           success: true,
           message: `${monthDifference} repayment schedules inserted successfully.`,
-          token: generateTokenWithoutExpire(token, true)
+          token: generateTokenWithoutExpire(token, true),
         },
         true
       );
@@ -2275,12 +2327,12 @@ return encrypt(
       console.error("Error inserting rePayment Schedule", error);
 
       console.log("Repository return Responce");
-return encrypt(
+      return encrypt(
         {
           success: false,
           message: "rePayment Schedule insertion failed",
           error: error.message || "An unknown error occurred",
-          token: generateTokenWithoutExpire(token, true)
+          token: generateTokenWithoutExpire(token, true),
         },
         true
       );
@@ -2289,7 +2341,7 @@ return encrypt(
     }
   }
   public async userFollowUpV1(userData: any, tokendata: any): Promise<any> {
-console.log("Repository Started");
+    console.log("Repository Started");
     const token = { id: tokendata.id };
     try {
       const updateUserStatusResult = await executeQuery(updateUserStatusQuery, [
@@ -2304,12 +2356,12 @@ console.log("Repository Started");
       console.log("updateUserStatusResult", updateUserStatusResult);
 
       console.log("Repository return Responce");
-return encrypt(
+      return encrypt(
         {
           success: true,
           message: "Client FollowUp Data is Updated Successfully",
           UserStatus: updateUserStatusResult,
-          token: generateTokenWithoutExpire(token, true)
+          token: generateTokenWithoutExpire(token, true),
         },
         true
       );
@@ -2318,14 +2370,14 @@ return encrypt(
         {
           success: false,
           message: error.message || "Error in FollowUp Data Updated",
-          token: generateTokenWithoutExpire(token, true)
+          token: generateTokenWithoutExpire(token, true),
         },
         true
       );
     }
   }
   public async updateFollowUpV1(userData: any, tokendata: any): Promise<any> {
-console.log("Repository Started");
+    console.log("Repository Started");
     const client: PoolClient = await getClient();
     const token = { id: tokendata.id }; // Extract token ID
     try {
@@ -2346,11 +2398,11 @@ console.log("Repository Started");
       await client.query("COMMIT");
 
       console.log("Repository return Responce");
-return encrypt(
+      return encrypt(
         {
           success: true,
           message: "updated successfully",
-          token: generateTokenWithoutExpire(token, true)
+          token: generateTokenWithoutExpire(token, true),
         },
         true
       );
@@ -2360,11 +2412,11 @@ return encrypt(
       await client.query("ROLLBACK");
 
       console.log("Repository return Responce");
-return encrypt(
+      return encrypt(
         {
           success: false,
           message: "Update failed",
-          token: generateTokenWithoutExpire(token, true)
+          token: generateTokenWithoutExpire(token, true),
         },
         true
       );
@@ -2376,7 +2428,7 @@ return encrypt(
     userData: any,
     tokendata: any
   ): Promise<any> {
-console.log("Repository Started");
+    console.log("Repository Started");
     const client: PoolClient = await getClient();
     const token = { id: tokendata.id }; // Extract token ID
 
@@ -2388,13 +2440,13 @@ console.log("Repository Started");
 
       // Return success response
       console.log("Repository return Responce");
-return encrypt(
+      return encrypt(
         {
           success: true,
           message: "Returned list of products successfully",
           name: name.rows,
           RePaymentSchedule: RePaymentScheduleList, // Make sure to use .rows to get the data
-          token: generateTokenWithoutExpire(token, true)
+          token: generateTokenWithoutExpire(token, true),
         },
         true
       );
@@ -2406,19 +2458,19 @@ return encrypt(
 
       // Return error response
       console.log("Repository return Responce");
-return encrypt(
+      return encrypt(
         {
           success: false,
           message: "Data retrieval failed",
           error: errorMessage,
-          token: generateTokenWithoutExpire(token, true)
+          token: generateTokenWithoutExpire(token, true),
         },
         true
       );
     }
   }
   public async addPaymentV1(paymentData: any, tokendata: any): Promise<any> {
-console.log("Repository Started");
+    console.log("Repository Started");
     const client: PoolClient = await getClient();
     const token = { id: tokendata.id };
 
@@ -2472,11 +2524,11 @@ console.log("Repository Started");
       await client.query("COMMIT");
 
       console.log("Repository return Responce");
-return encrypt(
+      return encrypt(
         {
           success: true,
           message: "Payment added and repayment status updated successfully.",
-          token: generateTokenWithoutExpire(token, true)
+          token: generateTokenWithoutExpire(token, true),
         },
         true
       );
@@ -2486,12 +2538,12 @@ return encrypt(
       console.error("Error processing payment", error);
 
       console.log("Repository return Responce");
-return encrypt(
+      return encrypt(
         {
           success: false,
           message: "Payment processing failed",
           error: error.message || "An unknown error occurred",
-          token: generateTokenWithoutExpire(token, true)
+          token: generateTokenWithoutExpire(token, true),
         },
         true
       );
@@ -2500,7 +2552,7 @@ return encrypt(
     }
   }
   public async listUnPaidV1(userData: any, tokendata: any): Promise<any> {
-console.log("Repository Started");
+    console.log("Repository Started");
     const client: PoolClient = await getClient();
     const token = { id: tokendata.id }; // Extract token ID
 
@@ -2508,12 +2560,12 @@ console.log("Repository Started");
       const getUnPaidUser = await executeQuery(getUnPaidUserQuery);
       // Return success response
       console.log("Repository return Responce");
-return encrypt(
+      return encrypt(
         {
           success: true,
           message: "Returned list of unpaid interest successfully",
-          getUnPaidUser:getUnPaidUser,
-          token: generateTokenWithoutExpire(token, true)
+          getUnPaidUser: getUnPaidUser,
+          token: generateTokenWithoutExpire(token, true),
         },
         true
       );
@@ -2525,12 +2577,52 @@ return encrypt(
 
       // Return error response
       console.log("Repository return Responce");
-return encrypt(
+      return encrypt(
         {
           success: false,
           message: "Data retrieval failed",
           error: errorMessage,
-          token: generateTokenWithoutExpire(token, true)
+          token: generateTokenWithoutExpire(token, true),
+        },
+        true
+      );
+    }
+  }
+  public async listOfUnPaidUsersV1(
+    userData: any,
+    tokendata: any
+  ): Promise<any> {
+    console.log("Repository Started");
+    const client: PoolClient = await getClient();
+    const token = { id: tokendata.id }; // Extract token ID
+
+    try {
+      const getUnPaidUser = await executeQuery(getUnPaidUserQuery);
+      // Return success response
+      console.log("Repository return Responce");
+      return encrypt(
+        {
+          success: true,
+          message: "Returned list of unpaid interest successfully",
+          getUnPaidUser: getUnPaidUser,
+          token: generateTokenWithoutExpire(token, true),
+        },
+        true
+      );
+    } catch (error) {
+      // Error handling
+      const errorMessage =
+        error instanceof Error ? error.message : "An unknown error occurred";
+      console.error("Error during data retrieval:", error);
+
+      // Return error response
+      console.log("Repository return Responce");
+      return encrypt(
+        {
+          success: false,
+          message: "Data retrieval failed",
+          error: errorMessage,
+          token: generateTokenWithoutExpire(token, true),
         },
         true
       );

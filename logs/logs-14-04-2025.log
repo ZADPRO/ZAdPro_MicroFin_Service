@@ -1,0 +1,1227 @@
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T03:40:30.932Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/adminLogin","timestamp":"2025-04-14T03:50:08.562Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getPersonList","timestamp":"2025-04-14T03:50:09.494Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getLoanAndUser","timestamp":"2025-04-14T03:50:11.567Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getLoanAndUser","timestamp":"2025-04-14T03:50:36.266Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T03:52:16.061Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T03:58:03.948Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T03:59:32.273Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T03:59:58.611Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/adminRoutes/getPersonList","timestamp":"2025-04-14T04:00:48.003Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T04:00:56.874Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T04:01:15.762Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/adminRoutes/productList","timestamp":"2025-04-14T04:01:24.335Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T04:01:25.101Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T04:04:06.282Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T04:04:12.238Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T04:04:19.270Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T04:04:27.264Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T04:04:32.256Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T04:04:36.268Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T04:04:41.231Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/adminRoutes/productList","timestamp":"2025-04-14T04:04:49.909Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T04:04:51.415Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T04:05:15.261Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T04:05:38.717Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/adminRoutes/productList","timestamp":"2025-04-14T04:05:41.375Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T04:05:42.062Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T04:06:38.765Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T04:06:55.316Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T04:07:04.247Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T04:07:10.292Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T04:07:17.282Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T04:07:18.316Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T04:07:20.292Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T04:07:22.293Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T04:07:25.301Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T04:07:27.242Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T04:07:38.273Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T04:07:41.253Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T04:07:52.276Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T04:07:56.248Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T04:08:02.245Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T04:08:27.319Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T04:08:51.259Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T04:08:55.258Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T04:08:59.715Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T04:09:04.316Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T04:09:07.505Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T04:09:10.424Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T04:09:13.341Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T04:09:48.902Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T04:09:50.512Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T04:09:53.496Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/adminRoutes/productList","timestamp":"2025-04-14T04:13:13.246Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T04:15:06.362Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T04:15:28.763Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T04:15:33.623Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/adminRoutes/productList","timestamp":"2025-04-14T04:16:25.238Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T04:16:28.903Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T04:16:49.236Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T04:17:10.232Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T04:17:15.256Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T04:17:19.246Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/adminRoutes/productList","timestamp":"2025-04-14T04:17:22.916Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T04:17:23.978Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/adminRoutes/productList","timestamp":"2025-04-14T04:17:41.425Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T04:17:46.412Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T04:18:06.213Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T04:18:09.211Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T04:18:17.213Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T04:18:21.213Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/adminRoutes/productList","timestamp":"2025-04-14T04:18:29.578Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T04:18:30.523Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/adminRoutes/productList","timestamp":"2025-04-14T04:20:10.334Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T04:20:11.139Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T04:21:19.583Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/adminRoutes/productList","timestamp":"2025-04-14T04:21:24.401Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T04:21:30.847Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T05:01:15.712Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/adminRoutes/productList","timestamp":"2025-04-14T05:03:38.110Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T05:03:38.845Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T05:37:37.092Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T05:37:53.080Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T05:38:03.777Z"}
+{"level":"error","message":"Server not running ---  New route /api/v1/rePayment/userList conflicts with existing /api/v1/rePayment/userList","name":"AssertError","stack":"AssertError: New route /api/v1/rePayment/userList conflicts with existing /api/v1/rePayment/userList\n    at module.exports.internals.Segment.internals.Segment.add (C:\\Users\\VIJAY L\\Desktop\\Finance\\ZAdPro_MicroFin_Service\\node_modules\\@hapi\\call\\lib\\segment.js:47:14)\n    at exports.Router.internals.Router.internals.Router.add (C:\\Users\\VIJAY L\\Desktop\\Finance\\ZAdPro_MicroFin_Service\\node_modules\\@hapi\\call\\lib\\index.js:65:16)\n    at internals.Server._addRoute (C:\\Users\\VIJAY L\\Desktop\\Finance\\ZAdPro_MicroFin_Service\\node_modules\\@hapi\\hapi\\lib\\server.js:529:46)\n    at internals.Server.route (C:\\Users\\VIJAY L\\Desktop\\Finance\\ZAdPro_MicroFin_Service\\node_modules\\@hapi\\hapi\\lib\\server.js:518:22)\n    at C:\\Users\\VIJAY L\\Desktop\\Finance\\ZAdPro_MicroFin_Service\\src\\api\\repayment\\routes.ts:10:14\n    at new Promise (<anonymous>)\n    at rePaymentRoutes.<anonymous> (C:\\Users\\VIJAY L\\Desktop\\Finance\\ZAdPro_MicroFin_Service\\src\\api\\repayment\\routes.ts:8:12)\n    at Generator.next (<anonymous>)\n    at C:\\Users\\VIJAY L\\Desktop\\Finance\\ZAdPro_MicroFin_Service\\src\\api\\repayment\\routes.ts:8:71\n    at new Promise (<anonymous>)","timestamp":"2025-04-14T05:47:01.307Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T05:47:10.794Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T05:47:52.988Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T05:48:22.597Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T05:48:28.441Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T05:48:34.025Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T05:48:49.783Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T05:49:02.692Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T05:49:19.836Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T05:49:44.630Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T05:49:50.125Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T05:49:56.710Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T05:50:39.632Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T05:50:54.951Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T05:51:05.755Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T05:51:11.819Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T05:51:19.356Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T05:51:39.731Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T05:51:57.581Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T05:52:05.839Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T05:52:10.349Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T05:52:23.945Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T05:52:38.102Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T05:52:44.509Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T06:00:28.606Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T06:00:55.614Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T06:01:01.684Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T06:01:08.750Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T06:01:12.837Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T06:01:16.231Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T06:01:30.604Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T06:02:02.995Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T06:02:06.335Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T06:02:27.076Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T06:03:48.218Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T06:03:53.431Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T06:04:01.223Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T06:04:06.042Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T06:04:26.250Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T06:04:39.886Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T06:04:46.252Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T06:05:07.000Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T06:06:15.915Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T06:06:23.864Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T06:06:43.555Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T06:06:48.863Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T06:28:42.143Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T06:29:37.075Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T06:31:02.085Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T06:31:08.041Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T06:31:46.836Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T06:31:57.995Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T06:32:04.036Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T06:32:42.510Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/adminRoutes/getLoanAndUser","timestamp":"2025-04-14T06:37:17.084Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/adminRoutes/productList","timestamp":"2025-04-14T06:37:19.076Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/adminRoutes/getBankFundList","timestamp":"2025-04-14T06:37:21.501Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/adminRoutes/getBankList","timestamp":"2025-04-14T06:40:09.255Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T06:47:49.468Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T06:48:16.621Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T06:48:34.175Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T06:48:46.295Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T06:48:51.772Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T06:49:29.805Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T06:52:40.312Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T06:58:59.765Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T07:26:33.260Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T07:26:34.295Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T07:26:38.245Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T07:29:01.292Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T07:30:44.279Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T07:31:25.263Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T07:31:27.295Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T07:31:29.309Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T07:31:37.274Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T07:33:07.884Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T07:33:26.087Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T07:33:28.734Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T07:35:06.225Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T07:35:08.259Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T07:35:16.344Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T07:37:59.252Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T07:38:09.094Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T07:38:48.741Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T07:38:53.274Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T07:38:55.271Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T07:38:57.234Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T07:40:45.307Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T07:42:56.910Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T08:00:44.575Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T08:02:04.265Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T08:02:32.716Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T08:02:59.217Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T08:03:50.215Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T08:06:06.220Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T08:06:49.588Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/adminRoutes/productList","timestamp":"2025-04-14T08:06:52.339Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T08:06:53.439Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T08:07:08.246Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T08:07:42.238Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T08:07:45.562Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T08:07:50.126Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T08:07:51.580Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T08:07:52.125Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T08:07:54.055Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T08:08:01.218Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T08:08:07.146Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T08:08:36.185Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T08:08:58.221Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T08:09:19.285Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T08:09:22.966Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T08:09:24.858Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T08:09:25.618Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T08:09:41.519Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T08:09:43.284Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T08:09:47.640Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T08:09:49.366Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T08:09:49.688Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T08:09:52.784Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T08:09:56.329Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T08:10:26.691Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T08:10:28.788Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T08:10:29.896Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T08:11:28.548Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T08:11:40.674Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T08:11:41.045Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T08:12:01.216Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T08:12:22.244Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T08:12:39.230Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T08:12:44.938Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T08:12:55.023Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T08:13:29.214Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T08:13:34.217Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T08:13:57.227Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T08:20:24.695Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T08:20:44.265Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T08:20:48.271Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T08:21:18.805Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T08:21:56.227Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T08:22:08.224Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T08:22:46.236Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T08:22:49.219Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T08:22:54.223Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T08:23:31.235Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T08:23:41.213Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T08:23:42.245Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T08:24:21.213Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T08:24:25.410Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T08:24:27.231Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T08:24:31.372Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T08:24:38.879Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T08:24:40.618Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T08:24:48.660Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T08:25:01.033Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T08:25:41.242Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T08:25:51.257Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T08:26:04.241Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T08:26:07.880Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T08:26:09.365Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T08:26:25.245Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T08:27:52.232Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T08:29:11.237Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T08:29:16.252Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T08:29:22.249Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T08:29:36.234Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T08:30:49.233Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T08:31:01.477Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T08:31:15.218Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T08:31:35.235Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T08:31:38.226Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T08:31:41.231Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T08:31:46.224Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T08:31:58.238Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T08:32:13.236Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T08:32:16.242Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T08:32:17.235Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T08:32:56.229Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T08:33:01.251Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T08:33:07.227Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T08:33:14.230Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T08:33:16.214Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T08:33:35.239Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T08:33:38.216Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T08:33:46.243Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T08:33:49.227Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T08:33:50.223Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T08:33:59.466Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T08:34:30.224Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T08:34:39.230Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T08:34:40.216Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T08:34:41.228Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T08:34:49.244Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T08:34:58.756Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T08:35:37.225Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T08:35:38.239Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T08:35:47.358Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T08:37:09.258Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T08:37:10.219Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T08:37:13.664Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T08:38:11.251Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T08:38:15.223Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T08:38:18.229Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T08:38:19.255Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T08:38:21.216Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T08:38:31.227Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T08:38:35.580Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T08:39:13.241Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T08:39:18.236Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T08:39:25.229Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T08:39:28.249Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T08:39:31.267Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T08:39:33.875Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T08:39:40.954Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T08:39:44.588Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T09:27:54.709Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T09:31:53.505Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T09:31:59.467Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T09:32:09.334Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T09:32:13.065Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T09:35:32.936Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T09:36:08.375Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T09:36:48.720Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T09:43:02.838Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T09:46:41.585Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T09:47:01.225Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T09:47:07.566Z"}
+{"level":"error","message":"Server not running ---  New route /api/v1/rePayment/rePaymentCalculation conflicts with existing /api/v1/rePayment/rePaymentCalculation","name":"AssertError","stack":"AssertError: New route /api/v1/rePayment/rePaymentCalculation conflicts with existing /api/v1/rePayment/rePaymentCalculation\n    at module.exports.internals.Segment.internals.Segment.add (C:\\Users\\VIJAY L\\Desktop\\Finance\\ZAdPro_MicroFin_Service\\node_modules\\@hapi\\call\\lib\\segment.js:47:14)\n    at exports.Router.internals.Router.internals.Router.add (C:\\Users\\VIJAY L\\Desktop\\Finance\\ZAdPro_MicroFin_Service\\node_modules\\@hapi\\call\\lib\\index.js:65:16)\n    at internals.Server._addRoute (C:\\Users\\VIJAY L\\Desktop\\Finance\\ZAdPro_MicroFin_Service\\node_modules\\@hapi\\hapi\\lib\\server.js:529:46)\n    at internals.Server.route (C:\\Users\\VIJAY L\\Desktop\\Finance\\ZAdPro_MicroFin_Service\\node_modules\\@hapi\\hapi\\lib\\server.js:518:22)\n    at C:\\Users\\VIJAY L\\Desktop\\Finance\\ZAdPro_MicroFin_Service\\src\\api\\repayment\\routes.ts:10:14\n    at new Promise (<anonymous>)\n    at rePaymentRoutes.<anonymous> (C:\\Users\\VIJAY L\\Desktop\\Finance\\ZAdPro_MicroFin_Service\\src\\api\\repayment\\routes.ts:8:12)\n    at Generator.next (<anonymous>)\n    at C:\\Users\\VIJAY L\\Desktop\\Finance\\ZAdPro_MicroFin_Service\\src\\api\\repayment\\routes.ts:8:71\n    at new Promise (<anonymous>)","timestamp":"2025-04-14T09:47:52.398Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T09:47:56.326Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T09:47:59.787Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T09:48:42.886Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T09:48:50.695Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T09:48:56.687Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T09:49:02.667Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T09:49:26.071Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T09:49:35.399Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T09:49:43.642Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T09:49:53.995Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T09:50:07.999Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T09:50:16.765Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T09:52:48.194Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T09:53:30.215Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T09:53:45.183Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T09:53:51.201Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T09:53:59.151Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T09:54:25.817Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T09:54:32.846Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T09:54:43.850Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T09:54:52.879Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T09:57:59.656Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T09:58:22.098Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T09:58:41.214Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T09:59:05.237Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T09:59:24.931Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T09:59:33.341Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T10:00:12.244Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T10:00:32.171Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T10:00:37.858Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T10:00:41.909Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T10:00:48.940Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T10:01:13.740Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T10:01:31.009Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T10:01:53.592Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T10:02:36.327Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T10:02:57.839Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T10:03:03.094Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T10:03:08.385Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T10:03:51.101Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T10:04:00.712Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T10:05:09.831Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T10:05:24.234Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T10:05:26.248Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T10:05:37.239Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T10:06:50.267Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T10:06:56.263Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T10:07:40.332Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T10:07:44.257Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T10:07:48.221Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T10:07:58.240Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T10:08:02.275Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T10:08:13.227Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T10:08:15.214Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T10:08:20.272Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T10:08:57.215Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T10:08:58.213Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T10:09:01.275Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T10:09:38.236Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T10:10:06.255Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T10:10:09.232Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T10:10:11.269Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T10:10:17.230Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T10:10:22.235Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T10:10:23.301Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T10:10:26.341Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T10:10:33.670Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T10:10:53.243Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T10:10:56.221Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T10:11:16.254Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T10:11:48.226Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T10:12:08.240Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T10:12:10.245Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T10:12:16.229Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T10:12:37.226Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T10:12:41.270Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T10:12:46.213Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T10:12:50.228Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T10:12:59.229Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T10:13:03.244Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T10:13:06.248Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T10:13:08.263Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T10:13:09.219Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T10:13:37.219Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T10:13:38.245Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T10:13:43.291Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T10:13:49.232Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T10:13:52.289Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T10:13:53.636Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/updateRePayment","timestamp":"2025-04-14T10:14:32.438Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T10:14:53.505Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T10:14:58.442Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T10:15:53.199Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T10:16:02.105Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T10:16:25.259Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T10:16:31.961Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T10:16:37.286Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T10:16:42.587Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T10:16:46.776Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T10:17:00.711Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T10:17:09.364Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T10:17:21.655Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T10:17:25.399Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T10:17:30.471Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/updateRePayment","timestamp":"2025-04-14T10:17:47.772Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T10:17:59.026Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/adminRoutes/productList","timestamp":"2025-04-14T10:18:07.579Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T10:18:08.191Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T10:18:11.392Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T10:19:15.193Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/adminRoutes/productList","timestamp":"2025-04-14T10:20:25.216Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T10:20:26.402Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/adminRoutes/getBankFundList","timestamp":"2025-04-14T10:20:49.074Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/adminRoutes/productList","timestamp":"2025-04-14T10:20:50.450Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T10:20:51.145Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T10:22:11.737Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T10:22:19.524Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T10:22:19.904Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T10:22:22.826Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T10:22:24.355Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T10:22:29.171Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/updateRePayment","timestamp":"2025-04-14T10:22:42.412Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/adminRoutes/productList","timestamp":"2025-04-14T10:23:24.640Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T10:23:25.360Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T10:23:26.945Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T10:24:15.058Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T10:24:19.474Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T10:24:26.858Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T10:25:47.337Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T10:25:48.769Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T10:25:52.215Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/updateRePayment","timestamp":"2025-04-14T10:26:07.711Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T10:26:07.806Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T10:26:17.664Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T10:26:37.563Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T10:26:43.125Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T10:26:46.064Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T10:26:49.938Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T10:26:54.663Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T10:26:57.045Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T10:26:59.258Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T10:27:03.940Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T10:27:14.866Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T10:27:23.245Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T10:36:49.732Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T10:36:55.104Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T10:36:58.033Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T10:36:59.899Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T10:37:12.511Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T10:37:13.978Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T10:37:19.769Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/updateRePayment","timestamp":"2025-04-14T10:37:28.010Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T10:37:28.066Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T10:37:37.137Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T10:37:39.108Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T10:37:41.675Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T10:37:44.104Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T10:38:21.544Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T10:45:29.438Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T10:45:40.088Z"}
+{"level":"error","message":"Server not running ---  New route /api/v1/rePayment/updateRePayment conflicts with existing /api/v1/rePayment/updateRePayment","name":"AssertError","stack":"AssertError: New route /api/v1/rePayment/updateRePayment conflicts with existing /api/v1/rePayment/updateRePayment\n    at module.exports.internals.Segment.internals.Segment.add (C:\\Users\\VIJAY L\\Desktop\\Finance\\ZAdPro_MicroFin_Service\\node_modules\\@hapi\\call\\lib\\segment.js:47:14)\n    at exports.Router.internals.Router.internals.Router.add (C:\\Users\\VIJAY L\\Desktop\\Finance\\ZAdPro_MicroFin_Service\\node_modules\\@hapi\\call\\lib\\index.js:65:16)\n    at internals.Server._addRoute (C:\\Users\\VIJAY L\\Desktop\\Finance\\ZAdPro_MicroFin_Service\\node_modules\\@hapi\\hapi\\lib\\server.js:529:46)\n    at internals.Server.route (C:\\Users\\VIJAY L\\Desktop\\Finance\\ZAdPro_MicroFin_Service\\node_modules\\@hapi\\hapi\\lib\\server.js:518:22)\n    at C:\\Users\\VIJAY L\\Desktop\\Finance\\ZAdPro_MicroFin_Service\\src\\api\\repayment\\routes.ts:10:14\n    at new Promise (<anonymous>)\n    at rePaymentRoutes.<anonymous> (C:\\Users\\VIJAY L\\Desktop\\Finance\\ZAdPro_MicroFin_Service\\src\\api\\repayment\\routes.ts:8:12)\n    at Generator.next (<anonymous>)\n    at C:\\Users\\VIJAY L\\Desktop\\Finance\\ZAdPro_MicroFin_Service\\src\\api\\repayment\\routes.ts:8:71\n    at new Promise (<anonymous>)","timestamp":"2025-04-14T10:45:50.078Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T10:46:30.450Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T10:46:35.910Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T10:46:50.706Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T10:47:03.933Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T10:47:10.815Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T10:47:38.299Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T10:47:42.488Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T10:47:47.640Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T10:47:57.960Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T10:48:10.550Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T10:48:29.076Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T10:48:40.186Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T10:49:20.841Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T10:49:44.019Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T10:49:55.626Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T10:50:00.528Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T10:50:24.235Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T10:50:27.246Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T10:50:41.230Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T10:50:49.237Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T10:50:54.224Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T10:50:56.220Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T10:51:20.221Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T10:51:34.262Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T10:51:36.267Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T10:51:42.223Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T10:51:48.230Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T10:51:52.212Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T10:52:39.262Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T10:52:50.221Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T10:53:08.268Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T10:53:17.226Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T10:53:20.223Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T10:53:25.213Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T10:53:27.212Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T10:53:29.230Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T10:53:30.220Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T10:53:41.812Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T10:53:43.208Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/updateFollowUp","timestamp":"2025-04-14T10:54:05.624Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T10:54:37.242Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T10:54:42.228Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T10:54:47.254Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T10:54:49.707Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/updateFollowUp","timestamp":"2025-04-14T10:55:05.178Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T10:55:42.996Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/updateFollowUp","timestamp":"2025-04-14T10:55:50.184Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T10:55:50.411Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/adminRoutes/adminLogin","timestamp":"2025-04-14T11:10:04.698Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/adminRoutes/getPersonList","timestamp":"2025-04-14T11:10:05.149Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T11:10:06.466Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T11:10:07.646Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T11:11:39.590Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T11:11:45.058Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T11:12:06.874Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T11:12:09.760Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/updateFollowUp","timestamp":"2025-04-14T11:12:23.028Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T11:12:23.124Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T11:12:58.384Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T11:15:25.209Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T11:15:39.006Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T11:15:42.288Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T11:15:43.881Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T11:15:51.372Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/adminRoutes/adminLogin","timestamp":"2025-04-14T11:21:01.842Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/adminRoutes/getPersonList","timestamp":"2025-04-14T11:21:02.428Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/adminRoutes/getPersonList","timestamp":"2025-04-14T11:21:06.569Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/adminRoutes/getPersonList","timestamp":"2025-04-14T11:21:07.455Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/adminRoutes/adminLogin","timestamp":"2025-04-14T11:26:40.147Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/adminRoutes/getPersonList","timestamp":"2025-04-14T11:26:40.711Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/adminRoutes/getPersonList","timestamp":"2025-04-14T11:27:55.408Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/adminRoutes/getPersonList","timestamp":"2025-04-14T11:27:59.550Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/adminRoutes/getPersonList","timestamp":"2025-04-14T11:28:00.595Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/adminRoutes/adminLogin","timestamp":"2025-04-14T11:40:31.511Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/adminRoutes/getPersonList","timestamp":"2025-04-14T11:40:32.411Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T11:40:40.186Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T11:42:13.338Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T11:42:15.225Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T11:42:17.332Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T11:42:25.851Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/adminRoutes/getPersonList","timestamp":"2025-04-14T11:43:18.577Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/adminRoutes/getPersonList","timestamp":"2025-04-14T11:46:04.420Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T11:46:14.005Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/adminRoutes/getPersonList","timestamp":"2025-04-14T11:46:15.483Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/adminRoutes/getPersonList","timestamp":"2025-04-14T11:46:16.546Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/updateRePayment","timestamp":"2025-04-14T11:46:42.643Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T11:46:42.767Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T11:46:45.554Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/adminRoutes/getPersonList","timestamp":"2025-04-14T11:50:17.735Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T11:50:18.942Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/updateFollowUp","timestamp":"2025-04-14T11:50:27.004Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T11:50:27.025Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T11:50:28.916Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T11:51:01.605Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T11:51:12.161Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T11:51:17.432Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T11:51:18.016Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T11:51:20.453Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T11:51:24.428Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/updateRePayment","timestamp":"2025-04-14T11:51:30.584Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T11:51:30.630Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T11:51:38.498Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T11:51:40.393Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/adminRoutes/getPersonList","timestamp":"2025-04-14T11:57:45.318Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/adminRoutes/getPersonList","timestamp":"2025-04-14T11:57:46.606Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/adminRoutes/getBankAccountList","timestamp":"2025-04-14T11:57:50.795Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/adminRoutes/getBankFundList","timestamp":"2025-04-14T11:57:52.920Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/adminRoutes/getBankFundList","timestamp":"2025-04-14T11:58:03.203Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/adminRoutes/getBankFundList","timestamp":"2025-04-14T11:58:05.090Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/adminRoutes/getBankFundList","timestamp":"2025-04-14T11:58:31.408Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/adminRoutes/getBankFundList","timestamp":"2025-04-14T11:58:33.142Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/adminRoutes/adminLogin","timestamp":"2025-04-14T12:27:05.553Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/adminRoutes/adminLogin","timestamp":"2025-04-14T12:27:16.685Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T12:27:39.613Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/adminRoutes/adminLogin","timestamp":"2025-04-14T12:29:22.810Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6200/api/v1/adminRoutes/getPersonList","timestamp":"2025-04-14T12:29:24.115Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T14:43:34.427Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/adminLogin","timestamp":"2025-04-14T14:56:16.355Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/adminLogin","timestamp":"2025-04-14T14:56:19.526Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getPersonList","timestamp":"2025-04-14T14:56:20.055Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/adminLogin","timestamp":"2025-04-14T15:23:18.556Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getPersonList","timestamp":"2025-04-14T15:23:19.153Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getPersonList","timestamp":"2025-04-14T15:23:25.655Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getBankAccountList","timestamp":"2025-04-14T15:23:26.327Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getBankFundList","timestamp":"2025-04-14T15:23:26.903Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/productList","timestamp":"2025-04-14T15:23:27.614Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getLoanAndUser","timestamp":"2025-04-14T15:23:28.468Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T15:23:29.489Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T15:23:30.827Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getPersonList","timestamp":"2025-04-14T15:23:45.785Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getPerson","timestamp":"2025-04-14T15:23:51.110Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getPerson","timestamp":"2025-04-14T15:24:16.023Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getPersonList","timestamp":"2025-04-14T15:24:31.267Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getPerson","timestamp":"2025-04-14T15:24:36.368Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getBankAccountList","timestamp":"2025-04-14T15:24:46.992Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getBankFundList","timestamp":"2025-04-14T15:24:49.068Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/productList","timestamp":"2025-04-14T15:24:52.210Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getLoanAndUser","timestamp":"2025-04-14T15:24:54.137Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T15:24:56.950Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T15:25:04.772Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getLoanAndUser","timestamp":"2025-04-14T15:25:04.981Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getPersonList","timestamp":"2025-04-14T15:25:55.237Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getBankAccountList","timestamp":"2025-04-14T15:25:56.036Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getBankFundList","timestamp":"2025-04-14T15:25:56.821Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/productList","timestamp":"2025-04-14T15:26:03.133Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getLoanAndUser","timestamp":"2025-04-14T15:26:07.791Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T15:26:09.189Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getBankFundList","timestamp":"2025-04-14T15:27:06.734Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/productList","timestamp":"2025-04-14T15:27:08.155Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getLoanAndUser","timestamp":"2025-04-14T15:27:09.522Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getLoan","timestamp":"2025-04-14T15:27:13.257Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T15:28:51.632Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T15:28:52.865Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T15:33:11.393Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T15:38:10.565Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T15:38:20.766Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T15:38:32.965Z"}
+{"level":"error","message":"Server not running ---  New route /api/v1/rePayment/updateFollowUp conflicts with existing /api/v1/rePayment/updateFollowUp","name":"AssertError","stack":"AssertError: New route /api/v1/rePayment/updateFollowUp conflicts with existing /api/v1/rePayment/updateFollowUp\n    at module.exports.internals.Segment.internals.Segment.add (C:\\Users\\VIJAY L\\Desktop\\Finance\\ZAdPro_MicroFin_Service\\node_modules\\@hapi\\call\\lib\\segment.js:47:14)\n    at exports.Router.internals.Router.internals.Router.add (C:\\Users\\VIJAY L\\Desktop\\Finance\\ZAdPro_MicroFin_Service\\node_modules\\@hapi\\call\\lib\\index.js:65:16)\n    at internals.Server._addRoute (C:\\Users\\VIJAY L\\Desktop\\Finance\\ZAdPro_MicroFin_Service\\node_modules\\@hapi\\hapi\\lib\\server.js:529:46)\n    at internals.Server.route (C:\\Users\\VIJAY L\\Desktop\\Finance\\ZAdPro_MicroFin_Service\\node_modules\\@hapi\\hapi\\lib\\server.js:518:22)\n    at C:\\Users\\VIJAY L\\Desktop\\Finance\\ZAdPro_MicroFin_Service\\src\\api\\repayment\\routes.ts:10:14\n    at new Promise (<anonymous>)\n    at rePaymentRoutes.<anonymous> (C:\\Users\\VIJAY L\\Desktop\\Finance\\ZAdPro_MicroFin_Service\\src\\api\\repayment\\routes.ts:8:12)\n    at Generator.next (<anonymous>)\n    at C:\\Users\\VIJAY L\\Desktop\\Finance\\ZAdPro_MicroFin_Service\\src\\api\\repayment\\routes.ts:8:71\n    at new Promise (<anonymous>)","timestamp":"2025-04-14T15:38:40.669Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T15:38:46.926Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T15:39:16.582Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T15:39:28.782Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T15:39:40.351Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T15:39:46.572Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T15:40:07.738Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T15:40:17.245Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T15:40:25.911Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T15:40:31.504Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T15:41:46.383Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T15:41:57.925Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T15:42:15.128Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T15:42:27.035Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T15:42:35.923Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanAudit","timestamp":"2025-04-14T15:43:14.049Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T15:44:18.731Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T15:50:47.594Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T15:55:03.630Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T15:55:32.569Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T15:55:44.144Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T16:00:24.463Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T16:00:27.212Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T16:02:08.330Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T16:02:11.233Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T16:02:34.616Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T16:02:48.562Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T16:03:21.866Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T16:04:33.533Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T16:04:42.225Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T16:04:44.243Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T16:04:47.215Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T16:04:50.218Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T16:05:04.575Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T16:05:06.244Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T16:05:08.245Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T16:05:10.242Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T16:05:17.243Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T16:05:18.222Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T16:05:31.533Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T16:05:34.212Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T16:05:42.201Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T16:09:28.806Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T16:10:47.531Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T16:10:56.018Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T16:11:01.844Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T16:11:27.220Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T16:11:36.765Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T16:11:48.756Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T16:11:59.887Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T16:12:40.973Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T16:12:53.375Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T16:12:57.599Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T16:13:01.880Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T16:13:05.843Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T16:14:37.596Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T16:16:04.267Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanAudit","timestamp":"2025-04-14T16:16:06.309Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanAudit","timestamp":"2025-04-14T16:17:23.578Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanAudit","timestamp":"2025-04-14T16:17:39.244Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T16:17:43.744Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T16:17:45.383Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanAudit","timestamp":"2025-04-14T16:17:46.240Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T16:18:10.559Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T16:18:34.677Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanAudit","timestamp":"2025-04-14T16:18:35.632Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T16:18:55.025Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T16:18:57.182Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T16:19:01.289Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanAudit","timestamp":"2025-04-14T16:19:02.285Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/updateFollowUp","timestamp":"2025-04-14T16:19:26.310Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T16:19:26.385Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T16:19:28.735Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/updateFollowUp","timestamp":"2025-04-14T16:19:51.520Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T16:19:51.576Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T16:19:54.574Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanAudit","timestamp":"2025-04-14T16:19:55.700Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T16:20:53.168Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanAudit","timestamp":"2025-04-14T16:20:54.465Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanAudit","timestamp":"2025-04-14T16:21:27.442Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getLoanAndUser","timestamp":"2025-04-14T16:21:36.328Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getLoan","timestamp":"2025-04-14T16:21:37.938Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getLoan","timestamp":"2025-04-14T16:21:53.488Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getLoan","timestamp":"2025-04-14T16:22:34.536Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getLoan","timestamp":"2025-04-14T16:22:58.224Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getLoan","timestamp":"2025-04-14T16:23:06.547Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getLoan","timestamp":"2025-04-14T16:23:17.707Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getLoan","timestamp":"2025-04-14T16:23:25.134Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T16:26:10.907Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getLoan","timestamp":"2025-04-14T16:26:19.693Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getLoan","timestamp":"2025-04-14T16:27:31.607Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getLoan","timestamp":"2025-04-14T16:28:24.253Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getLoan","timestamp":"2025-04-14T16:29:19.576Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getLoan","timestamp":"2025-04-14T16:29:22.298Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getLoanAndUser","timestamp":"2025-04-14T16:29:31.279Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getLoan","timestamp":"2025-04-14T16:31:43.512Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanAudit","timestamp":"2025-04-14T16:31:45.318Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanAudit","timestamp":"2025-04-14T16:31:45.324Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanAudit","timestamp":"2025-04-14T16:31:45.332Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getLoanAndUser","timestamp":"2025-04-14T16:32:41.220Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T16:34:14.857Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T16:34:16.163Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T16:39:27.861Z"}
+{"level":"error","message":"Server not running ---  New route /api/v1/rePayment/loanAudit conflicts with existing /api/v1/rePayment/loanAudit","name":"AssertError","stack":"AssertError: New route /api/v1/rePayment/loanAudit conflicts with existing /api/v1/rePayment/loanAudit\n    at module.exports.internals.Segment.internals.Segment.add (C:\\Users\\VIJAY L\\Desktop\\Finance\\ZAdPro_MicroFin_Service\\node_modules\\@hapi\\call\\lib\\segment.js:47:14)\n    at exports.Router.internals.Router.internals.Router.add (C:\\Users\\VIJAY L\\Desktop\\Finance\\ZAdPro_MicroFin_Service\\node_modules\\@hapi\\call\\lib\\index.js:65:16)\n    at internals.Server._addRoute (C:\\Users\\VIJAY L\\Desktop\\Finance\\ZAdPro_MicroFin_Service\\node_modules\\@hapi\\hapi\\lib\\server.js:529:46)\n    at internals.Server.route (C:\\Users\\VIJAY L\\Desktop\\Finance\\ZAdPro_MicroFin_Service\\node_modules\\@hapi\\hapi\\lib\\server.js:518:22)\n    at C:\\Users\\VIJAY L\\Desktop\\Finance\\ZAdPro_MicroFin_Service\\src\\api\\repayment\\routes.ts:10:14\n    at new Promise (<anonymous>)\n    at rePaymentRoutes.<anonymous> (C:\\Users\\VIJAY L\\Desktop\\Finance\\ZAdPro_MicroFin_Service\\src\\api\\repayment\\routes.ts:8:12)\n    at Generator.next (<anonymous>)\n    at C:\\Users\\VIJAY L\\Desktop\\Finance\\ZAdPro_MicroFin_Service\\src\\api\\repayment\\routes.ts:8:71\n    at new Promise (<anonymous>)","timestamp":"2025-04-14T16:39:41.365Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T16:39:50.527Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T16:40:14.023Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T16:41:12.079Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T16:41:20.600Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T16:41:38.114Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T16:41:45.411Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T16:41:53.157Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T16:42:18.002Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T16:42:24.785Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T16:42:34.859Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T16:42:54.589Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T16:43:02.673Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T16:43:19.866Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getLoanAndUser","timestamp":"2025-04-14T16:59:33.413Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getLoan","timestamp":"2025-04-14T16:59:35.106Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:35.306Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:35.311Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:35.320Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:35.349Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:35.360Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:35.372Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:35.389Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:35.403Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:35.407Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:35.429Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:35.437Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:35.445Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:35.466Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:35.469Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:35.474Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:35.492Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:35.496Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:35.502Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:35.522Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:35.525Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:35.534Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:35.554Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:35.558Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:35.564Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:35.580Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:35.583Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:35.588Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:35.604Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:35.608Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:35.613Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:35.637Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:35.640Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:35.643Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:35.670Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:35.673Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:35.677Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:35.709Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:35.718Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:35.732Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:35.774Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:35.779Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:35.783Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:35.805Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:35.810Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:35.814Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:35.840Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:35.844Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:35.849Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:35.868Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:35.871Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:35.873Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:35.898Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:35.901Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:35.904Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:35.925Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:35.929Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:35.932Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:35.951Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:35.954Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:35.956Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:35.975Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:35.979Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:35.982Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:36.001Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:36.004Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:36.007Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:36.025Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:36.029Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:36.031Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:36.052Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:36.054Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:36.057Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:36.077Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:36.080Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:36.083Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:36.102Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:36.105Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:36.107Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:36.126Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:36.130Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:36.133Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:36.152Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:36.155Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:36.158Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:36.177Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:36.181Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:36.184Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:36.203Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:36.207Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:36.209Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:36.227Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:36.231Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:36.233Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:36.252Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:36.255Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:36.257Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:36.279Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:36.283Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:36.286Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:36.306Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:36.309Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:36.313Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:36.335Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:36.338Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:36.341Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:36.362Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:36.367Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:36.369Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:36.388Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:36.391Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:36.395Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:36.417Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:36.420Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:36.422Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:36.443Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:36.447Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:36.451Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:36.474Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:36.478Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:36.481Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:36.501Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:36.503Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:36.506Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:36.525Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:36.530Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:36.532Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:36.551Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:36.554Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:36.556Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:36.577Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:36.581Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:36.583Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:36.601Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:36.604Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:36.606Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:36.623Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:36.626Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:36.631Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:36.636Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:36.640Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T16:59:36.643Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getLoanAndUser","timestamp":"2025-04-14T17:00:16.604Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getLoan","timestamp":"2025-04-14T17:00:27.359Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanAudit","timestamp":"2025-04-14T17:00:28.600Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanAudit","timestamp":"2025-04-14T17:00:28.617Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanAudit","timestamp":"2025-04-14T17:00:28.628Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:00:37.231Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:00:37.240Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:00:37.259Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:00:37.275Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:00:37.291Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:00:37.304Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getLoanAndUser","timestamp":"2025-04-14T17:00:46.285Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getLoan","timestamp":"2025-04-14T17:00:47.706Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getLoanAndUser","timestamp":"2025-04-14T17:00:55.225Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getLoan","timestamp":"2025-04-14T17:01:05.001Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:01:05.083Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:01:05.087Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:01:05.099Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:01:05.139Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:01:05.149Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:01:05.158Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:01:05.208Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:01:05.235Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:01:05.246Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:01:05.304Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:01:05.311Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:01:05.319Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:01:05.361Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:01:05.365Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:01:05.371Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:01:05.403Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:01:05.409Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:01:05.413Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:01:05.445Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:01:05.449Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:01:05.452Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:01:05.481Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:01:05.485Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:01:05.489Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:01:05.522Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:01:05.527Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:01:05.530Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:01:05.557Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:01:05.561Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:01:05.565Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:01:05.597Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:01:05.602Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:01:05.608Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:01:05.636Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:01:05.641Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:01:05.644Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:01:05.673Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:01:05.677Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:01:05.680Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:01:05.709Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:01:05.713Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:01:05.717Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:01:05.744Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:01:05.748Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:01:05.751Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:01:05.777Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:01:05.781Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:01:05.785Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:01:05.807Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:01:05.811Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:01:05.814Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:01:05.839Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:01:05.842Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:01:05.845Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:01:05.868Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:01:05.872Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:01:05.876Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:01:05.903Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:01:05.907Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:01:05.910Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:01:05.934Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:01:05.938Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:01:05.943Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:01:05.966Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:01:05.970Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:01:05.974Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:01:05.980Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:01:05.984Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:01:05.988Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getLoanAndUser","timestamp":"2025-04-14T17:01:14.226Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getLoan","timestamp":"2025-04-14T17:01:17.629Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getLoan","timestamp":"2025-04-14T17:01:21.033Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T17:01:29.329Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getLoan","timestamp":"2025-04-14T17:01:31.321Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:01:34.072Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:01:34.840Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:01:35.410Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:01:36.140Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:01:36.748Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:01:37.235Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:01:37.897Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:01:38.306Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:01:38.625Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:01:39.362Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:01:39.682Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:01:40.361Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:01:40.709Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:01:41.054Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:01:41.702Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:01:42.145Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:01:42.690Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:01:43.136Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:01:43.575Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:01:43.814Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:01:44.208Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:01:44.638Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:01:45.055Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:01:45.493Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:01:45.907Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:01:46.314Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:01:46.799Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:01:47.189Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:01:47.600Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:04:53.584Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:04:54.641Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T17:05:30.134Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T17:05:52.652Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T17:06:28.208Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T17:07:04.933Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T17:07:11.506Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T17:07:22.986Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T17:07:26.530Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T17:07:33.217Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T17:07:37.787Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:08:14.563Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T17:08:26.037Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:08:27.292Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T17:08:40.918Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T17:09:18.076Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T17:09:26.465Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T17:09:57.215Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:10:00.123Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T17:10:20.200Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T17:10:27.348Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:10:30.418Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T17:11:02.300Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:11:12.769Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T17:11:31.905Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:15:22.288Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:15:22.541Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:15:23.399Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:15:36.648Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:15:37.413Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:15:41.038Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:15:41.690Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/adminLogin","timestamp":"2025-04-14T17:17:24.643Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getPersonList","timestamp":"2025-04-14T17:17:25.631Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getLoanAndUser","timestamp":"2025-04-14T17:17:27.654Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getLoan","timestamp":"2025-04-14T17:17:28.915Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:17:28.920Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getLoanAndUser","timestamp":"2025-04-14T17:18:53.216Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getLoan","timestamp":"2025-04-14T17:19:26.419Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:19:26.678Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getLoanAndUser","timestamp":"2025-04-14T17:20:07.394Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getLoan","timestamp":"2025-04-14T17:20:08.789Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:20:08.872Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanAudit","timestamp":"2025-04-14T17:20:09.734Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanAudit","timestamp":"2025-04-14T17:20:09.742Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanAudit","timestamp":"2025-04-14T17:20:09.757Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getLoanAndUser","timestamp":"2025-04-14T17:20:35.247Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getLoan","timestamp":"2025-04-14T17:20:43.859Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:20:43.862Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanAudit","timestamp":"2025-04-14T17:20:50.157Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanAudit","timestamp":"2025-04-14T17:20:50.170Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanAudit","timestamp":"2025-04-14T17:20:50.179Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getLoanAndUser","timestamp":"2025-04-14T17:20:56.143Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T17:21:05.595Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T17:21:11.057Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getLoanAndUser","timestamp":"2025-04-14T17:21:12.091Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getLoan","timestamp":"2025-04-14T17:21:13.250Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:21:13.256Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanAudit","timestamp":"2025-04-14T17:21:14.898Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanAudit","timestamp":"2025-04-14T17:21:14.906Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanAudit","timestamp":"2025-04-14T17:21:14.923Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getLoan","timestamp":"2025-04-14T17:21:31.325Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:21:31.510Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getLoan","timestamp":"2025-04-14T17:21:32.364Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:21:32.369Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getLoan","timestamp":"2025-04-14T17:22:02.646Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:22:02.650Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getLoanAndUser","timestamp":"2025-04-14T17:22:03.361Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getLoan","timestamp":"2025-04-14T17:22:11.699Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:22:11.768Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanAudit","timestamp":"2025-04-14T17:22:12.746Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanAudit","timestamp":"2025-04-14T17:22:12.751Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanAudit","timestamp":"2025-04-14T17:22:12.764Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getLoan","timestamp":"2025-04-14T17:22:44.450Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:22:44.589Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getLoan","timestamp":"2025-04-14T17:22:52.361Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:22:52.443Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getLoan","timestamp":"2025-04-14T17:22:55.325Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:22:55.328Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getLoan","timestamp":"2025-04-14T17:22:58.848Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:22:58.852Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getLoan","timestamp":"2025-04-14T17:23:03.724Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:23:03.730Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T17:23:27.501Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getLoan","timestamp":"2025-04-14T17:23:29.619Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:23:29.636Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getLoan","timestamp":"2025-04-14T17:23:37.757Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:23:37.774Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getLoan","timestamp":"2025-04-14T17:24:00.263Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:24:00.413Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanAudit","timestamp":"2025-04-14T17:24:01.100Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanAudit","timestamp":"2025-04-14T17:24:01.107Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanAudit","timestamp":"2025-04-14T17:24:01.121Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getLoanAndUser","timestamp":"2025-04-14T17:25:04.604Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getLoan","timestamp":"2025-04-14T17:25:07.018Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:25:07.022Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanAudit","timestamp":"2025-04-14T17:25:08.204Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanAudit","timestamp":"2025-04-14T17:25:08.213Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanAudit","timestamp":"2025-04-14T17:25:08.227Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getLoan","timestamp":"2025-04-14T17:25:26.371Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:25:26.584Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getLoan","timestamp":"2025-04-14T17:25:27.335Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:25:27.340Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getLoan","timestamp":"2025-04-14T17:25:29.529Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:25:29.533Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getLoan","timestamp":"2025-04-14T17:25:32.375Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:25:32.379Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getLoan","timestamp":"2025-04-14T17:25:34.409Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:25:34.412Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getLoan","timestamp":"2025-04-14T17:25:36.656Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:25:36.668Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getLoan","timestamp":"2025-04-14T17:25:42.706Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:25:42.711Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T17:30:57.836Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getLoan","timestamp":"2025-04-14T17:30:58.239Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:30:58.260Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getLoan","timestamp":"2025-04-14T17:30:58.270Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:30:58.272Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getLoan","timestamp":"2025-04-14T17:30:58.279Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:30:58.281Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getLoan","timestamp":"2025-04-14T17:30:58.389Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:30:58.405Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getLoan","timestamp":"2025-04-14T17:30:58.421Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:30:58.432Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getLoan","timestamp":"2025-04-14T17:30:58.444Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:30:58.452Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getLoan","timestamp":"2025-04-14T17:30:58.464Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:30:58.472Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getLoan","timestamp":"2025-04-14T17:30:58.490Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:30:58.506Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanAudit","timestamp":"2025-04-14T17:30:58.510Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanAudit","timestamp":"2025-04-14T17:30:58.548Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanAudit","timestamp":"2025-04-14T17:30:58.552Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getLoan","timestamp":"2025-04-14T17:30:58.559Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:30:58.565Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getLoan","timestamp":"2025-04-14T17:30:58.570Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:30:58.575Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getLoan","timestamp":"2025-04-14T17:30:58.582Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:30:58.588Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:30:58.594Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getLoan","timestamp":"2025-04-14T17:30:58.600Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T17:31:09.161Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:31:09.524Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getLoan","timestamp":"2025-04-14T17:31:09.567Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:31:09.571Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:31:09.578Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T17:31:15.006Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getLoan","timestamp":"2025-04-14T17:31:18.211Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:31:18.223Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanAudit","timestamp":"2025-04-14T17:31:20.788Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanAudit","timestamp":"2025-04-14T17:31:20.796Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanAudit","timestamp":"2025-04-14T17:31:20.803Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getLoan","timestamp":"2025-04-14T17:32:06.949Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:32:06.954Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getLoan","timestamp":"2025-04-14T17:32:10.347Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:32:10.353Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getLoan","timestamp":"2025-04-14T17:32:11.325Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:32:11.327Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getLoan","timestamp":"2025-04-14T17:32:12.349Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:32:12.352Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getLoan","timestamp":"2025-04-14T17:32:18.561Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:32:18.580Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getLoan","timestamp":"2025-04-14T17:32:28.199Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:32:28.273Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getLoan","timestamp":"2025-04-14T17:32:28.833Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:32:28.836Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getLoan","timestamp":"2025-04-14T17:32:41.601Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:32:41.604Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getLoan","timestamp":"2025-04-14T17:32:43.385Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:32:43.387Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getLoan","timestamp":"2025-04-14T17:32:45.510Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:32:45.818Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getLoan","timestamp":"2025-04-14T17:32:51.039Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:32:51.042Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T17:34:33.348Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getLoan","timestamp":"2025-04-14T17:34:33.755Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:34:33.775Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getLoan","timestamp":"2025-04-14T17:34:33.798Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:34:33.801Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getLoan","timestamp":"2025-04-14T17:34:33.809Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:34:33.813Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getLoan","timestamp":"2025-04-14T17:34:33.944Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:34:33.992Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getLoan","timestamp":"2025-04-14T17:34:34.002Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:34:34.018Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getLoan","timestamp":"2025-04-14T17:34:34.032Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:34:34.045Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getLoan","timestamp":"2025-04-14T17:34:34.055Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:34:34.057Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getLoan","timestamp":"2025-04-14T17:34:34.076Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:34:34.080Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T17:34:34.091Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanDetails","timestamp":"2025-04-14T17:34:34.130Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getLoan","timestamp":"2025-04-14T17:34:34.143Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getLoan","timestamp":"2025-04-14T17:34:34.162Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T17:34:36.210Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T17:34:39.961Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T17:34:53.414Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T17:34:57.383Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanAudit","timestamp":"2025-04-14T17:34:59.639Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T17:35:03.437Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/adminLogin","timestamp":"2025-04-14T17:35:11.147Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T17:35:21.175Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/adminLogin","timestamp":"2025-04-14T17:35:30.366Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/adminLogin","timestamp":"2025-04-14T17:35:36.900Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/getPersonList","timestamp":"2025-04-14T17:35:37.693Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/userList","timestamp":"2025-04-14T17:35:39.284Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/rePaymentCalculation","timestamp":"2025-04-14T17:35:40.711Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/rePayment/loanAudit","timestamp":"2025-04-14T17:35:44.656Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6200/api/v1/adminRoutes/adminLogin","timestamp":"2025-04-14T17:36:45.292Z"}
+{"level":"error","message":"Server not running ---  New route /api/v1/rePayment/userList conflicts with existing /api/v1/rePayment/userList","name":"AssertError","stack":"AssertError: New route /api/v1/rePayment/userList conflicts with existing /api/v1/rePayment/userList\n    at module.exports.internals.Segment.internals.Segment.add (C:\\Users\\VIJAY L\\Desktop\\Finance\\ZAdPro_MicroFin_Service\\node_modules\\@hapi\\call\\lib\\segment.js:47:14)\n    at exports.Router.internals.Router.internals.Router.add (C:\\Users\\VIJAY L\\Desktop\\Finance\\ZAdPro_MicroFin_Service\\node_modules\\@hapi\\call\\lib\\index.js:65:16)\n    at internals.Server._addRoute (C:\\Users\\VIJAY L\\Desktop\\Finance\\ZAdPro_MicroFin_Service\\node_modules\\@hapi\\hapi\\lib\\server.js:529:46)\n    at internals.Server.route (C:\\Users\\VIJAY L\\Desktop\\Finance\\ZAdPro_MicroFin_Service\\node_modules\\@hapi\\hapi\\lib\\server.js:518:22)\n    at C:\\Users\\VIJAY L\\Desktop\\Finance\\ZAdPro_MicroFin_Service\\src\\api\\repayment\\routes.ts:10:14\n    at new Promise (<anonymous>)\n    at rePaymentRoutes.<anonymous> (C:\\Users\\VIJAY L\\Desktop\\Finance\\ZAdPro_MicroFin_Service\\src\\api\\repayment\\routes.ts:8:12)\n    at Generator.next (<anonymous>)\n    at C:\\Users\\VIJAY L\\Desktop\\Finance\\ZAdPro_MicroFin_Service\\src\\api\\repayment\\routes.ts:8:71\n    at new Promise (<anonymous>)","timestamp":"2025-04-14T18:19:15.899Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T18:26:07.284Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T18:26:26.778Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T18:26:58.359Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T18:27:15.632Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T18:27:21.629Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T18:27:26.020Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T18:27:33.317Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T18:27:41.490Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-14T18:27:56.938Z"}

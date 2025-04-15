@@ -6,8 +6,8 @@ dotenv.config();
 const pool = new Pool({
   user: process.env.DB_USER || "postgres",
   host: process.env.DB_HOST || "localhost",
-  database: process.env.DB_NAME || "zadpro-microfin",
-  password: process.env.DB_PASSWORD || "1234",
+  database: process.env.DB_NAME || "Zadpro-Finance",
+  password: process.env.DB_PASSWORD || "vijay",
   port: Number(process.env.DB_PORT) || 5432,
 });
 
@@ -17,7 +17,6 @@ export const executeQuery = async (
 ): Promise<any[]> => {
   let client: PoolClient | null = null;
   try {
-    console.log("Line ---20",query)
     client = await pool.connect();
     const result = await client.query(query, params);
     return result.rows;

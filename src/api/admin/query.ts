@@ -282,7 +282,21 @@ SET
 WHERE "refProductId" = $1;
 `;
 
-export const getProductsListQuery = `SELECT * FROM public."refProducts" ORDER BY "refProductId" DESC; 
+export const getProductsListQuery = `SELECT
+  rp."refProductId",
+rp."refProductName",
+  rp."refProductInterest",
+  rp."refProductDuration",
+  rp."refProductStatus",
+  rp."refProductDescription",
+  rp."createdAt",
+  rp."createdBy",
+  rp."updatedAt",
+  rp."updatedBy"
+FROM
+  public."refProducts" rp
+ORDER BY
+  "refProductId" DESC; 
 `;
 
 export const getProductsQuery = `SELECT *
@@ -315,8 +329,12 @@ ORDER BY
   subquery."refbfTransactionDate" ASC;
 `;
 
-export const getBankFundListQuery = `SELECT * FROM public."refBankFund" rbf
-JOIN public."refBankAccounts" rba ON rba."refBankId" = rbf."refBankId"::INTEGER`;
+export const getBankFundListQuery = `SELECT
+  *
+FROM
+  public."refBankFund" rbf
+  LEFT JOIN public."refBankAccounts" rba ON rba."refBankId" = rbf."refBankId"::INTEGER
+  ORDER BY rbf."refbfTransactionDate" DESC`;
 
 export const addloanQuery = `INSERT INTO
   public."refLoan" (
@@ -334,10 +352,12 @@ export const addloanQuery = `INSERT INTO
     "refInterest",
     "refPayableAmount",
     "createdAt",
-    "createdBy"
+    "createdBy",
+    "refLoanExt",
+    "refExLoanId"
   )
 VALUES
-  ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15)
+  ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15,$16,$17)
 RETURNING
   *;`;
 
@@ -447,7 +467,7 @@ export const updateRepaymentQuery = `
                UPDATE
   public."refRepaymentSchedule"
 SET
-  "refReStatus" = 'Paid',
+  "refReStatus" = 'paid',
   "updatedAt" = $1,
   "updatedBy" = $2
 WHERE
@@ -544,7 +564,8 @@ SELECT
     rl."refPayableAmount",
     rl."refLoanStartDate",
     rl."refLoanDueDate",
-    rl."isInterestFirst"
+    rl."isInterestFirst",
+    rl."refLoanId"
 FROM public."refProducts" rp
 JOIN public."refLoan" rl 
     ON CAST(rl."refProductId" AS INTEGER) = rp."refProductId"
@@ -583,7 +604,6 @@ WHERE
 
 `;
 
-
 export const getAmountDataQuery = `
 SELECT
   rl."refLoanId",
@@ -605,3 +625,14 @@ FROM
 WHERE
   "refUserId" = $1;
 `;
+
+export const getLoanDataOption = `SELECT
+  rl."refLoanId",
+  rl."refLoanAmount",
+  rp."refProductInterest",
+  rp."refProductDuration"
+FROM
+  public."refLoan" rl
+  LEFT JOIN public."refProducts" rp ON CAST(rp."refProductId" AS INTEGER) = rl."refProductId"::INTEGER
+WHERE
+  rl."refUserId" = $1`;
