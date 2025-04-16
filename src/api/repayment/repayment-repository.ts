@@ -14,6 +14,9 @@ import {
   loanAudit,
   getLoanDetails,
   getMailDetails,
+  updateBankAccountBalanceQuery,
+  getLoanBalance,
+  updateLoan,
 } from "./query";
 import { PoolClient } from "pg";
 
@@ -29,14 +32,9 @@ import { loanReminderSend } from "../../helper/mailcontent";
 
 export class rePaymentRepository {
   public async unPaidUserListV1(user_data: any, tokendata: any): Promise<any> {
-    console.log("Repository Started");
     const token = { id: tokendata.id };
     const tokens = generateTokenWithoutExpire(token, true);
     try {
-      console.log(
-        "CurrentTimae Line ----- 16",
-        formatToYearMonth(CurrentTime())
-      );
       const name = await executeQuery(nameQuery, [tokendata.id]);
 
       const Params = [
@@ -48,7 +46,6 @@ export class rePaymentRepository {
           ? formatToYearMonth(CurrentTime())
           : user_data.endDate,
       ];
-      console.log("Params", Params);
       const userData = await executeQuery(userList, Params);
       return encrypt(
         {
@@ -62,7 +59,6 @@ export class rePaymentRepository {
       );
     } catch (error) {
       console.log("Error:", error);
-      console.log("Repository return Responce");
       return encrypt(
         {
           success: false,
@@ -77,25 +73,33 @@ export class rePaymentRepository {
     user_data: any,
     tokendata: any
   ): Promise<any> {
-    console.log("Repository Started");
     const token = { id: tokendata.id };
     const tokens = generateTokenWithoutExpire(token, true);
 
     try {
       const params = [user_data.loanId, user_data.rePayId];
-      console.log("params line ----- 65", params);
       let RepaymentDetails = await executeQuery(rePaymentCalculation, params);
-      console.log("RepaymentDetails line ---- 66", RepaymentDetails);
       const balanceAmt =
         RepaymentDetails[0].refLoanAmount - RepaymentDetails[0].totalPrincipal;
       const InteresePay =
-        (balanceAmt * (RepaymentDetails[0].refProductInterest / 100)) /
-        RepaymentDetails[0].refNewDuration;
+        balanceAmt * (RepaymentDetails[0].refProductInterest / 100);
+
       RepaymentDetails[0] = {
         ...RepaymentDetails[0],
         refBalanceAmt: balanceAmt,
-        refInteresePay: InteresePay,
+        refInteresePay:
+          RepaymentDetails[0].isInterestFirst === true ? 0 : InteresePay,
       };
+
+      if (RepaymentDetails[0].isInterestFirst) {
+        RepaymentDetails[0] = {
+          ...RepaymentDetails[0],
+          totalInterest:
+            (RepaymentDetails[0].refProductInterest / 100) *
+            RepaymentDetails[0].refLoanAmount *
+            RepaymentDetails[0].refProductDuration,
+        };
+      }
       const bankDetails = await executeQuery(bankList);
 
       return encrypt(
@@ -121,7 +125,6 @@ export class rePaymentRepository {
     }
   }
   public async updateRePaymentV1(user_data: any, tokendata: any): Promise<any> {
-    console.log("Repository Started");
     const token = { id: tokendata.id };
     const tokens = generateTokenWithoutExpire(token, true);
     const client: PoolClient = await getClient();
@@ -137,7 +140,6 @@ export class rePaymentRepository {
         tokendata.id,
         user_data.rePayId,
       ];
-      console.log("Params line ----- 126", Params);
       const updateRepayment = await client.query(updateRePayment, Params);
 
       const FundUpdate = [
@@ -151,9 +153,35 @@ export class rePaymentRepository {
         "fund",
         user_data.paymentType,
       ];
-      console.log("FundUpdate line ----- 139", FundUpdate);
 
-      const updateFund = await client.query(bankFundUpdate, FundUpdate);
+      await client.query(bankFundUpdate, FundUpdate);
+
+      const params3 = [
+        user_data.priAmt + user_data.interest,
+        user_data.bankId,
+        CurrentTime(),
+        "Admin",
+      ];
+      await client.query(updateBankAccountBalanceQuery, params3);
+      const loanBalance = await executeQuery(getLoanBalance, [
+        parseInt(updateRepayment.rows[0].refLoanId),
+      ]);
+
+      const amt = parseInt(loanBalance[0].Balance_Amount) - user_data.priAmt;
+
+      if (amt === 0) {
+        await client.query(updateLoan, [
+          parseInt(updateRepayment.rows[0].refLoanId),
+          2,
+          CurrentTime(),
+          "Admin",
+        ]);
+      } else if (amt < 0) {
+        throw new Error(
+          "The principal amount is higher than the balance amount"
+        );
+      }
+
       await client.query("COMMIT");
 
       return encrypt(
@@ -164,7 +192,7 @@ export class rePaymentRepository {
         },
         true
       );
-    } catch (error) {
+    } catch (error: any) {
       console.log("Error:", error);
       await client.query("ROLLBACK");
 
@@ -172,6 +200,7 @@ export class rePaymentRepository {
         {
           success: false,
           message: "Error In Updating The Repayment",
+          error: error?.message || "An unknown error occurred",
           token: generateTokenWithoutExpire(token, true),
         },
         true
@@ -181,7 +210,6 @@ export class rePaymentRepository {
     }
   }
   public async updateFollowUpV1(user_data: any, tokendata: any): Promise<any> {
-    console.log("Repository Started");
     const token = { id: tokendata.id };
     const tokens = generateTokenWithoutExpire(token, true);
 
@@ -217,7 +245,6 @@ export class rePaymentRepository {
     }
   }
   public async loanAuditV1(user_data: any, tokendata: any): Promise<any> {
-    console.log("Repository Started");
     const token = { id: tokendata.id };
     const tokens = generateTokenWithoutExpire(token, true);
 
@@ -248,16 +275,13 @@ export class rePaymentRepository {
     }
   }
   public async loanDetailsV1(user_data: any, tokendata: any): Promise<any> {
-    console.log("Repository Started");
     const token = { id: tokendata.id };
     const tokens = generateTokenWithoutExpire(token, true);
 
     try {
       const params = [user_data.loanId];
-      console.log("params line ----- 257", params);
       let RepaymentDetails = await executeQuery(getLoanDetails, params);
       RepaymentDetails.map((Data, index) => {
-        console.log("Data line ----- 254", Data);
         const balanceAmt = Data.refLoanAmount - Data.totalPrincipal;
         RepaymentDetails[index] = {
           ...RepaymentDetails[index],
@@ -287,7 +311,6 @@ export class rePaymentRepository {
     }
   }
   public async NotificationV1(user_data: any, tokendata: any): Promise<any> {
-    console.log("Repository Started");
     const token = { id: tokendata.id };
     const tokens = generateTokenWithoutExpire(token, true);
 

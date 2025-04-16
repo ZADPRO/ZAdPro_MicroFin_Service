@@ -23,6 +23,7 @@ FROM
   INNER JOIN public."refCommunication" rc ON CAST(rc."refUserId" AS INTEGER) = u."refUserId"
 WHERE
   rp."refReStatus" = 'Pending'
+  AND rl."refLoanStatus" = 1
   AND (
     $1 = FALSE
     OR (
@@ -173,11 +174,13 @@ export const updateFollowUp = `INSERT INTO
   ) VALUES ($1,$2,$3,$4,$5)`;
 
 export const loanAudit = `SELECT
+
   rp."refRpayId" AS "RpayId",
   rp."refLoanId" AS "LoanId",
   rp."refPaymentDate" AS "Month",
   rp."refInterest" AS "Interest",
   rp."refPrincipal" AS "Principal",
+
   json_agg(
     json_build_object(
       'FollowId', us."refStatusId",
@@ -198,6 +201,7 @@ ORDER BY
   rp."refRpayId";`;
 
 export const getLoanDetails = `SELECT
+rl."refLoanId",
   rl."refLoanAmount",
   rpr."refProductName",
   rpr."refProductInterest",
@@ -206,6 +210,7 @@ export const getLoanDetails = `SELECT
   rl."refLoanStartDate",
   rl."refRepaymentStartDate",
   rl."refLoanDueDate",
+  ls."refLoanStatus",
   ROUND(
     COALESCE(
       (
@@ -240,13 +245,15 @@ FROM
   public."refLoan" rl
   INNER JOIN public."refRepaymentSchedule" rp ON CAST(rp."refLoanId" AS INTEGER) = rl."refLoanId"::INTEGER
   INNER JOIN public."refProducts" rpr ON CAST(rpr."refProductId" AS INTEGER) = rl."refProductId"::INTEGER
+  INNER JOIN public."refLoanStatus" ls ON CAST (ls."refLoanStatusId" AS INTEGER) = rl."refLoanStatus"
 WHERE
   rl."refUserId" = $1
 GROUP BY
   rl."refLoanId",
   rpr."refProductName",
   rpr."refProductInterest",
-  rpr."refProductDuration"`;
+  rpr."refProductDuration",
+  ls."refLoanStatus"`;
 
 export const getMailDetails = `SELECT 
 u."refUserId",u."refUserFname",u."refUserLname",rc."refUserEmail"
@@ -256,3 +263,32 @@ INNER JOIN public.users u ON CAST (u."refUserId" AS INTEGER) = rl."refUserId"
 INNER JOIN public."refCommunication" rc ON CAST (rc."refUserId" AS INTEGER) = rl."refUserId"
 WHERE rp."refReStatus" = 'Pending'
   AND TO_CHAR(TO_TIMESTAMP($1, 'DD/MM/YYYY, HH:MI:SS AM'), 'YYYY-MM') = rp."refPaymentDate";`;
+
+export const updateBankAccountBalanceQuery = `
+UPDATE public."refBankAccounts" 
+SET 
+  "refBalance" = ("refBalance"::numeric + $1),
+  "updatedAt" = $3, 
+  "updatedBy" = $4
+WHERE "refBankId" = $2
+RETURNING "refBalance";
+`;
+
+export const getLoanBalance = `SELECT
+  COALESCE(SUM(rs."refPrincipal"::INTEGER), 0) AS "Total_Amount",
+  CAST(rl."refLoanAmount" AS INTEGER) - COALESCE(SUM(rs."refPrincipal"::INTEGER), 0) AS "Balance_Amount"
+FROM
+  public."refRepaymentSchedule" rs
+  LEFT JOIN public."refLoan" rl ON CAST(rl."refLoanId" AS INTEGER) = rs."refLoanId"::INTEGER
+WHERE
+  rs."refLoanId"::INTEGER = $1
+GROUP BY
+  rl."refLoanId", rl."refLoanAmount"`;
+export const updateLoan = `UPDATE
+  public."refLoan"
+SET
+  ("refLoanStatus", "updatedAt", "updatedBy") = ($2, $3, $4)
+WHERE
+  "refLoanId" = $1
+RETURNING
+  *;`;

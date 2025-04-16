@@ -9,6 +9,9 @@ const pool = new Pool({
   database: process.env.DB_NAME || "Zadpro-Finance",
   password: process.env.DB_PASSWORD || "vijay",
   port: Number(process.env.DB_PORT) || 5432,
+  max: 15,
+  idleTimeoutMillis: 30000,
+  connectionTimeoutMillis: 2000,
 });
 
 export const executeQuery = async (

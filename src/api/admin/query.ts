@@ -41,10 +41,11 @@ export const updateBankFundQuery = `INSERT INTO
      "refTxnId",
      "refFundType", 
      "createdAt",
-     "createdBy"
+     "createdBy",
+     "refPaymentType"
   )
  VALUES
-   ($1, $2, 'debit', $3, $4, 'loan', $5, $6)
+   ($1, $2, $3, $4, $5, $6, $7, $8,$9)
    RETURNING *;`;
 
 export const insertCommunicationQuery = `
@@ -224,10 +225,11 @@ export const addBankFundQuery = `INSERT INTO
     "refTxnId",
     "refFundType",
     "createdAt",
-    "createdBy"
+    "createdBy",
+    "refPaymentType"
   )
 VALUES
-  ($1, $2, $3, $4, $5, $6, $7, $8)
+  ($1, $2, $3, $4, $5, $6, $7, $8,$9)
   RETURNING *;`;
 
 export const getBankListQuery = `SELECT
@@ -334,7 +336,7 @@ export const getBankFundListQuery = `SELECT
 FROM
   public."refBankFund" rbf
   LEFT JOIN public."refBankAccounts" rba ON rba."refBankId" = rbf."refBankId"::INTEGER
-  ORDER BY rbf."refbfTransactionDate" DESC`;
+  ORDER BY rbf."refBankFId" DESC;`;
 
 export const addloanQuery = `INSERT INTO
   public."refLoan" (
@@ -527,12 +529,12 @@ SELECT
   rc."refUserPincode",
   COUNT(
     CASE
-      WHEN rl."refLoanStatus" = 'opened' THEN 1
+      WHEN rl."refLoanStatus" = 1 THEN 1
     END
   ) AS "opened_count",
   COUNT(
     CASE
-      WHEN rl."refLoanStatus" = 'closed' THEN 1
+      WHEN rl."refLoanStatus" = 2 THEN 1
     END
   ) AS "closed_count"
 FROM
@@ -558,8 +560,9 @@ SELECT
     rp."refProductId",
     rp."refProductName",
     rp."refProductInterest",
+      rp."refProductDuration",
     rl."refLoanAmount" AS "principal",
-    rl."refLoanStatus",
+    ls."refLoanStatus",
     rl."refInterest" AS "interestAmount",
     rl."refPayableAmount",
     rl."refLoanStartDate",
@@ -569,6 +572,7 @@ SELECT
 FROM public."refProducts" rp
 JOIN public."refLoan" rl 
     ON CAST(rl."refProductId" AS INTEGER) = rp."refProductId"
+    LEFT JOIN public."refLoanStatus" ls ON CAST (ls."refLoanStatusId" AS INTEGER) = rl."refLoanStatus"
 WHERE rl."refUserId" = $1
 `;
 
@@ -635,4 +639,34 @@ FROM
   public."refLoan" rl
   LEFT JOIN public."refProducts" rp ON CAST(rp."refProductId" AS INTEGER) = rl."refProductId"::INTEGER
 WHERE
-  rl."refUserId" = $1`;
+  rl."refUserId" = $1 AND rl."refLoanStatus" = 1`;
+
+export const updateLoan = `UPDATE
+  public."refLoan"
+SET
+  ("refLoanStatus", "updatedAt", "updatedBy") = ($2, $3, $4)
+WHERE
+  "refLoanId" = $1
+RETURNING
+  *;`;
+
+export const getLoanBalance = `SELECT
+  COALESCE(SUM(rs."refPrincipal"::INTEGER), 0) AS "Total_Amount",
+  CAST(rl."refLoanAmount" AS INTEGER) - COALESCE(SUM(rs."refPrincipal"::INTEGER), 0) AS "Balance_Amount"
+FROM
+  public."refRepaymentSchedule" rs
+  LEFT JOIN public."refLoan" rl ON CAST(rl."refLoanId" AS INTEGER) = rs."refLoanId"::INTEGER
+WHERE
+  rs."refLoanId"::INTEGER = $1
+GROUP BY
+  rl."refLoanId", rl."refLoanAmount"`;
+
+export const checkLoanExtension = `SELECT
+  TO_CHAR(
+    TO_TIMESTAMP($1, 'DD/MM/YYYY, HH:MI:SS PM') AT TIME ZONE 'Asia/Kolkata',
+    'MM/YYYY'
+  ) = TO_CHAR(rl."refLoanDueDate"::DATE, 'MM/YYYY') AS "check"
+FROM
+  public."refLoan" rl
+WHERE
+  rl."refLoanId" = $2;`;

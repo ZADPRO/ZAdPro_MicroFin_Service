@@ -8,6 +8,7 @@ import jwt from "jsonwebtoken";
 import { generateTokenWithoutExpire } from "../../helper/token";
 import {
   CurrentTime,
+  formatYearMonthDate,
   getImageBase64,
   getMonthDifference,
   processFixedDate,
@@ -68,13 +69,16 @@ import {
   getUnPaidUserQuery,
   getAmountDataQuery,
   getLoanDataOption,
+  updateLoan,
+  getLoanBalance,
+  checkLoanExtension,
 } from "./query";
 import { buildUpdateQuery, getChanges } from "../../helper/buildquery";
 import { reLabelText } from "../../helper/Label";
+import { error } from "console";
 
 export class adminRepository {
   public async adminLoginV1(user_data: any, domain_code?: any): Promise<any> {
-    console.log("Repository Started");
     const client: PoolClient = await getClient();
 
     try {
@@ -143,7 +147,6 @@ export class adminRepository {
     }
   }
   public async addNewPersonV1(user_data: any, tokendata: any): Promise<any> {
-    console.log("Repository Started");
     const client: PoolClient = await getClient();
     const token = { id: tokendata.id };
 
@@ -290,7 +293,6 @@ export class adminRepository {
     }
   }
   public async getPersonV1(userData: any, tokendata: any): Promise<any> {
-    console.log("Repository Started");
     const client: PoolClient = await getClient();
     const token = { id: tokendata.id }; // Extract token ID
     try {
@@ -419,7 +421,6 @@ export class adminRepository {
     }
   }
   public async getPersonListV1(userData: any, tokendata: any): Promise<any> {
-    console.log("Repository Started");
     const client: PoolClient = await getClient();
     const token = { id: tokendata.id }; // Extract token ID
     console.log("tokendata.id", tokendata.id);
@@ -483,6 +484,8 @@ export class adminRepository {
         },
         true
       );
+    } finally {
+      client.release();
     }
   }
   // public async updatePersonV1(user_data: any, tokendata: any): Promise<any> {
@@ -568,7 +571,6 @@ export class adminRepository {
   //   }
   // }
   public async updatePersonV1(user_data: any, tokendata: any): Promise<any> {
-    console.log("Repository Started");
     const client: PoolClient = await getClient();
     const token = { id: tokendata.id };
     try {
@@ -729,7 +731,6 @@ export class adminRepository {
     }
   }
   public async profileUploadV1(userData: any, tokendata: any): Promise<any> {
-    console.log("Repository Started");
     const token = { id: tokendata.id };
 
     try {
@@ -805,7 +806,6 @@ export class adminRepository {
     }
   }
   public async addBankAccountV1(userData: any, tokendata: any): Promise<any> {
-    console.log("Repository Started");
     console.log("userData", userData);
     const client: PoolClient = await getClient();
     const token = { id: tokendata.id }; // Extract token ID
@@ -866,7 +866,6 @@ export class adminRepository {
     user_data: any,
     tokendata: any
   ): Promise<any> {
-    console.log("Repository Started");
     const client: PoolClient = await getClient();
     const token = { id: tokendata.id }; // Extract token ID
     try {
@@ -927,7 +926,6 @@ export class adminRepository {
         true
       );
     } finally {
-      // Release the client back to the pool after the transaction
       client.release();
     }
   }
@@ -935,7 +933,6 @@ export class adminRepository {
     userData: any,
     tokendata: any
   ): Promise<any> {
-    console.log("Repository Started");
     const token = { id: tokendata.id }; // Extract token ID
     console.log("token", token);
     // const client: PoolClient = await getClient();
@@ -977,7 +974,6 @@ export class adminRepository {
     }
   }
   public async addProductV1(userData: any, tokendata: any): Promise<any> {
-    console.log("Repository Started");
     const client: PoolClient = await getClient();
     const token = { id: tokendata.id }; // Extract token ID
     try {
@@ -1036,7 +1032,6 @@ export class adminRepository {
     }
   }
   public async updateProductV1(userData: any, tokendata: any): Promise<any> {
-    console.log("Repository Started");
     const client: PoolClient = await getClient();
     const token = { id: tokendata.id }; // Extract token ID
     try {
@@ -1092,7 +1087,6 @@ export class adminRepository {
     }
   }
   public async productListV1(userData: any, tokendata: any): Promise<any> {
-    console.log("Repository Started");
     const client: PoolClient = await getClient();
     const token = { id: tokendata.id }; // Extract token ID
     try {
@@ -1128,10 +1122,11 @@ export class adminRepository {
         },
         true
       );
+    } finally {
+      client.release();
     }
   }
   public async getProductV1(userData: any, tokendata: any): Promise<any> {
-    console.log("Repository Started");
     const token = { id: tokendata.id }; // Extract token ID
 
     try {
@@ -1178,7 +1173,6 @@ export class adminRepository {
     userData: any,
     tokendata: any
   ): Promise<any> {
-    console.log("Repository Started");
     const token = { id: tokendata.id };
     try {
       // Extract the image from userData
@@ -1231,7 +1225,6 @@ export class adminRepository {
     }
   }
   public async addReferenceV1(user_data: any, tokendata: any): Promise<any> {
-    console.log("Repository Started");
     const client: PoolClient = await getClient();
     const token = { id: tokendata.id };
 
@@ -1303,7 +1296,6 @@ export class adminRepository {
     }
   }
   public async getReferenceV1(userData: any, tokendata: any): Promise<any> {
-    console.log("Repository Started");
     const token = { id: tokendata.id }; // Extract token ID
 
     try {
@@ -1347,7 +1339,6 @@ export class adminRepository {
     }
   }
   public async addBankFundV1(userData: any, tokendata: any): Promise<any> {
-    console.log("Repository Started");
     const client: PoolClient = await getClient();
     const token = { id: tokendata.id }; // Extract token ID
 
@@ -1374,6 +1365,7 @@ export class adminRepository {
         refFundType,
         CurrentTime(),
         "Admin",
+        "online",
       ]);
 
       // 2. Update refBalance in refBankAccounts table based on refbfTransactionType
@@ -1452,7 +1444,6 @@ export class adminRepository {
     }
   }
   public async getBankListV1(userData: any, tokendata: any): Promise<any> {
-    console.log("Repository Started");
     const client: PoolClient = await getClient();
     const token = { id: tokendata.id }; // Extract token ID
 
@@ -1487,10 +1478,11 @@ export class adminRepository {
         },
         true
       );
+    } finally {
+      client.release();
     }
   }
   public async viewBankFundV1(userData: any, tokendata: any): Promise<any> {
-    console.log("Repository Started");
     const client: PoolClient = await getClient();
     const token = { id: tokendata.id }; // Extract token ID
 
@@ -1560,10 +1552,11 @@ export class adminRepository {
         },
         true
       );
+    } finally {
+      client.release();
     }
   }
   public async getBankFundListV1(userData: any, tokendata: any): Promise<any> {
-    console.log("Repository Started");
     const client: PoolClient = await getClient();
     const token = { id: tokendata.id }; // Extract token ID
     try {
@@ -1599,10 +1592,11 @@ export class adminRepository {
         },
         true
       );
+    } finally {
+      client.release();
     }
   }
   public async addLoanOptionV1(userData: any, tokendata: any): Promise<any> {
-    console.log("Repository Started");
     const token = { id: tokendata.id }; // Extract token ID
 
     try {
@@ -1634,11 +1628,9 @@ export class adminRepository {
     }
   }
   public async addLoanV1(userData: any, tokendata: any): Promise<any> {
-    console.log("Repository Started");
     const client: PoolClient = await getClient();
-    const token = { id: tokendata.id }; // Extract token ID
+    const token = { id: tokendata.id };
     try {
-      console.log("userData line ----- 1641", userData);
       await client.query("BEGIN");
 
       const {
@@ -1659,134 +1651,243 @@ export class adminRepository {
       const productDetails = await executeQuery(getProductsDurationQuery, [
         refProductId,
       ]);
-
       const getBankAccount = await executeQuery(getBankQuery, [refBankId]);
-      console.log(
-        "getBankAccount-------------------------------------------------1572",
-        getBankAccount
-      );
-
-      // Extract balance
       const { refBalance } = getBankAccount[0];
-      console.log(
-        "refBalance-----------------------------------------------------1576",
-        refBalance
-      );
-
-      // Validate bank balance
       if (refBalance < refLoanAmount) {
         throw new Error("Insufficient balance in the bank.");
       }
-
       if (!productDetails || productDetails.length === 0) {
         throw new Error("Invalid Product ID. No duration found.");
       }
-
       const durationInMonths = parseInt(
         productDetails[0].refProductDuration,
         10
       );
-      console.log(
-        "durationInMonth------------------------------------------1591",
-        durationInMonths
-      );
-
       if (!refRepaymentStartDate) {
         throw new Error("Missing refRepaymentStartDate.");
       }
-
       const repaymentDate = new Date(refRepaymentStartDate);
-      console.log("repaymentDate", repaymentDate);
       repaymentDate.setMonth(repaymentDate.getMonth() + durationInMonths);
       const refLoanDueDate = repaymentDate.toISOString().split("T")[0];
-      console.log("refLoanDueDate", refLoanDueDate);
-
       const getInterest = parseFloat(interest);
-      console.log(
-        "getInterest--------------------------------------",
-        getInterest
-      );
       const getPayable = parseFloat(refLoanAmount) + getInterest;
-      console.log(
-        "getPayable-----------------------------------------------------------",
-        getPayable
-      );
+      let result;
+      let refNewLoanId;
+      if (refLoanExt == 1) {
+        const params1 = [
+          userId,
+          refProductId,
+          refLoanAmount,
+          refLoanDueDate,
+          refPayementType,
+          refRepaymentStartDate,
+          refLoanStatus,
+          formatYearMonthDate(CurrentTime()),
+          refBankId,
+          refLoanBalance,
+          isInterestFirst,
+          interest,
+          getPayable,
+          CurrentTime(),
+          "Admin",
+          refLoanExt,
+          refExLoanId,
+        ];
 
-      const result = await client.query(addloanQuery, [
-        userId,
-        refProductId,
-        refLoanAmount,
-        refLoanDueDate,
-        refPayementType,
-        refRepaymentStartDate,
-        refLoanStatus,
-        processFixedDate().original,
-        refBankId,
-        refLoanBalance,
-        isInterestFirst,
-        interest,
-        getPayable,
-        CurrentTime(),
-        "Admin",
-        refLoanExt,
-        refExLoanId,
-      ]);
+        result = await client.query(addloanQuery, params1);
 
-      const { refLoanId } = result.rows[0]; // Access refLoanId from the result
+        const { refLoanId } = result.rows[0];
+        refNewLoanId = refLoanId;
+        const params2 = [
+          refPayementType === "cash" ? 0 : refBankId,
+          formatYearMonthDate(CurrentTime()),
+          "debit",
+          refLoanAmount,
+          refLoanId,
+          "loan",
+          CurrentTime(),
+          "Admin",
+          refPayementType === "bank" ? "online" : "cash",
+        ];
+        await client.query(updateBankFundQuery, params2);
+        if (isInterestFirst) {
+          const paramsCredit = [
+            refPayementType === "cash" ? 0 : refBankId,
+            formatYearMonthDate(CurrentTime()),
+            "credit",
+            refLoanAmount - refLoanBalance,
+            refLoanId,
+            "fund",
+            CurrentTime(),
+            "Admin",
+            refPayementType === "bank" ? "online" : "cash",
+          ];
 
-      const updateFund = await client.query(updateBankFundQuery, [
-        refBankId,
-        processFixedDate().original,
-        refLoanBalance,
-        refLoanId,
-        CurrentTime(),
-        "Admin",
-      ]);
-      console.log("updateFund line 1662");
+          await client.query(updateBankFundQuery, paramsCredit);
+        }
+        const params3 = [refLoanBalance, refBankId, CurrentTime(), "Admin"];
+        await client.query(updateBankAccountDebitQuery, params3);
+      } else if (refLoanExt == 2) {
+        await client.query(updateLoan, [
+          refExLoanId,
+          3,
+          CurrentTime(),
+          "Admin",
+        ]);
+        const params1 = [
+          userId,
+          refProductId,
+          refLoanAmount,
+          refLoanDueDate,
+          refPayementType,
+          refRepaymentStartDate,
+          refLoanStatus,
+          formatYearMonthDate(CurrentTime()),
+          refBankId,
+          refLoanBalance,
+          isInterestFirst,
+          interest,
+          getPayable,
+          CurrentTime(),
+          "Admin",
+          refLoanExt,
+          refExLoanId,
+        ];
+        console.log("params1 line ----- 1776", params1);
+        result = await client.query(addloanQuery, params1);
+        const loanBalance = await executeQuery(getLoanBalance, [refExLoanId]);
+        console.log("loanBalance line ----- 1779", loanBalance);
+        const { refLoanId } = result.rows[0];
+        refNewLoanId = refLoanId;
 
-      const updateBalance = await client.query(updateBankAccountDebitQuery, [
-        refLoanBalance,
-        refBankId,
-        CurrentTime(),
-        "Admin",
-      ]);
-      console.log("updateBalance", updateBalance);
-      console.log("updateBalance checking line 1668");
+        console.log("refLoanAmount", refLoanAmount);
+        console.log("refLoanBalance", refLoanBalance);
+        console.log(
+          "loanBalance[0].Balance_Amount",
+          loanBalance[0].Balance_Amount
+        );
 
-      const loanResult = await client.query(loanQuery, [refLoanId]);
+        const amt =
+          refLoanAmount -
+          refLoanBalance +
+          parseInt(loanBalance[0].Balance_Amount);
+        console.log("amt", amt);
 
+        if (refLoanAmount <= amt) {
+          throw new Error("The Loan Amount is Very Low to Topup");
+        }
+
+        const paramsLoanCredit = [
+          refPayementType === "cash" ? 0 : refBankId,
+          formatYearMonthDate(CurrentTime()),
+          "credit",
+          loanBalance[0].Balance_Amount,
+          refExLoanId,
+          "fund",
+          CurrentTime(),
+          "Admin",
+          refPayementType === "bank" ? "online" : "cash",
+        ];
+        console.log("paramsLoanCredit", paramsLoanCredit);
+        await client.query(updateBankFundQuery, paramsLoanCredit);
+        const paramsLoanDebit = [
+          refPayementType === "cash" ? 0 : refBankId,
+          formatYearMonthDate(CurrentTime()),
+          "debit",
+          refLoanAmount,
+          refLoanId,
+          "loan",
+          CurrentTime(),
+          "Admin",
+          refPayementType === "bank" ? "online" : "cash",
+        ];
+        console.log("paramsLoanDebit line ----- 1807", paramsLoanDebit);
+        if (isInterestFirst) {
+          console.log(
+            " -> Line Number ----------------------------------- 1809"
+          );
+          const paramsCredit = [
+            refPayementType === "cash" ? 0 : refBankId,
+            formatYearMonthDate(CurrentTime()),
+            "credit",
+            refLoanAmount - refLoanBalance,
+            refLoanId,
+            "fund",
+            CurrentTime(),
+            "Admin",
+            refPayementType === "bank" ? "online" : "cash",
+          ];
+
+          console.log("paramsCredit line --------- 1834", paramsCredit);
+          await client.query(updateBankFundQuery, paramsCredit);
+        }
+        await client.query(updateBankFundQuery, paramsLoanDebit);
+
+        const paramsUpdateBankAmt = [
+          refLoanAmount - loanBalance[0].Balance_Amount,
+          refBankId,
+          CurrentTime(),
+          "Admin",
+        ];
+        const updateBalance = await client.query(
+          updateBankAccountDebitQuery,
+          paramsUpdateBankAmt
+        );
+      } else if (refLoanExt == 3) {
+        const extensionCheck = await executeQuery(checkLoanExtension, [
+          CurrentTime(),
+          refExLoanId,
+        ]);
+        if (extensionCheck.length === 0 || extensionCheck[0].check === false) {
+          throw new Error("This is not a loan due month ");
+        }
+
+        await client.query(updateLoan, [
+          refExLoanId,
+          4,
+          CurrentTime(),
+          "Admin",
+        ]);
+
+        const loanBalance = await executeQuery(getLoanBalance, [refExLoanId]);
+
+        const params1 = [
+          userId,
+          refProductId,
+          loanBalance[0].Balance_Amount,
+          refLoanDueDate,
+          refPayementType,
+          refRepaymentStartDate,
+          refLoanStatus,
+          formatYearMonthDate(CurrentTime()),
+          refBankId,
+          refLoanBalance,
+          isInterestFirst,
+          interest,
+          getPayable,
+          CurrentTime(),
+          "Admin",
+          refLoanExt,
+          refExLoanId,
+        ];
+        result = await client.query(addloanQuery, params1);
+        const { refLoanId } = result.rows[0];
+        refNewLoanId = refLoanId;
+      }
+      const loanResult = await client.query(loanQuery, [refNewLoanId]);
       if (loanResult.rows.length === 0) {
         throw new Error("Loan not found.");
       }
-
-      // Fetch product interest from refProducts table
       const productResult = await client.query(getProductInterestQuery, [
         refProductId,
       ]);
-
       if (productResult.rows.length === 0) {
         throw new Error("Product not found.");
       }
-
-      const { refProductInterest } = productResult.rows[0];
-
-      // Calculate total interest amount for the loan
-      const totalInterestAmount = (refProductInterest / 100) * refLoanAmount;
-
-      // Calculate total repayment monthsw
       const monthDifference = getMonthDifference(
         refRepaymentStartDate,
         refLoanDueDate
       );
-
-      // Monthly interest amount (split equally across months)
-      const monthlyInterest =
-        Math.round((totalInterestAmount / monthDifference) * 100) / 100; // Rounded to 2 decimal places
-
-      // Monthly principal amount (if not interest first)
-      const monthlyPrincipal =
-        Math.round((refLoanAmount / monthDifference) * 100) / 100; // Rounded to 2 decimal places
-
       const repaymentParams = [];
       let currentRepaymentDate = new Date(refRepaymentStartDate);
 
@@ -1797,32 +1898,15 @@ export class adminRepository {
           .toString()
           .padStart(2, "0")}`;
 
-        // Split the interest across all months
-        const interestAmount = monthlyInterest; // Already rounded
-        const principalAmount =
-          isInterestFirst && i === 0 ? refLoanAmount : monthlyPrincipal; // Already rounded
-
-        // repaymentParams.push([
-        //   refLoanId,
-        //   repaymentDate,
-        //   refLoanAmount,
-        //   null,
-        //   null,
-        //   "Pending",
-        //   1 + i,
-        //   Math.round((interestAmount + principalAmount) * 100) / 100, // Ensure sum is also rounded
-        //   CurrentTime(),
-        //   "Admin",
-        // ]);
         repaymentParams.push([
-          refLoanId,
+          refNewLoanId,
           repaymentDate,
           refLoanAmount,
           null,
           null,
           "Pending",
           1 + i,
-          0, // Ensure sum is also rounded
+          0,
           CurrentTime(),
           "Admin",
         ]);
@@ -1830,13 +1914,11 @@ export class adminRepository {
         currentRepaymentDate.setMonth(currentRepaymentDate.getMonth() + 1);
       }
 
-      // Insert repayment schedules into the database
       for (const params of repaymentParams) {
         await client.query(insertRepaymentQuery, params);
       }
 
-      await client.query("COMMIT"); // Commit Transaction
-
+      await client.query("COMMIT");
       console.log("Repository return Responce");
       return encrypt(
         {
@@ -1911,7 +1993,6 @@ export class adminRepository {
   //   }
   // }
   public async updateLoanV1(userData: any, tokendata: any): Promise<any> {
-    console.log("Repository Started");
     const client: PoolClient = await getClient();
     const token = { id: tokendata.id }; // Extract token ID
     try {
@@ -1982,7 +2063,6 @@ export class adminRepository {
   }
 
   public async getLoanListV1(userData: any, tokendata: any): Promise<any> {
-    console.log("Repository Started");
     const client: PoolClient = await getClient();
     const token = { id: tokendata.id }; // Extract token ID
     try {
@@ -2018,10 +2098,11 @@ export class adminRepository {
         },
         true
       );
+    } finally {
+      client.release();
     }
   }
   public async getLoanAndUserV1(userData: any, tokendata: any): Promise<any> {
-    console.log("Repository Started");
     const client: PoolClient = await getClient();
     const token = { id: tokendata.id }; // Extract token ID
 
@@ -2061,10 +2142,11 @@ export class adminRepository {
         },
         true
       );
+    } finally {
+      client.release();
     }
   }
   public async getLoanV1(userData: any, tokendata: any): Promise<any> {
-    console.log("Repository Started");
     const client: PoolClient = await getClient();
     const token = { id: tokendata.id }; // Extract token ID
 
@@ -2106,6 +2188,8 @@ export class adminRepository {
         },
         true
       );
+    } finally {
+      client.release();
     }
   }
   // public async rePaymentScheduleV1(
@@ -2230,7 +2314,6 @@ export class adminRepository {
     userData: any,
     tokendata: any
   ): Promise<any> {
-    console.log("Repository Started");
     const client: PoolClient = await getClient();
     const token = { id: tokendata.id };
 
@@ -2341,7 +2424,6 @@ export class adminRepository {
     }
   }
   public async userFollowUpV1(userData: any, tokendata: any): Promise<any> {
-    console.log("Repository Started");
     const token = { id: tokendata.id };
     try {
       const updateUserStatusResult = await executeQuery(updateUserStatusQuery, [
@@ -2377,7 +2459,6 @@ export class adminRepository {
     }
   }
   public async updateFollowUpV1(userData: any, tokendata: any): Promise<any> {
-    console.log("Repository Started");
     const client: PoolClient = await getClient();
     const token = { id: tokendata.id }; // Extract token ID
     try {
@@ -2428,7 +2509,6 @@ export class adminRepository {
     userData: any,
     tokendata: any
   ): Promise<any> {
-    console.log("Repository Started");
     const client: PoolClient = await getClient();
     const token = { id: tokendata.id }; // Extract token ID
 
@@ -2467,10 +2547,11 @@ export class adminRepository {
         },
         true
       );
+    } finally {
+      client.release();
     }
   }
   public async addPaymentV1(paymentData: any, tokendata: any): Promise<any> {
-    console.log("Repository Started");
     const client: PoolClient = await getClient();
     const token = { id: tokendata.id };
 
@@ -2552,7 +2633,6 @@ export class adminRepository {
     }
   }
   public async listUnPaidV1(userData: any, tokendata: any): Promise<any> {
-    console.log("Repository Started");
     const client: PoolClient = await getClient();
     const token = { id: tokendata.id }; // Extract token ID
 
@@ -2586,13 +2666,15 @@ export class adminRepository {
         },
         true
       );
+    } finally {
+      client.release();
     }
   }
+
   public async listOfUnPaidUsersV1(
     userData: any,
     tokendata: any
   ): Promise<any> {
-    console.log("Repository Started");
     const client: PoolClient = await getClient();
     const token = { id: tokendata.id }; // Extract token ID
 
@@ -2626,6 +2708,8 @@ export class adminRepository {
         },
         true
       );
+    } finally {
+      client.release();
     }
   }
 }
