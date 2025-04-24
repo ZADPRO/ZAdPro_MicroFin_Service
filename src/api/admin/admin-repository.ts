@@ -72,6 +72,7 @@ import {
   updateLoan,
   getLoanBalance,
   checkLoanExtension,
+  getMonthDuration,
 } from "./query";
 import { buildUpdateQuery, getChanges } from "../../helper/buildquery";
 import { reLabelText } from "../../helper/Label";
@@ -1627,6 +1628,347 @@ export class adminRepository {
       );
     }
   }
+  // public async addLoanV1(userData: any, tokendata: any): Promise<any> {
+  //   const client: PoolClient = await getClient();
+  //   const token = { id: tokendata.id };
+  //   try {
+  //     await client.query("BEGIN");
+
+  //     const {
+  //       refProductId,
+  //       refLoanAmount,
+  //       refPayementType,
+  //       refRepaymentStartDate,
+  //       refLoanStatus,
+  //       refBankId,
+  //       refLoanBalance,
+  //       isInterestFirst,
+  //       interest,
+  //       userId,
+  //       refLoanExt,
+  //       refExLoanId,
+  //     } = userData;
+
+  //     const productDetails = await executeQuery(getProductsDurationQuery, [
+  //       refProductId,
+  //     ]);
+  //     const getBankAccount = await executeQuery(getBankQuery, [refBankId]);
+  //     const { refBalance } = getBankAccount[0];
+  //     if (refBalance < refLoanAmount) {
+  //       throw new Error("Insufficient balance in the bank.");
+  //     }
+  //     if (!productDetails || productDetails.length === 0) {
+  //       throw new Error("Invalid Product ID. No duration found.");
+  //     }
+  //     const durationInMonths = parseInt(
+  //       productDetails[0].refProductDuration,
+  //       10
+  //     );
+  //     if (!refRepaymentStartDate) {
+  //       throw new Error("Missing refRepaymentStartDate.");
+  //     }
+  //     const repaymentDate = new Date(refRepaymentStartDate);
+  //     repaymentDate.setMonth(repaymentDate.getMonth() + durationInMonths);
+  //     const refLoanDueDate = repaymentDate.toISOString().split("T")[0];
+  //     const getInterest = parseFloat(interest);
+  //     const getPayable = parseFloat(refLoanAmount) + getInterest;
+  //     let result;
+  //     let refNewLoanId;
+  //     if (refLoanExt == 1) {
+  //       const params1 = [
+  //         userId,
+  //         refProductId,
+  //         refLoanAmount,
+  //         refLoanDueDate,
+  //         refPayementType,
+  //         refRepaymentStartDate,
+  //         refLoanStatus,
+  //         formatYearMonthDate(CurrentTime()),
+  //         refBankId,
+  //         refLoanBalance,
+  //         isInterestFirst,
+  //         interest,
+  //         getPayable,
+  //         CurrentTime(),
+  //         "Admin",
+  //         refLoanExt,
+  //         refExLoanId,
+  //       ];
+
+  //       result = await client.query(addloanQuery, params1);
+
+  //       const { refLoanId } = result.rows[0];
+  //       refNewLoanId = refLoanId;
+  //       const params2 = [
+  //         refPayementType === "cash" ? 0 : refBankId,
+  //         formatYearMonthDate(CurrentTime()),
+  //         "debit",
+  //         refLoanAmount,
+  //         refLoanId,
+  //         "loan",
+  //         CurrentTime(),
+  //         "Admin",
+  //         refPayementType === "bank" ? "online" : "cash",
+  //       ];
+  //       await client.query(updateBankFundQuery, params2);
+  //       if (isInterestFirst) {
+  //         const paramsCredit = [
+  //           refPayementType === "cash" ? 0 : refBankId,
+  //           formatYearMonthDate(CurrentTime()),
+  //           "credit",
+  //           refLoanAmount - refLoanBalance,
+  //           refLoanId,
+  //           "fund",
+  //           CurrentTime(),
+  //           "Admin",
+  //           refPayementType === "bank" ? "online" : "cash",
+  //         ];
+
+  //         await client.query(updateBankFundQuery, paramsCredit);
+  //       }
+  //       const params3 = [refLoanBalance, refBankId, CurrentTime(), "Admin"];
+  //       await client.query(updateBankAccountDebitQuery, params3);
+  //     } else if (refLoanExt == 2) {
+  //       await client.query(updateLoan, [
+  //         refExLoanId,
+  //         3,
+  //         CurrentTime(),
+  //         "Admin",
+  //       ]);
+  //       const monthDuration = await executeQuery(getMonthDuration, [
+  //         refExLoanId,
+  //         CurrentTime(),
+  //       ]);
+  //       console.log("monthDuration line ------ 1741", monthDuration);
+  //       const params1 = [
+  //         userId,
+  //         refProductId,
+  //         refLoanAmount,
+  //         refLoanDueDate,
+  //         refPayementType,
+  //         refRepaymentStartDate,
+  //         refLoanStatus,
+  //         formatYearMonthDate(CurrentTime()),
+  //         refBankId,
+  //         refLoanBalance,
+  //         isInterestFirst,
+  //         interest,
+  //         getPayable,
+  //         CurrentTime(),
+  //         "Admin",
+  //         refLoanExt,
+  //         refExLoanId,
+  //       ];
+  //       console.log("params1 line ----- 1776", params1);
+  //       result = await client.query(addloanQuery, params1);
+  //       const loanBalance = await executeQuery(getLoanBalance, [refExLoanId]);
+  //       console.log("loanBalance line ----- 1779", loanBalance);
+  //       const { refLoanId } = result.rows[0];
+  //       refNewLoanId = refLoanId;
+
+  //       console.log("refLoanAmount", refLoanAmount);
+  //       console.log("refLoanBalance", refLoanBalance);
+  //       console.log(
+  //         "loanBalance[0].Balance_Amount",
+  //         loanBalance[0].Balance_Amount
+  //       );
+
+  //       const amt =
+  //         refLoanAmount -
+  //         refLoanBalance +
+  //         parseInt(loanBalance[0].Balance_Amount);
+  //       console.log("amt", amt);
+
+  //       if (refLoanAmount <= amt) {
+  //         throw new Error("The Loan Amount is Very Low to Topup");
+  //       }
+
+  //       const paramsLoanCredit = [
+  //         refPayementType === "cash" ? 0 : refBankId,
+  //         formatYearMonthDate(CurrentTime()),
+  //         "credit",
+  //         loanBalance[0].Balance_Amount,
+  //         refExLoanId,
+  //         "fund",
+  //         CurrentTime(),
+  //         "Admin",
+  //         refPayementType === "bank" ? "online" : "cash",
+  //       ];
+  //       console.log("paramsLoanCredit", paramsLoanCredit);
+  //       await client.query(updateBankFundQuery, paramsLoanCredit);
+  //       const paramsLoanDebit = [
+  //         refPayementType === "cash" ? 0 : refBankId,
+  //         formatYearMonthDate(CurrentTime()),
+  //         "debit",
+  //         refLoanAmount,
+  //         refLoanId,
+  //         "loan",
+  //         CurrentTime(),
+  //         "Admin",
+  //         refPayementType === "bank" ? "online" : "cash",
+  //       ];
+  //       console.log("paramsLoanDebit line ----- 1807", paramsLoanDebit);
+  //       if (isInterestFirst) {
+  //         console.log(
+  //           " -> Line Number ----------------------------------- 1809"
+  //         );
+
+  //         console.log('refLoanAmount', refLoanAmount)
+  //         console.log('refLoanBalance', refLoanBalance)
+  //         console.log('monthDuration[0].refLoanAmount', monthDuration[0].refLoanAmount)
+  //         console.log('monthDuration[0].refProductInterest', monthDuration[0].refProductInterest)
+  //         console.log('parseInt(monthDuration[0].month_diff)', parseInt(monthDuration[0].month_diff))
+
+  //         const interestAmt =
+  //           refLoanAmount -
+  //           refLoanBalance -
+  //           parseInt(monthDuration[0].refLoanAmount) *
+  //             (parseInt(monthDuration[0].refProductInterest) / 100) *
+  //             parseInt(monthDuration[0].month_diff);
+  //         console.log("interestAmt line ------ 1822", interestAmt);
+  //         const paramsCredit = [
+  //           refPayementType === "cash" ? 0 : refBankId,
+  //           formatYearMonthDate(CurrentTime()),
+  //           "credit",
+  //           // refLoanAmount - refLoanBalance,
+  //           interestAmt,
+  //           refLoanId,
+  //           "fund",
+  //           CurrentTime(),
+  //           "Admin",
+  //           refPayementType === "bank" ? "online" : "cash",
+  //         ];
+
+  //         console.log("paramsCredit line --------- 1834", paramsCredit);
+  //         await client.query(updateBankFundQuery, paramsCredit);
+  //       }
+  //       await client.query(updateBankFundQuery, paramsLoanDebit);
+
+  //       const paramsUpdateBankAmt = [
+  //         refLoanAmount - loanBalance[0].Balance_Amount,
+  //         refBankId,
+  //         CurrentTime(),
+  //         "Admin",
+  //       ];
+  //       const updateBalance = await client.query(
+  //         updateBankAccountDebitQuery,
+  //         paramsUpdateBankAmt
+  //       );
+  //     } else if (refLoanExt == 3) {
+  //       const extensionCheck = await executeQuery(checkLoanExtension, [
+  //         CurrentTime(),
+  //         refExLoanId,
+  //       ]);
+  //       if (extensionCheck.length === 0 || extensionCheck[0].check === false) {
+  //         throw new Error("This is not a loan due month ");
+  //       }
+
+  //       await client.query(updateLoan, [
+  //         refExLoanId,
+  //         4,
+  //         CurrentTime(),
+  //         "Admin",
+  //       ]);
+
+  //       const loanBalance = await executeQuery(getLoanBalance, [refExLoanId]);
+
+  //       const params1 = [
+  //         userId,
+  //         refProductId,
+  //         loanBalance[0].Balance_Amount,
+  //         refLoanDueDate,
+  //         refPayementType,
+  //         refRepaymentStartDate,
+  //         refLoanStatus,
+  //         formatYearMonthDate(CurrentTime()),
+  //         refBankId,
+  //         refLoanBalance,
+  //         isInterestFirst,
+  //         interest,
+  //         getPayable,
+  //         CurrentTime(),
+  //         "Admin",
+  //         refLoanExt,
+  //         refExLoanId,
+  //       ];
+  //       result = await client.query(addloanQuery, params1);
+  //       const { refLoanId } = result.rows[0];
+  //       refNewLoanId = refLoanId;
+  //     }
+  //     const loanResult = await client.query(loanQuery, [refNewLoanId]);
+  //     if (loanResult.rows.length === 0) {
+  //       throw new Error("Loan not found.");
+  //     }
+  //     const productResult = await client.query(getProductInterestQuery, [
+  //       refProductId,
+  //     ]);
+  //     if (productResult.rows.length === 0) {
+  //       throw new Error("Product not found.");
+  //     }
+  //     const monthDifference = getMonthDifference(
+  //       refRepaymentStartDate,
+  //       refLoanDueDate
+  //     );
+  //     const repaymentParams = [];
+  //     let currentRepaymentDate = new Date(refRepaymentStartDate);
+
+  //     for (let i = 0; i < monthDifference; i++) {
+  //       const repaymentYear = currentRepaymentDate.getFullYear();
+  //       const repaymentMonth = currentRepaymentDate.getMonth() + 1;
+  //       const repaymentDate = `${repaymentYear}-${repaymentMonth
+  //         .toString()
+  //         .padStart(2, "0")}`;
+
+  //       repaymentParams.push([
+  //         refNewLoanId,
+  //         repaymentDate,
+  //         refLoanAmount,
+  //         null,
+  //         null,
+  //         "Pending",
+  //         1 + i,
+  //         0,
+  //         CurrentTime(),
+  //         "Admin",
+  //       ]);
+
+  //       currentRepaymentDate.setMonth(currentRepaymentDate.getMonth() + 1);
+  //     }
+
+  //     for (const params of repaymentParams) {
+  //       await client.query(insertRepaymentQuery, params);
+  //     }
+
+  //     await client.query("COMMIT");
+  //     console.log("Repository return Responce");
+  //     return encrypt(
+  //       {
+  //         success: true,
+  //         message: "loan details inserted successfully.",
+  //         data: result,
+  //         token: generateTokenWithoutExpire(token, true),
+  //       },
+  //       true
+  //     );
+  //   } catch (error: any) {
+  //     await client.query("ROLLBACK");
+
+  //     console.error("Error inserting loan details:", error);
+
+  //     console.log("Repository return Responce");
+  //     return encrypt(
+  //       {
+  //         success: false,
+  //         message: "loan insertion failed",
+  //         error: error.message || "An unknown error occurred",
+  //         token: generateTokenWithoutExpire(token, true),
+  //       },
+  //       true
+  //     );
+  //   } finally {
+  //     client.release();
+  //   }
+  // }
   public async addLoanV1(userData: any, tokendata: any): Promise<any> {
     const client: PoolClient = await getClient();
     const token = { id: tokendata.id };
@@ -1646,6 +1988,7 @@ export class adminRepository {
         userId,
         refLoanExt,
         refExLoanId,
+        refInterestMonth,
       } = userData;
 
       const productDetails = await executeQuery(getProductsDurationQuery, [
@@ -1734,6 +2077,11 @@ export class adminRepository {
           CurrentTime(),
           "Admin",
         ]);
+        const monthDuration = await executeQuery(getMonthDuration, [
+          refExLoanId,
+          CurrentTime(),
+        ]);
+        console.log("monthDuration line ------ 1741", monthDuration);
         const params1 = [
           userId,
           refProductId,
@@ -1752,6 +2100,7 @@ export class adminRepository {
           "Admin",
           refLoanExt,
           refExLoanId,
+          refInterestMonth,
         ];
         console.log("params1 line ----- 1776", params1);
         result = await client.query(addloanQuery, params1);
@@ -1806,11 +2155,35 @@ export class adminRepository {
           console.log(
             " -> Line Number ----------------------------------- 1809"
           );
+
+          console.log("refLoanAmount", refLoanAmount);
+          console.log("refLoanBalance", refLoanBalance);
+          console.log(
+            "monthDuration[0].refLoanAmount",
+            monthDuration[0].refLoanAmount
+          );
+          console.log(
+            "monthDuration[0].refProductInterest",
+            monthDuration[0].refProductInterest
+          );
+          console.log(
+            "parseInt(monthDuration[0].month_diff)",
+            parseInt(monthDuration[0].month_diff)
+          );
+
+          const interestAmt =
+            refLoanAmount -
+            refLoanBalance -
+            parseInt(monthDuration[0].refLoanAmount) *
+              (parseInt(monthDuration[0].refProductInterest) / 100) *
+              parseInt(monthDuration[0].month_diff);
+          console.log("interestAmt line ------ 1822", interestAmt);
           const paramsCredit = [
             refPayementType === "cash" ? 0 : refBankId,
             formatYearMonthDate(CurrentTime()),
             "credit",
-            refLoanAmount - refLoanBalance,
+            // refLoanAmount - refLoanBalance,
+            interestAmt,
             refLoanId,
             "fund",
             CurrentTime(),
@@ -1949,49 +2322,6 @@ export class adminRepository {
     }
   }
 
-  // public async updateLoanV1(userData: any, tokendata: any): Promise<any> {
-  //   const client: PoolClient = await getClient();
-  //   try {
-  //     const { userId,
-  //       loanStopStatus
-  //     } = userData.userData;
-
-  //     const loanData = await executeQuery(getLoanQuery, [userId]);
-  //     console.log("loanData", loanData);
-
-  //     const allPaid = loanData.every((row: any) => row.refReStatus === "Paid");
-  //     console.log("allPaid", allPaid);
-
-  //     if (allPaid) {
-  //       const updateStatus = await executeQuery(updateLoanStatusQuery, [
-  //         userId,
-  //       ]);
-  //       console.log("updateStatus", updateStatus);
-  //     }
-
-  //     return encrypt(
-  //       {
-  //         success: true,
-  //         message: "Loan updated successfully",
-  //       },
-  //       false
-  //     );
-  //   } catch (error) {
-  //     console.error("Error updating loan:", error);
-
-  //     await client.query("ROLLBACK");
-
-  //     return encrypt(
-  //       {
-  //         success: false,
-  //         message: "Update failed",
-  //       },
-  //       false
-  //     );
-  //   } finally {
-  //     client.release();
-  //   }
-  // }
   public async updateLoanV1(userData: any, tokendata: any): Promise<any> {
     const client: PoolClient = await getClient();
     const token = { id: tokendata.id }; // Extract token ID

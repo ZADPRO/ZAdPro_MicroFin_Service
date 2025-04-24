@@ -356,10 +356,11 @@ export const addloanQuery = `INSERT INTO
     "createdAt",
     "createdBy",
     "refLoanExt",
-    "refExLoanId"
+    "refExLoanId",
+    "refInterestMonthCount"
   )
 VALUES
-  ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15,$16,$17)
+  ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15,$16,$17,$18)
 RETURNING
   *;`;
 
@@ -670,3 +671,22 @@ FROM
   public."refLoan" rl
 WHERE
   rl."refLoanId" = $2;`;
+
+export const getMonthDuration = `SELECT
+  rl."refLoanId",
+  (
+    DATE_PART('year', AGE(
+      TO_TIMESTAMP($2, 'DD/MM/YYYY, HH12:MI:SS AM')::timestamp,
+      rl."refRepaymentStartDate"::timestamp
+    )) * 12 +
+    DATE_PART('month', AGE(
+      TO_TIMESTAMP($2, 'DD/MM/YYYY, HH12:MI:SS AM')::timestamp,
+      rl."refRepaymentStartDate"::timestamp
+    ))
+  ) + 1 AS "month_diff",
+  rp."refProductInterest",rp."refProductDuration",rl."refLoanAmount",rl."refInterestMonthCount"
+FROM
+  public."refLoan" rl
+  LEFT JOIN public."refProducts" rp ON CAST (rp."refProductId" AS INTEGER) = rl."refProductId"::INTEGER
+WHERE
+  rl."refLoanId" = $1;`;
