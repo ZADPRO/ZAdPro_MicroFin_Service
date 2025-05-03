@@ -1,0 +1,135 @@
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-28T03:51:15.581Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-28T04:14:02.515Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-28T04:14:07.998Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-28T04:14:20.457Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-28T04:14:28.726Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-28T04:14:41.270Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/adminRoutes/adminLogin","timestamp":"2025-04-28T04:14:45.864Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/refDashboard/Count","timestamp":"2025-04-28T04:14:46.438Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/refDashboard/Count","timestamp":"2025-04-28T04:14:46.454Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/adminRoutes/getLoanAndUser","timestamp":"2025-04-28T04:14:48.966Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/adminRoutes/getLoan","timestamp":"2025-04-28T04:14:50.359Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/rePayment/loanDetails","timestamp":"2025-04-28T04:14:50.362Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/adminRoutes/getLoan","timestamp":"2025-04-28T05:15:23.789Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/rePayment/loanDetails","timestamp":"2025-04-28T05:15:23.806Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/adminRoutes/getLoan","timestamp":"2025-04-28T05:41:08.057Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/rePayment/loanDetails","timestamp":"2025-04-28T05:41:08.064Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-28T07:48:11.631Z"}
+{"level":"error","message":"Server not running ---  New route /api/v1/newLoan/selectLoan conflicts with existing /api/v1/newLoan/selectLoan","name":"AssertError","stack":"AssertError: New route /api/v1/newLoan/selectLoan conflicts with existing /api/v1/newLoan/selectLoan\n    at module.exports.internals.Segment.internals.Segment.add (C:\\Users\\VIJAY L\\Desktop\\Finance\\ZAdPro_MicroFin_Service\\node_modules\\@hapi\\call\\lib\\segment.js:47:14)\n    at exports.Router.internals.Router.internals.Router.add (C:\\Users\\VIJAY L\\Desktop\\Finance\\ZAdPro_MicroFin_Service\\node_modules\\@hapi\\call\\lib\\index.js:65:16)\n    at internals.Server._addRoute (C:\\Users\\VIJAY L\\Desktop\\Finance\\ZAdPro_MicroFin_Service\\node_modules\\@hapi\\hapi\\lib\\server.js:529:46)\n    at internals.Server.route (C:\\Users\\VIJAY L\\Desktop\\Finance\\ZAdPro_MicroFin_Service\\node_modules\\@hapi\\hapi\\lib\\server.js:518:22)\n    at C:\\Users\\VIJAY L\\Desktop\\Finance\\ZAdPro_MicroFin_Service\\src\\api\\newLoan\\routes.ts:10:14\n    at new Promise (<anonymous>)\n    at newLoanRoutes.<anonymous> (C:\\Users\\VIJAY L\\Desktop\\Finance\\ZAdPro_MicroFin_Service\\src\\api\\newLoan\\routes.ts:8:12)\n    at Generator.next (<anonymous>)\n    at C:\\Users\\VIJAY L\\Desktop\\Finance\\ZAdPro_MicroFin_Service\\src\\api\\newLoan\\routes.ts:8:71\n    at new Promise (<anonymous>)","timestamp":"2025-04-28T07:48:16.427Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-28T07:48:23.663Z"}
+{"level":"error","message":"Server not running ---  Invalid routeConfig options (post /api/v1/newLoan/selectedLoanDetailsV1) {\n  \"cors\": {\n    \"origin\": [\n      \"*\"\n    ],\n    \"headers\": [\n      \"Accept\",\n      \"Authorization\",\n      \"Content-Type\",\n      \"If-None-Match\"\n    ],\n    \"exposedHeaders\": [\n      \"WWW-Authenticate\",\n      \"Server-Authorization\"\n    ],\n    \"credentials\": true,\n    \"maxAge\": 86400,\n    \"additionalHeaders\": [],\n    \"additionalExposedHeaders\": [],\n    \"preflightStatusCode\": 200\n  },\n  \"security\": {\n    \"hsts\": 15768000,\n    \"xframe\": \"deny\",\n    \"xss\": \"disabled\",\n    \"noOpen\": true,\n    \"noSniff\": true,\n    \"referrer\": false\n  },\n  \"payload\": {\n    \"maxBytes\": 5242880,\n    \"output\": \"data\",\n    \"parse\": true,\n    \"multipart\": false,\n    \"protoAction\": \"error\",\n    \"maxParts\": 1000,\n    \"uploads\": \"C:\\\\Users\\\\VIJAYL~1\\\\AppData\\\\Local\\\\Temp\",\n    \"failAction\": \"error\",\n    \"timeout\": 10000,\n    \"defaultContentType\": \"application/json\",\n    \"compression\": {}\n  },\n  \"cache\": {\n    \"statuses\": [\n      200,\n      204\n    ],\n    \"otherwise\": \"no-cache\"\n  },\n  \"compression\": {},\n  \"ext\": {},\n  \"files\": {\n    \"relativeTo\": \".\"\n  },\n  \"json\": {\n    \"replacer\": null,\n    \"space\": null,\n    \"suffix\": null,\n    \"escape\": false\n  },\n  \"log\": {\n    \"collect\": false\n  },\n  \"response\": {\n    \"disconnectStatusCode\": 499,\n    \"emptyStatusCode\": 204,\n    \"failAction\": \"error\",\n    \"ranges\": true\n  },\n  \"state\": {\n    \"parse\": true,\n    \"failAction\": \"error\"\n  },\n  \"timeout\": {\n    \"server\": false\n  },\n  \"validate\": {\n    \"failAction\": \"error\",\n    \"options\": {}\n  },\n  \"auth\": false,\n  \"description\" \u001b[31m[1]\u001b[0m: \"\"\n}\n\u001b[31m\n[1] \"description\" is not allowed to be empty\u001b[0m","stack":"Error: Invalid routeConfig options (post /api/v1/newLoan/selectedLoanDetailsV1) {\n  \"cors\": {\n    \"origin\": [\n      \"*\"\n    ],\n    \"headers\": [\n      \"Accept\",\n      \"Authorization\",\n      \"Content-Type\",\n      \"If-None-Match\"\n    ],\n    \"exposedHeaders\": [\n      \"WWW-Authenticate\",\n      \"Server-Authorization\"\n    ],\n    \"credentials\": true,\n    \"maxAge\": 86400,\n    \"additionalHeaders\": [],\n    \"additionalExposedHeaders\": [],\n    \"preflightStatusCode\": 200\n  },\n  \"security\": {\n    \"hsts\": 15768000,\n    \"xframe\": \"deny\",\n    \"xss\": \"disabled\",\n    \"noOpen\": true,\n    \"noSniff\": true,\n    \"referrer\": false\n  },\n  \"payload\": {\n    \"maxBytes\": 5242880,\n    \"output\": \"data\",\n    \"parse\": true,\n    \"multipart\": false,\n    \"protoAction\": \"error\",\n    \"maxParts\": 1000,\n    \"uploads\": \"C:\\\\Users\\\\VIJAYL~1\\\\AppData\\\\Local\\\\Temp\",\n    \"failAction\": \"error\",\n    \"timeout\": 10000,\n    \"defaultContentType\": \"application/json\",\n    \"compression\": {}\n  },\n  \"cache\": {\n    \"statuses\": [\n      200,\n      204\n    ],\n    \"otherwise\": \"no-cache\"\n  },\n  \"compression\": {},\n  \"ext\": {},\n  \"files\": {\n    \"relativeTo\": \".\"\n  },\n  \"json\": {\n    \"replacer\": null,\n    \"space\": null,\n    \"suffix\": null,\n    \"escape\": false\n  },\n  \"log\": {\n    \"collect\": false\n  },\n  \"response\": {\n    \"disconnectStatusCode\": 499,\n    \"emptyStatusCode\": 204,\n    \"failAction\": \"error\",\n    \"ranges\": true\n  },\n  \"state\": {\n    \"parse\": true,\n    \"failAction\": \"error\"\n  },\n  \"timeout\": {\n    \"server\": false\n  },\n  \"validate\": {\n    \"failAction\": \"error\",\n    \"options\": {}\n  },\n  \"auth\": false,\n  \"description\" \u001b[31m[1]\u001b[0m: \"\"\n}\n\u001b[31m\n[1] \"description\" is not allowed to be empty\u001b[0m\n    at Object.exports.apply (C:\\Users\\VIJAY L\\Desktop\\Finance\\ZAdPro_MicroFin_Service\\node_modules\\@hapi\\hapi\\lib\\config.js:20:15)\n    at new module.exports.internals.Route (C:\\Users\\VIJAY L\\Desktop\\Finance\\ZAdPro_MicroFin_Service\\node_modules\\@hapi\\hapi\\lib\\route.js:83:32)\n    at internals.Server._addRoute (C:\\Users\\VIJAY L\\Desktop\\Finance\\ZAdPro_MicroFin_Service\\node_modules\\@hapi\\hapi\\lib\\server.js:525:23)\n    at internals.Server.route (C:\\Users\\VIJAY L\\Desktop\\Finance\\ZAdPro_MicroFin_Service\\node_modules\\@hapi\\hapi\\lib\\server.js:518:22)\n    at C:\\Users\\VIJAY L\\Desktop\\Finance\\ZAdPro_MicroFin_Service\\src\\api\\newLoan\\routes.ts:10:14\n    at new Promise (<anonymous>)\n    at newLoanRoutes.<anonymous> (C:\\Users\\VIJAY L\\Desktop\\Finance\\ZAdPro_MicroFin_Service\\src\\api\\newLoan\\routes.ts:8:12)\n    at Generator.next (<anonymous>)\n    at C:\\Users\\VIJAY L\\Desktop\\Finance\\ZAdPro_MicroFin_Service\\src\\api\\newLoan\\routes.ts:8:71\n    at new Promise (<anonymous>)","timestamp":"2025-04-28T07:48:27.854Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-28T07:48:39.709Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-28T07:48:50.266Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-28T07:49:02.622Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-28T07:50:43.148Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-28T07:51:08.985Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-28T07:51:18.608Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-28T07:51:30.377Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-28T07:51:34.361Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-28T07:52:07.108Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/adminRoutes/getLoanAndUser","timestamp":"2025-04-28T09:28:35.166Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-28T09:30:41.271Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-28T09:31:11.633Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-28T09:31:20.321Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-28T09:31:26.944Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/newLoan/selectedLoanDetailsV1","timestamp":"2025-04-28T09:32:52.379Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-28T09:38:13.701Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/newLoan/selectedLoanDetailsV1","timestamp":"2025-04-28T09:38:19.853Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-28T09:58:48.951Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-28T09:58:55.429Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-28T09:59:15.814Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-28T09:59:20.296Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-28T09:59:53.094Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-28T09:59:57.054Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-28T10:00:19.522Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-28T10:02:49.046Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-28T10:02:58.993Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-28T10:03:05.929Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-28T10:05:00.627Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-28T10:05:18.089Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-28T10:05:29.703Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-28T10:05:56.056Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-28T10:06:01.442Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-28T10:06:10.526Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-28T10:06:57.336Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-28T10:07:10.183Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-28T10:07:18.052Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-28T10:07:30.455Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-28T10:07:39.610Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/newLoan/selectedLoanDetailsV1","timestamp":"2025-04-28T10:07:40.462Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-28T10:07:56.889Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-28T10:08:02.762Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/newLoan/selectedLoanDetailsV1","timestamp":"2025-04-28T10:08:06.081Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-28T10:21:58.520Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-28T10:26:09.425Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-28T10:26:14.060Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-28T10:26:45.134Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/adminRoutes/getLoanAndUser","timestamp":"2025-04-28T10:51:32.938Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-28T10:51:59.278Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-28T10:52:03.418Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-28T11:00:56.417Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-28T11:01:30.046Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-28T11:01:39.905Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-28T11:01:43.308Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-28T11:02:30.407Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-28T11:02:55.592Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-28T11:03:00.382Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/newLoan/selectedLoanDetailsV1","timestamp":"2025-04-28T11:03:26.980Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-28T11:04:14.259Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-28T11:21:45.843Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-28T11:22:13.422Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-28T11:23:10.544Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-28T11:23:35.346Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-28T11:24:17.767Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-28T11:24:40.822Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-28T11:24:52.456Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-28T11:25:03.512Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/newLoan/selectedLoanDetailsV1","timestamp":"2025-04-28T11:25:04.219Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/newLoan/selectedLoanDetailsV1","timestamp":"2025-04-28T11:25:05.808Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-28T11:25:30.206Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-28T11:25:37.360Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/newLoan/selectedLoanDetailsV1","timestamp":"2025-04-28T11:25:41.844Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-28T11:26:10.643Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-28T11:26:14.527Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/newLoan/selectedLoanDetailsV1","timestamp":"2025-04-28T11:26:16.903Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-28T11:26:47.847Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-28T11:26:53.419Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/newLoan/selectedLoanDetailsV1","timestamp":"2025-04-28T11:27:03.124Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-28T11:27:26.543Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/newLoan/selectedLoanDetailsV1","timestamp":"2025-04-28T11:27:28.526Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-28T11:40:05.757Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-28T11:40:51.011Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-28T11:42:24.905Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-28T11:42:40.244Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-28T11:42:47.801Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-28T11:43:00.361Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-28T11:43:34.232Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-28T11:43:57.934Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-28T11:44:16.853Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-28T11:44:26.503Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/newLoan/selectedLoanDetailsV1","timestamp":"2025-04-28T11:44:32.095Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-28T11:48:38.394Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/newLoan/selectedLoanDetailsV1","timestamp":"2025-04-28T11:48:38.624Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-28T11:50:42.554Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/newLoan/selectedLoanDetailsV1","timestamp":"2025-04-28T11:50:44.675Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-28T11:52:08.428Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-28T11:52:13.766Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-28T11:52:35.708Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-28T11:53:11.163Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-28T11:53:15.187Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-28T11:53:33.096Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-28T11:53:45.586Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-28T11:54:09.045Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-28T11:54:15.285Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-28T11:54:40.243Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-28T11:54:47.522Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-28T11:54:51.737Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/newLoan/selectedLoanDetailsV1","timestamp":"2025-04-28T11:54:55.922Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-28T12:22:52.900Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-28T16:14:05.616Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/adminRoutes/adminLogin","timestamp":"2025-04-28T16:25:58.168Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/refDashboard/Count","timestamp":"2025-04-28T16:25:59.156Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/refDashboard/Count","timestamp":"2025-04-28T16:25:59.192Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/newLoan/selectedLoanDetailsV1","timestamp":"2025-04-28T16:40:37.012Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/refDashboard/Count","timestamp":"2025-04-28T17:11:35.433Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/refDashboard/Count","timestamp":"2025-04-28T17:11:35.464Z"}

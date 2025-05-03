@@ -1,6 +1,7 @@
 export const loanCount = `SELECT
   COUNT(*) AS total_loans,
-  COALESCE(SUM(rl."refLoanAmount"::INTEGER), 0) AS total_loan_amount
+  ROUND(COALESCE(SUM(rl."refLoanAmount"::NUMERIC), 0), 2) AS total_loan_amount,
+  ROUND(COALESCE(SUM(rl."refInitialInterest"::NUMERIC), 0), 2) AS "Total_initial_interest"
 FROM
   public."refLoan" rl
 WHERE
@@ -13,7 +14,7 @@ export const paidLoan = `SELECT
 FROM
   public."refRepaymentSchedule" rp
 WHERE
-  rp."refPaymentDate" = $1 AND rp."refReStatus" = 'paid';`;
+  rp."refPaymentDate" = $1 AND rp."refPrincipalStatus" = 'paid';`;
 
 export const loanNotPaid = `WITH
   count AS (
@@ -23,7 +24,7 @@ export const loanNotPaid = `WITH
       public."refRepaymentSchedule" rp
     WHERE
       rp."refPaymentDate" = $1
-      AND rp."refReStatus" = 'Pending'
+      AND rp."refPrincipalStatus" = 'Pending'
   ),
   total_amount AS (
     SELECT
@@ -39,7 +40,7 @@ export const loanNotPaid = `WITH
       public."refRepaymentSchedule" rp
       LEFT JOIN public."refLoan" rl ON CAST(rl."refLoanId" AS INTEGER) = rp."refLoanId"::INTEGER
     WHERE
-      rp."refReStatus" = 'Pending'
+      rp."refPrincipalStatus" = 'Pending'
       AND rp."refPaymentDate" = $1
   )
 SELECT
@@ -81,4 +82,4 @@ WHERE
       ','
     )::INTEGER[]
   )
-  AND rp."refReStatus" = 'paid'`;
+  AND rp."refPrincipalStatus" = 'paid'`;

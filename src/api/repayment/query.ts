@@ -22,7 +22,7 @@ FROM
   INNER JOIN public."refProducts" rpr ON CAST(rpr."refProductId" AS INTEGER) = rl."refProductId"::INTEGER
   INNER JOIN public."refCommunication" rc ON CAST(rc."refUserId" AS INTEGER) = u."refUserId"
 WHERE
-  rp."refReStatus" = 'Pending'
+  rp."refPrincipalStatus" = 'Pending'
   AND rl."refLoanStatus" = 1
   AND (
     $1 = FALSE
@@ -114,7 +114,7 @@ export const rePaymentCalculation = `SELECT
           public."refRepaymentSchedule" rp3
         WHERE
           CAST(rp3."refLoanId" AS INTEGER) = rl."refLoanId"
-          AND rp3."refReStatus" = 'paid'
+          AND rp3."refPrincipalStatus" = 'paid'
       ),
       0
     )::NUMERIC
@@ -139,7 +139,7 @@ SET
   (
     "refPrincipal",
     "refInterest",
-    "refReStatus",
+    "refPrincipalStatus",
     "refRepaymentAmount",
     "updatedAt",
     "updatedBy"
@@ -261,7 +261,7 @@ FROM public."refRepaymentSchedule" rp
 INNER JOIN public."refLoan" rl ON CAST (rl."refLoanId" AS INTEGER) = rp."refLoanId"::INTEGER
 INNER JOIN public.users u ON CAST (u."refUserId" AS INTEGER) = rl."refUserId"
 INNER JOIN public."refCommunication" rc ON CAST (rc."refUserId" AS INTEGER) = rl."refUserId"
-WHERE rp."refReStatus" = 'Pending'
+WHERE rp."refPrincipalStatus" = 'Pending'
   AND TO_CHAR(TO_TIMESTAMP($1, 'DD/MM/YYYY, HH:MI:SS AM'), 'YYYY-MM') = rp."refPaymentDate";`;
 
 export const updateBankAccountBalanceQuery = `

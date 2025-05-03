@@ -189,10 +189,12 @@ export const addBankAccountQuery = `INSERT INTO public."refBankAccounts"
 "refBankAccountNo", 
 "refBankAddress",
 "refBalance" ,
+"refAccountType",
 "createdAt",
-"createdBy"
+"createdBy",
+"refIFSCsCode"
 )
-VALUES ($1, $2, $3, $4, $5, $6)
+VALUES ($1, $2, $3, $4, $5, $6, $7,$8)
  RETURNING *;`;
 
 export const updateBankAccountQuery = `UPDATE public."refBankAccounts"
@@ -201,14 +203,33 @@ SET
     "refBankAccountNo" = $2,
     "refBankAddress" = $3,
     "updatedAt" = $4,
-    "updatedBy" = $5
+    "updatedBy" = $5,
+    "refIFSCsCode" = $7,
+    "refAccountType" = $8
 WHERE "refBankId" = $6
  RETURNING *;`;
 
 export const updateHistoryQuery = `INSERT INTO public."refTxnHistory" ("refTransactionId", "refUserId", "transData", "updatedAt", "updatedBy")
   VALUES ($1, $2, $3, $4, $5) RETURNING *;`;
 
-export const getAllBankAccountQuery = `SELECT * FROM public."refBankAccounts" ORDER BY "refBankId" DESC;
+export const getAllBankAccountQuery = `SELECT
+  rb."refBankId",
+  rb."refBankName",
+  rb."refBankAccountNo",
+  rb."refIFSCsCode",
+  rb."refBankAddress",
+  rb."refBalance",
+  rb."createdAt",
+  rb."createdBy",
+  rb."updatedAt",
+  rb."updatedBy",
+  rb."refAccountType",
+  rbt."refAccountTypeName"
+FROM
+  public."refBankAccounts" rb
+  LEFT JOIN public."refBankAccountType" rbt ON CAST (rbt."refAccountId" AS INTEGER) = rb."refAccountType"::INTEGER
+ORDER BY
+  "refBankId" DESC;
 `;
 
 export const getrefUserIdQuery = `SELECT "refUserId" 
@@ -233,10 +254,15 @@ VALUES
   RETURNING *;`;
 
 export const getBankListQuery = `SELECT
-  "refBankId",
-  "refBankName"
+  ba."refBankId",
+  ba."refBankName",
+  ba."refAccountType",
+  bt."refAccountTypeName",
+  ROUND(CAST(NULLIF(ba."refBalance", '') AS NUMERIC), 2) AS "refBalance"
 FROM
-  public."refBankAccounts";`;
+  public."refBankAccounts" ba
+  LEFT JOIN public."refBankAccountType" bt 
+    ON CAST(bt."refAccountId" AS INTEGER) = ba."refAccountType"`;
 
 export const updateBankAccountBalanceQuery = `
 UPDATE public."refBankAccounts" 
@@ -332,11 +358,16 @@ ORDER BY
 `;
 
 export const getBankFundListQuery = `SELECT
-  *
+  rbf.*,
+  rba."refBankName",
+  rba."refBankAccountNo",
+  bt."refAccountTypeName"
 FROM
   public."refBankFund" rbf
   LEFT JOIN public."refBankAccounts" rba ON rba."refBankId" = rbf."refBankId"::INTEGER
-  ORDER BY rbf."refBankFId" DESC;`;
+  LEFT JOIN public."refBankAccountType" bt ON CAST(bt."refAccountId" AS INTEGER) = rba."refAccountType"
+ORDER BY
+  rbf."refBankFId" DESC;`;
 
 export const addloanQuery = `INSERT INTO
   public."refLoan" (
@@ -429,7 +460,7 @@ export const insertRepaymentQuery = `
     "refPaymentAmount",
     "refPrincipal",
     "refInterest",
-    "refReStatus",
+    "refPrincipalStatus",
     "refRepaymentNumber",
     "refRepaymentAmount",
     "createdAt",
@@ -470,7 +501,7 @@ export const updateRepaymentQuery = `
                UPDATE
   public."refRepaymentSchedule"
 SET
-  "refReStatus" = 'paid',
+  "refPrincipalStatus" = 'paid',
   "updatedAt" = $1,
   "updatedBy" = $2
 WHERE
@@ -605,7 +636,7 @@ FROM
   LEFT JOIN public."refCommunication" rc ON CAST ( rc."refUserId" AS INTEGER) = u."refUserId"
   LEFT JOIN public."refProducts" rp ON CAST ( rp."refProductId" AS INTEGER) = rl."refProductId"::INTEGER
 WHERE
-  rs."refReStatus" IS NOT null
+  rs."refPrincipalStatus" IS NOT null
 
 `;
 

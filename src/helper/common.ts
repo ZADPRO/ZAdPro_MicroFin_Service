@@ -70,18 +70,17 @@ export function formatToYearMonth(inputDate: string): string {
 
 export function formatYearMonthDate(dateStr: string): string {
   // Parse DD/MM/YYYY, hh:mm:ss AM/PM
-  const [datePart, timePart] = dateStr.split(',');
-  const [day, month, year] = datePart.trim().split('/').map(Number);
-  
+  const [datePart, timePart] = dateStr.split(",");
+  const [day, month, year] = datePart.trim().split("/").map(Number);
+
   const formattedDate = new Date(`${year}-${month}-${day} ${timePart.trim()}`);
-  
+
   const yyyy = formattedDate.getFullYear();
-  const mm = String(formattedDate.getMonth() + 1).padStart(2, '0');
-  const dd = String(formattedDate.getDate()).padStart(2, '0');
+  const mm = String(formattedDate.getMonth() + 1).padStart(2, "0");
+  const dd = String(formattedDate.getDate()).padStart(2, "0");
 
   return `${yyyy}-${mm}-${dd}`;
 }
-
 
 export function getMonthDifference(startDate: string, endDate: string): number {
   if (!startDate || !endDate) {
@@ -260,4 +259,55 @@ export function processFixedDate() {
     formatted: formattedDate,
     daysUntil: daysDiff,
   };
+}
+
+export async function getDaysDifference(dateStr: string) {
+  function parseDateOnly(dateStr: string): Date {
+    const [datePart] = dateStr.split(",");
+    const [day, month, year] = datePart.trim().split("/").map(Number);
+    return new Date(year, month - 1, day); // Only year, month, day
+  }
+
+  const date1 = parseDateOnly(CurrentTime());
+  const date2 = parseDateOnly(dateStr);
+
+  const diffInMs = Math.abs(date2.getTime() - date1.getTime());
+  const diffInDays = diffInMs / (1000 * 60 * 60 * 24);
+
+  return diffInDays + 1;
+}
+
+export const dayInterest = async (loanAmt: number, interest: number) => {
+  try {
+    const dayInterestAmt = ((loanAmt * (interest * 12) * 1) / 100)/365;
+    return dayInterestAmt;
+  } catch (error) {
+    console.log("error", error);
+    return 0;
+  }
+};
+
+export function convertToYMD(): string {
+  const [datePart, timePartWithPeriod] = CurrentTime().split(", ");
+  const [day, month, year] = datePart.split("/").map(Number);
+
+  const [timePart, period] = timePartWithPeriod.split(" ");
+  let [hours, minutes, seconds] = timePart.split(":").map(Number);
+
+  if (period.toUpperCase() === "PM" && hours < 12) {
+    hours += 12;
+  }
+  if (period.toUpperCase() === "AM" && hours === 12) {
+    hours = 0;
+  }
+
+  // Create Date object
+  const date = new Date(year, month - 1, day, hours, minutes, seconds);
+
+  // Format to YYYY-MM-DD
+  const y = date.getFullYear();
+  const m = String(date.getMonth() + 1).padStart(2, "0");
+  const d = String(date.getDate()).padStart(2, "0");
+
+  return `${y}-${m}-${d}`;
 }

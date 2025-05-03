@@ -1,0 +1,21 @@
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-26T05:46:56.583Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/adminRoutes/adminLogin","timestamp":"2025-04-26T05:48:02.666Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/adminRoutes/adminLogin","timestamp":"2025-04-26T05:48:10.056Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/refDashboard/Count","timestamp":"2025-04-26T05:48:10.462Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/refDashboard/Count","timestamp":"2025-04-26T05:48:10.515Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/refDashboard/Count","timestamp":"2025-04-26T06:09:20.422Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/refDashboard/Count","timestamp":"2025-04-26T06:09:20.513Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/adminRoutes/getLoanAndUser","timestamp":"2025-04-26T06:11:46.017Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/adminRoutes/getPersonList","timestamp":"2025-04-26T06:11:47.157Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/adminRoutes/getPersonList","timestamp":"2025-04-26T06:11:55.877Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/adminRoutes/productList","timestamp":"2025-04-26T06:12:19.565Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/adminRoutes/getLoanAndUser","timestamp":"2025-04-26T06:12:21.785Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/adminRoutes/getLoan","timestamp":"2025-04-26T06:12:31.639Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/rePayment/loanDetails","timestamp":"2025-04-26T06:12:31.662Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/adminRoutes/getLoanAndUser","timestamp":"2025-04-26T07:08:30.335Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/adminRoutes/getBankFundList","timestamp":"2025-04-26T07:09:07.492Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/adminRoutes/productList","timestamp":"2025-04-26T07:09:08.922Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/adminRoutes/getLoanAndUser","timestamp":"2025-04-26T07:09:24.768Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/rePayment/userList","timestamp":"2025-04-26T07:09:25.766Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/adminRoutes/getLoanAndUser","timestamp":"2025-04-26T07:09:57.991Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/adminRoutes/getLoanAndUser","timestamp":"2025-04-26T10:47:05.851Z"}

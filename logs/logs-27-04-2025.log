@@ -1,0 +1,54 @@
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-27T02:24:53.410Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/adminRoutes/adminLogin","timestamp":"2025-04-27T02:24:59.951Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/refDashboard/Count","timestamp":"2025-04-27T02:25:00.818Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/refDashboard/Count","timestamp":"2025-04-27T02:25:00.834Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-27T02:25:49.591Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-27T02:25:55.132Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-27T02:25:58.953Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-27T02:26:35.289Z"}
+{"level":"error","message":"Server not running ---  New route /api/v1/rePayment/userList conflicts with existing /api/v1/rePayment/userList","name":"AssertError","stack":"AssertError: New route /api/v1/rePayment/userList conflicts with existing /api/v1/rePayment/userList\n    at module.exports.internals.Segment.internals.Segment.add (C:\\Users\\VIJAY L\\Desktop\\Finance\\ZAdPro_MicroFin_Service\\node_modules\\@hapi\\call\\lib\\segment.js:47:14)\n    at exports.Router.internals.Router.internals.Router.add (C:\\Users\\VIJAY L\\Desktop\\Finance\\ZAdPro_MicroFin_Service\\node_modules\\@hapi\\call\\lib\\index.js:65:16)\n    at internals.Server._addRoute (C:\\Users\\VIJAY L\\Desktop\\Finance\\ZAdPro_MicroFin_Service\\node_modules\\@hapi\\hapi\\lib\\server.js:529:46)\n    at internals.Server.route (C:\\Users\\VIJAY L\\Desktop\\Finance\\ZAdPro_MicroFin_Service\\node_modules\\@hapi\\hapi\\lib\\server.js:518:22)\n    at C:\\Users\\VIJAY L\\Desktop\\Finance\\ZAdPro_MicroFin_Service\\src\\api\\newLoan\\routes.ts:10:14\n    at new Promise (<anonymous>)\n    at newLoanRoutes.<anonymous> (C:\\Users\\VIJAY L\\Desktop\\Finance\\ZAdPro_MicroFin_Service\\src\\api\\newLoan\\routes.ts:8:12)\n    at Generator.next (<anonymous>)\n    at C:\\Users\\VIJAY L\\Desktop\\Finance\\ZAdPro_MicroFin_Service\\src\\api\\newLoan\\routes.ts:8:71\n    at new Promise (<anonymous>)","timestamp":"2025-04-27T02:33:49.507Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-27T02:34:05.696Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-27T02:34:15.254Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-27T02:34:39.892Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-27T02:34:46.161Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-27T02:34:55.467Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-27T02:35:01.765Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-27T02:35:12.632Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-27T02:35:18.057Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/adminRoutes/getLoanAndUser","timestamp":"2025-04-27T02:41:31.908Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/adminRoutes/getLoan","timestamp":"2025-04-27T02:41:34.041Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/rePayment/loanDetails","timestamp":"2025-04-27T02:41:34.046Z"}
+{"level":"error","message":"Server not running ---  New route /api/v1/newLoan/CreateNewLoan conflicts with existing /api/v1/newLoan/CreateNewLoan","name":"AssertError","stack":"AssertError: New route /api/v1/newLoan/CreateNewLoan conflicts with existing /api/v1/newLoan/CreateNewLoan\n    at module.exports.internals.Segment.internals.Segment.add (C:\\Users\\VIJAY L\\Desktop\\Finance\\ZAdPro_MicroFin_Service\\node_modules\\@hapi\\call\\lib\\segment.js:47:14)\n    at exports.Router.internals.Router.internals.Router.add (C:\\Users\\VIJAY L\\Desktop\\Finance\\ZAdPro_MicroFin_Service\\node_modules\\@hapi\\call\\lib\\index.js:65:16)\n    at internals.Server._addRoute (C:\\Users\\VIJAY L\\Desktop\\Finance\\ZAdPro_MicroFin_Service\\node_modules\\@hapi\\hapi\\lib\\server.js:529:46)\n    at internals.Server.route (C:\\Users\\VIJAY L\\Desktop\\Finance\\ZAdPro_MicroFin_Service\\node_modules\\@hapi\\hapi\\lib\\server.js:518:22)\n    at C:\\Users\\VIJAY L\\Desktop\\Finance\\ZAdPro_MicroFin_Service\\src\\api\\newLoan\\routes.ts:10:14\n    at new Promise (<anonymous>)\n    at newLoanRoutes.<anonymous> (C:\\Users\\VIJAY L\\Desktop\\Finance\\ZAdPro_MicroFin_Service\\src\\api\\newLoan\\routes.ts:8:12)\n    at Generator.next (<anonymous>)\n    at C:\\Users\\VIJAY L\\Desktop\\Finance\\ZAdPro_MicroFin_Service\\src\\api\\newLoan\\routes.ts:8:71\n    at new Promise (<anonymous>)","timestamp":"2025-04-27T02:44:02.441Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-27T02:44:24.805Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-27T02:45:14.733Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-27T02:45:21.854Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-27T02:45:26.109Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-27T02:45:36.765Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-27T02:45:40.619Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-27T02:45:51.147Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-27T02:46:03.580Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-27T02:46:07.674Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-27T02:46:15.333Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-27T02:46:24.883Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-27T02:46:30.627Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-27T02:46:37.721Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-27T02:47:00.955Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-27T02:47:05.906Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-27T02:47:14.585Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-27T02:47:20.817Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-27T02:47:32.926Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-27T02:47:38.356Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-27T02:48:11.297Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-27T02:48:29.238Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-27T02:48:33.054Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-27T02:48:45.258Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-27T02:48:52.474Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-27T02:48:58.516Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-27T02:49:04.921Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-27T02:49:09.465Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-27T02:49:17.824Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-27T02:49:23.410Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-27T02:49:36.431Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/newLoan/selectLoan","timestamp":"2025-04-27T02:50:17.917Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/adminRoutes/getLoanAndUser","timestamp":"2025-04-27T06:31:57.921Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-04-27T15:37:24.755Z"}

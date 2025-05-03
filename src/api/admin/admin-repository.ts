@@ -809,15 +809,19 @@ export class adminRepository {
   public async addBankAccountV1(userData: any, tokendata: any): Promise<any> {
     console.log("userData", userData);
     const client: PoolClient = await getClient();
-    const token = { id: tokendata.id }; // Extract token ID
+    const token = { id: tokendata.id };
 
     try {
-      await client.query("BEGIN"); // Start Transaction
+      await client.query("BEGIN");
 
-      // Extract bank account details from userData
-      const { refBankName, refBankAccountNo, refBankAddress, refBalance } =
-        userData;
-      console.log("userData", userData);
+      const {
+        refBankName,
+        refBankAccountNo,
+        refBankAddress,
+        refBalance,
+        refAccountType,
+        refIFSCsCode,
+      } = userData;
 
       // Insert into refBankAccounts table
       const result = await client.query(addBankAccountQuery, [
@@ -825,8 +829,10 @@ export class adminRepository {
         refBankAccountNo,
         refBankAddress,
         refBalance,
+        refAccountType,
         CurrentTime(),
         "Admin",
+        refIFSCsCode,
       ]);
 
       console.log("Bank Account Insert Result:", result);
@@ -873,15 +879,32 @@ export class adminRepository {
       await client.query("BEGIN"); // Start the transaction
 
       // Extract required data from user_data
-      const { refBankId, refBankName, refBankAccountNo, refBankAddress } =
-        user_data;
+      const {
+        refBankId,
+        refBankName,
+        refBankAccountNo,
+        refIFSCsCode,
+        refBankAddress,
+        refAccountType,
+      } = user_data;
 
-      // Validate if the required bank account details are provided
-      if (!refBankId || !refBankName || !refBankAccountNo || !refBankAddress) {
-        throw new Error("Missing required bank account details.");
+      if (refAccountType === 1) {
+        if (
+          !refBankId ||
+          !refBankName ||
+          !refBankAccountNo ||
+          !refBankAddress ||
+          !refIFSCsCode ||
+          !refAccountType
+        ) {
+          throw new Error("Missing required bank account details.");
+        }
+      } else {
+        if (!refBankId || !refBankName || !refAccountType) {
+          throw new Error("Missing required Liquid Cash Details.");
+        }
       }
 
-      // Define the parameters for the update query
       const bankAccountParams = [
         refBankName,
         refBankAccountNo,
@@ -889,6 +912,8 @@ export class adminRepository {
         CurrentTime(),
         "Admin",
         refBankId,
+        refIFSCsCode,
+        refAccountType,
       ];
 
       const updateResult = await client.query(
@@ -1445,11 +1470,11 @@ export class adminRepository {
     }
   }
   public async getBankListV1(userData: any, tokendata: any): Promise<any> {
-    const client: PoolClient = await getClient();
     const token = { id: tokendata.id }; // Extract token ID
 
     try {
-      const BankList = await client.query(getBankListQuery);
+      const BankList = await executeQuery(getBankListQuery);
+      console.log("BankList line ----- 17578", BankList);
 
       // Return success response
       console.log("Repository return Responce");
@@ -1457,7 +1482,7 @@ export class adminRepository {
         {
           success: true,
           message: "Returned list of documents successfully",
-          BankFund: BankList.rows, // Make sure to use .rows to get the data
+          BankFund: BankList, // Make sure to use .rows to get the data
           token: generateTokenWithoutExpire(token, true),
         },
         true
@@ -1479,8 +1504,6 @@ export class adminRepository {
         },
         true
       );
-    } finally {
-      client.release();
     }
   }
   public async viewBankFundV1(userData: any, tokendata: any): Promise<any> {
