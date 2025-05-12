@@ -30,6 +30,7 @@ export const CurrentTime = (): string => {
     second: "numeric",
     hour12: true,
   };
+  // return "04/04/2025, 10:00:30 am";
   return new Intl.DateTimeFormat("en-IN", options).format(systemTime);
 };
 
@@ -279,7 +280,7 @@ export async function getDaysDifference(dateStr: string) {
 
 export const dayInterest = async (loanAmt: number, interest: number) => {
   try {
-    const dayInterestAmt = ((loanAmt * (interest * 12) * 1) / 100)/365;
+    const dayInterestAmt = (loanAmt * (interest * 12) * 1) / 100 / 365;
     return dayInterestAmt;
   } catch (error) {
     console.log("error", error);

@@ -1,30 +1,36 @@
 import { generateTokenWithoutExpire } from "../../helper/token";
 import { encrypt } from "../../helper/encrypt";
 import { executeQuery, getClient } from "../../helper/db";
-import { loanCount, paidLoan, loanNotPaid } from "./query";
+import {
+  loanCount,
+  paidLoan,
+  loanNotPaid,
+  adminLoanCount,
+  adminPaidLoan,
+  adminLoanNotPaid,
+} from "./query";
 
 export class refDashboardRepository {
   public async dashBoardCountV1(user_data: any, tokendata: any): Promise<any> {
+    console.log("user_data", user_data);
     const token = { id: tokendata.id };
     const tokens = generateTokenWithoutExpire(token, true);
     try {
-      console.log(" -> Line Number ----------------------------------- 11");
       const loanCountData = await executeQuery(loanCount, [user_data.month]);
-      console.log(" -> Line Number ----------------------------------- 13");
       const paidLoanData = await executeQuery(paidLoan, [user_data.month]);
-      console.log(" -> Line Number ----------------------------------- 15");
-      let loanNotPaidData = await executeQuery(loanNotPaid, [user_data.month]);
-      console.log(" -> Line Number ----------------------------------- 17");
-      const balance =
-        loanNotPaidData[0].total_loan_amount - loanNotPaidData[0].Paid_amount;
-      console.log(" -> Line Number ----------------------------------- 20");
-      const interest = (balance * (4 / 100)) / 10;
-      console.log(" -> Line Number ----------------------------------- 22");
-      loanNotPaidData[0] = {
-        ...loanNotPaidData[0],
-        balance_amt: balance,
-        interest_amt: interest,
-      };
+      const loanNotPaidData = await executeQuery(loanNotPaid, [
+        user_data.month,
+      ]);
+
+      const adminLoanCountData = await executeQuery(adminLoanCount, [
+        user_data.month,
+      ]);
+      const adminPaidLoanData = await executeQuery(adminPaidLoan, [
+        user_data.month,
+      ]);
+      const adminLoanNotPaidData = await executeQuery(adminLoanNotPaid, [
+        user_data.month,
+      ]);
 
       return encrypt(
         {
@@ -34,6 +40,9 @@ export class refDashboardRepository {
           loanCount: loanCountData,
           paidLoan: paidLoanData,
           loanNotPaid: loanNotPaidData,
+          adminLoanCountData: adminLoanCountData,
+          adminPaidLoanData: adminPaidLoanData,
+          adminLoanNotPaidData: adminLoanNotPaidData,
         },
         true
       );

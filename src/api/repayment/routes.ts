@@ -78,6 +78,26 @@ export class rePaymentRoutes implements IRoute {
             auth: false,
           },
         },
+        {
+          method: "POST",
+          path: "/api/v1/rePayment/loanCloseData",
+          config: {
+            // pre: [{ method: validateToken, assign: "token" }],
+            handler: controller.loanCloseData,
+            description: "Passing the Loan Close Data",
+            auth: false,
+          },
+        },
+        {
+          method: "POST",
+          path: "/api/v1/rePayment/payPrincipalAmt",
+          config: {
+            // pre: [{ method: validateToken, assign: "token" }],
+            handler: controller.payPrincipalAmt,
+            description: "Pay Loan Principal Amount",
+            auth: false,
+          },
+        },
       ]);
       resolve(true);
     });

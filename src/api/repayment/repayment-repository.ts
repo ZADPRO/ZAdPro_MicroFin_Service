@@ -17,6 +17,16 @@ import {
   updateBankAccountBalanceQuery,
   getLoanBalance,
   updateLoan,
+  getUserData,
+  agentAudit,
+  getPriAmt,
+  getReCalParams,
+  reInterestCal,
+  updateReInterestCal,
+  getData,
+  checkLoanPaid,
+  bankData,
+  LoanDetails,
 } from "./query";
 import { PoolClient } from "pg";
 
@@ -29,6 +39,7 @@ import {
 } from "../../helper/common";
 import { loanQuery } from "../admin/query";
 import { loanReminderSend } from "../../helper/mailcontent";
+import { TopUpBalance } from "../../helper/LoanCalculation";
 
 export class rePaymentRepository {
   public async unPaidUserListV1(user_data: any, tokendata: any): Promise<any> {
@@ -46,6 +57,7 @@ export class rePaymentRepository {
           ? formatToYearMonth(CurrentTime())
           : user_data.endDate,
       ];
+      console.log("Params", Params);
       const userData = await executeQuery(userList, Params);
       return encrypt(
         {
@@ -78,29 +90,19 @@ export class rePaymentRepository {
 
     try {
       const params = [user_data.loanId, user_data.rePayId];
+      console.log("params line ---- 81", params);
       let RepaymentDetails = await executeQuery(rePaymentCalculation, params);
       const balanceAmt =
         RepaymentDetails[0].refLoanAmount - RepaymentDetails[0].totalPrincipal;
-      const InteresePay =
-        balanceAmt * (RepaymentDetails[0].refProductInterest / 100);
 
+      console.log("balanceAmt line ----- 89", balanceAmt);
       RepaymentDetails[0] = {
         ...RepaymentDetails[0],
         refBalanceAmt: balanceAmt,
-        refInteresePay:
-          RepaymentDetails[0].isInterestFirst === true ? 0 : InteresePay,
       };
 
-      if (RepaymentDetails[0].isInterestFirst) {
-        RepaymentDetails[0] = {
-          ...RepaymentDetails[0],
-          totalInterest:
-            (RepaymentDetails[0].refProductInterest / 100) *
-            RepaymentDetails[0].refLoanAmount *
-            RepaymentDetails[0].refProductDuration,
-        };
-      }
       const bankDetails = await executeQuery(bankList);
+      console.log("RepaymentDetails", RepaymentDetails);
 
       return encrypt(
         {
@@ -131,9 +133,12 @@ export class rePaymentRepository {
 
     try {
       await client.query("BEGIN");
+      const oldAmt = await executeQuery(getPriAmt, [user_data.rePayId]);
+
       const Params = [
         user_data.priAmt,
         user_data.interest,
+        "paid",
         "paid",
         user_data.priAmt + user_data.interest,
         CurrentTime(),
@@ -141,28 +146,81 @@ export class rePaymentRepository {
         user_data.rePayId,
       ];
       const updateRepayment = await client.query(updateRePayment, Params);
+      console.log("updateRepayment line ----- 149", updateRepayment);
 
-      const FundUpdate = [
-        user_data.bankId,
-        formatYearMonthDate(CurrentTime()),
-        "credit",
-        user_data.priAmt + user_data.interest,
+      if (oldAmt[0].refPrincipal < user_data.priAmt) {
+        console.log(" -> Line Number ----------------------------------- 151");
+        let paramsData = await executeQuery(getReCalParams, [
+          updateRepayment.rows[0].refLoanId,
+          updateRepayment.rows[0].refPaymentDate,
+        ]);
+        console.log("paramsData", paramsData);
+        paramsData[0] = {
+          ...paramsData[0],
+          BalanceAmt:
+            Number(paramsData[0].BalanceAmt) - Number(user_data.priAmt),
+        };
+        console.log("paramsData line ----------------- 161", paramsData);
+        const intCalParams = [
+          paramsData[0].BalanceAmt,
+          paramsData[0].MonthDiff,
+          paramsData[0].refProductInterest,
+          paramsData[0].SameMonthDate,
+          paramsData[0].refRePaymentType,
+        ];
+        console.log("intCalParams line ---- 169", intCalParams);
+        const IntData = await executeQuery(reInterestCal, intCalParams);
+        console.log("IntData line ------- 159", IntData);
+
+        await client.query(updateReInterestCal, [
+          JSON.stringify(IntData),
+          updateRepayment.rows[0].refLoanId,
+        ]);
+      }
+
+      const userData = await executeQuery(getUserData, [
+        updateRepayment.rows[0].refLoanId,
+      ]);
+
+      console.log(" -> Line Number ----------------------------------- 169");
+
+      const agentParams = [
+        tokendata.id,
+        userData[0].refUserId,
+        updateRepayment.rows[0].refLoanId,
         updateRepayment.rows[0].refRpayId,
+        null,
+        user_data.paymentType,
+        user_data.priAmt + user_data.interest,
         CurrentTime(),
         tokendata.id,
-        "fund",
-        user_data.paymentType,
       ];
 
-      await client.query(bankFundUpdate, FundUpdate);
+      console.log("agentParams", agentParams);
+      await client.query(agentAudit, agentParams);
+      console.log(" -> Line Number ----------------------------------- 185");
+      if (user_data.paymentType === 1) {
+        const FundUpdate = [
+          user_data.bankId,
+          formatYearMonthDate(CurrentTime()),
+          "credit",
+          user_data.priAmt + user_data.interest,
+          updateRepayment.rows[0].refRpayId,
+          CurrentTime(),
+          tokendata.id,
+          "fund",
+          user_data.paymentType,
+        ];
+        await client.query(bankFundUpdate, FundUpdate);
+        const params3 = [
+          user_data.priAmt + user_data.interest,
+          user_data.bankId,
+          CurrentTime(),
+          "Admin",
+        ];
+        await client.query(updateBankAccountBalanceQuery, params3);
+      }
 
-      const params3 = [
-        user_data.priAmt + user_data.interest,
-        user_data.bankId,
-        CurrentTime(),
-        "Admin",
-      ];
-      await client.query(updateBankAccountBalanceQuery, params3);
       const loanBalance = await executeQuery(getLoanBalance, [
         parseInt(updateRepayment.rows[0].refLoanId),
       ]);
@@ -193,7 +251,7 @@ export class rePaymentRepository {
         true
       );
     } catch (error: any) {
-      console.log("Error:", error);
+      console.log("Error: line ----- 235", error);
       await client.query("ROLLBACK");
 
       return encrypt(
@@ -212,6 +270,7 @@ export class rePaymentRepository {
   public async updateFollowUpV1(user_data: any, tokendata: any): Promise<any> {
     const token = { id: tokendata.id };
     const tokens = generateTokenWithoutExpire(token, true);
+    const client: PoolClient = await getClient();
 
     try {
       const params = [
@@ -221,7 +280,24 @@ export class rePaymentRepository {
         CurrentTime(),
         tokendata.id,
       ];
-      await executeQuery(updateFollowUp, params);
+      const result = await client.query(updateFollowUp, params);
+
+      const userData = await executeQuery(getData, [user_data.rePayId]);
+
+      const agentParams = [
+        tokendata.id,
+        userData[0].refUserId,
+        userData[0].refLoanId,
+        user_data.rePayId,
+        result.rows[0].refStatusId,
+        null,
+        null,
+        CurrentTime(),
+        tokendata.id,
+      ];
+
+      console.log("agentParams", agentParams);
+      await client.query(agentAudit, agentParams);
 
       return encrypt(
         {
@@ -352,6 +428,201 @@ export class rePaymentRepository {
         },
         true
       );
+    }
+  }
+  public async loanCloseDataV1(user_data: any, tokendata: any): Promise<any> {
+    const token = { id: tokendata.id };
+    const tokens = generateTokenWithoutExpire(token, true);
+
+    console.log("user_data", user_data);
+    try {
+      const bank = await executeQuery(bankData);
+      let RepaymentDetails = await executeQuery(LoanDetails, [
+        user_data.LoanId,
+      ]);
+
+      const calData: any = await TopUpBalance(user_data.LoanId);
+
+      RepaymentDetails.map((Data, index) => {
+        const balanceAmt = calData.finalBalanceAmt;
+        RepaymentDetails[index] = {
+          ...RepaymentDetails[index],
+          refBalanceAmt: balanceAmt,
+        };
+      });
+      return encrypt(
+        {
+          success: true,
+          message: "Notification Send Successfully",
+          token: tokens,
+          data: RepaymentDetails,
+          bank: bank,
+        },
+        true
+      );
+    } catch (error) {
+      console.log("Error:", error);
+      return encrypt(
+        {
+          success: false,
+          message: "Error In Sending Loan Details",
+          token: generateTokenWithoutExpire(token, true),
+        },
+        true
+      );
+    }
+  }
+  public async payPrincipalAmtV1(user_data: any, tokendata: any): Promise<any> {
+    const token = { id: tokendata.id };
+    const tokens = generateTokenWithoutExpire(token, true);
+    const client: PoolClient = await getClient();
+
+    console.log("user_data", user_data);
+    try {
+      await client.query("BEGIN");
+      const check = await executeQuery(checkLoanPaid, [
+        user_data.LoanId,
+        CurrentTime(),
+      ]);
+      console.log("check line ---- 433", check);
+      console.log("check[0].unpaid_count", check[0].unpaid_count);
+      if (Number(check[0].unpaid_count) !== 0) {
+        console.log(" -> Line Number ----------------------------------- 436");
+        return encrypt(
+          {
+            success: false,
+            message:
+              "The User Need to Paid" +
+              check[0].unpaid_count +
+              "Month Interest and Principal Amount",
+            token: tokens,
+          },
+          true
+        );
+      } else {
+        console.log(" -> Line Number ----------------------------------- 447");
+        const loanDetails: any = await TopUpBalance(user_data.LoanId);
+        if (
+          Number(loanDetails.finalBalanceAmt) < Number(user_data.principalAmt)
+        ) {
+          await client.query("ROLLBACK");
+          return encrypt(
+            {
+              success: false,
+              message:
+                "The Paid loan Amount is higher the Loan Balance Amount [  ₹ " +
+                loanDetails.finalBalanceAmt +
+                "]",
+              token: tokens,
+            },
+            true
+          );
+        } else if (
+          Number(loanDetails.finalBalanceAmt) == Number(user_data.principalAmt)
+        ) {
+          await client.query(updateLoan, [
+            parseInt(user_data.LoanId),
+            2,
+            CurrentTime(),
+            "Admin",
+          ]);
+
+          const FundUpdate = [
+            user_data.bankId,
+            formatYearMonthDate(CurrentTime()),
+            "credit",
+            user_data.principalAmt,
+            user_data.LoanId,
+            CurrentTime(),
+            tokendata.id,
+            "fund",
+            user_data.paymentType,
+          ];
+          await client.query(bankFundUpdate, FundUpdate);
+
+          const params3 = [
+            user_data.principalAmt,
+            user_data.bankId,
+            CurrentTime(),
+            "Admin",
+          ];
+          await client.query(updateBankAccountBalanceQuery, params3);
+        } else if (
+          Number(loanDetails.finalBalanceAmt) > Number(user_data.principalAmt)
+        ) {
+          let paramsData = await executeQuery(getReCalParams, [
+            user_data.refLoanId,
+            formatToYearMonth(CurrentTime()),
+          ]);
+
+          paramsData[0] = {
+            ...paramsData[0],
+            BalanceAmt:
+              Number(paramsData[0].BalanceAmt) - Number(user_data.principalAmt),
+          };
+
+          const intCalParams = [
+            paramsData[0].BalanceAmt,
+            paramsData[0].MonthDiff,
+            paramsData[0].refProductInterest,
+            paramsData[0].SameMonthDate,
+            paramsData[0].refRePaymentType,
+          ];
+          console.log("intCalParams", intCalParams);
+          const IntData = await executeQuery(reInterestCal, intCalParams);
+          await client.query(updateReInterestCal, [
+            JSON.stringify(IntData),
+            user_data.refLoanId,
+          ]);
+
+          const FundUpdate = [
+            user_data.bankId,
+            formatYearMonthDate(CurrentTime()),
+            "credit",
+            user_data.principalAmt,
+            user_data.LoanId,
+            CurrentTime(),
+            tokendata.id,
+            "fund",
+            user_data.paymentType,
+          ];
+          await client.query(bankFundUpdate, FundUpdate);
+
+          const params3 = [
+            user_data.principalAmt,
+            user_data.bankId,
+            CurrentTime(),
+            "Admin",
+          ];
+          await client.query(updateBankAccountBalanceQuery, params3);
+        } else {
+          console.log(
+            " -> Line Number ----------------------------------- 519"
+          );
+        }
+        await client.query("COMMIT");
+        return encrypt(
+          {
+            success: true,
+            message: "Loan Principal Amount Paid Successfully",
+            token: tokens,
+          },
+          true
+        );
+      }
+    } catch (error) {
+      console.log("Error:", error);
+      await client.query("ROLLBACK");
+      return encrypt(
+        {
+          success: false,
+          message: "Error in Paying the Loan Principal Amount",
+          token: generateTokenWithoutExpire(token, true),
+        },
+        true
+      );
+    } finally {
+      client.release();
     }
   }
 }

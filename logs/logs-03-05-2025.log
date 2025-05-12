@@ -1382,3 +1382,8 @@
 {"level":"info","message":"ROUTE API CALL => \n http://192.168.245.13:6201/api/v1/adminRoutes/getLoanAndUser","timestamp":"2025-05-03T12:19:13.275Z"}
 {"level":"info","message":"ROUTE API CALL => \n http://192.168.245.13:6201/api/v1/adminRoutes/addLoanOption","timestamp":"2025-05-03T12:19:25.142Z"}
 {"level":"info","message":"ROUTE API CALL => \n http://192.168.245.13:6201/api/v1/adminRoutes/getLoan","timestamp":"2025-05-03T12:19:25.154Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-05-03T17:25:05.635Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/adminRoutes/adminLogin","timestamp":"2025-05-03T17:27:08.306Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/refDashboard/Count","timestamp":"2025-05-03T17:27:09.630Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/refDashboard/Count","timestamp":"2025-05-03T17:27:09.651Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/adminRoutes/getBankFundList","timestamp":"2025-05-03T17:27:12.892Z"}

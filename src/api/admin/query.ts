@@ -566,7 +566,7 @@ SELECT
   ) AS "opened_count",
   COUNT(
     CASE
-      WHEN rl."refLoanStatus" = 2 THEN 1
+      WHEN rl."refLoanStatus" IN (2,3,4) THEN 1
     END
   ) AS "closed_count"
 FROM
@@ -597,6 +597,7 @@ SELECT
     ls."refLoanStatus",
     rl."refInterest" AS "interestAmount",
     rl."refPayableAmount",
+    rl."refCustLoanId",
     rl."refLoanStartDate",
     rl."refLoanDueDate",
     rl."isInterestFirst",

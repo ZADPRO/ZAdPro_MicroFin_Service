@@ -1,53 +1,89 @@
-import { rePaymentRepository } from "./repayment-repository";
+import { adminLoanCreationRepository } from "./adminLoanCreation-repository";
 
-export class RePaymentResolver {
-  public rePaymentRepository: any;
+export class adminLoanCreationResolver {
+  public adminLoanCreationRepository: any;
   constructor() {
-    this.rePaymentRepository = new rePaymentRepository();
+    this.adminLoanCreationRepository = new adminLoanCreationRepository();
   }
-  public async unPaidUserListV1(
+  public async vendorListV1(
     user_data: any,
     token_data: any,
     domain_code: any
   ): Promise<any> {
     console.log("Resolver Started");
-    return await this.rePaymentRepository.unPaidUserListV1(
+    return await this.adminLoanCreationRepository.vendorListV1(
       user_data,
       token_data,
       domain_code
     );
   }
-  public async rePaymentCalculationV1(
+  public async selectLoanV1(
     user_data: any,
     token_data: any,
     domain_code: any
   ): Promise<any> {
     console.log("Resolver Started");
-    return await this.rePaymentRepository.rePaymentCalculationV1(
+    return await this.adminLoanCreationRepository.selectLoanV1(
       user_data,
       token_data,
       domain_code
     );
   }
-  public async updateRePaymentV1(
+  public async addLoanOptionV1(
     user_data: any,
     token_data: any,
     domain_code: any
   ): Promise<any> {
     console.log("Resolver Started");
-    return await this.rePaymentRepository.updateRePaymentV1(
+    return await this.adminLoanCreationRepository.addLoanOptionV1(
       user_data,
       token_data,
       domain_code
     );
   }
-  public async updateFollowUpV1(
+  public async CreateNewLoanV1(
     user_data: any,
     token_data: any,
     domain_code: any
   ): Promise<any> {
     console.log("Resolver Started");
-    return await this.rePaymentRepository.updateFollowUpV1(
+    return await this.adminLoanCreationRepository.CreateNewLoanV1(
+      user_data,
+      token_data,
+      domain_code
+    );
+  }
+  public async getLoanV1(
+    user_data: any,
+    token_data: any,
+    domain_code: any
+  ): Promise<any> {
+    console.log("Resolver Started");
+    return await this.adminLoanCreationRepository.getLoanV1(
+      user_data,
+      token_data,
+      domain_code
+    );
+  }
+  public async selectedLoanDetailsV1(
+    user_data: any,
+    token_data: any,
+    domain_code: any
+  ): Promise<any> {
+    console.log("Resolver Started");
+    return await this.adminLoanCreationRepository.selectedLoanDetailsV1(
+      user_data,
+      token_data,
+      domain_code
+    );
+  }
+  public async allLoanV1(
+    user_data: any,
+    token_data: any,
+    domain_code: any
+  ): Promise<any> {
+    console.log("Resolver Started");
+    return await this.adminLoanCreationRepository.allLoanV1(
       user_data,
       token_data,
       domain_code
@@ -59,31 +95,19 @@ export class RePaymentResolver {
     domain_code: any
   ): Promise<any> {
     console.log("Resolver Started");
-    return await this.rePaymentRepository.loanAuditV1(
+    return await this.adminLoanCreationRepository.loanAuditV1(
       user_data,
       token_data,
       domain_code
     );
   }
-  public async loanDetailsV1(
+  public async loanRePaymentAuditV1(
     user_data: any,
     token_data: any,
     domain_code: any
   ): Promise<any> {
     console.log("Resolver Started");
-    return await this.rePaymentRepository.loanDetailsV1(
-      user_data,
-      token_data,
-      domain_code
-    );
-  }
-  public async NotificationV1(
-    user_data: any,
-    token_data: any,
-    domain_code: any
-  ): Promise<any> {
-    console.log("Resolver Started");
-    return await this.rePaymentRepository.NotificationV1(
+    return await this.adminLoanCreationRepository.loanRePaymentAuditV1(
       user_data,
       token_data,
       domain_code
@@ -95,7 +119,7 @@ export class RePaymentResolver {
     domain_code: any
   ): Promise<any> {
     console.log("Resolver Started");
-    return await this.rePaymentRepository.loanCloseDataV1(
+    return await this.adminLoanCreationRepository.loanCloseDataV1(
       user_data,
       token_data,
       domain_code
@@ -107,7 +131,7 @@ export class RePaymentResolver {
     domain_code: any
   ): Promise<any> {
     console.log("Resolver Started");
-    return await this.rePaymentRepository.payPrincipalAmtV1(
+    return await this.adminLoanCreationRepository.payPrincipalAmtV1(
       user_data,
       token_data,
       domain_code

@@ -8,78 +8,158 @@ WHERE
   TO_CHAR(rl."refLoanStartDate"::timestamp, 'YYYY-MM') = $1;`;
 
 export const paidLoan = `SELECT
-  COUNT(*) AS "paid_count",
-  ROUND(COALESCE(SUM(rp."refPrincipal"::NUMERIC), 0), 1) AS "total_paid_principal",
-  ROUND(COALESCE(SUM(rp."refInterest"::NUMERIC), 0), 1) AS "total_paid_interest"
-FROM
-  public."refRepaymentSchedule" rp
-WHERE
-  rp."refPaymentDate" = $1 AND rp."refPrincipalStatus" = 'paid';`;
-
-export const loanNotPaid = `WITH
-  count AS (
-    SELECT
-      COUNT(*) AS "not_paid_count"
-    FROM
-      public."refRepaymentSchedule" rp
-    WHERE
-      rp."refPaymentDate" = $1
-      AND rp."refPrincipalStatus" = 'Pending'
+COUNT(*) FILTER (
+  WHERE
+    rp."refInterestStatus" = 'paid'
+    OR rp."refPrincipalStatus" = 'paid'
+) AS "paid_count",
+ROUND(
+  COALESCE(
+    SUM(
+      CASE
+        WHEN rp."refPrincipalStatus" = 'paid' THEN NULLIF(rp."refPrincipal", 'null')::NUMERIC
+        ELSE 0
+      END
+    ),
+    0
   ),
-  total_amount AS (
-    SELECT
-      SUM(rl."refLoanAmount"::INTEGER) AS total_loan_amount,
-      (
-        SELECT
-          not_paid_count
-        FROM
-          count
-      ) AS not_paid_count,
-      ARRAY_AGG(rl."refLoanId") AS loan_ids
-    FROM
-      public."refRepaymentSchedule" rp
-      LEFT JOIN public."refLoan" rl ON CAST(rl."refLoanId" AS INTEGER) = rp."refLoanId"::INTEGER
-    WHERE
-      rp."refPrincipalStatus" = 'Pending'
-      AND rp."refPaymentDate" = $1
-  )
-SELECT
-  SUM(rp."refPrincipal"::INTEGER) AS "Paid_amount",
-  (
-    SELECT
-      total_loan_amount
-    FROM
-      total_amount
-  ) AS total_loan_amount,
-  (
-    SELECT
-      not_paid_count
-    FROM
-      total_amount
-  ) AS not_paid_count,
-  (
-    SELECT
-      loan_ids
-    FROM
-      total_amount
-  ) AS loanId
+  1
+) AS "total_paid_principal",
+ROUND(
+  COALESCE(
+    SUM(
+      CASE
+        WHEN rp."refInterestStatus" = 'paid' THEN NULLIF(rp."refInterest", 'null')::NUMERIC
+        ELSE 0
+      END
+    ),
+    0
+  ),
+  1
+) AS "total_paid_interest"
 FROM
-  public."refRepaymentSchedule" rp
+public."refRepaymentSchedule" rp
 WHERE
-  rp."refLoanId"::INTEGER = ANY (
-    string_to_array(
-      regexp_replace(
-        (
-          SELECT
-            loan_ids
-          FROM
-            total_amount
-        )::text,
-        '[{}]',
-        '',
-        'g'
-      ),
-      ','
-    )::INTEGER[]
-  )
-  AND rp."refPrincipalStatus" = 'paid'`;
+rp."refPaymentDate" = $1;`;
+
+export const loanNotPaid = `SELECT
+COUNT(*) FILTER (
+  WHERE
+    rp."refInterestStatus" = 'Pending'
+    OR rp."refPrincipalStatus" = 'Pending'
+) AS "not_paid_count",
+
+ROUND(
+  COALESCE(
+    SUM(
+      CASE
+        WHEN rp."refPrincipalStatus" = 'Pending'
+        THEN NULLIF(rp."refPrincipal", 'null')::NUMERIC
+        ELSE 0
+      END
+    ),
+    0
+  ),
+  1
+) AS "total_not_paid_principal",
+
+ROUND(
+  COALESCE(
+    SUM(
+      CASE
+        WHEN rp."refInterestStatus" = 'Pending'
+        THEN NULLIF(rp."refInterest", 'null')::NUMERIC
+        ELSE 0
+      END
+    ),
+    0
+  ),
+  1
+) AS "total_not_paid_interest"
+FROM
+public."refRepaymentSchedule" rp
+WHERE
+rp."refPaymentDate" = $1;`;
+
+export const adminLoanCount = `SELECT
+  COUNT(*) AS total_loans,
+  ROUND(COALESCE(SUM(rl."refLoanAmount"::NUMERIC), 0), 2) AS total_loan_amount,
+  ROUND(COALESCE(SUM(rl."refInitialInterest"::NUMERIC), 0), 2) AS "Total_initial_interest"
+FROM
+  adminloan."refLoan" rl
+WHERE
+  TO_CHAR(rl."refLoanStartDate"::timestamp, 'YYYY-MM') = $1;`;
+
+export const adminPaidLoan = `SELECT
+COUNT(*) FILTER (
+  WHERE
+    rp."refInterestStatus" = 'paid'
+    OR rp."refPrincipalStatus" = 'paid'
+) AS "paid_count",
+ROUND(
+  COALESCE(
+    SUM(
+      CASE
+        WHEN rp."refPrincipalStatus" = 'paid' THEN NULLIF(rp."refPrincipal", 'null')::NUMERIC
+        ELSE 0
+      END
+    ),
+    0
+  ),
+  1
+) AS "total_paid_principal",
+ROUND(
+  COALESCE(
+    SUM(
+      CASE
+        WHEN rp."refInterestStatus" = 'paid' THEN NULLIF(rp."refInterest", 'null')::NUMERIC
+        ELSE 0
+      END
+    ),
+    0
+  ),
+  1
+) AS "total_paid_interest"
+FROM
+adminloan."refRepaymentSchedule" rp
+WHERE
+rp."refPaymentDate" = $1;`;
+
+export const adminLoanNotPaid = `SELECT
+COUNT(*) FILTER (
+  WHERE
+    rp."refInterestStatus" = 'Pending'
+    OR rp."refPrincipalStatus" = 'Pending'
+) AS "not_paid_count",
+
+ROUND(
+  COALESCE(
+    SUM(
+      CASE
+        WHEN rp."refPrincipalStatus" = 'Pending'
+        THEN NULLIF(rp."refPrincipal", 'null')::NUMERIC
+        ELSE 0
+      END
+    ),
+    0
+  ),
+  1
+) AS "total_not_paid_principal",
+
+ROUND(
+  COALESCE(
+    SUM(
+      CASE
+        WHEN rp."refInterestStatus" = 'Pending'
+        THEN NULLIF(rp."refInterest", 'null')::NUMERIC
+        ELSE 0
+      END
+    ),
+    0
+  ),
+  1
+) AS "total_not_paid_interest"
+FROM
+adminloan."refRepaymentSchedule" rp
+WHERE
+rp."refPaymentDate" = $1;`;
