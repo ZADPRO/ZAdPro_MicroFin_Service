@@ -782,6 +782,37 @@ export class adminProfile {
         .code(500);
     }
   };
+  public getAllLoan = async (
+    request: any,
+    response: Hapi.ResponseToolkit
+  ): Promise<any> => {
+    logger.info(`ROUTE API CALL => \n ${request.url.href}`);
+    try {
+      const decodedToken = {
+        id: request.plugins.token.id,
+      };
+
+      const entity = await this.resolver.getAllLoanV1(
+        request.payload,
+        decodedToken
+      );
+      if (entity.success) {
+        return response.response(entity).code(201); // Created
+      }
+      return response.response(entity).code(200); // Bad Request if failed
+    } catch (error) {
+      logger.error("Error in view loan and user list", error);
+      return response
+        .response({
+          success: false,
+          message:
+            error instanceof Error
+              ? error.message
+              : "An unknown error occurred",
+        })
+        .code(500);
+    }
+  };
   public getLoan = async (
     request: any,
     response: Hapi.ResponseToolkit

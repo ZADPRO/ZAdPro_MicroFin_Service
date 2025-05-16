@@ -40,6 +40,7 @@ export const updateBankFundQuery = `INSERT INTO
      "refbfTransactionAmount",
      "refTxnId",
      "refFundType", 
+     "refFundTypeId",
      "createdAt",
      "createdBy",
      "refPaymentType"
@@ -586,6 +587,28 @@ GROUP BY
   rc."refUserState",
   rc."refUserPincode"
 `;
+
+export const getAllLoanData = `SELECT
+  l."refLoanId",
+  l."refCustLoanId",
+  u."refCustId",
+  u."refUserId",
+  u."refUserFname",
+  u."refUserLname",
+  rc."refUserMobileNo",
+  rc."refUserEmail",
+  rp."refProductDuration",
+  rp."refProductInterest",
+  l."refLoanAmount",
+  l."refLoanStartDate",
+  ls."refLoanStatusId",
+  ls."refLoanStatus"
+FROM
+  public."refLoan" l
+  LEFT JOIN public.users u ON CAST(u."refUserId" AS INTEGER) = l."refUserId"::INTEGER
+  LEFT JOIN public."refProducts" rp ON CAST (rp."refProductId" AS INTEGER) = l."refProductId"::INTEGER
+  LEFT JOIN public."refCommunication" rc ON CAST (rc."refUserId" AS INTEGER) = u."refUserId"
+  LEFT JOIN public."refLoanStatus" ls ON CAST(ls."refLoanStatusId" AS INTEGER) = l."refLoanStatus"`;
 
 export const getLoanDataQuery = `
 SELECT 

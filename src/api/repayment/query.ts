@@ -195,6 +195,7 @@ ORDER BY
 
 export const getLoanDetails = `SELECT
 rl."refLoanId",
+rl."refCustLoanId",
   rl."refLoanAmount",
   rl."refCustLoanId",
   rpr."refProductName",
@@ -203,6 +204,8 @@ rl."refLoanId",
   rl."isInterestFirst",
   rl."refLoanStartDate",
   rl."refRepaymentStartDate",
+  rl."refDocFee",
+  rl."refSecurity",
   rl."refLoanDueDate",
   ls."refLoanStatus",
   rl."refInterestMonthCount",

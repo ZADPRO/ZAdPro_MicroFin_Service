@@ -242,6 +242,7 @@ export const updateBankFundQuery = `INSERT INTO
      "refbfTransactionAmount",
      "refTxnId",
      "refFundType", 
+     "refFundTypeId",
      "createdAt",
      "createdBy"
       )
@@ -506,7 +507,9 @@ export const addNewLoan = `WITH
         "refLoanStatus",
         "refInterestMonthCount",
         "refInitialInterest",
-        "refRePaymentType"
+        "refRePaymentType",
+        "refDocFee",
+        "refSecurity"
       )
     VALUES
       (
@@ -527,7 +530,9 @@ export const addNewLoan = `WITH
         $15,
         $16,
         $17,
-        $18
+        $18,
+        $19,
+        $20
       )
     RETURNING
       "refLoanId",

@@ -174,6 +174,8 @@ export class adminLoanCreationRepository {
         user_data.refInterestMonthCount,
         user_data.refInitialInterest,
         user_data.refRepaymentType,
+        user_data.refDocFee,
+        user_data.refSecurity,
       ];
       console.log("params", params);
       const queryResult = await client.query(addNewLoan, params);
@@ -187,6 +189,7 @@ export class adminLoanCreationRepository {
         user_data.refLoanAmount,
         newLoanId,
         "Admin Loan",
+        3,
         CurrentTime(),
         "Admin",
       ];
@@ -219,6 +222,7 @@ export class adminLoanCreationRepository {
           user_data.oldBalanceAmt,
           user_data.refExLoanId,
           "Admin Loan",
+          4,
           CurrentTime(),
           "Admin",
         ];
@@ -231,6 +235,7 @@ export class adminLoanCreationRepository {
         user_data.refTotalInterest,
         newLoanId,
         "Admin Loan",
+        4,
         CurrentTime(),
         "Admin",
       ];

@@ -100,7 +100,10 @@ export class newLoanRepository {
         user_data.refInterestMonthCount,
         user_data.refInitialInterest,
         user_data.refRepaymentType,
+        user_data.refDocFee,
+        user_data.refSecurity,
       ];
+      console.log("params line ------ 106", params);
       const queryResult = await client.query(addNewLoan, params);
 
       const newLoanId = queryResult.rows[0].refLoanId;
@@ -112,6 +115,7 @@ export class newLoanRepository {
         user_data.refLoanAmount,
         newLoanId,
         "Loan",
+        1,
         CurrentTime(),
         "Admin",
       ];
@@ -144,6 +148,7 @@ export class newLoanRepository {
           user_data.oldBalanceAmt,
           user_data.refExLoanId,
           "fund",
+          2,
           CurrentTime(),
           "Admin",
         ];
@@ -156,6 +161,7 @@ export class newLoanRepository {
         user_data.refTotalInterest,
         newLoanId,
         "fund",
+        2,
         CurrentTime(),
         "Admin",
       ];

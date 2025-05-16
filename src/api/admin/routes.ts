@@ -297,6 +297,17 @@ export class adminRoutes implements IRoute {
           },
         },
         {
+          method: "GET",
+          path: "/api/v1/adminRoutes/getAllLoan",
+          config: {
+            pre: [{ method: validateToken, assign: "token" }],
+            handler: controller.getAllLoan,
+            description: "get All Loan Data",
+            tags: ["api", "Users"],
+            auth: false,
+          },
+        },
+        {
           method: "POST",
           path: "/api/v1/adminRoutes/getLoan",
           config: {

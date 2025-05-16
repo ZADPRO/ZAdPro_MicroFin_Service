@@ -298,6 +298,18 @@ export class AdminResolver {
       domain_code
     );
   }
+  public async getAllLoanV1(
+    user_data: any,
+    token_data: any,
+    domain_code: any
+  ): Promise<any> {
+    console.log("Resolver Sarted");
+    return await this.adminRepository.getAllLoanV1(
+      user_data,
+      token_data,
+      domain_code
+    );
+  }
   public async getLoanV1(
     user_data: any,
     token_data: any,
