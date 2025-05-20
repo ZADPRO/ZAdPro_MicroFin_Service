@@ -38,6 +38,16 @@ export class newLoanRoutes implements IRoute {
             auth: false,
           },
         },
+        {
+          method: "GET",
+          path: "/api/v1/newLoan/userListOption",
+          config: {
+            // pre: [{ method: validateToken, assign: "token" }],
+            handler: controller.userListOption,
+            description: "Creating New Loan",
+            auth: false,
+          },
+        },
       ]);
       resolve(true);
     });

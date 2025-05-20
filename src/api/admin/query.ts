@@ -606,9 +606,11 @@ export const getAllLoanData = `SELECT
 FROM
   public."refLoan" l
   LEFT JOIN public.users u ON CAST(u."refUserId" AS INTEGER) = l."refUserId"::INTEGER
-  LEFT JOIN public."refProducts" rp ON CAST (rp."refProductId" AS INTEGER) = l."refProductId"::INTEGER
-  LEFT JOIN public."refCommunication" rc ON CAST (rc."refUserId" AS INTEGER) = u."refUserId"
-  LEFT JOIN public."refLoanStatus" ls ON CAST(ls."refLoanStatusId" AS INTEGER) = l."refLoanStatus"`;
+  LEFT JOIN public."refProducts" rp ON CAST(rp."refProductId" AS INTEGER) = l."refProductId"::INTEGER
+  LEFT JOIN public."refCommunication" rc ON CAST(rc."refUserId" AS INTEGER) = u."refUserId"
+  LEFT JOIN public."refLoanStatus" ls ON CAST(ls."refLoanStatusId" AS INTEGER) = l."refLoanStatus"
+ORDER BY
+  l."refCustLoanId" DESC;`;
 
 export const getLoanDataQuery = `
 SELECT 

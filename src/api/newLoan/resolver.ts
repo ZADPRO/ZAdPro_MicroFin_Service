@@ -41,4 +41,16 @@ export class NewLoanResolver {
       domain_code
     );
   }
+  public async userListOptionV1(
+    user_data: any,
+    token_data: any,
+    domain_code: any
+  ): Promise<any> {
+    console.log("Resolver Started");
+    return await this.newLoanRepository.userListOptionV1(
+      user_data,
+      token_data,
+      domain_code
+    );
+  }
 }

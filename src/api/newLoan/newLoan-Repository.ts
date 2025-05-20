@@ -15,6 +15,7 @@ import {
   getBankQuery,
   getLoanList,
   getProductsDurationQuery,
+  getUserList,
   updateBankAccountDebitQuery,
   updateBankFundQuery,
   updateLoan,
@@ -34,12 +35,12 @@ export class newLoanRepository {
       const Loan = await executeQuery(getLoanList, [user_data.userId]);
       return encrypt(
         {
-          success: false,
+          success: true,
           message: "User Loan List",
           token: generateTokenWithoutExpire(token, true),
           data: Loan,
         },
-        false
+        true
       );
     } catch (error) {
       console.log("error line ----- 30", error);
@@ -47,6 +48,32 @@ export class newLoanRepository {
         {
           success: false,
           message: "Error in User Loan List",
+          token: generateTokenWithoutExpire(token, true),
+        },
+        true
+      );
+    }
+  }
+  public async userListOptionV1(user_data: any, tokendata?: any): Promise<any> {
+    const token = { id: tokendata.id };
+
+    try {
+      const userList = await executeQuery(getUserList, []);
+
+      return encrypt(
+        {
+          success: true,
+          message: "Get The User List For Loan Creation",
+          token: generateTokenWithoutExpire(token, true),
+          data: userList,
+        },
+        true
+      );
+    } catch (error) {
+      return encrypt(
+        {
+          success: false,
+          message: "Error in Getting the User List",
           token: generateTokenWithoutExpire(token, true),
         },
         true

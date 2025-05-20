@@ -2174,14 +2174,13 @@ export class adminRepository {
 
   public async getAllLoanV1(userData: any, tokendata: any): Promise<any> {
     const client: PoolClient = await getClient();
-    const token = { id: tokendata.id }; // Extract token ID
+    const token = { id: tokendata.id };
 
     try {
       const name = await client.query(nameQuery, [tokendata.id]);
 
       const AllLoanData = await executeQuery(getAllLoanData);
 
-      // Return success response
       console.log("Repository return Responce");
       return encrypt(
         {

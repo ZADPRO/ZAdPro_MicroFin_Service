@@ -234,6 +234,24 @@ JOIN product_details pd ON ir."refProductId"::INTEGER = pd."refProductId"::INTEG
 JOIN generate_series(1, pd."refProductDuration"::INTEGER) AS gs(month_num) ON true;
 
 `;
+
+export const getUserList = `SELECT
+  u."refUserId",
+  u."refUserFname",
+  u."refUserLname",
+  u."refCustId",
+  u."refAadharNo",
+  u."refPanNo",
+  rc."refUserMobileNo",
+  rc."refUserEmail",
+  rc."refUserAddress",
+  rc."refUserDistrict",
+  rc."refUserState",
+  rc."refUserPincode"
+FROM
+  public."users" u
+  LEFT JOIN public."refCommunication" rc ON CAST(rc."refUserId" AS INTEGER) = u."refUserId"`;
+
 export const updateBankFundQuery = `INSERT INTO 
    public."refBankFund" (
      "refBankId",
@@ -247,7 +265,7 @@ export const updateBankFundQuery = `INSERT INTO
      "createdBy"
       )
  VALUES
-   ($1, $2, $3, $4, $5, $6, $7, $8)
+   ($1, $2, $3, $4, $5, $6, $7, $8,$9)
    RETURNING *;`;
 export const updateLoan = `UPDATE
   public."refLoan"
