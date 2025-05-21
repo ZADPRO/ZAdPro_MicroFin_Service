@@ -12,7 +12,7 @@ export class adminLoanVendorRoutes implements IRoute {
           method: "POST",
           path: "/api/v1/adminLoan/Vendor/add",
           config: {
-            // pre: [{ method: validateToken, assign: "token" }],
+            pre: [{ method: validateToken, assign: "token" }],
             handler: controller.addNewVendor,
             description: "Store New Vendor Details",
           },
@@ -21,7 +21,7 @@ export class adminLoanVendorRoutes implements IRoute {
           method: "POST",
           path: "/api/v1/adminLoan/vendor/update",
           config: {
-            // pre: [{ method: validateToken, assign: "token" }],
+            pre: [{ method: validateToken, assign: "token" }],
             handler: controller.updateVendor,
             description: "Updating Vendor Details",
           },
@@ -30,7 +30,7 @@ export class adminLoanVendorRoutes implements IRoute {
           method: "GET",
           path: "/api/v1/adminLoan/vendor/list",
           config: {
-            // pre: [{ method: validateToken, assign: "token" }],
+            pre: [{ method: validateToken, assign: "token" }],
             handler: controller.list,
             description: "Getting Vendor List",
           },
@@ -39,7 +39,7 @@ export class adminLoanVendorRoutes implements IRoute {
           method: "POST",
           path: "/api/v1/adminLoan/vendor/details",
           config: {
-            // pre: [{ method: validateToken, assign: "token" }],
+            pre: [{ method: validateToken, assign: "token" }],
             handler: controller.details,
             description: "Getting Vendor Details",
           },

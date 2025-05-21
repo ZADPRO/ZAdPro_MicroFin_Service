@@ -19,7 +19,7 @@ import { addVendor, updateVendor, vendorDetails, vendorList } from "./query";
 
 export class adminLoanVendorRepository {
   public async addNewVendorV1(user_data: any, tokendata: any): Promise<any> {
-    const token = { id: tokendata.id };
+    const token = { id: tokendata.id, cash: tokendata.cash };
     const tokens = generateTokenWithoutExpire(token, true);
     try {
       console.log("user_data", user_data);
@@ -56,7 +56,7 @@ export class adminLoanVendorRepository {
     }
   }
   public async updateVendorV1(user_data: any, tokendata: any): Promise<any> {
-    const token = { id: tokendata.id };
+    const token = { id: tokendata.id, cash: tokendata.cash };
     const tokens = generateTokenWithoutExpire(token, true);
     try {
       const params = [
@@ -93,7 +93,7 @@ export class adminLoanVendorRepository {
     }
   }
   public async listV1(user_data: any, tokendata: any): Promise<any> {
-    const token = { id: tokendata.id };
+    const token = { id: tokendata.id, cash: tokendata.cash };
     const tokens = generateTokenWithoutExpire(token, true);
     try {
       const data = await executeQuery(vendorList);
@@ -119,7 +119,7 @@ export class adminLoanVendorRepository {
     }
   }
   public async detailsV1(user_data: any, tokendata: any): Promise<any> {
-    const token = { id: tokendata.id };
+    const token = { id: tokendata.id, cash: tokendata.cash };
     const tokens = generateTokenWithoutExpire(token, true);
     try {
       console.log("user_data line ----- 125", user_data);

@@ -35,7 +35,7 @@ import { TopUpBalance } from "../../helper/LoanCalculation";
 
 export class AdminRePaymentRepository {
   public async unPaidUserListV1(user_data: any, tokendata: any): Promise<any> {
-    const token = { id: tokendata.id };
+    const token = { id: tokendata.id, cash: tokendata.cash };
     const tokens = generateTokenWithoutExpire(token, true);
     try {
       const Params = [
@@ -74,7 +74,7 @@ export class AdminRePaymentRepository {
     user_data: any,
     tokendata: any
   ): Promise<any> {
-    const token = { id: tokendata.id };
+    const token = { id: tokendata.id, cash: tokendata.cash };
     const tokens = generateTokenWithoutExpire(token, true);
 
     try {
@@ -115,7 +115,7 @@ export class AdminRePaymentRepository {
     }
   }
   public async updateRePaymentV1(user_data: any, tokendata: any): Promise<any> {
-    const token = { id: tokendata.id };
+    const token = { id: tokendata.id, cash: tokendata.cash };
     const tokens = generateTokenWithoutExpire(token, true);
     const client: PoolClient = await getClient();
 
@@ -239,7 +239,7 @@ export class AdminRePaymentRepository {
     }
   }
   public async updateFollowUpV1(user_data: any, tokendata: any): Promise<any> {
-    const token = { id: tokendata.id };
+    const token = { id: tokendata.id, cash: tokendata.cash };
     const tokens = generateTokenWithoutExpire(token, true);
     const client: PoolClient = await getClient();
 

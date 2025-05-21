@@ -44,6 +44,7 @@ export class adminProfile {
     try {
       const decodedToken = {
         id: request.plugins.token.id,
+        cash: request.plugins.token.cash,
       };
       console.log("decodedToken", decodedToken);
       const entity = await this.resolver.addNewPersonV1(
@@ -76,6 +77,7 @@ export class adminProfile {
     try {
       const decodedToken = {
         id: request.plugins.token.id,
+        cash: request.plugins.token.cash,
       };
       const entity = await this.resolver.getPersonV1(
         request.payload,
@@ -107,6 +109,7 @@ export class adminProfile {
     try {
       const decodedToken = {
         id: request.plugins.token.id,
+        cash: request.plugins.token.cash,
       };
       const entity = await this.resolver.getPersonListV1(
         request.payload,
@@ -138,6 +141,7 @@ export class adminProfile {
     try {
       const decodedToken = {
         id: request.plugins.token.id,
+        cash: request.plugins.token.cash,
       };
       // const decodedToken = {id:1};
 
@@ -172,6 +176,7 @@ export class adminProfile {
 
     const decodedToken = {
       id: request.plugins.token.id,
+      cash: request.plugins.token.cash,
     };
     try {
       const entity = await this.resolver.profileUploadV1(
@@ -204,6 +209,7 @@ export class adminProfile {
     try {
       const decodedToken = {
         id: request.plugins.token.id,
+        cash: request.plugins.token.cash,
       };
       console.log("decodedToken", decodedToken);
       const entity = await this.resolver.addBankAccountV1(
@@ -236,6 +242,7 @@ export class adminProfile {
     try {
       const decodedToken = {
         id: request.plugins.token.id,
+        cash: request.plugins.token.cash,
       };
       console.log("decodedToken", decodedToken);
       const entity = await this.resolver.updateBankAccountV1(
@@ -268,6 +275,7 @@ export class adminProfile {
     try {
       const decodedToken = {
         id: request.plugins.token.id,
+        cash: request.plugins.token.cash,
       };
       console.log("decodedToken", decodedToken);
       const entity = await this.resolver.getBankAccountListV1(
@@ -300,6 +308,7 @@ export class adminProfile {
     try {
       const decodedToken = {
         id: request.plugins.token.id,
+        cash: request.plugins.token.cash,
       };
       console.log("decodedToken", decodedToken);
       const entity = await this.resolver.addProductV1(
@@ -331,6 +340,7 @@ export class adminProfile {
     try {
       const decodedToken = {
         id: request.plugins.token.id,
+        cash: request.plugins.token.cash,
       };
       const entity = await this.resolver.updateProductV1(
         request.payload,
@@ -361,6 +371,7 @@ export class adminProfile {
     try {
       const decodedToken = {
         id: request.plugins.token.id,
+        cash: request.plugins.token.cash,
       };
       const entity = await this.resolver.productListV1(
         request.payload,
@@ -391,6 +402,7 @@ export class adminProfile {
     try {
       const decodedToken = {
         id: request.plugins.token.id,
+        cash: request.plugins.token.cash,
       };
       const entity = await this.resolver.getProductV1(
         request.payload,
@@ -420,6 +432,7 @@ export class adminProfile {
     logger.info(`ROUTE API CALL => \n ${request.url.href}`);
     const decodedToken = {
       id: request.plugins.token.id,
+      cash: request.plugins.token.cash,
     };
     try {
       const entity = await this.resolver.referenceAadharUploadV1(
@@ -452,6 +465,7 @@ export class adminProfile {
     try {
       const decodedToken = {
         id: request.plugins.token.id,
+        cash: request.plugins.token.cash,
       };
       const entity = await this.resolver.addReferenceV1(
         request.payload,
@@ -482,6 +496,7 @@ export class adminProfile {
     try {
       const decodedToken = {
         id: request.plugins.token.id,
+        cash: request.plugins.token.cash,
       };
       const entity = await this.resolver.getReferenceV1(
         request.payload,
@@ -512,6 +527,7 @@ export class adminProfile {
     try {
       const decodedToken = {
         id: request.plugins.token.id,
+        cash: request.plugins.token.cash,
       };
       console.log("decodedToken", decodedToken);
       const entity = await this.resolver.addBankFundV1(
@@ -543,6 +559,7 @@ export class adminProfile {
     try {
       const decodedToken = {
         id: request.plugins.token.id,
+        cash: request.plugins.token.cash,
       };
       console.log("decodedToken", decodedToken);
       const entity = await this.resolver.getBankListV1(
@@ -574,10 +591,9 @@ export class adminProfile {
     try {
       const decodedToken = {
         id: request.plugins.token.id,
+        cash: request.plugins.token.cash,
       };
-      // const decodedToken = {
-      //   id: 1,
-      // };
+
       const entity = await this.resolver.viewBankFundV1(
         request.payload,
         decodedToken
@@ -607,6 +623,7 @@ export class adminProfile {
     try {
       const decodedToken = {
         id: request.plugins.token.id,
+        cash: request.plugins.token.cash,
       };
       console.log("decodedToken line ------- 609", decodedToken);
       const entity = await this.resolver.getBankFundListV1(
@@ -638,6 +655,7 @@ export class adminProfile {
     try {
       const decodedToken = {
         id: request.plugins.token.id,
+        cash: request.plugins.token.cash,
       };
       const entity = await this.resolver.addLoanV1(
         request.payload,
@@ -668,6 +686,7 @@ export class adminProfile {
     try {
       const decodedToken = {
         id: request.plugins.token.id,
+        cash: request.plugins.token.cash,
       };
       const entity = await this.resolver.addLoanOptionV1(
         request.payload,
@@ -698,6 +717,7 @@ export class adminProfile {
     try {
       const decodedToken = {
         id: request.plugins.token.id,
+        cash: request.plugins.token.cash,
       };
       const entity = await this.resolver.updateLoanV1(
         request.payload,
@@ -728,6 +748,7 @@ export class adminProfile {
     try {
       const decodedToken = {
         id: request.plugins.token.id,
+        cash: request.plugins.token.cash,
       };
 
       const entity = await this.resolver.getLoanListV1(
@@ -759,6 +780,7 @@ export class adminProfile {
     try {
       const decodedToken = {
         id: request.plugins.token.id,
+        cash: request.plugins.token.cash,
       };
 
       const entity = await this.resolver.getLoanAndUserV1(
@@ -790,6 +812,7 @@ export class adminProfile {
     try {
       const decodedToken = {
         id: request.plugins.token.id,
+        cash: request.plugins.token.cash,
       };
 
       const entity = await this.resolver.getAllLoanV1(
@@ -821,6 +844,7 @@ export class adminProfile {
     try {
       const decodedToken = {
         id: request.plugins.token.id,
+        cash: request.plugins.token.cash,
       };
 
       const entity = await this.resolver.getLoanV1(
@@ -852,6 +876,7 @@ export class adminProfile {
     try {
       const decodedToken = {
         id: request.plugins.token.id,
+        cash: request.plugins.token.cash,
       };
       const entity = await this.resolver.rePaymentScheduleV1(
         request.payload,
@@ -882,6 +907,7 @@ export class adminProfile {
     try {
       const decodedToken = {
         id: request.plugins.token.id,
+        cash: request.plugins.token.cash,
       };
       // const decodedToken = {id:1};
 
@@ -914,6 +940,7 @@ export class adminProfile {
     try {
       const decodedToken = {
         id: request.plugins.token.id,
+        cash: request.plugins.token.cash,
       };
       // const decodedToken = {id:1};
 
@@ -946,6 +973,7 @@ export class adminProfile {
     try {
       const decodedToken = {
         id: request.plugins.token.id,
+        cash: request.plugins.token.cash,
       };
       const entity = await this.resolver.ListRePaymentScheduleV1(
         request.payload,
@@ -976,6 +1004,7 @@ export class adminProfile {
     try {
       const decodedToken = {
         id: request.plugins.token.id,
+        cash: request.plugins.token.cash,
       };
       const entity = await this.resolver.addPaymentV1(
         request.payload,
@@ -1006,6 +1035,7 @@ export class adminProfile {
     try {
       const decodedToken = {
         id: request.plugins.token.id,
+        cash: request.plugins.token.cash,
       };
       const entity = await this.resolver.listUnPaidV1(
         request.payload,
@@ -1036,6 +1066,7 @@ export class adminProfile {
     try {
       const decodedToken = {
         id: request.plugins.token.id,
+        cash: request.plugins.token.cash,
       };
       const entity = await this.resolver.listOfUnPaidUsersV1(
         request.payload,

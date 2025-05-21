@@ -229,6 +229,7 @@ export const getAllBankAccountQuery = `SELECT
 FROM
   public."refBankAccounts" rb
   LEFT JOIN public."refBankAccountType" rbt ON CAST (rbt."refAccountId" AS INTEGER) = rb."refAccountType"::INTEGER
+  WHERE rb."refAccountType" = ANY($1)
 ORDER BY
   "refBankId" DESC;
 `;
@@ -262,8 +263,9 @@ export const getBankListQuery = `SELECT
   ROUND(CAST(NULLIF(ba."refBalance", '') AS NUMERIC), 2) AS "refBalance"
 FROM
   public."refBankAccounts" ba
-  LEFT JOIN public."refBankAccountType" bt 
-    ON CAST(bt."refAccountId" AS INTEGER) = ba."refAccountType"`;
+  LEFT JOIN public."refBankAccountType" bt ON CAST(bt."refAccountId" AS INTEGER) = ba."refAccountType"
+WHERE
+  ba."refAccountType" = ANY ($1)`;
 
 export const updateBankAccountBalanceQuery = `
 UPDATE public."refBankAccounts" 
@@ -367,6 +369,7 @@ FROM
   public."refBankFund" rbf
   LEFT JOIN public."refBankAccounts" rba ON rba."refBankId" = rbf."refBankId"::INTEGER
   LEFT JOIN public."refBankAccountType" bt ON CAST(bt."refAccountId" AS INTEGER) = rba."refAccountType"
+  WHERE rba."refAccountType" = ANY ($1)
 ORDER BY
   rbf."refBankFId" DESC;`;
 
@@ -609,6 +612,9 @@ FROM
   LEFT JOIN public."refProducts" rp ON CAST(rp."refProductId" AS INTEGER) = l."refProductId"::INTEGER
   LEFT JOIN public."refCommunication" rc ON CAST(rc."refUserId" AS INTEGER) = u."refUserId"
   LEFT JOIN public."refLoanStatus" ls ON CAST(ls."refLoanStatusId" AS INTEGER) = l."refLoanStatus"
+  LEFT JOIN public."refBankAccounts" b ON CAST(b."refBankId" AS INTEGER) = l."refBankId"::INTEGER
+WHERE
+  b."refAccountType" = ANY ($1)
 ORDER BY
   l."refCustLoanId" DESC;`;
 

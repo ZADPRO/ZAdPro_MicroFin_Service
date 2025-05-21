@@ -21,7 +21,7 @@ import { addFund, updateFund } from "./query";
 
 export class fundRepository {
   public async selfTransferV1(user_data: any, tokendata?: any): Promise<any> {
-    const token = { id: tokendata.id };
+    const token = { id: tokendata.id, cash: tokendata.cash };
     const client: PoolClient = await getClient();
 
     try {
@@ -70,7 +70,7 @@ export class fundRepository {
     user_data: any,
     tokendata?: any
   ): Promise<any> {
-    const token = { id: tokendata.id };
+    const token = { id: tokendata.id, cash: tokendata.cash };
 
     try {
       return encrypt(

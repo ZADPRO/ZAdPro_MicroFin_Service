@@ -27,6 +27,8 @@ import {
   checkLoanPaid,
   bankData,
   LoanDetails,
+  insertRepaymentSchedule,
+  updateRepayment,
 } from "./query";
 import { PoolClient } from "pg";
 
@@ -43,7 +45,7 @@ import { TopUpBalance } from "../../helper/LoanCalculation";
 
 export class rePaymentRepository {
   public async unPaidUserListV1(user_data: any, tokendata: any): Promise<any> {
-    const token = { id: tokendata.id };
+    const token = { id: tokendata.id, cash: tokendata.cash };
     const tokens = generateTokenWithoutExpire(token, true);
     try {
       const name = await executeQuery(nameQuery, [tokendata.id]);
@@ -85,7 +87,7 @@ export class rePaymentRepository {
     user_data: any,
     tokendata: any
   ): Promise<any> {
-    const token = { id: tokendata.id };
+    const token = { id: tokendata.id, cash: tokendata.cash };
     const tokens = generateTokenWithoutExpire(token, true);
 
     try {
@@ -127,7 +129,7 @@ export class rePaymentRepository {
     }
   }
   public async updateRePaymentV1(user_data: any, tokendata: any): Promise<any> {
-    const token = { id: tokendata.id };
+    const token = { id: tokendata.id, cash: tokendata.cash };
     const tokens = generateTokenWithoutExpire(token, true);
     const client: PoolClient = await getClient();
 
@@ -268,7 +270,7 @@ export class rePaymentRepository {
     }
   }
   public async updateFollowUpV1(user_data: any, tokendata: any): Promise<any> {
-    const token = { id: tokendata.id };
+    const token = { id: tokendata.id, cash: tokendata.cash };
     const tokens = generateTokenWithoutExpire(token, true);
     const client: PoolClient = await getClient();
 
@@ -321,7 +323,7 @@ export class rePaymentRepository {
     }
   }
   public async loanAuditV1(user_data: any, tokendata: any): Promise<any> {
-    const token = { id: tokendata.id };
+    const token = { id: tokendata.id, cash: tokendata.cash };
     const tokens = generateTokenWithoutExpire(token, true);
 
     try {
@@ -351,12 +353,14 @@ export class rePaymentRepository {
     }
   }
   public async loanDetailsV1(user_data: any, tokendata: any): Promise<any> {
-    const token = { id: tokendata.id };
+    const token = { id: tokendata.id, cash: tokendata.cash };
     const tokens = generateTokenWithoutExpire(token, true);
 
     try {
-      const params = [user_data.loanId];
-      let RepaymentDetails = await executeQuery(getLoanDetails, params);
+      const RepaymentDetails = await executeQuery(getLoanDetails, [
+        user_data.loanId,
+      ]);
+      console.log(" -> Line Number ----------------------------------- 363");
       RepaymentDetails.map((Data, index) => {
         const balanceAmt = Data.refLoanAmount - Data.totalPrincipal;
         RepaymentDetails[index] = {
@@ -387,7 +391,7 @@ export class rePaymentRepository {
     }
   }
   public async NotificationV1(user_data: any, tokendata: any): Promise<any> {
-    const token = { id: tokendata.id };
+    const token = { id: tokendata.id, cash: tokendata.cash };
     const tokens = generateTokenWithoutExpire(token, true);
 
     try {
@@ -431,7 +435,7 @@ export class rePaymentRepository {
     }
   }
   public async loanCloseDataV1(user_data: any, tokendata: any): Promise<any> {
-    const token = { id: tokendata.id };
+    const token = { id: tokendata.id, cash: tokendata.cash };
     const tokens = generateTokenWithoutExpire(token, true);
 
     console.log("user_data", user_data);
@@ -473,7 +477,7 @@ export class rePaymentRepository {
     }
   }
   public async payPrincipalAmtV1(user_data: any, tokendata: any): Promise<any> {
-    const token = { id: tokendata.id };
+    const token = { id: tokendata.id, cash: tokendata.cash };
     const tokens = generateTokenWithoutExpire(token, true);
     const client: PoolClient = await getClient();
 
@@ -484,23 +488,19 @@ export class rePaymentRepository {
         user_data.LoanId,
         CurrentTime(),
       ]);
-      console.log("check line ---- 433", check);
-      console.log("check[0].unpaid_count", check[0].unpaid_count);
       if (Number(check[0].unpaid_count) !== 0) {
-        console.log(" -> Line Number ----------------------------------- 436");
         return encrypt(
           {
             success: false,
             message:
-              "The User Need to Paid" +
+              "The User Need to Paid " +
               check[0].unpaid_count +
-              "Month Interest and Principal Amount",
+              " Month Interest and Principal Amount",
             token: tokens,
           },
           true
         );
       } else {
-        console.log(" -> Line Number ----------------------------------- 447");
         const loanDetails: any = await TopUpBalance(user_data.LoanId);
         if (
           Number(loanDetails.finalBalanceAmt) < Number(user_data.principalAmt)
@@ -520,13 +520,36 @@ export class rePaymentRepository {
         } else if (
           Number(loanDetails.finalBalanceAmt) == Number(user_data.principalAmt)
         ) {
-          await client.query(updateLoan, [
+          const result = await client.query(updateLoan, [
             parseInt(user_data.LoanId),
             2,
             CurrentTime(),
             "Admin",
           ]);
-
+          const loanData = result.rows[0];
+          const repaymentParams = [
+            loanData.refLoanId,
+            formatToYearMonth(CurrentTime()),
+            loanData.refLoanAmount,
+            user_data.principalAmt,
+            0.0,
+            "paid",
+            "paid",
+            CurrentTime(),
+            tokendata.id,
+          ];
+          console.log("repaymentParams line -------- 538", repaymentParams);
+          await client.query(insertRepaymentSchedule, repaymentParams);
+          console.log(
+            " -> Line Number ----------------------------------- 541"
+          );
+          await client.query(updateRepayment, [
+            user_data.LoanId,
+            formatToYearMonth(CurrentTime()),
+          ]);
+          console.log(
+            " -> Line Number ----------------------------------- 546"
+          );
           const FundUpdate = [
             user_data.bankId,
             formatYearMonthDate(CurrentTime()),
@@ -574,6 +597,20 @@ export class rePaymentRepository {
             JSON.stringify(IntData),
             user_data.refLoanId,
           ]);
+
+          const repaymentParams = [
+            user_data.LoanId,
+            formatToYearMonth(CurrentTime()),
+            paramsData[0].refLoanAmount,
+            user_data.principalAmt,
+            0.0,
+            "paid",
+            "paid",
+            CurrentTime(),
+            tokendata.id,
+          ];
+          console.log("repaymentParams line -------- 538", repaymentParams);
+          await client.query(insertRepaymentSchedule, repaymentParams);
 
           const FundUpdate = [
             user_data.bankId,

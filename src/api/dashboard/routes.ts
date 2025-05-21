@@ -12,7 +12,7 @@ export class refDashboardRoutes implements IRoute {
           method: "POST",
           path: "/api/v1/refDashboard/Count",
           config: {
-            // pre: [{ method: validateToken, assign: "token" }],
+            pre: [{ method: validateToken, assign: "token" }],
             handler: controller.dashBoardCount,
             description: "Get Dashboard Count",
             auth: false,

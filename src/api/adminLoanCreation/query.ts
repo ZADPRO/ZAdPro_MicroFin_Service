@@ -757,6 +757,35 @@ WHERE
 RETURNING
   *;`;
 
+export const insertRepaymentSchedule = `INSERT INTO
+  adminloan."refRepaymentSchedule"(
+    "refLoanId",
+    "refPaymentDate",
+    "refPaymentAmount",
+    "refPrincipal",
+    "refInterest",
+    "refPrincipalStatus",
+    "refInterestStatus",
+    "createdAt",
+    "createdBy")
+
+values
+  ($1, $2, $3, $4, $5, $6, $7, $8, $9)`;
+
+export const updateRepayment = `UPDATE public."refRepaymentSchedule"
+SET
+  "refPrincipal" = CASE
+    WHEN "refPrincipalStatus" = 'Pending' THEN '0.00'
+    ELSE "refPrincipal"
+  END,
+  "refInterest" = CASE
+    WHEN "refInterestStatus" = 'Pending' THEN '0.00'
+    ELSE "refInterest"
+  END
+WHERE
+  "refLoanId"::INTEGER = $1
+  AND "refPaymentDate" > $2;`;
+
 export const bankFundUpdate = `INSERT INTO
 public."refBankFund" (
   "refBankId",
@@ -785,6 +814,7 @@ RETURNING "refBalance";
 `;
 
 export const getReCalParams = `SELECT
+  l."refLoanAmount",
   l."refLoanAmount"::NUMERIC - ROUND(
     COALESCE(
       (

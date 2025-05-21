@@ -13,6 +13,7 @@ import {
   formatYearMonthDate,
 } from "../../helper/common";
 import {
+  expenseData,
   loanStatus,
   monthlyReportCustomer,
   overAllReport,
@@ -25,7 +26,7 @@ export class ReportRepository {
     user_data: any,
     tokendata?: any
   ): Promise<any> {
-    const token = { id: tokendata.id };
+    const token = { id: tokendata.id, cash: tokendata.cash };
 
     try {
       const rePayment = await executeQuery(rePaymentType);
@@ -53,7 +54,7 @@ export class ReportRepository {
     }
   }
   public async overAllReportV1(user_data: any, tokendata?: any): Promise<any> {
-    const token = { id: tokendata.id };
+    const token = { id: tokendata.id, cash: tokendata.cash };
 
     try {
       console.log("user_data line ----- 53", user_data);
@@ -88,7 +89,7 @@ export class ReportRepository {
     }
   }
   public async monthlyReportV1(user_data: any, tokendata?: any): Promise<any> {
-    const token = { id: tokendata.id };
+    const token = { id: tokendata.id, cash: tokendata.cash };
 
     try {
       console.log("user_data", user_data);
@@ -105,6 +106,33 @@ export class ReportRepository {
       } else {
         data = await executeQuery(overallReportAdminLoan, params);
       }
+      return encrypt(
+        {
+          success: true,
+          message: "Monthly Report Data Passed Successfully",
+          token: generateTokenWithoutExpire(token, true),
+          data: data,
+        },
+        true
+      );
+    } catch (error) {
+      console.log("error line ----- 30", error);
+      return encrypt(
+        {
+          success: false,
+          message: "Error in Sending the Overall Report Data",
+          token: generateTokenWithoutExpire(token, true),
+        },
+        true
+      );
+    }
+  }
+  public async expenseReportV1(user_data: any, tokendata?: any): Promise<any> {
+    const token = { id: tokendata.id, cash: tokendata.cash };
+
+    try {
+      const data = await executeQuery(expenseData, [user_data.month]);
+
       return encrypt(
         {
           success: true,

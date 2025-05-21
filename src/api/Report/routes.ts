@@ -12,7 +12,7 @@ export class ReportRoutes implements IRoute {
           method: "GET",
           path: "/api/v1/report/overAllReportOption",
           config: {
-            // pre: [{ method: validateToken, assign: "token" }],
+            pre: [{ method: validateToken, assign: "token" }],
             handler: controller.overAllReportOption,
             description: "Get OverAll Report Option",
             auth: false,
@@ -22,7 +22,7 @@ export class ReportRoutes implements IRoute {
           method: "POST",
           path: "/api/v1/report/overAllReport",
           config: {
-            // pre: [{ method: validateToken, assign: "token" }],
+            pre: [{ method: validateToken, assign: "token" }],
             handler: controller.overAllReport,
             description: "Get OverAll Report Data",
             auth: false,
@@ -32,9 +32,19 @@ export class ReportRoutes implements IRoute {
           method: "POST",
           path: "/api/v1/report/monthlyReport",
           config: {
-            // pre: [{ method: validateToken, assign: "token" }],
+            pre: [{ method: validateToken, assign: "token" }],
             handler: controller.monthlyReport,
             description: "Get Monthly Report Data",
+            auth: false,
+          },
+        },
+        {
+          method: "POST",
+          path: "/api/v1/report/expenseReport",
+          config: {
+            pre: [{ method: validateToken, assign: "token" }],
+            handler: controller.expenseReport,
+            description: "Expense Monthly Report Data",
             auth: false,
           },
         },

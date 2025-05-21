@@ -388,7 +388,7 @@ export class adminRoutes implements IRoute {
           method: "POST",
           path: "/api/v1/adminRoutes/listOfUnPaidUsers",
           config: {
-            // pre: [{ method: validateToken, assign: "token" }],
+            pre: [{ method: validateToken, assign: "token" }],
             handler: controller.listOfUnPaidUsers,
             description: "list Unpaid User List",
             tags: ["api", "Users"],

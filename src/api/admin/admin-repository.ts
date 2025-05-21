@@ -7,6 +7,7 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { generateTokenWithoutExpire } from "../../helper/token";
 import {
+  bankType,
   CurrentTime,
   formatYearMonthDate,
   getImageBase64,
@@ -116,7 +117,7 @@ export class adminRepository {
           user.refUserHashPassword
         );
         if (validPassword) {
-          const tokenData = { id: user.refUserId };
+          const tokenData = { id: user.refUserId, cash: true };
 
           console.log("Repository return Responce");
           return encrypt(
@@ -156,7 +157,7 @@ export class adminRepository {
   }
   public async addNewPersonV1(user_data: any, tokendata: any): Promise<any> {
     const client: PoolClient = await getClient();
-    const token = { id: tokendata.id };
+    const token = { id: tokendata.id, cash: tokendata.cash };
 
     try {
       const basicDetails = user_data.BasicInfo;
@@ -302,7 +303,7 @@ export class adminRepository {
   }
   public async getPersonV1(userData: any, tokendata: any): Promise<any> {
     const client: PoolClient = await getClient();
-    const token = { id: tokendata.id }; // Extract token ID
+    const token = { id: tokendata.id, cash: tokendata.cash }; // Extract token ID
     try {
       // Ensure roleId and refCustId are provided
       const { roleId, refUserId } = userData;
@@ -430,7 +431,7 @@ export class adminRepository {
   }
   public async getPersonListV1(userData: any, tokendata: any): Promise<any> {
     const client: PoolClient = await getClient();
-    const token = { id: tokendata.id }; // Extract token ID
+    const token = { id: tokendata.id, cash: tokendata.cash }; // Extract token ID
     console.log("tokendata.id", tokendata.id);
     try {
       // Ensure roleId is provided
@@ -580,7 +581,7 @@ export class adminRepository {
   // }
   public async updatePersonV1(user_data: any, tokendata: any): Promise<any> {
     const client: PoolClient = await getClient();
-    const token = { id: tokendata.id };
+    const token = { id: tokendata.id, cash: tokendata.cash };
     try {
       await client.query("BEGIN");
 
@@ -739,7 +740,7 @@ export class adminRepository {
     }
   }
   public async profileUploadV1(userData: any, tokendata: any): Promise<any> {
-    const token = { id: tokendata.id };
+    const token = { id: tokendata.id, cash: tokendata.cash };
 
     try {
       const { profile, aadhar, pan } = userData;
@@ -816,7 +817,7 @@ export class adminRepository {
   public async addBankAccountV1(userData: any, tokendata: any): Promise<any> {
     console.log("userData", userData);
     const client: PoolClient = await getClient();
-    const token = { id: tokendata.id };
+    const token = { id: tokendata.id, cash: tokendata.cash };
 
     try {
       await client.query("BEGIN");
@@ -881,7 +882,7 @@ export class adminRepository {
     tokendata: any
   ): Promise<any> {
     const client: PoolClient = await getClient();
-    const token = { id: tokendata.id }; // Extract token ID
+    const token = { id: tokendata.id, cash: tokendata.cash }; // Extract token ID
     try {
       await client.query("BEGIN"); // Start the transaction
 
@@ -966,16 +967,16 @@ export class adminRepository {
     userData: any,
     tokendata: any
   ): Promise<any> {
-    const token = { id: tokendata.id }; // Extract token ID
+    const token = { id: tokendata.id, cash: tokendata.cash };
     console.log("token", token);
-    // const client: PoolClient = await getClient();
     try {
-      const allBankAccountList = await executeQuery(getAllBankAccountQuery);
+      const bank = bankType(tokendata.cash);
+      const allBankAccountList = await executeQuery(getAllBankAccountQuery, [
+        bank,
+      ]);
 
       const name = await executeQuery(nameQuery, [tokendata.id]);
-      console.log("nam line ----944", name);
 
-      // Return success response
       console.log("Repository return Responce");
       return encrypt(
         {
@@ -1008,7 +1009,7 @@ export class adminRepository {
   }
   public async addProductV1(userData: any, tokendata: any): Promise<any> {
     const client: PoolClient = await getClient();
-    const token = { id: tokendata.id }; // Extract token ID
+    const token = { id: tokendata.id, cash: tokendata.cash }; // Extract token ID
     try {
       await client.query("BEGIN"); // Start Transaction
 
@@ -1066,7 +1067,7 @@ export class adminRepository {
   }
   public async updateProductV1(userData: any, tokendata: any): Promise<any> {
     const client: PoolClient = await getClient();
-    const token = { id: tokendata.id }; // Extract token ID
+    const token = { id: tokendata.id, cash: tokendata.cash }; // Extract token ID
     try {
       await client.query("BEGIN");
 
@@ -1121,7 +1122,7 @@ export class adminRepository {
   }
   public async productListV1(userData: any, tokendata: any): Promise<any> {
     const client: PoolClient = await getClient();
-    const token = { id: tokendata.id }; // Extract token ID
+    const token = { id: tokendata.id, cash: tokendata.cash }; // Extract token ID
     try {
       const productList = await client.query(getProductsListQuery);
       const name = await client.query(nameQuery, [tokendata.id]);
@@ -1160,7 +1161,7 @@ export class adminRepository {
     }
   }
   public async getProductV1(userData: any, tokendata: any): Promise<any> {
-    const token = { id: tokendata.id }; // Extract token ID
+    const token = { id: tokendata.id, cash: tokendata.cash }; // Extract token ID
 
     try {
       // Ensure customer is provided
@@ -1206,7 +1207,7 @@ export class adminRepository {
     userData: any,
     tokendata: any
   ): Promise<any> {
-    const token = { id: tokendata.id };
+    const token = { id: tokendata.id, cash: tokendata.cash };
     try {
       // Extract the image from userData
       const image = userData.Image;
@@ -1259,7 +1260,7 @@ export class adminRepository {
   }
   public async addReferenceV1(user_data: any, tokendata: any): Promise<any> {
     const client: PoolClient = await getClient();
-    const token = { id: tokendata.id };
+    const token = { id: tokendata.id, cash: tokendata.cash };
 
     try {
       await client.query("BEGIN");
@@ -1329,7 +1330,7 @@ export class adminRepository {
     }
   }
   public async getReferenceV1(userData: any, tokendata: any): Promise<any> {
-    const token = { id: tokendata.id }; // Extract token ID
+    const token = { id: tokendata.id, cash: tokendata.cash }; // Extract token ID
 
     try {
       // Ensure customer is provided
@@ -1373,7 +1374,7 @@ export class adminRepository {
   }
   public async addBankFundV1(userData: any, tokendata: any): Promise<any> {
     const client: PoolClient = await getClient();
-    const token = { id: tokendata.id }; // Extract token ID
+    const token = { id: tokendata.id, cash: tokendata.cash }; // Extract token ID
 
     try {
       await client.query("BEGIN"); // Start Transaction
@@ -1477,10 +1478,11 @@ export class adminRepository {
     }
   }
   public async getBankListV1(userData: any, tokendata: any): Promise<any> {
-    const token = { id: tokendata.id }; // Extract token ID
+    const token = { id: tokendata.id, cash: tokendata.cash }; // Extract token ID
 
     try {
-      const BankList = await executeQuery(getBankListQuery);
+      const bank = bankType(tokendata.cash);
+      const BankList = await executeQuery(getBankListQuery, [bank]);
       console.log("BankList line ----- 17578", BankList);
 
       // Return success response
@@ -1515,7 +1517,7 @@ export class adminRepository {
   }
   public async viewBankFundV1(userData: any, tokendata: any): Promise<any> {
     const client: PoolClient = await getClient();
-    const token = { id: tokendata.id }; // Extract token ID
+    const token = { id: tokendata.id, cash: tokendata.cash }; // Extract token ID
 
     try {
       // Ensure that either refBankFId or date range (startDate and endDate) is provided
@@ -1589,9 +1591,10 @@ export class adminRepository {
   }
   public async getBankFundListV1(userData: any, tokendata: any): Promise<any> {
     const client: PoolClient = await getClient();
-    const token = { id: tokendata.id }; // Extract token ID
+    const token = { id: tokendata.id, cash: tokendata.cash }; // Extract token ID
     try {
-      const BankFundList = await client.query(getBankFundListQuery);
+      const bank = bankType(tokendata.cash);
+      const BankFundList = await client.query(getBankFundListQuery, [bank]);
 
       const name = await client.query(nameQuery, [tokendata.id]);
       // Return success response
@@ -1628,7 +1631,7 @@ export class adminRepository {
     }
   }
   public async addLoanOptionV1(userData: any, tokendata: any): Promise<any> {
-    const token = { id: tokendata.id }; // Extract token ID
+    const token = { id: tokendata.id, cash: tokendata.cash }; // Extract token ID
 
     try {
       const loanOption = await executeQuery(getLoanDataOption, [
@@ -1661,7 +1664,7 @@ export class adminRepository {
 
   public async addLoanV1(userData: any, tokendata: any): Promise<any> {
     const client: PoolClient = await getClient();
-    const token = { id: tokendata.id };
+    const token = { id: tokendata.id, cash: tokendata.cash };
     try {
       await client.query("BEGIN");
 
@@ -2019,7 +2022,7 @@ export class adminRepository {
 
   public async updateLoanV1(userData: any, tokendata: any): Promise<any> {
     const client: PoolClient = await getClient();
-    const token = { id: tokendata.id }; // Extract token ID
+    const token = { id: tokendata.id, cash: tokendata.cash }; // Extract token ID
     try {
       const { userId, loanStopStatus } = userData.userData;
 
@@ -2089,7 +2092,7 @@ export class adminRepository {
 
   public async getLoanListV1(userData: any, tokendata: any): Promise<any> {
     const client: PoolClient = await getClient();
-    const token = { id: tokendata.id }; // Extract token ID
+    const token = { id: tokendata.id, cash: tokendata.cash }; // Extract token ID
     try {
       const productList = await client.query(getloanListQuery);
       const name = await client.query(nameQuery, [tokendata.id]);
@@ -2129,7 +2132,7 @@ export class adminRepository {
   }
   public async getLoanAndUserV1(userData: any, tokendata: any): Promise<any> {
     const client: PoolClient = await getClient();
-    const token = { id: tokendata.id }; // Extract token ID
+    const token = { id: tokendata.id, cash: tokendata.cash }; // Extract token ID
 
     try {
       // const productList = await client.query(getloanUserListQuery);
@@ -2174,12 +2177,13 @@ export class adminRepository {
 
   public async getAllLoanV1(userData: any, tokendata: any): Promise<any> {
     const client: PoolClient = await getClient();
-    const token = { id: tokendata.id };
+    const token = { id: tokendata.id, cash: tokendata.cash };
 
     try {
+      const bank = bankType(tokendata.cash);
       const name = await client.query(nameQuery, [tokendata.id]);
 
-      const AllLoanData = await executeQuery(getAllLoanData);
+      const AllLoanData = await executeQuery(getAllLoanData, [bank]);
 
       console.log("Repository return Responce");
       return encrypt(
@@ -2215,7 +2219,7 @@ export class adminRepository {
   }
   public async getLoanV1(userData: any, tokendata: any): Promise<any> {
     const client: PoolClient = await getClient();
-    const token = { id: tokendata.id }; // Extract token ID
+    const token = { id: tokendata.id, cash: tokendata.cash }; // Extract token ID
 
     try {
       const { userId } = userData;
@@ -2264,7 +2268,7 @@ export class adminRepository {
   //   tokendata: any
   // ): Promise<any> {
   //   const client: PoolClient = await getClient();
-  //   const token = { id: tokendata.id };
+  //   const token = { id: tokendata.id, cash: tokendata.cash };
 
   //   try {
   //     await client.query("BEGIN");
@@ -2382,7 +2386,7 @@ export class adminRepository {
     tokendata: any
   ): Promise<any> {
     const client: PoolClient = await getClient();
-    const token = { id: tokendata.id };
+    const token = { id: tokendata.id, cash: tokendata.cash };
 
     try {
       await client.query("BEGIN");
@@ -2491,7 +2495,7 @@ export class adminRepository {
     }
   }
   public async userFollowUpV1(userData: any, tokendata: any): Promise<any> {
-    const token = { id: tokendata.id };
+    const token = { id: tokendata.id, cash: tokendata.cash };
     try {
       const updateUserStatusResult = await executeQuery(updateUserStatusQuery, [
         userData.refRpayId,
@@ -2527,7 +2531,7 @@ export class adminRepository {
   }
   public async updateFollowUpV1(userData: any, tokendata: any): Promise<any> {
     const client: PoolClient = await getClient();
-    const token = { id: tokendata.id }; // Extract token ID
+    const token = { id: tokendata.id, cash: tokendata.cash }; // Extract token ID
     try {
       await client.query("BEGIN");
 
@@ -2577,7 +2581,7 @@ export class adminRepository {
     tokendata: any
   ): Promise<any> {
     const client: PoolClient = await getClient();
-    const token = { id: tokendata.id }; // Extract token ID
+    const token = { id: tokendata.id, cash: tokendata.cash }; // Extract token ID
 
     try {
       const RePaymentScheduleList = await client.query(
@@ -2620,7 +2624,7 @@ export class adminRepository {
   }
   public async addPaymentV1(paymentData: any, tokendata: any): Promise<any> {
     const client: PoolClient = await getClient();
-    const token = { id: tokendata.id };
+    const token = { id: tokendata.id, cash: tokendata.cash };
 
     try {
       await client.query("BEGIN");
@@ -2701,7 +2705,7 @@ export class adminRepository {
   }
   public async listUnPaidV1(userData: any, tokendata: any): Promise<any> {
     const client: PoolClient = await getClient();
-    const token = { id: tokendata.id }; // Extract token ID
+    const token = { id: tokendata.id, cash: tokendata.cash }; // Extract token ID
 
     try {
       const getUnPaidUser = await executeQuery(getUnPaidUserQuery);
@@ -2743,7 +2747,7 @@ export class adminRepository {
     tokendata: any
   ): Promise<any> {
     const client: PoolClient = await getClient();
-    const token = { id: tokendata.id }; // Extract token ID
+    const token = { id: tokendata.id, cash: tokendata.cash }; // Extract token ID
 
     try {
       const getUnPaidUser = await executeQuery(getUnPaidUserQuery);

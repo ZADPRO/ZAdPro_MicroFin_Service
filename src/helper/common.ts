@@ -312,3 +312,11 @@ export function convertToYMD(): string {
 
   return `${y}-${m}-${d}`;
 }
+
+export const bankType = (status: boolean) => {
+  if (status) {
+    return [1, 2];
+  } else {
+    return [1];
+  }
+};

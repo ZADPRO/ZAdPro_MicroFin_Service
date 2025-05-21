@@ -12,7 +12,7 @@ export class newLoanRoutes implements IRoute {
           method: "POST",
           path: "/api/v1/newLoan/selectLoan",
           config: {
-            // pre: [{ method: validateToken, assign: "token" }],
+           pre: [{ method: validateToken, assign: "token" }],
             handler: controller.selectLoan,
             description: "list of Loan to select",
             auth: false,
@@ -22,7 +22,7 @@ export class newLoanRoutes implements IRoute {
           method: "POST",
           path: "/api/v1/newLoan/selectedLoanDetailsV1",
           config: {
-            // pre: [{ method: validateToken, assign: "token" }],
+           pre: [{ method: validateToken, assign: "token" }],
             handler: controller.selectedLoanDetails,
             description: "Getting Loan Details On Selected Loan",
             auth: false,
@@ -32,7 +32,7 @@ export class newLoanRoutes implements IRoute {
           method: "POST",
           path: "/api/v1/newLoan/CreateNewLoan",
           config: {
-            // pre: [{ method: validateToken, assign: "token" }],
+           pre: [{ method: validateToken, assign: "token" }],
             handler: controller.CreateNewLoan,
             description: "Creating New Loan",
             auth: false,
@@ -42,7 +42,7 @@ export class newLoanRoutes implements IRoute {
           method: "GET",
           path: "/api/v1/newLoan/userListOption",
           config: {
-            // pre: [{ method: validateToken, assign: "token" }],
+           pre: [{ method: validateToken, assign: "token" }],
             handler: controller.userListOption,
             description: "Creating New Loan",
             auth: false,

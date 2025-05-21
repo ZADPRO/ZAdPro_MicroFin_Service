@@ -35,8 +35,11 @@ FROM
   LEFT JOIN adminloan."refExpenseCategory" ec ON CAST(re."refCategoryId" AS INTEGER) = ec."refExpenseCategoryId"
   LEFT JOIN public."refBankAccounts" ba ON CAST(re."refBankId" AS INTEGER) = ba."refBankId"
   LEFT JOIN public."refBankAccountType" bat ON CAST(bat."refAccountId" AS INTEGER) = ba."refAccountType"
-  WHERE TO_CHAR(re."refExpenseDate"::timestamp, 'YYYY-MM') = $1
-  ORDER BY re."refExpenseDate" DESC;`;
+WHERE
+  TO_CHAR(re."refExpenseDate"::timestamp, 'YYYY-MM') = $1
+  AND ba."refAccountType" = ANY ($2)
+ORDER BY
+  re."refExpenseDate" DESC;`;
 
 export const expenseCatageory = `SELECT
   ec."refExpenseCategoryId",
@@ -51,7 +54,9 @@ export const getBank = `SELECT
   b."refBalance",
   b."refAccountType"
 FROM
-  public."refBankAccounts" b`;
+  public."refBankAccounts" b
+WHERE
+  b."refAccountType" = ANY ($1)`;
 
 export const updateBankFundQuery = `INSERT INTO 
    public."refBankFund" (

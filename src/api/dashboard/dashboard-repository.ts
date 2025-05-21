@@ -9,21 +9,30 @@ import {
   adminPaidLoan,
   adminLoanNotPaid,
 } from "./query";
+import { bankType } from "../../helper/common";
 
 export class refDashboardRepository {
   public async dashBoardCountV1(user_data: any, tokendata: any): Promise<any> {
-    console.log("user_data", user_data);
-    const token = { id: tokendata.id };
+    const token = { id: tokendata.id, cash: tokendata.cash };
     const tokens = generateTokenWithoutExpire(token, true);
     try {
-      const loanCountData = await executeQuery(loanCount, [user_data.month]);
-      const paidLoanData = await executeQuery(paidLoan, [user_data.month]);
+      const bank = bankType(tokendata.cash);
+      const loanCountData = await executeQuery(loanCount, [
+        user_data.month,
+        bank,
+      ]);
+      const paidLoanData = await executeQuery(paidLoan, [
+        user_data.month,
+        bank,
+      ]);
       const loanNotPaidData = await executeQuery(loanNotPaid, [
         user_data.month,
+        bank,
       ]);
 
       const adminLoanCountData = await executeQuery(adminLoanCount, [
         user_data.month,
+        bank,
       ]);
       const adminPaidLoanData = await executeQuery(adminPaidLoan, [
         user_data.month,

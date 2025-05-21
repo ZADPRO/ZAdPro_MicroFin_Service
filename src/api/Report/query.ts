@@ -203,3 +203,22 @@ WHERE
   AND rs."refPrincipalStatus" = ANY ($1)
   AND rs."refInterestStatus" = ANY ($2)
   AND rs."refPaymentDate" BETWEEN $3 AND $4`;
+
+export const expenseData = `SELECT
+  re."refExpenseDate",
+  re."refVoucherNo",
+  ec."refExpenseCategory",
+  re."refSubCategory",
+  re."refAmount",
+  ba."refBankName",
+  bat."refAccountTypeName",
+  re."refExpenseId",
+  re."refCategoryId",
+  re."refBankId"
+FROM
+  adminloan."refExpense" re
+  LEFT JOIN adminloan."refExpenseCategory" ec ON CAST(re."refCategoryId" AS INTEGER) = ec."refExpenseCategoryId"
+  LEFT JOIN public."refBankAccounts" ba ON CAST(re."refBankId" AS INTEGER) = ba."refBankId"
+  LEFT JOIN public."refBankAccountType" bat ON CAST(bat."refAccountId" AS INTEGER) = ba."refAccountType"
+  WHERE TO_CHAR(re."refExpenseDate"::timestamp, 'YYYY-MM') = $1
+  ORDER BY re."refExpenseDate" DESC;`;

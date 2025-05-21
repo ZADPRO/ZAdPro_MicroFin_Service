@@ -33,6 +33,7 @@ import {
   getLoanDataQuery,
   getLoanList,
   getReCalParams,
+  insertRepaymentSchedule,
   loanAudit,
   loanList,
   loanRepaymaneAudit,
@@ -43,12 +44,13 @@ import {
   updateCloseLoan,
   updateLoan,
   updateReInterestCal,
+  updateRepayment,
   vendorList,
 } from "./query";
 
 export class adminLoanCreationRepository {
   public async vendorListV1(user_data: any, tokendata: any): Promise<any> {
-    const token = { id: tokendata.id };
+    const token = { id: tokendata.id, cash: tokendata.cash };
     const tokens = generateTokenWithoutExpire(token, true);
     try {
       const vendor = await executeQuery(vendorList);
@@ -74,7 +76,7 @@ export class adminLoanCreationRepository {
     }
   }
   public async selectLoanV1(user_data: any, tokendata?: any): Promise<any> {
-    const token = { id: tokendata.id };
+    const token = { id: tokendata.id, cash: tokendata.cash };
 
     try {
       const Loan = await executeQuery(getLoanList, [user_data.userId]);
@@ -100,7 +102,7 @@ export class adminLoanCreationRepository {
     }
   }
   public async addLoanOptionV1(userData: any, tokendata: any): Promise<any> {
-    const token = { id: tokendata.id }; // Extract token ID
+    const token = { id: tokendata.id, cash: tokendata.cash }; // Extract token ID
 
     try {
       const loanOption = await executeQuery(getLoanDataOption, [
@@ -132,7 +134,7 @@ export class adminLoanCreationRepository {
   }
   public async CreateNewLoanV1(user_data: any, tokendata?: any): Promise<any> {
     console.log("user_data line -------------- 57", user_data);
-    const token = { id: tokendata.id };
+    const token = { id: tokendata.id, cash: tokendata.cash };
     const client: PoolClient = await getClient();
 
     console.log("user_data line ----- 138", user_data);
@@ -283,7 +285,7 @@ export class adminLoanCreationRepository {
   public async getLoanV1(userData: any, tokendata: any): Promise<any> {
     console.log(" -> Line Number ----------------------------------- 157");
     const client: PoolClient = await getClient();
-    const token = { id: tokendata.id }; // Extract token ID
+    const token = { id: tokendata.id, cash: tokendata.cash }; // Extract token ID
 
     try {
       console.log("userData lin e----- 161", userData);
@@ -328,7 +330,7 @@ export class adminLoanCreationRepository {
     user_data: any,
     tokendata?: any
   ): Promise<any> {
-    const token = { id: tokendata.id };
+    const token = { id: tokendata.id, cash: tokendata.cash };
     let Balance;
 
     try {
@@ -361,7 +363,7 @@ export class adminLoanCreationRepository {
     }
   }
   public async allLoanV1(user_data: any, tokendata?: any): Promise<any> {
-    const token = { id: tokendata.id };
+    const token = { id: tokendata.id, cash: tokendata.cash };
 
     try {
       const loan = await executeQuery(loanList, []);
@@ -387,7 +389,7 @@ export class adminLoanCreationRepository {
     }
   }
   public async loanAuditV1(user_data: any, tokendata?: any): Promise<any> {
-    const token = { id: tokendata.id };
+    const token = { id: tokendata.id, cash: tokendata.cash };
 
     try {
       let data = await executeQuery(loanAudit, [
@@ -426,7 +428,7 @@ export class adminLoanCreationRepository {
     user_data: any,
     tokendata?: any
   ): Promise<any> {
-    const token = { id: tokendata.id };
+    const token = { id: tokendata.id, cash: tokendata.cash };
 
     try {
       console.log("user_data line ------- 417", user_data);
@@ -455,7 +457,7 @@ export class adminLoanCreationRepository {
     }
   }
   public async loanCloseDataV1(user_data: any, tokendata: any): Promise<any> {
-    const token = { id: tokendata.id };
+    const token = { id: tokendata.id, cash: tokendata.cash };
     const tokens = generateTokenWithoutExpire(token, true);
 
     try {
@@ -496,7 +498,7 @@ export class adminLoanCreationRepository {
     }
   }
   public async payPrincipalAmtV1(user_data: any, tokendata: any): Promise<any> {
-    const token = { id: tokendata.id };
+    const token = { id: tokendata.id, cash: tokendata.cash };
     const tokens = generateTokenWithoutExpire(token, true);
     const client: PoolClient = await getClient();
 
@@ -540,11 +542,31 @@ export class adminLoanCreationRepository {
         } else if (
           Number(loanDetails.finalBalanceAmt) == Number(user_data.principalAmt)
         ) {
-          await client.query(updateCloseLoan, [
+          const result = await client.query(updateCloseLoan, [
             parseInt(user_data.LoanId),
             2,
             CurrentTime(),
             "Admin",
+          ]);
+
+          const loanData = result.rows[0];
+          const repaymentParams = [
+            loanData.refLoanId,
+            formatToYearMonth(CurrentTime()),
+            loanData.refLoanAmount,
+            user_data.principalAmt,
+            0.0,
+            "paid",
+            "paid",
+            CurrentTime(),
+            tokendata.id,
+          ];
+          console.log("repaymentParams line -------- 538", repaymentParams);
+          await client.query(insertRepaymentSchedule, repaymentParams);
+
+          await client.query(updateRepayment, [
+            user_data.LoanId,
+            formatToYearMonth(CurrentTime()),
           ]);
 
           const FundUpdate = [
@@ -594,6 +616,20 @@ export class adminLoanCreationRepository {
             JSON.stringify(IntData),
             user_data.refLoanId,
           ]);
+
+          const repaymentParams = [
+            user_data.LoanId,
+            formatToYearMonth(CurrentTime()),
+            paramsData[0].refLoanAmount,
+            user_data.principalAmt,
+            0.0,
+            "paid",
+            "paid",
+            CurrentTime(),
+            tokendata.id,
+          ];
+          console.log("repaymentParams line -------- 538", repaymentParams);
+          await client.query(insertRepaymentSchedule, repaymentParams);
 
           const FundUpdate = [
             user_data.bankId,

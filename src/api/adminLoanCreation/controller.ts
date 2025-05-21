@@ -14,12 +14,11 @@ export class adminLoanCreation {
   ): Promise<any> => {
     logger.info(`ROUTE API CALL => \n ${request.url.href}`);
     try {
-      // const decodedToken = {
-      //   id: request.plugins.token.id,
-      // };
       const decodedToken = {
-        id: 1,
+        id: request.plugins.token.id,
+        cash: request.plugins.token.cash,
       };
+
       console.log("decodedToken", decodedToken);
       const entity = await this.resolver.vendorListV1(
         request.payload,
@@ -49,12 +48,11 @@ export class adminLoanCreation {
   ): Promise<any> => {
     logger.info(`ROUTE API CALL => \n ${request.url.href}`);
     try {
-      // const decodedToken = {
-      //   id: request.plugins.token.id,
-      // };
       const decodedToken = {
-        id: 1,
+        id: request.plugins.token.id,
+        cash: request.plugins.token.cash,
       };
+
       console.log("decodedToken", decodedToken);
       const entity = await this.resolver.selectLoanV1(
         request.payload,
@@ -84,12 +82,11 @@ export class adminLoanCreation {
   ): Promise<any> => {
     logger.info(`ROUTE API CALL => \n ${request.url.href}`);
     try {
-      // const decodedToken = {
-      //   id: request.plugins.token.id,
-      // };
       const decodedToken = {
-        id: 1,
+        id: request.plugins.token.id,
+        cash: request.plugins.token.cash,
       };
+
       console.log("decodedToken", decodedToken);
       const entity = await this.resolver.addLoanOptionV1(
         request.payload,
@@ -119,12 +116,11 @@ export class adminLoanCreation {
   ): Promise<any> => {
     logger.info(`ROUTE API CALL => \n ${request.url.href}`);
     try {
-      // const decodedToken = {
-      //   id: request.plugins.token.id,
-      // };
       const decodedToken = {
-        id: 1,
+        id: request.plugins.token.id,
+        cash: request.plugins.token.cash,
       };
+
       console.log("decodedToken", decodedToken);
       const entity = await this.resolver.CreateNewLoanV1(
         request.payload,
@@ -154,12 +150,11 @@ export class adminLoanCreation {
   ): Promise<any> => {
     logger.info(`ROUTE API CALL => \n ${request.url.href}`);
     try {
-      // const decodedToken = {
-      //   id: request.plugins.token.id,
-      // };
       const decodedToken = {
-        id: 1,
+        id: request.plugins.token.id,
+        cash: request.plugins.token.cash,
       };
+
       console.log("decodedToken", decodedToken);
       const entity = await this.resolver.getLoanV1(
         request.payload,
@@ -189,12 +184,11 @@ export class adminLoanCreation {
   ): Promise<any> => {
     logger.info(`ROUTE API CALL => \n ${request.url.href}`);
     try {
-      // const decodedToken = {
-      //   id: request.plugins.token.id,
-      // };
       const decodedToken = {
-        id: 1,
+        id: request.plugins.token.id,
+        cash: request.plugins.token.cash,
       };
+
       console.log("decodedToken", decodedToken);
       const entity = await this.resolver.selectedLoanDetailsV1(
         request.payload,
@@ -224,12 +218,11 @@ export class adminLoanCreation {
   ): Promise<any> => {
     logger.info(`ROUTE API CALL => \n ${request.url.href}`);
     try {
-      // const decodedToken = {
-      //   id: request.plugins.token.id,
-      // };
       const decodedToken = {
-        id: 1,
+        id: request.plugins.token.id,
+        cash: request.plugins.token.cash,
       };
+
       console.log("decodedToken", decodedToken);
       const entity = await this.resolver.allLoanV1(
         request.payload,
@@ -259,12 +252,11 @@ export class adminLoanCreation {
   ): Promise<any> => {
     logger.info(`ROUTE API CALL => \n ${request.url.href}`);
     try {
-      // const decodedToken = {
-      //   id: request.plugins.token.id,
-      // };
       const decodedToken = {
-        id: 1,
+        id: request.plugins.token.id,
+        cash: request.plugins.token.cash,
       };
+
       console.log("decodedToken", decodedToken);
       const entity = await this.resolver.loanAuditV1(
         request.payload,
@@ -294,12 +286,11 @@ export class adminLoanCreation {
   ): Promise<any> => {
     logger.info(`ROUTE API CALL => \n ${request.url.href}`);
     try {
-      // const decodedToken = {
-      //   id: request.plugins.token.id,
-      // };
       const decodedToken = {
-        id: 1,
+        id: request.plugins.token.id,
+        cash: request.plugins.token.cash,
       };
+
       console.log("decodedToken", decodedToken);
       const entity = await this.resolver.loanRePaymentAuditV1(
         request.payload,
@@ -329,12 +320,11 @@ export class adminLoanCreation {
   ): Promise<any> => {
     logger.info(`ROUTE API CALL => \n ${request.url.href}`);
     try {
-      // const decodedToken = {
-      //   id: request.plugins.token.id,
-      // };
       const decodedToken = {
-        id: 1,
+        id: request.plugins.token.id,
+        cash: request.plugins.token.cash,
       };
+
       console.log("decodedToken", decodedToken);
       const entity = await this.resolver.loanCloseDataV1(
         request.payload,
@@ -364,12 +354,11 @@ export class adminLoanCreation {
   ): Promise<any> => {
     logger.info(`ROUTE API CALL => \n ${request.url.href}`);
     try {
-      // const decodedToken = {
-      //   id: request.plugins.token.id,
-      // };
       const decodedToken = {
-        id: 1,
+        id: request.plugins.token.id,
+        cash: request.plugins.token.cash,
       };
+
       console.log("decodedToken", decodedToken);
       const entity = await this.resolver.payPrincipalAmtV1(
         request.payload,

@@ -12,7 +12,7 @@ export class adminLoanCreationRoutes implements IRoute {
           method: "GET",
           path: "/api/v1/adminLoan/vendorList",
           config: {
-            // pre: [{ method: validateToken, assign: "token" }],
+            pre: [{ method: validateToken, assign: "token" }],
             handler: controller.vendorList,
             description: "Get The Vendor List",
           },
@@ -21,7 +21,7 @@ export class adminLoanCreationRoutes implements IRoute {
           method: "GET",
           path: "/api/v1/adminLoan/selectLoan",
           config: {
-            // pre: [{ method: validateToken, assign: "token" }],
+            pre: [{ method: validateToken, assign: "token" }],
             handler: controller.selectLoan,
             description: "Get The All Loan Details",
           },
@@ -30,7 +30,7 @@ export class adminLoanCreationRoutes implements IRoute {
           method: "POST",
           path: "/api/v1/adminLoan/addLoanOption",
           config: {
-            // pre: [{ method: validateToken, assign: "token" }],
+            pre: [{ method: validateToken, assign: "token" }],
             handler: controller.addLoanOption,
             description: "Get The All Loan Details",
           },
@@ -39,7 +39,7 @@ export class adminLoanCreationRoutes implements IRoute {
           method: "POST",
           path: "/api/v1/adminLoan/CreateNewLoan",
           config: {
-            // pre: [{ method: validateToken, assign: "token" }],
+            pre: [{ method: validateToken, assign: "token" }],
             handler: controller.CreateNewLoan,
             description: "Creating the New Admin Loan",
           },
@@ -48,7 +48,7 @@ export class adminLoanCreationRoutes implements IRoute {
           method: "POST",
           path: "/api/v1/adminLoan/getLoan",
           config: {
-            // pre: [{ method: validateToken, assign: "token" }],
+            pre: [{ method: validateToken, assign: "token" }],
             handler: controller.getLoan,
             description: "getting Loan Details",
           },
@@ -57,7 +57,7 @@ export class adminLoanCreationRoutes implements IRoute {
           method: "POST",
           path: "/api/v1/adminLoan/selectedLoanDetails",
           config: {
-            // pre: [{ method: validateToken, assign: "token" }],
+            pre: [{ method: validateToken, assign: "token" }],
             handler: controller.selectedLoanDetails,
             description: "getting Old Loan Data",
           },
@@ -66,7 +66,7 @@ export class adminLoanCreationRoutes implements IRoute {
           method: "GET",
           path: "/api/v1/adminLoan/allLoan",
           config: {
-            // pre: [{ method: validateToken, assign: "token" }],
+            pre: [{ method: validateToken, assign: "token" }],
             handler: controller.allLoan,
             description: "getting All Loan List",
           },
@@ -75,7 +75,7 @@ export class adminLoanCreationRoutes implements IRoute {
           method: "POST",
           path: "/api/v1/adminLoan/loanAudit",
           config: {
-            // pre: [{ method: validateToken, assign: "token" }],
+            pre: [{ method: validateToken, assign: "token" }],
             handler: controller.loanAudit,
             description: "getting Details About the Loan",
           },
@@ -84,7 +84,7 @@ export class adminLoanCreationRoutes implements IRoute {
           method: "POST",
           path: "/api/v1/adminLoan/loanRePaymentAudit",
           config: {
-            // pre: [{ method: validateToken, assign: "token" }],
+            pre: [{ method: validateToken, assign: "token" }],
             handler: controller.loanRePaymentAudit,
             description: "getting Details About the Loan Repayment",
           },
@@ -93,7 +93,7 @@ export class adminLoanCreationRoutes implements IRoute {
           method: "POST",
           path: "/api/v1/adminLoan/loanCloseData",
           config: {
-            // pre: [{ method: validateToken, assign: "token" }],
+            pre: [{ method: validateToken, assign: "token" }],
             handler: controller.loanCloseData,
             description: "Get Loan Close Data",
           },
@@ -102,7 +102,7 @@ export class adminLoanCreationRoutes implements IRoute {
           method: "POST",
           path: "/api/v1/adminLoan/payPrincipalAmt",
           config: {
-            // pre: [{ method: validateToken, assign: "token" }],
+            pre: [{ method: validateToken, assign: "token" }],
             handler: controller.payPrincipalAmt,
             description: "Pay Principal Amount for Loan",
           },

@@ -1,14 +1,14 @@
 import * as Hapi from "@hapi/hapi";
 
 import logger from "../../helper/logger";
-import { fundResolver } from "./resolver";
+import { CashFlowResolver } from "./resolver";
 
-export class fundController {
+export class cashFlow {
   public resolver: any;
   constructor() {
-    this.resolver = new fundResolver();
+    this.resolver = new CashFlowResolver();
   }
-  public selfTransfer = async (
+  public getCashFlow = async (
     request: any,
     response: Hapi.ResponseToolkit
   ): Promise<any> => {
@@ -20,7 +20,7 @@ export class fundController {
       };
 
       console.log("decodedToken", decodedToken);
-      const entity = await this.resolver.selfTransferV1(
+      const entity = await this.resolver.getCashFlowV1(
         request.payload,
         decodedToken
       );
@@ -42,7 +42,7 @@ export class fundController {
         .code(500);
     }
   };
-  public agentCollection = async (
+  public updateCashFlow = async (
     request: any,
     response: Hapi.ResponseToolkit
   ): Promise<any> => {
@@ -54,7 +54,7 @@ export class fundController {
       };
 
       console.log("decodedToken", decodedToken);
-      const entity = await this.resolver.agentCollectionV1(
+      const entity = await this.resolver.updateCashFlowV1(
         request.payload,
         decodedToken
       );

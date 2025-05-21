@@ -14,12 +14,11 @@ export class AdminRePayment {
   ): Promise<any> => {
     logger.info(`ROUTE API CALL => \n ${request.url.href}`);
     try {
-      // const decodedToken = {
-      //   id: request.plugins.token.id,
-      // };
       const decodedToken = {
-        id: 1,
+        id: request.plugins.token.id,
+        cash: request.plugins.token.cash,
       };
+
       console.log("decodedToken", decodedToken);
       const entity = await this.resolver.unPaidUserListV1(
         request.payload,
@@ -49,12 +48,11 @@ export class AdminRePayment {
   ): Promise<any> => {
     logger.info(`ROUTE API CALL => \n ${request.url.href}`);
     try {
-      // const decodedToken = {
-      //   id: request.plugins.token.id,
-      // };
       const decodedToken = {
-        id: 1,
+        id: request.plugins.token.id,
+        cash: request.plugins.token.cash,
       };
+
       console.log("decodedToken", decodedToken);
       const entity = await this.resolver.rePaymentCalculationV1(
         request.payload,
@@ -84,12 +82,11 @@ export class AdminRePayment {
   ): Promise<any> => {
     logger.info(`ROUTE API CALL => \n ${request.url.href}`);
     try {
-      // const decodedToken = {
-      //   id: request.plugins.token.id,
-      // };
       const decodedToken = {
-        id: 1,
+        id: request.plugins.token.id,
+        cash: request.plugins.token.cash,
       };
+
       console.log("decodedToken", decodedToken);
       const entity = await this.resolver.updateRePaymentV1(
         request.payload,
@@ -119,12 +116,11 @@ export class AdminRePayment {
   ): Promise<any> => {
     logger.info(`ROUTE API CALL => \n ${request.url.href}`);
     try {
-      // const decodedToken = {
-      //   id: request.plugins.token.id,
-      // };
       const decodedToken = {
-        id: 1,
+        id: request.plugins.token.id,
+        cash: request.plugins.token.cash,
       };
+
       console.log("decodedToken", decodedToken);
       const entity = await this.resolver.updateFollowUpV1(
         request.payload,

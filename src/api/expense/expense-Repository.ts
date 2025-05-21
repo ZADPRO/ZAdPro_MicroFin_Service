@@ -12,6 +12,7 @@ import { reLabelText } from "../../helper/Label";
 import { error } from "console";
 
 import {
+  bankType,
   convertToYMD,
   CurrentTime,
   formatYearMonthDate,
@@ -34,7 +35,7 @@ import {
 
 export class expenseRepository {
   public async addExpenseV1(user_data: any, tokendata?: any): Promise<any> {
-    const token = { id: tokendata.id };
+    const token = { id: tokendata.id, cash: tokendata.cash };
     const client: PoolClient = await getClient();
 
     try {
@@ -109,11 +110,11 @@ export class expenseRepository {
     }
   }
   public async expenseDataV1(user_data: any, tokendata?: any): Promise<any> {
-    const token = { id: tokendata.id };
+    const token = { id: tokendata.id, cash: tokendata.cash };
 
     try {
-      console.log("user_data.month line -------- 108", user_data.month);
-      const data = await executeQuery(expenseData, [user_data.month]);
+      const bank = bankType(tokendata.cash);
+      const data = await executeQuery(expenseData, [user_data.month, bank]);
       return encrypt(
         {
           success: true,
@@ -136,11 +137,12 @@ export class expenseRepository {
     }
   }
   public async expenseOptionV1(user_data: any, tokendata?: any): Promise<any> {
-    const token = { id: tokendata.id };
+    const token = { id: tokendata.id, cash: tokendata.cash };
 
     try {
+      const cash = bankType(tokendata.cash);
       const category = await executeQuery(expenseCatageory);
-      const bank = await executeQuery(getBank);
+      const bank = await executeQuery(getBank, [cash]);
       return encrypt(
         {
           success: true,
@@ -167,7 +169,7 @@ export class expenseRepository {
     user_data: any,
     tokendata?: any
   ): Promise<any> {
-    const token = { id: tokendata.id };
+    const token = { id: tokendata.id, cash: tokendata.cash };
 
     try {
       const data = await executeQuery(getExpenseData, [user_data.expenseId]);
@@ -193,7 +195,7 @@ export class expenseRepository {
     }
   }
   public async expenseUpdateV1(user_data: any, tokendata?: any): Promise<any> {
-    const token = { id: tokendata.id };
+    const token = { id: tokendata.id, cash: tokendata.cash };
     const client: PoolClient = await getClient();
 
     try {

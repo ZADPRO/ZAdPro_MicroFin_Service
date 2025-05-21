@@ -191,7 +191,7 @@ GROUP BY
   rp."refInterest",
   rp."refPrincipal"
 ORDER BY
-  rp."refRpayId";`;
+  rp."refPaymentDate";`;
 
 export const getLoanDetails = `SELECT
 rl."refLoanId",
@@ -611,6 +611,7 @@ GROUP BY
   l."refLoanDueDate"`;
 
 export const getReCalParams = `SELECT
+  l."refLoanAmount",
   l."refLoanAmount"::NUMERIC - ROUND(
     COALESCE(
       (
@@ -698,3 +699,32 @@ export const bankData = `SELECT
 FROM
   public."refBankAccounts" b
   LEFT JOIN public."refBankAccountType" bt ON CAST(bt."refAccountId" AS INTEGER) = b."refAccountType"::INTEGER`;
+
+export const insertRepaymentSchedule = `INSERT INTO
+  public."refRepaymentSchedule"(
+    "refLoanId",
+    "refPaymentDate",
+    "refPaymentAmount",
+    "refPrincipal",
+    "refInterest",
+    "refPrincipalStatus",
+    "refInterestStatus",
+    "createdAt",
+    "createdBy")
+
+values
+  ($1, $2, $3, $4, $5, $6, $7, $8, $9)`;
+
+export const updateRepayment = `UPDATE public."refRepaymentSchedule"
+SET
+  "refPrincipal" = CASE
+    WHEN "refPrincipalStatus" = 'Pending' THEN '0.00'
+    ELSE "refPrincipal"
+  END,
+  "refInterest" = CASE
+    WHEN "refInterestStatus" = 'Pending' THEN '0.00'
+    ELSE "refInterest"
+  END
+WHERE
+  "refLoanId"::INTEGER = $1
+  AND "refPaymentDate" > $2;`;

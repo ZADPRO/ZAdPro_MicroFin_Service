@@ -29,7 +29,7 @@ import { ExtensionBalance, TopUpBalance } from "../../helper/LoanCalculation";
 
 export class newLoanRepository {
   public async selectLoanV1(user_data: any, tokendata?: any): Promise<any> {
-    const token = { id: tokendata.id };
+    const token = { id: tokendata.id, cash: tokendata.cash };
 
     try {
       const Loan = await executeQuery(getLoanList, [user_data.userId]);
@@ -55,7 +55,7 @@ export class newLoanRepository {
     }
   }
   public async userListOptionV1(user_data: any, tokendata?: any): Promise<any> {
-    const token = { id: tokendata.id };
+    const token = { id: tokendata.id, cash: tokendata.cash };
 
     try {
       const userList = await executeQuery(getUserList, []);
@@ -82,7 +82,7 @@ export class newLoanRepository {
   }
   public async CreateNewLoanV1(user_data: any, tokendata?: any): Promise<any> {
     console.log("user_data line -------------- 57", user_data);
-    const token = { id: tokendata.id };
+    const token = { id: tokendata.id, cash: tokendata.cash };
     const client: PoolClient = await getClient();
 
     try {
@@ -237,7 +237,7 @@ export class newLoanRepository {
     user_data: any,
     tokendata?: any
   ): Promise<any> {
-    const token = { id: tokendata.id };
+    const token = { id: tokendata.id, cash: tokendata.cash };
     let Balance;
 
     try {

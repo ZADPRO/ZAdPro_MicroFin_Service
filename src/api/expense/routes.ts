@@ -12,7 +12,7 @@ export class expenseRoutes implements IRoute {
           method: "POST",
           path: "/api/v1/expense/addExpense",
           config: {
-            // pre: [{ method: validateToken, assign: "token" }],
+           pre: [{ method: validateToken, assign: "token" }],
             handler: controller.addExpense,
             description: "Add New Expense Entry",
             auth: false,
@@ -22,7 +22,7 @@ export class expenseRoutes implements IRoute {
           method: "POST",
           path: "/api/v1/expense/expenseData",
           config: {
-            // pre: [{ method: validateToken, assign: "token" }],
+           pre: [{ method: validateToken, assign: "token" }],
             handler: controller.expenseData,
             description: "Get the Expense Data",
             auth: false,
@@ -32,7 +32,7 @@ export class expenseRoutes implements IRoute {
           method: "GET",
           path: "/api/v1/expense/expenseOption",
           config: {
-            // pre: [{ method: validateToken, assign: "token" }],
+           pre: [{ method: validateToken, assign: "token" }],
             handler: controller.expenseOption,
             description: "Get Expense Option",
             auth: false,
@@ -42,7 +42,7 @@ export class expenseRoutes implements IRoute {
           method: "POST",
           path: "/api/v1/expense/expenseUpdateData",
           config: {
-            // pre: [{ method: validateToken, assign: "token" }],
+           pre: [{ method: validateToken, assign: "token" }],
             handler: controller.expenseUpdateData,
             description: "Get Expense Data for update",
             auth: false,
@@ -52,7 +52,7 @@ export class expenseRoutes implements IRoute {
           method: "POST",
           path: "/api/v1/expense/expenseUpdate",
           config: {
-            // pre: [{ method: validateToken, assign: "token" }],
+           pre: [{ method: validateToken, assign: "token" }],
             handler: controller.expenseUpdate,
             description: "Update Exesting Expense Data",
             auth: false,

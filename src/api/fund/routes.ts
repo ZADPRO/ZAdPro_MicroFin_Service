@@ -12,7 +12,7 @@ export class fundRoutes implements IRoute {
           method: "POST",
           path: "/api/v1/fund/selfTransfer",
           config: {
-            // pre: [{ method: validateToken, assign: "token" }],
+           pre: [{ method: validateToken, assign: "token" }],
             handler: controller.selfTransfer,
             description: "Self Amount Transfer",
             auth: false,
@@ -22,7 +22,7 @@ export class fundRoutes implements IRoute {
           method: "POST",
           path: "/api/v1/fund/agentCollection",
           config: {
-            // pre: [{ method: validateToken, assign: "token" }],
+           pre: [{ method: validateToken, assign: "token" }],
             handler: controller.agentCollection,
             description: "agent collected amount",
             auth: false,
