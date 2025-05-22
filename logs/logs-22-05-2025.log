@@ -954,3 +954,18 @@
 {"level":"info","message":"Server running --- from server.ts","timestamp":"2025-05-22T10:11:44.149Z"}
 {"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6201/api/v1/rePayment/loanAudit","timestamp":"2025-05-22T10:11:44.416Z"}
 {"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6201/api/v1/rePayment/loanDetails","timestamp":"2025-05-22T10:11:44.498Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-05-22T10:11:56.600Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6201/api/v1/cashFlow/getCashFlow","timestamp":"2025-05-22T10:11:56.841Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6201/api/v1/adminRoutes/getPersonList","timestamp":"2025-05-22T10:11:56.859Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6201/api/v1/cashFlow/getCashFlow","timestamp":"2025-05-22T10:11:58.251Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6201/api/v1/adminRoutes/getBankAccountList","timestamp":"2025-05-22T10:11:58.260Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6201/api/v1/cashFlow/getCashFlow","timestamp":"2025-05-22T10:11:58.964Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6201/api/v1/adminRoutes/getBankFundList","timestamp":"2025-05-22T10:11:58.974Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6201/api/v1/expense/expenseData","timestamp":"2025-05-22T10:11:58.981Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6201/api/v1/cashFlow/getCashFlow","timestamp":"2025-05-22T10:11:59.617Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6201/api/v1/adminRoutes/getBankFundList","timestamp":"2025-05-22T10:11:59.629Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6201/api/v1/rePayment/loanCloseData","timestamp":"2025-05-22T10:12:02.191Z"}
+{"level":"info","message":"ROUTE API CALL 685=> \n http://192.168.29.35:6201/api/v1/adminRoutes/addLoanOption","timestamp":"2025-05-22T10:12:02.202Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6201/api/v1/rePayment/loanDetails","timestamp":"2025-05-22T10:12:02.212Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6201/api/v1/rePayment/loanAudit","timestamp":"2025-05-22T10:12:41.497Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://192.168.29.35:6201/api/v1/rePayment/loanDetails","timestamp":"2025-05-22T10:12:41.515Z"}
