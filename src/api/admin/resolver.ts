@@ -243,6 +243,8 @@ export class AdminResolver {
     token_data: any,
     domain_code: any
   ): Promise<any> {
+    console.log("user_data", user_data);
+    console.log("token_data", token_data);
     console.log("Resolver Sarted");
     return await this.adminRepository.addLoanOptionV1(
       user_data,

@@ -1633,10 +1633,12 @@ export class adminRepository {
   public async addLoanOptionV1(userData: any, tokendata: any): Promise<any> {
     const token = { id: tokendata.id, cash: tokendata.cash }; // Extract token ID
 
+    console.log("userData", userData);
     try {
       const loanOption = await executeQuery(getLoanDataOption, [
         userData.userId,
       ]);
+      console.log("loanOption line ----- 1640", loanOption);
       return encrypt(
         {
           success: true,
@@ -2222,12 +2224,18 @@ export class adminRepository {
     const token = { id: tokendata.id, cash: tokendata.cash }; // Extract token ID
 
     try {
+      const bank = bankType(tokendata.cash);
       const { userId } = userData;
       const getLoanData = await executeQuery(getLoanDataQuery, [userId]);
+      console.log("getLoanData", getLoanData);
 
-      const allBankAccountList = await executeQuery(getAllBankAccountQuery);
+      const allBankAccountList = await executeQuery(getAllBankAccountQuery, [
+        bank,
+      ]);
+      console.log("allBankAccountList", allBankAccountList);
 
       const productList = await client.query(getProductsListQuery);
+      console.log("productList", productList);
 
       // Return success response
       console.log("Repository return Responce");

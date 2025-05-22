@@ -12,6 +12,7 @@ import {
   formatDate,
   formatYearMonthDate,
   convertToYMD,
+  bankType,
 } from "../../helper/common";
 import { loanQuery } from "../admin/query";
 import { loanReminderSend } from "../../helper/mailcontent";
@@ -102,12 +103,14 @@ export class adminLoanCreationRepository {
     }
   }
   public async addLoanOptionV1(userData: any, tokendata: any): Promise<any> {
+    console.log("userData", userData);
     const token = { id: tokendata.id, cash: tokendata.cash }; // Extract token ID
 
     try {
       const loanOption = await executeQuery(getLoanDataOption, [
         userData.userId,
       ]);
+      console.log("loanOption line ----- 112", loanOption);
       return encrypt(
         {
           success: true,
@@ -366,7 +369,8 @@ export class adminLoanCreationRepository {
     const token = { id: tokendata.id, cash: tokendata.cash };
 
     try {
-      const loan = await executeQuery(loanList, []);
+      const bank = bankType(tokendata.cash);
+      const loan = await executeQuery(loanList, [bank]);
       return encrypt(
         {
           success: true,

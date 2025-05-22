@@ -482,7 +482,7 @@ export const updateBankFundQuery = `INSERT INTO
      "createdBy"
       )
  VALUES
-   ($1, $2, $3, $4, $5, $6, $7, $8)
+   ($1, $2, $3, $4, $5, $6, $7, $8,$9)
    RETURNING *;`;
 
 export const updateLoan = `UPDATE
@@ -560,7 +560,10 @@ export const loanList = `SELECT
 FROM
   adminloan."refLoan" l
   LEFT JOIN adminloan."refVendorDetails" vd ON CAST(vd."refVendorId" AS INTEGER) = l."refVenderId"::INTEGER
-  LEFT JOIN public."refLoanStatus" ls ON CAST(ls."refLoanStatusId" AS INTEGER) = l."refLoanStatus"`;
+  LEFT JOIN public."refLoanStatus" ls ON CAST(ls."refLoanStatusId" AS INTEGER) = l."refLoanStatus"
+  LEFT JOIN public."refBankAccounts" b ON CAST(b."refBankId" AS INTEGER) = l."refBankId"::INTEGER
+WHERE
+  b."refAccountType" = ANY ($1)`;
 
 export const loanAudit = `SELECT
   rl."refLoanId",

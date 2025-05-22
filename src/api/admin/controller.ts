@@ -682,12 +682,13 @@ export class adminProfile {
     request: any,
     response: Hapi.ResponseToolkit
   ): Promise<any> => {
-    logger.info(`ROUTE API CALL => \n ${request.url.href}`);
+    logger.info(`ROUTE API CALL 685=> \n ${request.url.href}`);
     try {
       const decodedToken = {
         id: request.plugins.token.id,
         cash: request.plugins.token.cash,
       };
+      console.log(" -> Line Number ----------------------------------- 691");
       const entity = await this.resolver.addLoanOptionV1(
         request.payload,
         decodedToken

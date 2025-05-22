@@ -34,6 +34,8 @@ export class adminLoanCreationResolver {
     token_data: any,
     domain_code: any
   ): Promise<any> {
+    console.log("user_data", user_data);
+    console.log("token_data", token_data);
     console.log("Resolver Started");
     return await this.adminLoanCreationRepository.addLoanOptionV1(
       user_data,
