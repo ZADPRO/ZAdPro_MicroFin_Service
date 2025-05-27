@@ -22,7 +22,6 @@ export class expenseResolver {
     token_data: any,
     domain_code: any
   ): Promise<any> {
-    console.log("Resolver Started");
     return await this.expenseRepository.expenseDataV1(
       user_data,
       token_data,

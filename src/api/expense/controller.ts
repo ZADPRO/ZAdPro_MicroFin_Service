@@ -53,7 +53,6 @@ export class expenseController {
         cash: request.plugins.token.cash,
       };
 
-      console.log("decodedToken", decodedToken);
       const entity = await this.resolver.expenseDataV1(
         request.payload,
         decodedToken

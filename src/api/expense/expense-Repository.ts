@@ -41,6 +41,7 @@ export class expenseRepository {
     try {
       await client.query("BEGIN");
       let catId = user_data.categoryId;
+      console.log("catId line ------------- 44", catId);
       if (user_data.newCategory) {
         const result = await client.query(addCategory, [
           user_data.categoryName,
@@ -113,7 +114,10 @@ export class expenseRepository {
     const token = { id: tokendata.id, cash: tokendata.cash };
 
     try {
+      console.log(" -> Line Number ----------------------------------- 117");
       const bank = bankType(tokendata.cash);
+      console.log("bank line ------ 119", bank);
+      console.log('user_data.month', user_data.month)
       const data = await executeQuery(expenseData, [user_data.month, bank]);
       return encrypt(
         {

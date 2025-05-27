@@ -36,7 +36,10 @@ FROM
   LEFT JOIN public."refBankAccounts" ba ON CAST(re."refBankId" AS INTEGER) = ba."refBankId"
   LEFT JOIN public."refBankAccountType" bat ON CAST(bat."refAccountId" AS INTEGER) = ba."refAccountType"
 WHERE
-  TO_CHAR(re."refExpenseDate"::timestamp, 'YYYY-MM') = $1
+  TO_CHAR(
+    TO_DATE(re."refExpenseDate", 'DD/MM/YYYY'),
+    'YYYY-MM'
+  ) = $1
   AND ba."refAccountType" = ANY ($2)
 ORDER BY
   re."refExpenseDate" DESC;`;
