@@ -1019,6 +1019,8 @@ export class adminRepository {
         refProductDuration,
         refProductStatus,
         refProductDescription,
+        refProductDurationType,
+        refProductMonthlyCal,
       } = userData;
 
       // Insert bank account details using refUserId
@@ -1028,6 +1030,8 @@ export class adminRepository {
         refProductDuration,
         refProductStatus,
         refProductDescription,
+        refProductDurationType,
+        refProductMonthlyCal,
         CurrentTime(),
         "Admin",
       ]);
@@ -1079,6 +1083,8 @@ export class adminRepository {
         refProductDuration,
         refProductStatus,
         refProductDescription,
+        refProductDurationType,
+        refProductMonthlyCal,
       } = userData;
       await client.query(updateProductQuery, [
         refProductId,
@@ -1087,6 +1093,8 @@ export class adminRepository {
         refProductDuration,
         refProductStatus,
         refProductDescription,
+        refProductDurationType,
+        refProductMonthlyCal,
         CurrentTime(),
         "Admin",
       ]);

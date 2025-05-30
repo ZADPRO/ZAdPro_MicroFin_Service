@@ -250,7 +250,8 @@ export const getUserList = `SELECT
   rc."refUserPincode"
 FROM
   public."users" u
-  LEFT JOIN public."refCommunication" rc ON CAST(rc."refUserId" AS INTEGER) = u."refUserId"`;
+  LEFT JOIN public."refCommunication" rc ON CAST(rc."refUserId" AS INTEGER) = u."refUserId"
+  WHERE u."refUserId" !=1;`;
 
 export const updateBankFundQuery = `INSERT INTO 
    public."refBankFund" (

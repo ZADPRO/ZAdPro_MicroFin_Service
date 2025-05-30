@@ -57,3 +57,12 @@
 {"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/expense/expenseOption","timestamp":"2025-05-27T01:12:42.010Z"}
 {"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/expense/addExpense","timestamp":"2025-05-27T01:13:02.607Z"}
 {"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/expense/expenseData","timestamp":"2025-05-27T01:13:02.911Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-05-27T01:16:04.970Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/adminRoutes/productList","timestamp":"2025-05-27T01:17:37.056Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/cashFlow/getCashFlow","timestamp":"2025-05-27T01:17:37.071Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/cashFlow/getCashFlow","timestamp":"2025-05-27T01:17:39.503Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/adminRoutes/getBankFundList","timestamp":"2025-05-27T01:17:39.517Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/cashFlow/getCashFlow","timestamp":"2025-05-27T01:17:41.766Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/adminRoutes/getBankFundList","timestamp":"2025-05-27T01:17:41.775Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/expense/expenseData","timestamp":"2025-05-27T01:17:41.786Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/expense/expenseOption","timestamp":"2025-05-27T01:17:45.388Z"}

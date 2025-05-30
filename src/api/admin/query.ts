@@ -294,11 +294,13 @@ export const addProductQuery = `INSERT INTO
     "refProductDuration",
     "refProductStatus",
     "refProductDescription",
+    "refProductDurationType",
+    "refProductMonthlyCal",
     "createdAt",
     "createdBy"
   )
 VALUES
-  ($1, $2, $3, $4, $5, $6, $7)
+  ($1, $2, $3, $4, $5, $6, $7,$8,$9)
   RETURNING *;`;
 
 export const updateProductQuery = `UPDATE public."refProducts"
@@ -308,8 +310,10 @@ SET
     "refProductDuration" = $4,
     "refProductStatus" = $5,
     "refProductDescription" = $6,
-    "updatedAt" = $7,
-    "updatedBy" = $8
+    "refProductDurationType" = $7,
+    "refProductMonthlyCal" = $8,
+    "updatedAt" = $9,
+    "updatedBy" = $10
 WHERE "refProductId" = $1;
 `;
 
@@ -323,7 +327,9 @@ rp."refProductName",
   rp."createdAt",
   rp."createdBy",
   rp."updatedAt",
-  rp."updatedBy"
+  rp."updatedBy",
+  rp."refProductDurationType",
+  rp."refProductMonthlyCal"
 FROM
   public."refProducts" rp
 ORDER BY
