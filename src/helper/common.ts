@@ -83,6 +83,20 @@ export function formatYearMonthDate(dateStr: string): string {
   return `${yyyy}-${mm}-${dd}`;
 }
 
+export function formatDateMonthYear(dateStr: string): string {
+  // Parse DD/MM/YYYY, hh:mm:ss AM/PM
+  const [datePart, timePart] = dateStr.split(",");
+  const [day, month, year] = datePart.trim().split("/").map(Number);
+
+  const formattedDate = new Date(`${year}-${month}-${day} ${timePart.trim()}`);
+
+  const yyyy = formattedDate.getFullYear();
+  const mm = String(formattedDate.getMonth() + 1).padStart(2, "0");
+  const dd = String(formattedDate.getDate()).padStart(2, "0");
+
+  return `${dd}-${mm}-${yyyy}`;
+}
+
 export function getMonthDifference(startDate: string, endDate: string): number {
   if (!startDate || !endDate) {
     throw new Error("Start date or end date is undefined or invalid.");

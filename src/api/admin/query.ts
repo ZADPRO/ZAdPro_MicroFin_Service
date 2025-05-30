@@ -611,7 +611,9 @@ export const getAllLoanData = `SELECT
   l."refLoanAmount",
   l."refLoanStartDate",
   ls."refLoanStatusId",
-  ls."refLoanStatus"
+  ls."refLoanStatus",
+  rp."refProductDurationType",
+  rp."refProductMonthlyCal"
 FROM
   public."refLoan" l
   LEFT JOIN public.users u ON CAST(u."refUserId" AS INTEGER) = l."refUserId"::INTEGER

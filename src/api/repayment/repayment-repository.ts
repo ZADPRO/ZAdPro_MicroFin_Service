@@ -38,6 +38,7 @@ import {
   formatToYearMonth,
   formatDate,
   formatYearMonthDate,
+  formatDateMonthYear,
 } from "../../helper/common";
 import { loanQuery } from "../admin/query";
 import { loanReminderSend } from "../../helper/mailcontent";
@@ -48,19 +49,23 @@ export class rePaymentRepository {
     const token = { id: tokendata.id, cash: tokendata.cash };
     const tokens = generateTokenWithoutExpire(token, true);
     try {
+      console.log("user_data line ------- 52", user_data);
       const name = await executeQuery(nameQuery, [tokendata.id]);
 
       const Params = [
         user_data.ifMonth,
         user_data.startDate === ""
-          ? formatToYearMonth(CurrentTime())
+          ? formatDateMonthYear(CurrentTime())
           : user_data.startDate,
         user_data.endDate === ""
-          ? formatToYearMonth(CurrentTime())
+          ? formatDateMonthYear(CurrentTime())
           : user_data.endDate,
       ];
+      // const Params = [true, "30-06-2025", "30-06-2025"];
       console.log("Params", Params);
       const userData = await executeQuery(userList, Params);
+      console.log("Running Query:", userList);
+      console.log("userData line ---- 66", userData);
       return encrypt(
         {
           success: true,
@@ -151,7 +156,6 @@ export class rePaymentRepository {
       console.log("updateRepayment line ----- 149", updateRepayment);
 
       if (oldAmt[0].refPrincipal < user_data.priAmt) {
-        console.log(" -> Line Number ----------------------------------- 151");
         let paramsData = await executeQuery(getReCalParams, [
           updateRepayment.rows[0].refLoanId,
           updateRepayment.rows[0].refPaymentDate,
@@ -200,7 +204,6 @@ export class rePaymentRepository {
 
       console.log("agentParams", agentParams);
       await client.query(agentAudit, agentParams);
-      console.log(" -> Line Number ----------------------------------- 185");
       if (user_data.paymentType === 1) {
         const FundUpdate = [
           user_data.bankId,

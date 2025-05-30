@@ -1,4 +1,4 @@
-export const userList = `SELECT
+export const userList1 = `SELECT
   u."refCustId",
   u."refUserFname",
   u."refUserLname",
@@ -32,6 +32,49 @@ WHERE
       AND rp."refPaymentDate" BETWEEN $2 AND $3
     )
   );`;
+export const userList = `SELECT
+  u."refCustId",
+  u."refUserFname",
+  u."refUserLname",
+  u."refUserId",
+  rc."refUserMobileNo",
+  rc."refUserAddress",
+  rc."refUserDistrict",
+  rc."refUserState",
+  rc."refUserPincode",
+  rp."refPaymentDate",
+  rp."refRpayId",
+  rpr."refProductName",
+  rpr."refProductInterest",
+  rpr."refProductDuration",
+  rpr."refProductDurationType",
+  rpr."refProductMonthlyCal",
+  rl."refLoanAmount",
+  rl."refLoanId"
+FROM
+  public."refRepaymentSchedule" rp
+  INNER JOIN public."refLoan" rl ON CAST(rl."refLoanId" AS INTEGER) = rp."refLoanId"::integer
+  INNER JOIN public.users u ON CAST(u."refUserId" AS INTEGER) = rl."refUserId"
+  INNER JOIN public."refProducts" rpr ON CAST(rpr."refProductId" AS INTEGER) = rl."refProductId"::INTEGER
+  INNER JOIN public."refCommunication" rc ON CAST(rc."refUserId" AS INTEGER) = u."refUserId"
+WHERE
+  (
+    rp."refPrincipalStatus" = 'Pending'
+    OR rp."refInterestStatus" = 'Pending'
+  )
+  AND rl."refLoanStatus" = 1
+  AND (
+    (
+      $1 = false
+      AND TO_DATE(rp."refPaymentDate", 'DD-MM-YYYY') <= TO_DATE($2, 'DD-MM-YYYY')
+    )
+    OR (
+      $1 = true
+      AND TO_DATE(rp."refPaymentDate", 'DD-MM-YYYY') BETWEEN TO_DATE($2, 'DD-MM-YYYY') AND TO_DATE($3, 'DD-MM-YYYY')
+    )
+  )
+ORDER BY
+  TO_DATE(rp."refPaymentDate", 'DD-MM-YYYY') ASC;`;
 
 export const nameQuery = `SELECT "refUserFname" , "refUserLname" FROM public."users" WHERE "refUserId" = $1
 `;
@@ -49,10 +92,12 @@ export const rePaymentCalculation = `SELECT
   rl."refInitialInterest",
   rl."refInterestMonthCount",
   rt."refRepaymentTypeName",
- 	rp."refInterest"::NUMERIC AS "InteresePay",
+  rp."refInterest"::NUMERIC AS "InteresePay",
   rp."refPrincipal"::NUMERIC,
   rp."refPrincipalStatus",
   rp."refInterestStatus",
+  rpr."refProductDurationType",
+  rpr."refProductMonthlyCal",
   ROUND(
     COALESCE(
       (
@@ -75,7 +120,8 @@ export const rePaymentCalculation = `SELECT
         FROM
           public."refRepaymentSchedule" rp2
         WHERE
-          CAST(rp2."refLoanId" AS INTEGER) = rl."refLoanId" AND rp2."refInterestStatus" = 'paid'
+          CAST(rp2."refLoanId" AS INTEGER) = rl."refLoanId"
+          AND rp2."refInterestStatus" = 'paid'
       ),
       0
     )::NUMERIC
@@ -98,7 +144,7 @@ FROM
   public."refLoan" rl
   INNER JOIN public."refRepaymentSchedule" rp ON CAST(rp."refLoanId" AS INTEGER) = rl."refLoanId"
   INNER JOIN public."refProducts" rpr ON CAST(rpr."refProductId" AS INTEGER) = rl."refProductId"::INTEGER
-  LEFT JOIN public."refRepaymentType" rt ON CAST (rt."refRepaymentTypeId" AS INTEGER) = rl."refRePaymentType"::INTEGER
+  LEFT JOIN public."refRepaymentType" rt ON CAST(rt."refRepaymentTypeId" AS INTEGER) = rl."refRePaymentType"::INTEGER
 WHERE
   rl."refLoanId" = $1
   AND rp."refRpayId" = $2;`;
@@ -169,14 +215,10 @@ export const loanAudit = `SELECT
   rp."refInterestStatus" AS "InterestStatus",
   json_agg(
     json_build_object(
-      'FollowId',
-      us."refStatusId",
-      'Message',
-      us."refMessage",
-      'date',
-      us."refNextDate",
-      'UpdateAt',
-      us."updatedAt"
+      'FollowId', us."refStatusId",
+      'Message', us."refMessage",
+      'date', us."refNextDate",
+      'UpdateAt', us."updatedAt"
     )
   ) AS "followup"
 FROM
@@ -191,7 +233,7 @@ GROUP BY
   rp."refInterest",
   rp."refPrincipal"
 ORDER BY
-  rp."refPaymentDate";`;
+  TO_DATE(rp."refPaymentDate", 'DD-MM-YYYY') ASC;`;
 
 export const getLoanDetails = `SELECT
 rl."refLoanId",
