@@ -64,8 +64,7 @@ export class rePaymentRepository {
       // const Params = [true, "30-06-2025", "30-06-2025"];
       console.log("Params", Params);
       const userData = await executeQuery(userList, Params);
-      console.log("Running Query:", userList);
-      console.log("userData line ---- 66", userData);
+
       return encrypt(
         {
           success: true,
@@ -374,11 +373,18 @@ export class rePaymentRepository {
       ]);
       console.log(" -> Line Number ----------------------------------- 363");
       RepaymentDetails.map((Data, index) => {
-        const balanceAmt = Data.refLoanAmount - Data.totalPrincipal;
-        RepaymentDetails[index] = {
-          ...RepaymentDetails[index],
-          refBalanceAmt: balanceAmt,
-        };
+        if (Data.refLoanStatus === "opened") {
+          const balanceAmt = Data.refLoanAmount - Data.totalPrincipal;
+          RepaymentDetails[index] = {
+            ...RepaymentDetails[index],
+            refBalanceAmt: balanceAmt,
+          };
+        } else {
+          RepaymentDetails[index] = {
+            ...RepaymentDetails[index],
+            refBalanceAmt: 0,
+          };
+        }
       });
 
       return encrypt(

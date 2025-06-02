@@ -253,6 +253,8 @@ rl."refCustLoanId",
   rl."refInterestMonthCount",
   rl."refInitialInterest",
   rt."refRepaymentTypeName",
+  rpr."refProductDurationType",
+  rpr."refProductMonthlyCal",
   ROUND(
     COALESCE(
       (
@@ -297,7 +299,9 @@ GROUP BY
   rpr."refProductInterest",
   rpr."refProductDuration",
   ls."refLoanStatus",
-  rt."refRepaymentTypeName"`;
+  rt."refRepaymentTypeName",
+  rpr."refProductDurationType",
+  rpr."refProductMonthlyCal"`;
 export const LoanDetails = `SELECT
 rl."refLoanId",
   rl."refLoanAmount",
@@ -312,6 +316,8 @@ rl."refLoanId",
   rl."refInterestMonthCount",
   rl."refInitialInterest",
   rt."refRepaymentTypeName",
+  rpr."refProductDurationType",
+  rpr."refProductMonthlyCal",
   ROUND(
     COALESCE(
       (
@@ -356,7 +362,9 @@ GROUP BY
   rpr."refProductInterest",
   rpr."refProductDuration",
   ls."refLoanStatus",
-  rt."refRepaymentTypeName"`;
+  rt."refRepaymentTypeName",
+  rpr."refProductDurationType",
+  rpr."refProductMonthlyCal"`;
 
 export const getMailDetails = `SELECT 
 u."refUserId",u."refUserFname",u."refUserLname",rc."refUserEmail"
@@ -939,16 +947,14 @@ export const getReCalParams = `SELECT
   rp."refProductDurationType",
   rp."refProductMonthlyCal",
   CASE
-    WHEN TO_DATE(l."refLoanDueDate", 'YYYY-MM-DD') > TO_DATE($2, 'DD-MM-YYYY') THEN (
-      (
-        DATE_PART(
-          'year',
-          AGE (
-            TO_DATE(l."refLoanDueDate", 'YYYY-MM-DD'),
-            TO_DATE($2, 'DD-MM-YYYY')
-          )
-        ) * 12
-      ) + DATE_PART(
+    WHEN rp."refProductDurationType" = 1 THEN (
+      DATE_PART(
+        'year',
+        AGE (
+          TO_DATE(l."refLoanDueDate", 'YYYY-MM-DD'),
+          TO_DATE($2, 'DD-MM-YYYY')
+        )
+      ) * 12 + DATE_PART(
         'month',
         AGE (
           TO_DATE(l."refLoanDueDate", 'YYYY-MM-DD'),
@@ -964,6 +970,14 @@ export const getReCalParams = `SELECT
         ) > 0 THEN 1
         ELSE 0
       END
+    )
+    WHEN rp."refProductDurationType" = 2 THEN CEIL(
+      (
+        TO_DATE(l."refLoanDueDate", 'YYYY-MM-DD') - TO_DATE($2, 'DD-MM-YYYY')
+      ) / 7.0
+    )
+    WHEN rp."refProductDurationType" = 3 THEN (
+      TO_DATE(l."refLoanDueDate", 'YYYY-MM-DD') - TO_DATE($2, 'DD-MM-YYYY')
     )
     ELSE 0
   END AS "MonthDiff",

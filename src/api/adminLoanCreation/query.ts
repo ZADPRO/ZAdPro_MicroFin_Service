@@ -564,18 +564,18 @@ export const addNewLoan = `WITH
       ) AS refPrincipal,
       ROUND(
         CASE
-          WHEN $19::Numeric IN (1, 3) THEN (
-            (r.loan_amount::Numeric * (r.product_interest::Numeric * 12) / 100) / CASE
-              WHEN r.duration_type::Numeric = 1
-              AND r.monthly_cal::Numeric = 1 THEN 365
-              WHEN r.duration_type::Numeric = 1
-              AND r.monthly_cal::Numeric = 2 THEN 12
-              WHEN r.duration_type::Numeric = 2 THEN 365
-              WHEN r.duration_type::Numeric = 3 THEN 365
+          WHEN $19 IN (1, 3) THEN (
+            (r.loan_amount * (r.product_interest * 12) / 100) / CASE
+              WHEN r.duration_type = 1
+              AND r.monthly_cal = 1 THEN 365
+              WHEN r.duration_type = 1
+              AND r.monthly_cal = 2 THEN 12
+              WHEN r.duration_type = 2 THEN 365
+              WHEN r.duration_type = 3 THEN 365
               ELSE 1
             END
           ) * CASE
-            WHEN r.duration_type::Numeric = 1 THEN EXTRACT(
+            WHEN r.duration_type = 1 THEN EXTRACT(
               DAY
               FROM
                 DATE_TRUNC(
@@ -583,28 +583,26 @@ export const addNewLoan = `WITH
                   r.repayment_start_date + (gs.period_num - 1) * INTERVAL '1 month'
                 ) + INTERVAL '1 month' - INTERVAL '1 day'
             )
-            WHEN r.duration_type::Numeric = 2 THEN 7
-            WHEN r.duration_type::Numeric = 3 THEN 1
+            WHEN r.duration_type = 2 THEN 7
+            WHEN r.duration_type = 3 THEN 1
             ELSE 1
           END
-          WHEN $19::Numeric = 2 THEN (
+          WHEN $19 = 2 THEN (
             (
-              (
-                r.loan_amount::Numeric - (
-                  (r.loan_amount::Numeric / r.product_duration::Numeric) * (gs.period_num - 1)
-                )
-              ) * (r.product_interest::Numeric * 12) / 100
-            ) / CASE
-              WHEN r.duration_type::Numeric = 1
-              AND r.monthly_cal::Numeric = 1 THEN 365
-              WHEN r.duration_type::Numeric = 1
-              AND r.monthly_cal::Numeric = 2 THEN 12
-              WHEN r.duration_type::Numeric = 2 THEN 365
-              WHEN r.duration_type::Numeric = 3 THEN 365
+              r.loan_amount - (
+                (r.loan_amount / r.product_duration) * (gs.period_num - 1)
+              )
+            ) * (r.product_interest * 12) / 100 / CASE
+              WHEN r.duration_type = 1
+              AND r.monthly_cal = 1 THEN 365
+              WHEN r.duration_type = 1
+              AND r.monthly_cal = 2 THEN 12
+              WHEN r.duration_type IN (2, 3) THEN 365
               ELSE 1
             END
           ) * CASE
-            WHEN r.duration_type::Numeric = 1 THEN EXTRACT(
+            WHEN r.duration_type = 1
+            AND r.monthly_cal = 1 THEN EXTRACT(
               DAY
               FROM
                 DATE_TRUNC(
@@ -612,8 +610,10 @@ export const addNewLoan = `WITH
                   r.repayment_start_date + (gs.period_num - 1) * INTERVAL '1 month'
                 ) + INTERVAL '1 month' - INTERVAL '1 day'
             )
-            WHEN r.duration_type::Numeric = 2 THEN 7
-            WHEN r.duration_type::Numeric = 3 THEN 1
+            WHEN r.duration_type = 1
+            AND r.monthly_cal = 2 THEN 1
+            WHEN r.duration_type = 2 THEN 7
+            WHEN r.duration_type = 3 THEN 1
             ELSE 1
           END
           ELSE 0
@@ -625,9 +625,13 @@ export const addNewLoan = `WITH
       ROUND(
         CASE
           WHEN $19 IN (1, 2) THEN (
-            (r.loan_amount::Numeric / r.product_duration::Numeric) + CASE
+            (
+              r.loan_amount::Numeric / r.product_duration::Numeric
+            ) + CASE
               WHEN $19 = 1 THEN (
-                (r.loan_amount::Numeric * (r.product_interest::Numeric * 12) / 100) / CASE
+                (
+                  r.loan_amount::Numeric * (r.product_interest::Numeric * 12) / 100
+                ) / CASE
                   WHEN r.duration_type::Numeric = 1
                   AND r.monthly_cal::Numeric = 1 THEN 365
                   WHEN r.duration_type::Numeric = 1
@@ -651,7 +655,9 @@ export const addNewLoan = `WITH
                 (
                   (
                     r.loan_amount::Numeric - (
-                      (r.loan_amount::Numeric / r.product_duration::Numeric) * (gs.period_num - 1)
+                      (
+                        r.loan_amount::Numeric / r.product_duration::Numeric
+                      ) * (gs.period_num - 1)
                     )
                   ) * (r.product_interest::Numeric * 12) / 100
                 ) / CASE
@@ -677,8 +683,12 @@ export const addNewLoan = `WITH
             END
           )
           ELSE (
-            (r.loan_amount::Numeric / r.product_duration::Numeric) + (
-              (r.loan_amount::Numeric * (r.product_interest::Numeric * 12) / 100) / CASE
+            (
+              r.loan_amount::Numeric / r.product_duration::Numeric
+            ) + (
+              (
+                r.loan_amount::Numeric * (r.product_interest::Numeric * 12) / 100
+              ) / CASE
                 WHEN r.duration_type::Numeric = 1
                 AND r.monthly_cal::Numeric = 1 THEN 365
                 WHEN r.duration_type::Numeric = 1
@@ -705,7 +715,7 @@ export const addNewLoan = `WITH
       $11 AS createdAt,
       $12 AS createdBy,
       CASE
-        WHEN gs.period_num <= $16 THEN 'paid'
+        WHEN gs.period_num <= $17 THEN 'paid'
         ELSE 'Pending'
       END AS refInterestStatus
     FROM
@@ -713,7 +723,7 @@ export const addNewLoan = `WITH
       JOIN generate_series(1, r.product_duration::Numeric) AS gs (period_num) ON TRUE
   )
 INSERT INTO
-  public."refRepaymentSchedule" (
+  adminloan."refRepaymentSchedule" (
     "refLoanId",
     "refPaymentDate",
     "refPaymentAmount",
@@ -959,6 +969,8 @@ export const closingData = `SELECT
   rl."refInterestMonthCount",
   rl."refInitialInterest",
   rt."refRepaymentTypeName",
+  rl."refProductDurationType",
+  rl."refProductMonthlyCal",
   ROUND(
     COALESCE(
       (

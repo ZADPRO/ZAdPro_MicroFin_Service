@@ -28,6 +28,7 @@ import {
   formatToYearMonth,
   formatDate,
   formatYearMonthDate,
+  formatDateMonthYear,
 } from "../../helper/common";
 import { loanQuery } from "../admin/query";
 import { loanReminderSend } from "../../helper/mailcontent";
@@ -41,10 +42,10 @@ export class AdminRePaymentRepository {
       const Params = [
         user_data.ifMonth,
         user_data.startDate === ""
-          ? formatToYearMonth(CurrentTime())
+          ? formatDateMonthYear(CurrentTime())
           : user_data.startDate,
         user_data.endDate === ""
-          ? formatToYearMonth(CurrentTime())
+          ? formatDateMonthYear(CurrentTime())
           : user_data.endDate,
       ];
       console.log("Params", Params);
@@ -140,6 +141,14 @@ export class AdminRePaymentRepository {
       console.log(" -> Line Number ----------------------------------- 138");
       if (oldAmt[0].refPrincipal < user_data.priAmt) {
         console.log(" -> Line Number ----------------------------------- 140");
+        console.log(
+          "updateRepayment.rows[0].refLoanId,",
+          updateRepayment.rows[0].refLoanId
+        );
+        console.log(
+          "updateRepayment.rows[0].refPaymentDate,",
+          updateRepayment.rows[0].refPaymentDate
+        );
         let paramsData = await executeQuery(getReCalParams, [
           updateRepayment.rows[0].refLoanId,
           updateRepayment.rows[0].refPaymentDate,
@@ -149,12 +158,15 @@ export class AdminRePaymentRepository {
           BalanceAmt:
             Number(paramsData[0].BalanceAmt) - Number(user_data.priAmt),
         };
+        console.log("paramsData", paramsData);
         const intCalParams = [
           paramsData[0].BalanceAmt,
           paramsData[0].MonthDiff,
           paramsData[0].refProductInterest,
           paramsData[0].SameMonthDate,
           paramsData[0].refRePaymentType,
+          paramsData[0].refProductDurationType,
+          paramsData[0].refProductMonthlyCal,
         ];
         console.log("intCalParams", intCalParams);
         const IntData = await executeQuery(reInterestCal, intCalParams);

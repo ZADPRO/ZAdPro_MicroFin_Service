@@ -410,13 +410,24 @@ export class adminLoanCreationRepository {
         user_data.userId,
         user_data.loanId,
       ]);
+
+      const calData: any = await adminTopUpBalance(user_data.loanId);
+
       data.map((Data, index) => {
-        const balanceAmt = Data.refLoanAmount - Data.totalPrincipal;
-        data[index] = {
-          ...data[index],
-          refBalanceAmt: balanceAmt,
-        };
+        if (Data.refLoanStatus === "opened") {
+          const balanceAmt = Data.refLoanAmount - Data.totalPrincipal;
+          data[index] = {
+            ...data[index],
+            refBalanceAmt: balanceAmt,
+          };
+        } else {
+          data[index] = {
+            ...data[index],
+            refBalanceAmt: 0,
+          };
+        }
       });
+
       return encrypt(
         {
           success: true,
