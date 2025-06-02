@@ -157,54 +157,34 @@ export function calculateDueDate1(
 }
 
 export function calculateDueDate(
-  startDateStr: string,
+  dateStr: string,
   duration: number,
-  durationType: number,
-  inputFormat: "YYYY-MM-DD" | "DD-MM-YYYY" = "YYYY-MM-DD"
+  durationType: number
 ): string {
-  let year: number, month: number, day: number;
-
-  if (inputFormat === "YYYY-MM-DD") {
-    [year, month, day] = startDateStr.split("-").map(Number);
-  } else {
-    [day, month, year] = startDateStr.split("-").map(Number);
-  }
-
-  // ✅ Safety check
-  if (
-    isNaN(year) ||
-    isNaN(month) ||
-    isNaN(day) ||
-    isNaN(duration) ||
-    duration <= 0
-  ) {
-    throw new Error("Invalid date or duration input.");
-  }
-
-  const startDate = new Date(year, month - 1, day);
-  const resultDate = new Date(startDate);
+  const date = new Date(dateStr);
 
   switch (durationType) {
-    case 1: // Month interval
-      resultDate.setMonth(resultDate.getMonth() + duration);
+    case 1: // Months
+      date.setMonth(date.getMonth() + (duration - 1));
       break;
-    case 2: // Week interval
-      resultDate.setDate(resultDate.getDate() + duration * 7);
+    case 2: // Weeks
+      date.setDate(date.getDate() + (duration - 1) * 7);
       break;
-    case 3: // Day interval
-      resultDate.setDate(resultDate.getDate() + duration);
+    case 3: // Days
+      date.setDate(date.getDate() + (duration - 1));
       break;
     default:
-      throw new Error("Invalid duration type");
+      throw new Error(
+        "Invalid duration type. Use 1 for months, 2 for weeks, 3 for days."
+      );
   }
 
-  const yyyy = resultDate.getFullYear();
-  const mm = String(resultDate.getMonth() + 1).padStart(2, "0");
-  const dd = String(resultDate.getDate()).padStart(2, "0");
+  const day = String(date.getDate()).padStart(2, "0");
+  const month = String(date.getMonth() + 1).padStart(2, "0"); // JS months are 0-based
+  const year = date.getFullYear();
 
-  return `${yyyy}-${mm}-${dd}`;
+  return `${year}-${month}-${day}`;
 }
-
 // export function getMonthDifference(startDate: string, endDate: string): number {
 //   if (!startDate || !endDate) {
 //     throw new Error('Start date or end date is undefined or invalid.');

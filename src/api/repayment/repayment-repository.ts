@@ -153,22 +153,13 @@ export class rePaymentRepository {
         user_data.rePayId,
       ];
       const updateRepayment = await client.query(updateRePayment, Params);
-      // console.log("updateRepayment line ----- 149", updateRepayment);
-
+      console.log(" -> Line Number ----------------------------------- 157");
       if (oldAmt[0].refPrincipal < user_data.priAmt) {
         console.log(" -> Line Number ----------------------------------- 159");
-        console.log(
-          "updateRepayment.rows[0].refPaymentDate",
-          updateRepayment.rows[0].refPaymentDate
-        );
-        console.log(
-          "updateRepayment.rows[0].refLoanId",
-          updateRepayment.rows[0].refLoanId
-        );
+
         let paramsData = await executeQuery(getReCalParams, [
           updateRepayment.rows[0].refLoanId,
           updateRepayment.rows[0].refPaymentDate,
-          
         ]);
         console.log("paramsData", paramsData);
         paramsData[0] = {
@@ -190,10 +181,16 @@ export class rePaymentRepository {
         const IntData = await executeQuery(reInterestCal, intCalParams);
         console.log("IntData line ------- 159", IntData);
 
+        console.log(
+          "updateRepayment.rows[0].refLoanId",
+          updateRepayment.rows[0].refLoanId
+        );
+        console.log("updateReInterestCal", updateReInterestCal);
         await client.query(updateReInterestCal, [
           JSON.stringify(IntData),
           updateRepayment.rows[0].refLoanId,
         ]);
+        console.log(" -> Line Number ----------------------------------- 193");
       }
 
       const userData = await executeQuery(getUserData, [
