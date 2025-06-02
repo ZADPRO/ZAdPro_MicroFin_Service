@@ -13,6 +13,7 @@ import {
   formatYearMonthDate,
   convertToYMD,
   bankType,
+  calculateDueDate,
 } from "../../helper/common";
 import { loanQuery } from "../admin/query";
 import { loanReminderSend } from "../../helper/mailcontent";
@@ -158,13 +159,20 @@ export class adminLoanCreationRepository {
           true
         );
       }
+      console.log(" -> Line Number ----------------------------------- 162");
+      const dueDate = calculateDueDate(
+        user_data.refRepaymentStartDate,
+        user_data.refLoanDuration,
+        user_data.refProductDurationType
+      );
+      console.log("dueDate", dueDate);
 
       const params = [
         user_data.refUserId,
         user_data.refLoanDuration,
         user_data.refLoanInterest,
         user_data.refLoanAmount,
-        user_data.refLoanDueDate,
+        dueDate,
         user_data.refPayementType,
         user_data.refRepaymentStartDate,
         convertToYMD(),
@@ -181,6 +189,8 @@ export class adminLoanCreationRepository {
         user_data.refRepaymentType,
         user_data.refDocFee,
         user_data.refSecurity,
+        user_data.refProductDurationType,
+        user_data.refProductMonthlyCal,
       ];
       console.log("params", params);
       const queryResult = await client.query(addNewLoan, params);
