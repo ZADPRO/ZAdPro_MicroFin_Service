@@ -115,6 +115,96 @@ export function getMonthDifference(startDate: string, endDate: string): number {
   return yearDifference * 12 + monthDifference;
 }
 
+export function calculateDueDate1(
+  startDateStr: string,
+  duration: number,
+  durationType: number,
+  inputFormat: "YYYY-MM-DD" | "DD-MM-YYYY" = "YYYY-MM-DD"
+): string {
+  let year: number, month: number, day: number;
+
+  if (inputFormat === "YYYY-MM-DD") {
+    [year, month, day] = startDateStr.split("-").map(Number);
+  } else {
+    [day, month, year] = startDateStr.split("-").map(Number);
+  }
+
+  const startDate = new Date(Date.UTC(year, month - 1, day));
+  let resultDate = new Date(startDate);
+
+  switch (durationType) {
+    case 1: // Month interval
+      resultDate.setUTCMonth(resultDate.getUTCMonth() + (duration - 1));
+      break;
+
+    case 2: // Week interval
+      resultDate.setUTCDate(resultDate.getUTCDate() + (duration - 1) * 7);
+      break;
+
+    case 3: // Day interval
+      resultDate.setUTCDate(resultDate.getUTCDate() + duration);
+      break;
+
+    default:
+      throw new Error("Invalid duration type");
+  }
+
+  const yyyy = resultDate.getUTCFullYear();
+  const mm = String(resultDate.getUTCMonth() + 1).padStart(2, "0");
+  const dd = String(resultDate.getUTCDate()).padStart(2, "0");
+
+  return `${yyyy}-${mm}-${dd}`;
+}
+
+export function calculateDueDate(
+  startDateStr: string,
+  duration: number,
+  durationType: number,
+  inputFormat: "YYYY-MM-DD" | "DD-MM-YYYY" = "YYYY-MM-DD"
+): string {
+  let year: number, month: number, day: number;
+
+  if (inputFormat === "YYYY-MM-DD") {
+    [year, month, day] = startDateStr.split("-").map(Number);
+  } else {
+    [day, month, year] = startDateStr.split("-").map(Number);
+  }
+
+  // ✅ Safety check
+  if (
+    isNaN(year) ||
+    isNaN(month) ||
+    isNaN(day) ||
+    isNaN(duration) ||
+    duration <= 0
+  ) {
+    throw new Error("Invalid date or duration input.");
+  }
+
+  const startDate = new Date(year, month - 1, day);
+  const resultDate = new Date(startDate);
+
+  switch (durationType) {
+    case 1: // Month interval
+      resultDate.setMonth(resultDate.getMonth() + duration);
+      break;
+    case 2: // Week interval
+      resultDate.setDate(resultDate.getDate() + duration * 7);
+      break;
+    case 3: // Day interval
+      resultDate.setDate(resultDate.getDate() + duration);
+      break;
+    default:
+      throw new Error("Invalid duration type");
+  }
+
+  const yyyy = resultDate.getFullYear();
+  const mm = String(resultDate.getMonth() + 1).padStart(2, "0");
+  const dd = String(resultDate.getDate()).padStart(2, "0");
+
+  return `${yyyy}-${mm}-${dd}`;
+}
+
 // export function getMonthDifference(startDate: string, endDate: string): number {
 //   if (!startDate || !endDate) {
 //     throw new Error('Start date or end date is undefined or invalid.');

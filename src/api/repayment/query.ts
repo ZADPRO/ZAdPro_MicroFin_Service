@@ -504,7 +504,7 @@ SELECT
 FROM
   repayment_schedule;`;
 
-export const reInterestCal = `WITH
+export const reInterestCal2 = `WITH
   loan_data AS (
     SELECT
       $1::NUMERIC AS loan_amount,
@@ -568,6 +568,74 @@ export const reInterestCal = `WITH
     FROM
       loan_data ld
       CROSS JOIN generate_series(1, $2::INTEGER) AS m (month_num)
+  )
+SELECT
+  *
+FROM
+  repayment_schedule;`;
+
+export const reInterestCal = `WITH
+  loan_data AS (
+    SELECT
+      $1::NUMERIC AS loan_amount,
+      $2::INTEGER AS product_duration,
+      $3::NUMERIC AS product_interest,
+      $4::TIMESTAMP AS loan_start_date,
+      $5::INTEGER AS repayment_type,
+      $6::INTEGER AS refProductDurationType,  
+      $7::INTEGER AS refProductMonthlyCal  
+  ),
+  repayment_schedule AS (
+    SELECT
+      TO_CHAR(
+        CASE
+          WHEN ld.refProductDurationType = 1 THEN ld.loan_start_date + (m.num - 1) * INTERVAL '1 month'
+          WHEN ld.refProductDurationType = 2 THEN ld.loan_start_date + (m.num - 1) * INTERVAL '1 week'
+          WHEN ld.refProductDurationType = 3 THEN ld.loan_start_date + (m.num - 1) * INTERVAL '1 day'
+        END,
+        'DD-MM-YYYY'
+      ) AS payment_date,
+      ROUND(
+        CASE
+          WHEN ld.repayment_type = 3 THEN 0
+          ELSE ld.loan_amount / ld.product_duration
+        END,
+        2
+      ) AS refPrincipal,
+      ROUND(
+        CASE
+          WHEN ld.repayment_type IN (1, 3) THEN (
+            (ld.loan_amount * (ld.product_interest * 12)) / 100
+          ) * (
+            CASE
+              WHEN ld.refProductDurationType = 1 AND ld.refProductMonthlyCal = 1 THEN 
+                EXTRACT(DAY FROM (
+                  DATE_TRUNC('MONTH', ld.loan_start_date + (m.num - 1) * INTERVAL '1 month') 
+                  + INTERVAL '1 month' - INTERVAL '1 day'
+                )) / 365.0
+              WHEN ld.refProductDurationType = 1 AND ld.refProductMonthlyCal = 2 THEN 
+                1 / 12.0
+              WHEN ld.refProductDurationType = 2 THEN 7 / 365.0
+              WHEN ld.refProductDurationType = 3 THEN 1 / 365.0
+            END
+          )
+
+          WHEN ld.repayment_type = 2 THEN (
+            (
+              ld.loan_amount - ((ld.loan_amount / ld.product_duration) * (m.num - 1))
+            ) * (ld.product_interest * 12) / 100 / 365
+          ) * 
+          CASE
+            WHEN ld.refProductDurationType = 1 THEN 30
+            WHEN ld.refProductDurationType = 2 THEN 7
+            WHEN ld.refProductDurationType = 3 THEN 1
+          END
+        END,
+        2
+      ) AS refInterest
+    FROM
+      loan_data ld
+      CROSS JOIN generate_series(1, ld.product_duration) AS m (num)
   )
 SELECT
   *
@@ -652,6 +720,69 @@ GROUP BY
   rp."refProductDuration",
   l."refLoanDueDate"`;
 
+export const getReCalParams2 = `SELECT
+  l."refLoanAmount",
+  l."refLoanAmount"::NUMERIC - ROUND(
+    COALESCE(
+      (
+        SELECT
+          SUM(
+            CAST(NULLIF(rs."refPrincipal", 'null') AS NUMERIC)
+          )
+        FROM
+          public."refRepaymentSchedule" rs
+        WHERE
+          CAST(rs."refLoanId" AS INTEGER) = l."refLoanId"
+          AND rs."refPrincipalStatus" = 'paid'
+      ),
+      0
+    )::NUMERIC
+  ) AS "BalanceAmt",
+  rp."refProductInterest",
+  rp."refProductDurationType",
+  rp."refProductMonthlyCal",
+  (
+    (
+      EXTRACT(
+        YEAR
+        FROM
+          TO_DATE(l."refLoanDueDate", 'YYYY-MM-DD')
+      ) - EXTRACT(
+        YEAR
+        FROM
+          DATE_TRUNC('month', TO_DATE($2, 'DD-MM-YYYY'))
+      )
+    ) * 12
+  ) + (
+    EXTRACT(
+      MONTH
+      FROM
+        TO_DATE(l."refLoanDueDate", 'YYYY-MM-DD')
+    ) - EXTRACT(
+      MONTH
+      FROM
+        DATE_TRUNC('month', TO_DATE($2, 'DD-MM-YYYY'))
+    )
+  ) AS "MonthDiff",
+  TO_CHAR(
+    DATE_TRUNC('month', TO_DATE($2, 'DD-MM-YYYY')),
+    'DD/MM/YYYY, HH12:MI:SS AM'
+  ) AS "SameMonthDate",
+  l."refRePaymentType"
+FROM
+  public."refLoan" l
+  LEFT JOIN public."refRepaymentSchedule" rs ON CAST(l."refLoanId" AS INTEGER) = rs."refLoanId"::INTEGER
+  LEFT JOIN public."refProducts" rp ON CAST(rp."refProductId" AS INTEGER) = l."refProductId"::INTEGER
+WHERE
+  l."refLoanId" = $1
+GROUP BY
+  l."refLoanId",
+  rp."refProductInterest",
+  rp."refProductDuration",
+  l."refLoanDueDate",
+  rp."refProductDurationType",
+  rp."refProductMonthlyCal"`;
+
 export const getReCalParams = `SELECT
   l."refLoanAmount",
   l."refLoanAmount"::NUMERIC - ROUND(
@@ -671,6 +802,8 @@ export const getReCalParams = `SELECT
     )::NUMERIC
   ) AS "BalanceAmt",
   rp."refProductInterest",
+  rp."refProductDurationType",
+  rp."refProductMonthlyCal",
   (
     (
       EXTRACT(
@@ -680,7 +813,7 @@ export const getReCalParams = `SELECT
       ) - EXTRACT(
         YEAR
         FROM
-          TO_DATE($2 || '-01', 'YYYY-MM-DD')
+          DATE_TRUNC('month', TO_DATE($2, 'DD-MM-YYYY'))
       )
     ) * 12
   ) + (
@@ -691,11 +824,11 @@ export const getReCalParams = `SELECT
     ) - EXTRACT(
       MONTH
       FROM
-        TO_DATE($2 || '-01', 'YYYY-MM-DD')
+        DATE_TRUNC('month', TO_DATE($2, 'DD-MM-YYYY'))
     )
   ) AS "MonthDiff",
   TO_CHAR(
-    TO_TIMESTAMP($2 || '-01', 'YYYY-MM-DD'),
+    TO_TIMESTAMP($2, 'DD-MM-YYYY'),
     'DD/MM/YYYY, HH12:MI:SS AM'
   ) AS "SameMonthDate",
   l."refRePaymentType"
@@ -709,7 +842,9 @@ GROUP BY
   l."refLoanId",
   rp."refProductInterest",
   rp."refProductDuration",
-  l."refLoanDueDate"`;
+  l."refLoanDueDate",
+  rp."refProductDurationType",
+  rp."refProductMonthlyCal"`;
 
 export const checkLoanPaid = `SELECT
   COALESCE(COUNT(*), 0) AS unpaid_count
@@ -757,7 +892,7 @@ export const insertRepaymentSchedule = `INSERT INTO
 values
   ($1, $2, $3, $4, $5, $6, $7, $8, $9)`;
 
-export const updateRepayment = `UPDATE public."refRepaymentSchedule"
+export const updateRepayment1 = `UPDATE public."refRepaymentSchedule"
 SET
   "refPrincipal" = CASE
     WHEN "refPrincipalStatus" = 'Pending' THEN '0.00'
@@ -770,3 +905,18 @@ SET
 WHERE
   "refLoanId"::INTEGER = $1
   AND "refPaymentDate" > $2;`;
+
+export const updateRepayment = `UPDATE public."refRepaymentSchedule"
+SET
+  "refPrincipal" = CASE
+    WHEN "refPrincipalStatus" = 'Pending' THEN '0.00'
+    ELSE "refPrincipal"
+  END,
+  "refInterest" = CASE
+    WHEN "refInterestStatus" = 'Pending' THEN '0.00'
+    ELSE "refInterest"
+  END
+WHERE
+  "refLoanId"::INTEGER = $1
+  AND TO_DATE("refPaymentDate", 'DD-MM-YYYY') > TO_DATE($2, 'DD-MM-YYYY');
+`;

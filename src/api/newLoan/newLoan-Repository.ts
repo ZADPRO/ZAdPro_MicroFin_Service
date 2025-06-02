@@ -21,6 +21,7 @@ import {
   updateLoan,
 } from "./query";
 import {
+  calculateDueDate,
   convertToYMD,
   CurrentTime,
   formatYearMonthDate,
@@ -108,11 +109,30 @@ export class newLoanRepository {
         throw new Error("Invalid Product ID. No duration found.");
       }
 
+      console.log(
+        "user_data.refRepaymentStartDate,",
+        user_data.refRepaymentStartDate
+      );
+      console.log(
+        "productDetails[0].refProductDuration",
+        productDetails[0].refProductDuration
+      );
+      console.log(
+        "productDetails[0].refProductDurationType",
+        productDetails[0].refProductDurationType
+      );
+      const dueDate = calculateDueDate(
+        user_data.refRepaymentStartDate,
+        productDetails[0].refProductDuration,
+        productDetails[0].refProductDurationType
+      );
+      console.log("dueDate", dueDate);
+
       const params = [
         user_data.refUserId,
         user_data.refProductId,
         user_data.refLoanAmount,
-        user_data.refLoanDueDate,
+        dueDate,
         user_data.refPayementType,
         user_data.refRepaymentStartDate,
         convertToYMD(),

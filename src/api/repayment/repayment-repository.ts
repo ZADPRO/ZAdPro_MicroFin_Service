@@ -153,12 +153,22 @@ export class rePaymentRepository {
         user_data.rePayId,
       ];
       const updateRepayment = await client.query(updateRePayment, Params);
-      console.log("updateRepayment line ----- 149", updateRepayment);
+      // console.log("updateRepayment line ----- 149", updateRepayment);
 
       if (oldAmt[0].refPrincipal < user_data.priAmt) {
+        console.log(" -> Line Number ----------------------------------- 159");
+        console.log(
+          "updateRepayment.rows[0].refPaymentDate",
+          updateRepayment.rows[0].refPaymentDate
+        );
+        console.log(
+          "updateRepayment.rows[0].refLoanId",
+          updateRepayment.rows[0].refLoanId
+        );
         let paramsData = await executeQuery(getReCalParams, [
           updateRepayment.rows[0].refLoanId,
           updateRepayment.rows[0].refPaymentDate,
+          
         ]);
         console.log("paramsData", paramsData);
         paramsData[0] = {
@@ -173,6 +183,8 @@ export class rePaymentRepository {
           paramsData[0].refProductInterest,
           paramsData[0].SameMonthDate,
           paramsData[0].refRePaymentType,
+          paramsData[0].refProductDurationType,
+          paramsData[0].refProductMonthlyCal,
         ];
         console.log("intCalParams line ---- 169", intCalParams);
         const IntData = await executeQuery(reInterestCal, intCalParams);
@@ -532,7 +544,7 @@ export class rePaymentRepository {
           const loanData = result.rows[0];
           const repaymentParams = [
             loanData.refLoanId,
-            formatToYearMonth(CurrentTime()),
+            formatDateMonthYear(CurrentTime()),
             loanData.refLoanAmount,
             user_data.principalAmt,
             0.0,
@@ -548,7 +560,7 @@ export class rePaymentRepository {
           );
           await client.query(updateRepayment, [
             user_data.LoanId,
-            formatToYearMonth(CurrentTime()),
+            formatDateMonthYear(CurrentTime()),
           ]);
           console.log(
             " -> Line Number ----------------------------------- 546"
@@ -578,7 +590,7 @@ export class rePaymentRepository {
         ) {
           let paramsData = await executeQuery(getReCalParams, [
             user_data.refLoanId,
-            formatToYearMonth(CurrentTime()),
+            formatDateMonthYear(CurrentTime()),
           ]);
 
           paramsData[0] = {
@@ -593,6 +605,8 @@ export class rePaymentRepository {
             paramsData[0].refProductInterest,
             paramsData[0].SameMonthDate,
             paramsData[0].refRePaymentType,
+            paramsData[0].refProductDurationType,
+            paramsData[0].refProductMonthlyCal,
           ];
           console.log("intCalParams", intCalParams);
           const IntData = await executeQuery(reInterestCal, intCalParams);
@@ -603,7 +617,7 @@ export class rePaymentRepository {
 
           const repaymentParams = [
             user_data.LoanId,
-            formatToYearMonth(CurrentTime()),
+            formatDateMonthYear(CurrentTime()),
             paramsData[0].refLoanAmount,
             user_data.principalAmt,
             0.0,
