@@ -706,7 +706,9 @@ export const getLoanDataOption = `SELECT
   rl."refLoanId",
   rl."refLoanAmount",
   rp."refProductInterest",
-  rp."refProductDuration"
+  rp."refProductDuration",
+  rp."refProductDurationType",
+  rp."refProductMonthlyCal"
 FROM
   public."refLoan" rl
   LEFT JOIN public."refProducts" rp ON CAST(rp."refProductId" AS INTEGER) = rl."refProductId"::INTEGER

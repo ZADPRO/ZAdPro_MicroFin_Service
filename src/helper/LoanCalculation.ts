@@ -146,6 +146,8 @@ const getLoanData = `WITH
       l."refInterestMonthCount",
       rp."refProductInterest",
       rp."refProductDuration",
+      rp."refProductDurationType",
+      rp."refProductMonthlyCal",
       l."refLoanAmount",
       l."createdAt",
       l."refInitialInterest",
@@ -260,6 +262,8 @@ const getLoanData = `WITH
       l."refInterestMonthCount",
       rp."refProductInterest",
       rp."refProductDuration",
+      rp."refProductDurationType",
+      rp."refProductMonthlyCal",
       l."refLoanAmount",
       l."createdAt",
       l."refInitialInterest",
@@ -941,10 +945,10 @@ export const TopUpBalance = async (loanId: any) => {
         );
         console.log("balanceAmt", balanceAmt);
       } else {
-        console.log('loanId', loanId)
-        console.log('CurrentTime()', CurrentTime())
+        console.log("loanId", loanId);
+        console.log("CurrentTime()", CurrentTime());
         const result = await executeQuery(monthEqual, [loanId, CurrentTime()]);
-        console.log('result line ---- 945', result)
+        console.log("result line ---- 945", result);
         if (result[0].check) {
           const amt = Number(result[0].refInterest) - dayIntPaid;
           balanceAmt = balanceAmt - amt;
@@ -969,6 +973,8 @@ export const TopUpBalance = async (loanId: any) => {
       totalInitialInterest: Number(totalInitialInterest).toFixed(2),
       totalLoanPaidDuration: loanData[0].paidLoanCount,
       finalBalanceAmt: Number(balanceAmt).toFixed(2),
+      durationType: Number(loanData[0].refProductDurationType),
+      interestCalType: Number(loanData[0].refProductMonthlyCal),
     };
     console.log("loanCalData line ----- 299", loanCalData);
 
