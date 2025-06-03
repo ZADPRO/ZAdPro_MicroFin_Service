@@ -97,6 +97,23 @@ export function formatDateMonthYear(dateStr: string): string {
   return `${dd}-${mm}-${yyyy}`;
 }
 
+export function replaceDayInDate(
+  sourceDate: string, // Format: yyyy-MM-DD
+  targetDate: string // Format: DD/MM/YYYY, HH:MI:SS AM
+): string {
+  // Extract DD from sourceDate
+  const dd = sourceDate.split("-")[2];
+
+  // Split the targetDate into date and time parts
+  const [datePart, timePart] = targetDate.split(", ");
+
+  // Extract current components from datePart (DD/MM/YYYY)
+  const [, month, year] = datePart.split("/");
+
+  // Return updated date string
+  return `${dd}/${month}/${year}, ${timePart}`;
+}
+
 export function getMonthDifference(startDate: string, endDate: string): number {
   if (!startDate || !endDate) {
     throw new Error("Start date or end date is undefined or invalid.");

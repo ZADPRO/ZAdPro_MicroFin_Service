@@ -15,6 +15,7 @@ import {
 import {
   expenseData,
   loanStatus,
+  monthlyReportAdminLoan,
   monthlyReportCustomer,
   overAllReport,
   overallReportAdminLoan,
@@ -104,7 +105,7 @@ export class ReportRepository {
       if (user_data.loanOption === 1) {
         data = await executeQuery(monthlyReportCustomer, params);
       } else {
-        data = await executeQuery(overallReportAdminLoan, params);
+        data = await executeQuery(monthlyReportAdminLoan, params);
       }
       return encrypt(
         {

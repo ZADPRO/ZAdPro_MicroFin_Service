@@ -14,6 +14,8 @@ import {
   convertToYMD,
   bankType,
   calculateDueDate,
+  formatDateMonthYear,
+  replaceDayInDate,
 } from "../../helper/common";
 import { loanQuery } from "../admin/query";
 import { loanReminderSend } from "../../helper/mailcontent";
@@ -577,7 +579,7 @@ export class adminLoanCreationRepository {
           const loanData = result.rows[0];
           const repaymentParams = [
             loanData.refLoanId,
-            formatToYearMonth(CurrentTime()),
+            formatDateMonthYear(CurrentTime()),
             loanData.refLoanAmount,
             user_data.principalAmt,
             0.0,
@@ -617,10 +619,14 @@ export class adminLoanCreationRepository {
         } else if (
           Number(loanDetails.finalBalanceAmt) > Number(user_data.principalAmt)
         ) {
+          console.log(
+            " -> Line Number ----------------------------------- 621"
+          );
           let paramsData = await executeQuery(getReCalParams, [
-            user_data.refLoanId,
+            user_data.LoanId,
             formatToYearMonth(CurrentTime()),
           ]);
+          console.log("paramsData line ----- 625", paramsData);
 
           paramsData[0] = {
             ...paramsData[0],
@@ -628,23 +634,32 @@ export class adminLoanCreationRepository {
               Number(paramsData[0].BalanceAmt) - Number(user_data.principalAmt),
           };
 
+          const date = replaceDayInDate(
+            paramsData[0].refRepaymentStartDate,
+            paramsData[0].SameMonthDate
+          );
+
           const intCalParams = [
             paramsData[0].BalanceAmt,
             paramsData[0].MonthDiff,
             paramsData[0].refProductInterest,
-            paramsData[0].SameMonthDate,
+            date,
             paramsData[0].refRePaymentType,
+            paramsData[0].refProductDurationType,
+            paramsData[0].refProductMonthlyCal,
           ];
           console.log("intCalParams", intCalParams);
           const IntData = await executeQuery(reInterestCal, intCalParams);
+          console.log("IntData", IntData);
+          console.log("user_data.refLoanId", user_data.LoanId);
           await client.query(updateReInterestCal, [
             JSON.stringify(IntData),
-            user_data.refLoanId,
+            user_data.LoanId,
           ]);
 
           const repaymentParams = [
             user_data.LoanId,
-            formatToYearMonth(CurrentTime()),
+            formatDateMonthYear(CurrentTime()),
             paramsData[0].refLoanAmount,
             user_data.principalAmt,
             0.0,

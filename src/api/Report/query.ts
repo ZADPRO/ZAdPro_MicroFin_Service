@@ -177,7 +177,7 @@ GROUP BY
 ORDER BY
   l."refLoanId";`;
 
-export const monthlyReportCustomer = `SELECT
+export const monthlyReportCustomer1 = `SELECT
   l."refLoanStartDate",
   rs."refPaymentDate",
   l."refCustLoanId",
@@ -204,6 +204,59 @@ WHERE
   AND rs."refInterestStatus" = ANY ($2)
   AND rs."refPaymentDate" BETWEEN $3 AND $4`;
 
+export const monthlyReportCustomer = `SELECT
+  l."refLoanStartDate",
+  rs."refPaymentDate",
+  l."refCustLoanId",
+  u."refUserFname",
+  u."refUserLname",
+  rc."refUserMobileNo",
+  rc."refUserEmail",
+  rt."refRepaymentTypeName",
+  l."refInitialInterest",
+  rs."refPrincipal",
+  rs."refInterest",
+  l."refLoanAmount",
+  rs."refPrincipalStatus",
+  rs."refInterestStatus"
+FROM
+  public."refLoan" l
+  LEFT JOIN public."refRepaymentSchedule" rs ON CAST(rs."refLoanId" AS INTEGER) = l."refLoanId"::INTEGER
+  LEFT JOIN public.users u ON CAST(u."refUserId" AS INTEGER) = l."refUserId"::INTEGER
+  LEFT JOIN public."refCommunication" rc ON CAST(rc."refUserId" AS INTEGER) = l."refUserId"::INTEGER
+  LEFT JOIN public."refRepaymentType" rt ON CAST(rt."refRepaymentTypeId" AS INTEGER) = l."refRePaymentType"
+WHERE
+  l."refLoanStatus" = 1
+  AND rs."refPrincipalStatus" = ANY ($1)
+  AND rs."refInterestStatus" = ANY ($2)
+  AND TO_DATE(rs."refPaymentDate", 'DD-MM-YYYY') >= TO_DATE($3 || '-01', 'YYYY-MM-DD')
+  AND TO_DATE(rs."refPaymentDate", 'DD-MM-YYYY') < (TO_DATE($4 || '-01', 'YYYY-MM-DD') + INTERVAL '1 month')
+`;
+export const monthlyReportAdminLoan = `SELECT
+  l."refLoanStartDate",
+  rs."refPaymentDate",
+  l."refCustLoanId",
+  v."refVendorName" AS "refUserFname",
+  v."refVendorMobileNo" AS "refUserMobileNo",
+  v."refVendorEmailId" AS "refUserEmail",
+  rt."refRepaymentTypeName",
+  l."refInitialInterest",
+  rs."refPrincipal",
+  rs."refInterest",
+  l."refLoanAmount",
+  rs."refPrincipalStatus",
+  rs."refInterestStatus"
+FROM
+  adminloan."refLoan" l
+  LEFT JOIN adminloan."refRepaymentSchedule" rs ON CAST(rs."refLoanId" AS INTEGER) = l."refLoanId"::INTEGER
+  LEFT JOIN adminloan."refVendorDetails" v ON CAST(v."refVendorId" AS INTEGER) = l."refVenderId"::INTEGER
+  LEFT JOIN public."refRepaymentType" rt ON CAST(rt."refRepaymentTypeId" AS INTEGER) = l."refRePaymentType"
+WHERE
+  l."refLoanStatus" = 1
+  AND rs."refPrincipalStatus" = ANY ($1)
+  AND rs."refInterestStatus" = ANY ($2)
+  AND TO_DATE(rs."refPaymentDate", 'DD-MM-YYYY') >= TO_DATE($3 || '-01', 'YYYY-MM-DD')
+  AND TO_DATE(rs."refPaymentDate", 'DD-MM-YYYY') < (TO_DATE($4 || '-01', 'YYYY-MM-DD') + INTERVAL '1 month')`;
 export const expenseData = `SELECT
   re."refExpenseDate",
   re."refVoucherNo",

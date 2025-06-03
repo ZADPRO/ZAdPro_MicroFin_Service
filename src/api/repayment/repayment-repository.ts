@@ -591,10 +591,20 @@ export class rePaymentRepository {
         } else if (
           Number(loanDetails.finalBalanceAmt) > Number(user_data.principalAmt)
         ) {
+          console.log("user_data.refLoanId", user_data.LoanId);
+          console.log(
+            "formatDateMonthYear(CurrentTime())",
+            formatDateMonthYear(CurrentTime())
+          );
           let paramsData = await executeQuery(getReCalParams, [
-            user_data.refLoanId,
+            user_data.LoanId,
             formatDateMonthYear(CurrentTime()),
           ]);
+          console.log(
+            " -> Line Number ----------------------------------- 598"
+          );
+          console.log("paramsData", paramsData);
+          console.log("paramsData[0].BalanceAmt", paramsData[0].BalanceAmt);
 
           paramsData[0] = {
             ...paramsData[0],
@@ -613,9 +623,11 @@ export class rePaymentRepository {
           ];
           console.log("intCalParams", intCalParams);
           const IntData = await executeQuery(reInterestCal, intCalParams);
+          console.log("IntData", IntData);
+          console.log("user_data.LoanId", user_data.LoanId);
           await client.query(updateReInterestCal, [
             JSON.stringify(IntData),
-            user_data.refLoanId,
+            user_data.LoanId,
           ]);
 
           const repaymentParams = [

@@ -1140,12 +1140,12 @@ export const addNewLoan = `WITH
               AND r.monthly_cal = 1 THEN 365
               WHEN r.duration_type = 1
               AND r.monthly_cal = 2 THEN 12
-              WHEN r.duration_type = 2 THEN 365
-              WHEN r.duration_type = 3 THEN 365
+              WHEN r.duration_type IN (2, 3) THEN 365
               ELSE 1
             END
           ) * CASE
-            WHEN r.duration_type = 1 THEN EXTRACT(
+            WHEN r.duration_type = 1
+            AND r.monthly_cal = 1 THEN EXTRACT(
               DAY
               FROM
                 DATE_TRUNC(
@@ -1153,6 +1153,8 @@ export const addNewLoan = `WITH
                   r.repayment_start_date + (gs.period_num - 1) * INTERVAL '1 month'
                 ) + INTERVAL '1 month' - INTERVAL '1 day'
             )
+            WHEN r.duration_type = 1
+            AND r.monthly_cal = 2 THEN 1
             WHEN r.duration_type = 2 THEN 7
             WHEN r.duration_type = 3 THEN 1
             ELSE 1
