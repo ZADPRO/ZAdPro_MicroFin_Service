@@ -16,6 +16,7 @@ import {
   getLoanList,
   getProductsDurationQuery,
   getUserList,
+  insertRepaymentSchedule,
   updateBankAccountDebitQuery,
   updateBankFundQuery,
   updateLoan,
@@ -24,6 +25,7 @@ import {
   calculateDueDate,
   convertToYMD,
   CurrentTime,
+  formatDateMonthYear,
   formatYearMonthDate,
 } from "../../helper/common";
 import { ExtensionBalance, TopUpBalance } from "../../helper/LoanCalculation";
@@ -109,7 +111,6 @@ export class newLoanRepository {
         throw new Error("Invalid Product ID. No duration found.");
       }
 
-     
       const dueDate = calculateDueDate(
         user_data.refRepaymentStartDate,
         productDetails[0].refProductDuration,
@@ -143,14 +144,14 @@ export class newLoanRepository {
       const queryResult = await client.query(addNewLoan, params);
 
       const newLoanId = queryResult.rows[0].refLoanId;
-
+      const custLoanId = queryResult.rows[0].refCustLoanId;
       const paramsLoanDebit = [
         user_data.refBankId,
         formatYearMonthDate(CurrentTime()),
         "debit",
         user_data.refLoanAmount,
         newLoanId,
-        "Loan",
+        `Provide New Loan | ${custLoanId}`,
         1,
         CurrentTime(),
         "Admin",
@@ -160,15 +161,16 @@ export class newLoanRepository {
 
       if (user_data.refLoanExt === 2 || user_data.refLoanExt === 3) {
         console.log(" -> Line Number ----------------------------------- 121");
+        let oldLoan;
         if (user_data.refLoanExt === 2) {
-          await client.query(updateLoan, [
+          oldLoan = await client.query(updateLoan, [
             user_data.refExLoanId,
             3,
             CurrentTime(),
             "Admin",
           ]);
         } else if (user_data.refLoanExt === 3) {
-          await client.query(updateLoan, [
+          oldLoan = await client.query(updateLoan, [
             user_data.refExLoanId,
             4,
             CurrentTime(),
@@ -177,6 +179,21 @@ export class newLoanRepository {
         } else {
           console.log("Unknown Loan Type ");
         }
+
+        const repaymentParams = [
+          user_data.refExLoanId,
+          formatDateMonthYear(CurrentTime()),
+          oldLoan?.rows[0].refLoanAmount,
+          user_data.oldBalanceAmt,
+          0.0,
+          "paid",
+          "paid",
+          CurrentTime(),
+          tokendata.id,
+        ];
+        console.log("repaymentParams", repaymentParams);
+        await client.query(insertRepaymentSchedule, repaymentParams);
+
         const fundDetails = [
           user_data.oldLoanBalance,
           formatYearMonthDate(CurrentTime()),

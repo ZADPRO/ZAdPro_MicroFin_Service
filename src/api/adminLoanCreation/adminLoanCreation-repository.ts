@@ -198,14 +198,14 @@ export class adminLoanCreationRepository {
       const queryResult = await client.query(addNewLoan, params);
       console.log(" -> Line Number ----------------------------------- 160");
       const newLoanId = queryResult.rows[0].refLoanId;
-      console.log(" -> Line Number ----------------------------------- 162");
+      const custLoanId = queryResult.rows[0].refCustLoanId;
       const paramsLoanDebit = [
         user_data.refBankId,
         formatYearMonthDate(CurrentTime()),
         "credit",
         user_data.refLoanAmount,
         newLoanId,
-        "Admin Loan",
+        `New Loan Amount Credit | ${custLoanId}`,
         3,
         CurrentTime(),
         "Admin",
@@ -215,15 +215,16 @@ export class adminLoanCreationRepository {
       await client.query(updateBankFundQuery, paramsLoanDebit);
 
       if (user_data.refLoanExt === 2 || user_data.refLoanExt === 3) {
+        let oldLoan;
         if (user_data.refLoanExt === 2) {
-          await client.query(updateLoan, [
+          oldLoan = await client.query(updateLoan, [
             user_data.refExLoanId,
             3,
             CurrentTime(),
             "Admin",
           ]);
         } else if (user_data.refLoanExt === 3) {
-          await client.query(updateLoan, [
+          oldLoan = await client.query(updateLoan, [
             user_data.refExLoanId,
             4,
             CurrentTime(),
@@ -232,6 +233,21 @@ export class adminLoanCreationRepository {
         } else {
           console.log("Unknown Loan Type ");
         }
+
+        const repaymentParams = [
+          user_data.refExLoanId,
+          formatDateMonthYear(CurrentTime()),
+          oldLoan?.rows[0].refLoanAmount,
+          user_data.oldBalanceAmt,
+          0.0,
+          "paid",
+          "paid",
+          CurrentTime(),
+          tokendata.id,
+        ];
+        console.log("repaymentParams", repaymentParams);
+        await client.query(insertRepaymentSchedule, repaymentParams);
+
         const fundDetails = [
           user_data.oldLoanBalance,
           formatYearMonthDate(CurrentTime()),
@@ -619,7 +635,6 @@ export class adminLoanCreationRepository {
         } else if (
           Number(loanDetails.finalBalanceAmt) > Number(user_data.principalAmt)
         ) {
-          
           let paramsData = await executeQuery(getReCalParams, [
             user_data.LoanId,
             formatToYearMonth(CurrentTime()),

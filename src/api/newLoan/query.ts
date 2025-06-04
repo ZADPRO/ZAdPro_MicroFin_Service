@@ -277,6 +277,21 @@ WHERE
 RETURNING
   *;`;
 
+export const insertRepaymentSchedule = `INSERT INTO
+  public."refRepaymentSchedule"(
+    "refLoanId",
+    "refPaymentDate",
+    "refPaymentAmount",
+    "refPrincipal",
+    "refInterest",
+    "refPrincipalStatus",
+    "refInterestStatus",
+    "createdAt",
+    "createdBy")
+
+values
+  ($1, $2, $3, $4, $5, $6, $7, $8, $9)`;
+
 export const updateBankAccountDebitQuery = `
 UPDATE public."refBankAccounts" 
 SET 
@@ -1081,7 +1096,8 @@ export const addNewLoan = `WITH
     RETURNING
       "refLoanId",
       "refProductId",
-      "refLoanAmount"
+      "refLoanAmount",
+      "refCustLoanId"
   ),
   product_details AS (
     SELECT
@@ -1313,7 +1329,8 @@ SELECT
 FROM
   repayment_schedule
 RETURNING
-  "refLoanId";`;
+  "refLoanId",
+  (SELECT "refCustLoanId" FROM inserted_refLoan LIMIT 1) AS "refCustLoanId";`;
 
 export const getProductsDurationQuery = `SELECT
   rp."refProductDuration",

@@ -1387,7 +1387,6 @@ export class adminRepository {
     try {
       await client.query("BEGIN"); // Start Transaction
 
-      // Extract bank fund details from userData
       const {
         refBankId,
         refbfTransactionDate,
@@ -1397,7 +1396,6 @@ export class adminRepository {
         refFundType,
       } = userData;
 
-      // 1. Insert into refBankFund table
       const insertBankFundResult = await client.query(addBankFundQuery, [
         refBankId,
         refbfTransactionDate,
@@ -1421,11 +1419,6 @@ export class adminRepository {
       ) {
         balanceUpdateAmount = refbfTransactionAmount;
 
-        console.log(
-          "balanceUpdateAmount---------------------------------------------------842",
-          balanceUpdateAmount
-        );
-
         updatedBalanceQuery = updateBankAccountBalanceQuery;
       } else if (refbfTransactionType === "debit") {
         balanceUpdateAmount = refbfTransactionAmount; // Subtract the amount for debit
@@ -1441,12 +1434,8 @@ export class adminRepository {
       }
 
       // Execute balance update
-      const balanceResult = await client.query(updatedBalanceQuery, [
-        balanceUpdateAmount,
-        refBankId,
-        CurrentTime(),
-        "Admin",
-      ]);
+      const params = [balanceUpdateAmount, refBankId, CurrentTime(), "Admin"];
+      const balanceResult = await client.query(updatedBalanceQuery, params);
 
       console.log(
         "balanceResult--------------------------------------------860",

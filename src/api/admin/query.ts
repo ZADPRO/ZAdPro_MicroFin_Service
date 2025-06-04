@@ -270,7 +270,7 @@ WHERE
 export const updateBankAccountBalanceQuery = `
 UPDATE public."refBankAccounts" 
 SET 
-  "refBalance" = ("refBalance"::numeric + $1),
+  "refBalance" = (COALESCE("refBalance"::NUMERIC, 0)::numeric + $1),
   "updatedAt" = $3, 
   "updatedBy" = $4
 WHERE "refBankId" = $2
@@ -280,7 +280,7 @@ RETURNING "refBalance";
 export const updateBankAccountDebitQuery = `
 UPDATE public."refBankAccounts" 
 SET 
-  "refBalance" = ("refBalance"::numeric - $1),
+  "refBalance" = (COALESCE("refBalance"::NUMERIC, 0)::numeric + $1),
   "updatedAt" = $3, 
   "updatedBy" = $4
 WHERE "refBankId" = $2

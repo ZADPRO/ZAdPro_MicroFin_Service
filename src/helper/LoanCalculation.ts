@@ -333,7 +333,7 @@ SELECT
 FROM
   "getData" ga;`;
 
-const adminGetLoanData = `WITH
+const adminGetLoanData1 = `WITH
   "getData" AS (
     SELECT
       l."refLoanId",
@@ -505,6 +505,180 @@ SELECT
   ) AS "dayCountInMonth"
 FROM
   "getData" ga;`;
+
+const adminGetLoanData = `WITH
+  "getData" AS (
+    SELECT
+      l."refLoanId",
+      l."isInterestFirst",
+      l."refInterestMonthCount",
+      l."refLoanDuration" AS "refProductDuration",
+      l."refLoanInterest" AS "refProductInterest",
+      l."refLoanAmount",
+      l."createdAt",
+      l."refInitialInterest",
+      l."refRepaymentStartDate",
+      COUNT(
+        CASE
+          WHEN rs."refInterestStatus" = 'paid' THEN 1
+        END
+      ) AS "paidInterestCount",
+      COUNT(
+        CASE
+          WHEN rs."refInterestStatus" = 'paid'
+          AND rs."refPrincipalStatus" = 'paid' THEN 1
+        END
+      ) AS "paidLoanCount",
+      ROUND(
+        COALESCE(
+          (
+            SELECT
+              SUM(CAST(rs."refPrincipal" AS NUMERIC))
+            FROM
+              adminloan."refRepaymentSchedule" rs
+            WHERE
+              CAST(rs."refLoanId" AS INTEGER) = l."refLoanId"
+              AND rs."refPrincipalStatus" = 'paid'
+          ),
+          0
+        )::NUMERIC,
+        2
+      ) AS "totalPrincipal",
+      ROUND(
+        COALESCE(
+          (
+            SELECT
+              SUM(CAST(rs."refInterest" AS NUMERIC))
+            FROM
+              adminloan."refRepaymentSchedule" rs
+            WHERE
+              CAST(rs."refLoanId" AS INTEGER) = l."refLoanId"
+              AND rs."refInterestStatus" = 'paid'
+          ),
+          0
+        )::NUMERIC,
+        2
+      ) AS "totalInterest",
+      -- Calculate total days in the months covered by refInterestMonthCount
+      (
+        SELECT
+          SUM(
+            EXTRACT(
+              DAY
+              FROM
+                (
+                  DATE_TRUNC(
+                    'month',
+                    (l."refRepaymentStartDate"::timestamp) + (n || ' month')::interval
+                  ) + INTERVAL '1 month - 1 day'
+                )
+            )
+          )
+        FROM
+          generate_series(0, l."refInterestMonthCount" - 1) AS n
+      ) AS "totalDaysInMonths",
+      -- Updated InterestFirst calculation using totalDaysInMonths instead of just month count
+      CAST(
+        (
+          (
+            COALESCE(l."refLoanAmount"::NUMERIC, 0) * (COALESCE(l."refLoanInterest"::NUMERIC, 0) * 12)
+          ) / (100 * 365)
+        ) * (
+          SELECT
+            SUM(
+              EXTRACT(
+                DAY
+                FROM
+                  (
+                    DATE_TRUNC(
+                      'month',
+                      (l."refRepaymentStartDate"::timestamp) + (n || ' month')::interval
+                    ) + INTERVAL '1 month - 1 day'
+                  )
+              )
+            )
+          FROM
+            generate_series(0, l."refInterestMonthCount" - 1) AS n
+        ) AS NUMERIC(10, 2)
+      ) AS "InterestFirst",
+      CASE
+        WHEN TO_CHAR(
+          TO_TIMESTAMP(l."createdAt", 'DD/MM/YYYY, HH:MI:SS PM') AT TIME ZONE 'Asia/Kolkata',
+          'MM/YYYY'
+        ) = TO_CHAR(
+          TO_TIMESTAMP($2, 'DD/MM/YYYY, HH:MI:SS PM') AT TIME ZONE 'Asia/Kolkata',
+          'MM/YYYY'
+        ) THEN true
+        ELSE false
+      END AS "same_Month"
+    FROM
+      adminloan."refLoan" l
+      LEFT JOIN adminloan."refRepaymentSchedule" rs ON CAST(l."refLoanId" AS INTEGER) = rs."refLoanId"::NUMERIC
+    WHERE
+      l."refLoanId" = $1
+    GROUP BY
+      l."refLoanId",
+      l."isInterestFirst",
+      l."refInterestMonthCount",
+      l."refLoanDuration",
+      l."refLoanInterest",
+      l."refLoanAmount",
+      l."createdAt",
+      l."refInitialInterest",
+      l."refRepaymentStartDate"
+  )
+SELECT
+  *,
+  GREATEST(
+    (
+      (
+        EXTRACT(
+          YEAR
+          FROM
+            TO_TIMESTAMP($2, 'DD/MM/YYYY, HH12:MI:SS AM')
+        ) * 12 + EXTRACT(
+          MONTH
+          FROM
+            TO_TIMESTAMP($2, 'DD/MM/YYYY, HH12:MI:SS AM')
+        )
+      ) - (
+        EXTRACT(
+          YEAR
+          FROM
+            ga."refRepaymentStartDate"::timestamp
+        ) * 12 + EXTRACT(
+          MONTH
+          FROM
+            ga."refRepaymentStartDate"::timestamp
+        )
+      )
+    ),
+    0
+  ) AS "month_difference",
+  GREATEST(
+    EXTRACT(
+      DAY
+      FROM
+        TO_TIMESTAMP($2, 'DD/MM/YYYY, HH12:MI:SS AM')
+    ),
+    0
+  ) AS "DayCount",
+  GREATEST(
+    EXTRACT(
+      DAY
+      FROM
+        (
+          DATE_TRUNC(
+            'MONTH',
+            TO_TIMESTAMP($2, 'DD/MM/YYYY, HH12:MI:SS AM')
+          ) + INTERVAL '1 MONTH - 1 day'
+        )
+    ),
+    0
+  ) AS "dayCountInMonth"
+FROM
+  "getData" ga;`;
+
 const monthEqual = `SELECT
   CASE
     WHEN TO_CHAR(
@@ -870,6 +1044,7 @@ WHERE
 export const TopUpBalance = async (loanId: any) => {
   try {
     const loanData = await executeQuery(getLoanData, [loanId, CurrentTime()]);
+    console.log("loanData line ------ 873", loanData);
     let balanceAmt =
       loanData[0].refLoanAmount - Number(loanData[0].totalPrincipal);
     let ToMonthInterestPaid = loanData[0].paidInterestCount;
@@ -994,6 +1169,7 @@ export const adminTopUpBalance = async (loanId: any) => {
       loanId,
       CurrentTime(),
     ]);
+    console.log("loanData line --------------- > 998", loanData);
     let balanceAmt =
       loanData[0].refLoanAmount - Number(loanData[0].totalPrincipal);
     let ToMonthInterestPaid = loanData[0].paidInterestCount;

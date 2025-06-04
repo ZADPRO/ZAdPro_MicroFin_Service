@@ -557,18 +557,13 @@ export class rePaymentRepository {
             CurrentTime(),
             tokendata.id,
           ];
-          console.log("repaymentParams line -------- 538", repaymentParams);
           await client.query(insertRepaymentSchedule, repaymentParams);
-          console.log(
-            " -> Line Number ----------------------------------- 541"
-          );
+
           await client.query(updateRepayment, [
             user_data.LoanId,
             formatDateMonthYear(CurrentTime()),
           ]);
-          console.log(
-            " -> Line Number ----------------------------------- 546"
-          );
+
           const FundUpdate = [
             user_data.bankId,
             formatYearMonthDate(CurrentTime()),
@@ -588,24 +583,15 @@ export class rePaymentRepository {
             CurrentTime(),
             "Admin",
           ];
+          console.log("params3", params3);
           await client.query(updateBankAccountBalanceQuery, params3);
         } else if (
           Number(loanDetails.finalBalanceAmt) > Number(user_data.principalAmt)
         ) {
-          console.log("user_data.refLoanId", user_data.LoanId);
-          console.log(
-            "formatDateMonthYear(CurrentTime())",
-            formatDateMonthYear(CurrentTime())
-          );
           let paramsData = await executeQuery(getReCalParams, [
             user_data.LoanId,
             formatDateMonthYear(CurrentTime()),
           ]);
-          console.log(
-            " -> Line Number ----------------------------------- 598"
-          );
-          console.log("paramsData", paramsData);
-          console.log("paramsData[0].BalanceAmt", paramsData[0].BalanceAmt);
 
           paramsData[0] = {
             ...paramsData[0],
@@ -627,10 +613,8 @@ export class rePaymentRepository {
             paramsData[0].refProductDurationType,
             paramsData[0].refProductMonthlyCal,
           ];
-          console.log("intCalParams", intCalParams);
           const IntData = await executeQuery(reInterestCal, intCalParams);
-          console.log("IntData", IntData);
-          console.log("user_data.LoanId", user_data.LoanId);
+
           await client.query(updateReInterestCal, [
             JSON.stringify(IntData),
             user_data.LoanId,
@@ -647,7 +631,6 @@ export class rePaymentRepository {
             CurrentTime(),
             tokendata.id,
           ];
-          console.log("repaymentParams line -------- 538", repaymentParams);
           await client.query(insertRepaymentSchedule, repaymentParams);
 
           const FundUpdate = [
@@ -669,6 +652,7 @@ export class rePaymentRepository {
             CurrentTime(),
             "Admin",
           ];
+          console.log("params3", params3);
           await client.query(updateBankAccountBalanceQuery, params3);
         } else {
           console.log(

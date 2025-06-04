@@ -525,6 +525,7 @@ export const addNewLoan = `WITH
       )
     RETURNING
       "refLoanId",
+      "refCustLoanId",
       "refLoanAmount",
       "refLoanDuration",
       "refLoanInterest",
@@ -753,7 +754,8 @@ SELECT
 FROM
   repayment_schedule
 RETURNING
-  "refLoanId";`;
+  "refLoanId",
+  (SELECT "refCustLoanId" FROM inserted_refLoan LIMIT 1) AS "refCustLoanId";`;
 
 export const updateBankFundQuery = `INSERT INTO 
    public."refBankFund" (
