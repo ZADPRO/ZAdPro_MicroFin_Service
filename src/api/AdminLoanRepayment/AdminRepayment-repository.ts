@@ -138,17 +138,7 @@ export class AdminRePaymentRepository {
       ];
       console.log("Params", Params);
       const updateRepayment = await client.query(updateRePayment, Params);
-      console.log(" -> Line Number ----------------------------------- 138");
       if (oldAmt[0].refPrincipal < user_data.priAmt) {
-        console.log(" -> Line Number ----------------------------------- 140");
-        console.log(
-          "updateRepayment.rows[0].refLoanId,",
-          updateRepayment.rows[0].refLoanId
-        );
-        console.log(
-          "updateRepayment.rows[0].refPaymentDate,",
-          updateRepayment.rows[0].refPaymentDate
-        );
         let paramsData = await executeQuery(getReCalParams, [
           updateRepayment.rows[0].refLoanId,
           updateRepayment.rows[0].refPaymentDate,

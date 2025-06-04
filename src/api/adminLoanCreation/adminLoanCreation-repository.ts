@@ -619,9 +619,7 @@ export class adminLoanCreationRepository {
         } else if (
           Number(loanDetails.finalBalanceAmt) > Number(user_data.principalAmt)
         ) {
-          console.log(
-            " -> Line Number ----------------------------------- 621"
-          );
+          
           let paramsData = await executeQuery(getReCalParams, [
             user_data.LoanId,
             formatToYearMonth(CurrentTime()),

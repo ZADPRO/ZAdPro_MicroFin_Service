@@ -39,6 +39,7 @@ import {
   formatDate,
   formatYearMonthDate,
   formatDateMonthYear,
+  replaceDayInDate,
 } from "../../helper/common";
 import { loanQuery } from "../admin/query";
 import { loanReminderSend } from "../../helper/mailcontent";
@@ -612,11 +613,16 @@ export class rePaymentRepository {
               Number(paramsData[0].BalanceAmt) - Number(user_data.principalAmt),
           };
 
+          const date = replaceDayInDate(
+            paramsData[0].refRepaymentStartDate,
+            paramsData[0].SameMonthDate
+          );
+
           const intCalParams = [
             paramsData[0].BalanceAmt,
             paramsData[0].MonthDiff,
             paramsData[0].refProductInterest,
-            paramsData[0].SameMonthDate,
+            date,
             paramsData[0].refRePaymentType,
             paramsData[0].refProductDurationType,
             paramsData[0].refProductMonthlyCal,

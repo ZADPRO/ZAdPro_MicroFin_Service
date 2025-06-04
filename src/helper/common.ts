@@ -101,7 +101,7 @@ export function replaceDayInDate(
   sourceDate: string, // Format: yyyy-MM-DD
   targetDate: string // Format: DD/MM/YYYY, HH:MI:SS AM
 ): string {
-  // Extract DD from sourceDate
+  console.log("sourceDate", sourceDate);
   const dd = sourceDate.split("-")[2];
 
   // Split the targetDate into date and time parts
