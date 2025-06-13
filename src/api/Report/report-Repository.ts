@@ -14,6 +14,7 @@ import {
 } from "../../helper/common";
 import {
   expenseData,
+  listArea,
   loanStatus,
   monthlyReportAdminLoan,
   monthlyReportCustomer,
@@ -32,6 +33,7 @@ export class ReportRepository {
     try {
       const rePayment = await executeQuery(rePaymentType);
       const status = await executeQuery(loanStatus);
+      const areaList = await executeQuery(listArea);
       return encrypt(
         {
           success: true,
@@ -39,6 +41,7 @@ export class ReportRepository {
           token: generateTokenWithoutExpire(token, true),
           rePayment: rePayment,
           status: status,
+          areaList: areaList,
         },
         true
       );
@@ -59,12 +62,19 @@ export class ReportRepository {
 
     try {
       console.log("user_data line ----- 53", user_data);
-      const params = [user_data.rePaymentType, user_data.loanStatus];
+
       let data;
       if (user_data.loanOption === 1) {
+        const params = [
+          user_data.rePaymentType,
+          user_data.loanStatus,
+          user_data.area,
+        ];
+        console.log("params", params);
         console.log(" -> Line Number ----------------------------------- 62");
         data = await executeQuery(overAllReport, params);
       } else {
+        const params = [user_data.rePaymentType, user_data.loanStatus];
         console.log(" -> Line Number ----------------------------------- 65");
         data = await executeQuery(overallReportAdminLoan, params);
       }
@@ -94,17 +104,24 @@ export class ReportRepository {
 
     try {
       console.log("user_data", user_data);
-      const params = [
-        user_data.interest,
-        user_data.principal,
-        user_data.startDate,
-        user_data.endDate,
-      ];
-      console.log("params", params);
+
       let data;
       if (user_data.loanOption === 1) {
+        const params = [
+          user_data.interest,
+          user_data.principal,
+          user_data.startDate,
+          user_data.endDate,
+          user_data.area,
+        ];
         data = await executeQuery(monthlyReportCustomer, params);
       } else {
+        const params = [
+          user_data.interest,
+          user_data.principal,
+          user_data.startDate,
+          user_data.endDate,
+        ];
         data = await executeQuery(monthlyReportAdminLoan, params);
       }
       return encrypt(

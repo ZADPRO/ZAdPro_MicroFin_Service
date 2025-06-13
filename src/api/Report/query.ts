@@ -1,9 +1,33 @@
 export const rePaymentType = `SELECT * FROM public."refRepaymentType"`;
 export const loanStatus = `SELECT * FROM public."refLoanStatus"`;
+export const listArea = `SELECT * FROM public."refArea" ra `;
 
-export const overAllReport = `SELECT
+export const overAllReport1 = `SELECT
   l."refLoanStartDate",
-  l."refCustLoanId",
+  CASE
+    WHEN (
+      SELECT
+        s."refSettingValue"
+      FROM
+        settings."refSettings" s
+      WHERE
+        s."refSettingId" = 2
+    ) = 2 THEN ra."refAreaPrefix" || l."refCustLoanId"::text
+    WHEN (
+      SELECT
+        s."refSettingValue"
+      FROM
+        settings."refSettings" s
+      WHERE
+        s."refSettingId" = 2
+    ) = 3 THEN CASE
+      WHEN l."refRePaymentType" = 1 THEN 'FL' || l."refCustLoanId"::text
+      WHEN l."refRePaymentType" = 2 THEN 'DL' || l."refCustLoanId"::text
+      WHEN l."refRePaymentType" = 3 THEN 'MI' || l."refCustLoanId"::text
+      ELSE l."refCustLoanId"::TEXT
+    END
+    ELSE l."refCustLoanId"::text
+  END AS "refCustLoanId",
   u."refUserFname",
   u."refUserLname",
   u."refUserId",
@@ -18,6 +42,8 @@ export const overAllReport = `SELECT
   l."refDocFee",
   l."refSecurity",
   ls."refLoanStatus",
+  ra."refAreaName",
+  ra."refAreaPrefix",
   COUNT(*) FILTER (
     WHERE
       rs."refInterestStatus" = 'paid'
@@ -66,6 +92,8 @@ FROM
   LEFT JOIN public.users u ON CAST(u."refUserId" AS INTEGER) = l."refUserId"::INTEGER
   LEFT JOIN public."refCommunication" rc ON CAST(u."refUserId" AS INTEGER) = rc."refUserId"::INTEGER
   LEFT JOIN public."refRepaymentType" rpt ON CAST(rpt."refRepaymentTypeId" AS INTEGER) = l."refRePaymentType"::INTEGER
+  LEFT JOIN public."refAreaPincode" ap ON CAST(ap."refAreaPinCode" AS TEXT) = rc."refUserPincode"::TEXT
+  LEFT JOIN public."refArea" ra ON CAST(ra."refAreaId" AS INTEGER) = ap."refAreaId"
 WHERE
   l."refRePaymentType"::INTEGER = ANY ($1)
   AND l."refLoanStatus"::INTEGER = ANY ($2)
@@ -86,10 +114,131 @@ GROUP BY
   l."refSecurity",
   l."refLoanStartDate",
   l."refCustLoanId",
-  ls."refLoanStatus"
+  ls."refLoanStatus",
+  ra."refAreaPrefix",
+  ra."refAreaName"
 ORDER BY
   l."refLoanId";
   `;
+
+export const overAllReport = `SELECT
+  l."refLoanStartDate",
+  CASE
+    WHEN (
+      SELECT
+        s."refSettingValue"
+      FROM
+        settings."refSettings" s
+      WHERE
+        s."refSettingId" = 2
+    ) = 2 THEN ra."refAreaPrefix" || l."refCustLoanId"::text
+    WHEN (
+      SELECT
+        s."refSettingValue"
+      FROM
+        settings."refSettings" s
+      WHERE
+        s."refSettingId" = 2
+    ) = 3 THEN CASE
+      WHEN l."refRePaymentType" = 1 THEN 'FL' || l."refCustLoanId"::text
+      WHEN l."refRePaymentType" = 2 THEN 'DL' || l."refCustLoanId"::text
+      WHEN l."refRePaymentType" = 3 THEN 'MI' || l."refCustLoanId"::text
+      ELSE l."refCustLoanId"::TEXT
+    END
+    ELSE l."refCustLoanId"::text
+  END AS "refCustLoanId",
+  u."refUserFname",
+  u."refUserLname",
+  u."refUserId",
+  rc."refUserMobileNo",
+  rc."refUserEmail",
+  rpt."refRepaymentTypeName",
+  l."refInitialInterest",
+  l."refInterestMonthCount",
+  l."refLoanAmount",
+  rp."refProductInterest",
+  rp."refProductDuration",
+  l."refDocFee",
+  l."refSecurity",
+  ls."refLoanStatus",
+  ra."refAreaName",
+  ra."refAreaPrefix",
+  COUNT(*) FILTER (
+    WHERE
+      rs."refInterestStatus" = 'paid'
+  ) AS "InterestPaidCount",
+  COUNT(*) FILTER (
+    WHERE
+      rs."refPrincipalStatus" = 'paid'
+  ) AS "PrincipalPaidCount",
+  COUNT(*) FILTER (
+    WHERE
+      rs."refInterestStatus" = 'paid'
+      AND rs."refPrincipalStatus" = 'paid'
+  ) AS "TotalMonthPaidCount",
+  SUM(
+    CASE
+      WHEN rs."refInterestStatus" = 'paid' THEN rs."refInterest"::NUMERIC
+      ELSE 0
+    END
+  ) AS "TotalInterestPaid",
+  SUM(
+    CASE
+      WHEN rs."refPrincipalStatus" = 'paid' THEN rs."refPrincipal"::NUMERIC
+      ELSE 0
+    END
+  ) AS "TotalPrincipalPaid",
+  (
+    rp."refProductDuration"::NUMERIC - COUNT(*) FILTER (
+      WHERE
+        rs."refInterestStatus" = 'paid'
+        AND rs."refPrincipalStatus" = 'paid'
+    )
+  ) AS "UnPaidMonthCount",
+  (
+    l."refLoanAmount"::NUMERIC - SUM(
+      CASE
+        WHEN rs."refPrincipalStatus" = 'paid' THEN rs."refPrincipal"::NUMERIC
+        ELSE 0
+      END
+    )::NUMERIC
+  ) AS "BalancePrincipalAmount"
+FROM
+  public."refLoan" l
+  LEFT JOIN public."refLoanStatus" ls ON CAST(ls."refLoanStatusId" AS INTEGER) = l."refLoanStatus"::INTEGER
+  LEFT JOIN public."refProducts" rp ON CAST(rp."refProductId" AS INTEGER) = l."refProductId"::INTEGER
+  LEFT JOIN public."refRepaymentSchedule" rs ON CAST(rs."refLoanId" AS INTEGER) = l."refLoanId"::INTEGER
+  LEFT JOIN public.users u ON CAST(u."refUserId" AS INTEGER) = l."refUserId"::INTEGER
+  LEFT JOIN public."refCommunication" rc ON CAST(u."refUserId" AS INTEGER) = rc."refUserId"::INTEGER
+  LEFT JOIN public."refRepaymentType" rpt ON CAST(rpt."refRepaymentTypeId" AS INTEGER) = l."refRePaymentType"::INTEGER
+  LEFT JOIN public."refAreaPincode" ap ON CAST(ap."refAreaPinCode" AS TEXT) = rc."refUserPincode"::TEXT
+  LEFT JOIN public."refArea" ra ON CAST(ra."refAreaId" AS INTEGER) = ap."refAreaId"
+WHERE
+  l."refRePaymentType"::INTEGER = ANY ($1)
+  AND l."refLoanStatus"::INTEGER = ANY ($2)
+  AND ra."refAreaId"::INTEGER = ANY ($3)
+GROUP BY
+  l."refLoanId",
+  u."refUserFname",
+  u."refUserLname",
+  u."refUserId",
+  rc."refUserMobileNo",
+  rc."refUserEmail",
+  rpt."refRepaymentTypeName",
+  l."refInitialInterest",
+  l."refInterestMonthCount",
+  l."refLoanAmount",
+  rp."refProductInterest",
+  rp."refProductDuration",
+  l."refDocFee",
+  l."refSecurity",
+  l."refLoanStartDate",
+  l."refCustLoanId",
+  ls."refLoanStatus",
+  ra."refAreaPrefix",
+  ra."refAreaName"
+ORDER BY
+  l."refLoanId";`;
 
 export const overallReportAdminLoan = `SELECT
   l."refLoanStartDate",
@@ -207,7 +356,30 @@ WHERE
 export const monthlyReportCustomer = `SELECT
   l."refLoanStartDate",
   rs."refPaymentDate",
-  l."refCustLoanId",
+  CASE
+    WHEN (
+      SELECT
+        s."refSettingValue"
+      FROM
+        settings."refSettings" s
+      WHERE
+        s."refSettingId" = 2
+    ) = 2 THEN ra."refAreaPrefix" || l."refCustLoanId"::text
+    WHEN (
+      SELECT
+        s."refSettingValue"
+      FROM
+        settings."refSettings" s
+      WHERE
+        s."refSettingId" = 2
+    ) = 3 THEN CASE
+      WHEN l."refRePaymentType" = 1 THEN 'FL' || l."refCustLoanId"::text
+      WHEN l."refRePaymentType" = 2 THEN 'DL' || l."refCustLoanId"::text
+      WHEN l."refRePaymentType" = 3 THEN 'MI' || l."refCustLoanId"::text
+      ELSE l."refCustLoanId"::TEXT
+    END
+    ELSE l."refCustLoanId"::text
+  END AS "refCustLoanId",
   u."refUserFname",
   u."refUserLname",
   rc."refUserMobileNo",
@@ -218,19 +390,27 @@ export const monthlyReportCustomer = `SELECT
   rs."refInterest",
   l."refLoanAmount",
   rs."refPrincipalStatus",
-  rs."refInterestStatus"
+  rs."refInterestStatus",
+  ra."refAreaName",
+  ra."refAreaPrefix",
+  ra."refAreaId"
 FROM
   public."refLoan" l
   LEFT JOIN public."refRepaymentSchedule" rs ON CAST(rs."refLoanId" AS INTEGER) = l."refLoanId"::INTEGER
   LEFT JOIN public.users u ON CAST(u."refUserId" AS INTEGER) = l."refUserId"::INTEGER
   LEFT JOIN public."refCommunication" rc ON CAST(rc."refUserId" AS INTEGER) = l."refUserId"::INTEGER
   LEFT JOIN public."refRepaymentType" rt ON CAST(rt."refRepaymentTypeId" AS INTEGER) = l."refRePaymentType"
+  LEFT JOIN public."refAreaPincode" ap ON CAST(ap."refAreaPinCode" AS TEXT) = rc."refUserPincode"::TEXT
+  LEFT JOIN public."refArea" ra ON CAST(ra."refAreaId" AS INTEGER) = ap."refAreaId"
 WHERE
   l."refLoanStatus" = 1
   AND rs."refPrincipalStatus" = ANY ($1)
   AND rs."refInterestStatus" = ANY ($2)
   AND TO_DATE(rs."refPaymentDate", 'DD-MM-YYYY') >= TO_DATE($3 || '-01', 'YYYY-MM-DD')
-  AND TO_DATE(rs."refPaymentDate", 'DD-MM-YYYY') < (TO_DATE($4 || '-01', 'YYYY-MM-DD') + INTERVAL '1 month')
+  AND TO_DATE(rs."refPaymentDate", 'DD-MM-YYYY') < (
+    TO_DATE($4 || '-01', 'YYYY-MM-DD') + INTERVAL '1 month'
+  )
+  AND ra."refAreaId"::INTEGER = ANY ($5)
 `;
 export const monthlyReportAdminLoan = `SELECT
   l."refLoanStartDate",

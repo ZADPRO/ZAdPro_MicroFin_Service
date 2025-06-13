@@ -1,4 +1,6 @@
 import nodemailer from "nodemailer";
+const axios = require("axios");
+const qs = require("qs");
 
 interface MailOptions {
   to: string;

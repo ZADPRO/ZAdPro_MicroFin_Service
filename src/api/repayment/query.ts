@@ -33,7 +33,17 @@ WHERE
     )
   );`;
 export const userList = `SELECT
-  u."refCustId",
+  CASE
+    WHEN (
+      SELECT
+        s."refSettingValue"
+      FROM
+        settings."refSettings" s
+      WHERE
+        s."refSettingId" = 1
+    ) = 2 THEN ra."refAreaPrefix" || (u."refUserId"::NUMERIC + 10000)::text
+    ELSE (u."refUserId"::NUMERIC + 10000)::text
+  END AS "refCustId",
   u."refUserFname",
   u."refUserLname",
   u."refUserId",
@@ -57,6 +67,8 @@ FROM
   INNER JOIN public.users u ON CAST(u."refUserId" AS INTEGER) = rl."refUserId"
   INNER JOIN public."refProducts" rpr ON CAST(rpr."refProductId" AS INTEGER) = rl."refProductId"::INTEGER
   INNER JOIN public."refCommunication" rc ON CAST(rc."refUserId" AS INTEGER) = u."refUserId"
+  LEFT JOIN public."refAreaPincode" ap ON CAST(ap."refAreaPinCode" AS TEXT) = rc."refUserPincode"::TEXT
+  LEFT JOIN public."refArea" ra ON CAST(ra."refAreaId" AS INTEGER) = ap."refAreaId"
 WHERE
   (
     rp."refPrincipalStatus" = 'Pending'

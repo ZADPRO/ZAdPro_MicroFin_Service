@@ -75,10 +75,13 @@ import {
   checkLoanExtension,
   getMonthDuration,
   getAllLoanData,
+  addArea,
+  addPincode,
 } from "./query";
 import { buildUpdateQuery, getChanges } from "../../helper/buildquery";
 import { reLabelText } from "../../helper/Label";
 import { error } from "console";
+import logger from "../../helper/logger";
 
 export class adminRepository {
   public async adminLoginV1(user_data: any, domain_code?: any): Promise<any> {
@@ -165,6 +168,8 @@ export class adminRepository {
       const roleType = basicDetails.user.refRollId;
       console.log("roleType", roleType);
       const referenceDetails = user_data.referenceInfo;
+      const areaData = user_data.Area;
+      console.log("areaData line ---- 171", areaData);
 
       // Get count for generating user ID
       const countQuery =
@@ -217,6 +222,25 @@ export class adminRepository {
         insertCommunicationQuery,
         userCommunication
       );
+
+      if (areaData.addArea) {
+        if (areaData.areaType === 1) {
+          const params = [
+            areaData.areaId,
+            basicDetails.Communtication.refPerPincode,
+          ];
+          await client.query(addPincode, params);
+        } else if (areaData.areaType == 2) {
+          const params = [
+            areaData.areaName,
+            areaData.areaPrifix,
+            [basicDetails.Communtication.refPerPincode],
+          ];
+          await client.query(addArea, params);
+        } else {
+          logger.info("\t Area Type come Undefined Type \n");
+        }
+      }
 
       // Hash the password using bcrypt
       const hashedPassword = await bcrypt.hash(
@@ -586,7 +610,7 @@ export class adminRepository {
       await client.query("BEGIN");
 
       const userId = user_data.userId;
-      const { user, Communtication } = user_data.BasicInfo || {};
+      const { user, Communtication, areaData } = user_data.BasicInfo || {};
 
       // Check if userId exists
       const userExistsResult = await client.query(userExistsQuery, [userId]);
@@ -635,6 +659,22 @@ export class adminRepository {
           refUserState: Communtication.refPerState,
           refUserPincode: Communtication.refPerPincode,
         });
+
+        if (areaData.addArea) {
+          if (areaData.areaType === 1) {
+            const params = [areaData.areaId, Communtication.refPerPincode];
+            await client.query(addPincode, params);
+          } else if (areaData.areaType == 2) {
+            const params = [
+              areaData.areaName,
+              areaData.areaPrifix,
+              [Communtication.refPerPincode],
+            ];
+            await client.query(addArea, params);
+          } else {
+            logger.info("\t Area Type come Undefined Type \n");
+          }
+        }
       }
 
       // Remove undefined values

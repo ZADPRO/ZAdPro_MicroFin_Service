@@ -79,19 +79,19 @@ export async function storeFile(
   return filePath; // Return the file path for further usage
 }
 
-export const viewFile = (filePath: string): Promise<Buffer> => {
-  return new Promise((resolve, reject) => {
-    fs.readFile(
-      filePath,
-      (err: NodeJS.ErrnoException | null, data?: Buffer) => {
-        if (err) {
-          return reject(err);
+  export const viewFile = (filePath: string): Promise<Buffer> => {
+    return new Promise((resolve, reject) => {
+      fs.readFile(
+        filePath,
+        (err: NodeJS.ErrnoException | null, data?: Buffer) => {
+          if (err) {
+            return reject(err);
+          }
+          resolve(data!); // Return the file buffer
         }
-        resolve(data!); // Return the file buffer
-      }
-    );
-  });
-};
+      );
+    });
+  };
 
 export const deleteFile = async (filePath: string): Promise<void> => {
   console.log("filePath line ----------------- 94 \n", filePath);

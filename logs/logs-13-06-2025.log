@@ -1,0 +1,282 @@
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-12T18:33:55.193Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-12T18:34:11.237Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/updateArea","timestamp":"2025-06-12T18:41:56.149Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-12T18:41:56.293Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-12T18:42:08.810Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-12T18:42:08.830Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/updateArea","timestamp":"2025-06-12T18:47:39.327Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-12T18:47:39.459Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/adminRoutes/getPersonList","timestamp":"2025-06-12T18:48:10.765Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/adminRoutes/getPersonList","timestamp":"2025-06-12T18:48:10.776Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/adminLoan/vendor/list","timestamp":"2025-06-12T18:48:20.959Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/adminLoan/vendor/list","timestamp":"2025-06-12T18:48:20.973Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/refDashboard/Count","timestamp":"2025-06-12T18:48:23.792Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/refDashboard/Count","timestamp":"2025-06-12T18:48:23.818Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/refDashboard/Count","timestamp":"2025-06-12T18:48:23.847Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/expense/expenseData","timestamp":"2025-06-12T18:48:27.216Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/expense/expenseData","timestamp":"2025-06-12T18:48:27.231Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/expense/expenseData","timestamp":"2025-06-12T18:48:27.239Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/expense/expenseData","timestamp":"2025-06-12T18:48:27.248Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/expense/expenseData","timestamp":"2025-06-12T18:48:27.266Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/expense/expenseOption","timestamp":"2025-06-12T18:48:28.573Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/expense/expenseOption","timestamp":"2025-06-12T18:48:28.585Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/expense/addExpense","timestamp":"2025-06-12T18:48:49.054Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/expense/expenseData","timestamp":"2025-06-12T18:48:49.239Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/expense/expenseData","timestamp":"2025-06-12T18:48:49.297Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/expense/expenseData","timestamp":"2025-06-12T18:48:49.304Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/expense/expenseData","timestamp":"2025-06-12T18:48:49.346Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-12T18:52:28.665Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-12T18:52:28.679Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/updateArea","timestamp":"2025-06-12T18:52:40.928Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-12T18:52:40.954Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-12T18:58:11.824Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-12T18:58:11.845Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-12T18:58:14.646Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-12T18:58:14.661Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/updateArea","timestamp":"2025-06-12T18:58:24.553Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-12T18:58:24.580Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-12T19:01:07.995Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-12T19:01:08.012Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/checkPinCode","timestamp":"2025-06-12T19:01:18.675Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/checkPinCode","timestamp":"2025-06-12T19:01:21.375Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/checkPinCode","timestamp":"2025-06-12T19:01:27.403Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/checkPinCode","timestamp":"2025-06-12T19:01:34.970Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/addArea","timestamp":"2025-06-12T19:01:37.531Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-12T19:01:37.562Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-12T19:01:48.366Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-12T19:01:48.393Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-12T19:02:01.684Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-12T19:02:01.699Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/adminRoutes/getPersonList","timestamp":"2025-06-12T19:02:05.099Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/adminRoutes/getPersonList","timestamp":"2025-06-12T19:02:05.114Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/refDashboard/Count","timestamp":"2025-06-12T19:02:10.876Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/refDashboard/Count","timestamp":"2025-06-12T19:02:10.901Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/refDashboard/Count","timestamp":"2025-06-12T19:02:10.934Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/adminRoutes/adminLogin","timestamp":"2025-06-12T19:02:49.393Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/settings/CustomerId/getOption","timestamp":"2025-06-12T19:12:46.423Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/settings/CustomerId/getOption","timestamp":"2025-06-12T19:12:46.435Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/refDashboard/Count","timestamp":"2025-06-12T19:16:24.956Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/refDashboard/Count","timestamp":"2025-06-12T19:16:24.987Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/refDashboard/Count","timestamp":"2025-06-12T19:16:25.035Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/adminRoutes/getPersonList","timestamp":"2025-06-12T19:16:28.224Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/adminRoutes/getPersonList","timestamp":"2025-06-12T19:16:28.238Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/settings/CustomerId/getOption","timestamp":"2025-06-12T19:16:32.526Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/settings/CustomerId/getOption","timestamp":"2025-06-12T19:16:32.538Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/settings/updateOption","timestamp":"2025-06-12T19:16:37.890Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/adminRoutes/getPersonList","timestamp":"2025-06-12T19:16:44.246Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/adminRoutes/getPersonList","timestamp":"2025-06-12T19:16:44.264Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/settings/CustomerId/getOption","timestamp":"2025-06-12T19:17:05.358Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/settings/CustomerId/getOption","timestamp":"2025-06-12T19:17:05.488Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/settings/updateOption","timestamp":"2025-06-12T19:17:11.487Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/settings/updateOption","timestamp":"2025-06-12T19:18:07.696Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/settings/updateOption","timestamp":"2025-06-12T19:18:14.031Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/adminRoutes/getPersonList","timestamp":"2025-06-12T19:20:01.018Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/adminRoutes/getPersonList","timestamp":"2025-06-12T19:20:01.027Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/adminRoutes/getPerson","timestamp":"2025-06-12T19:20:02.790Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/adminRoutes/getPerson","timestamp":"2025-06-12T19:20:02.798Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/adminRoutes/getPerson","timestamp":"2025-06-12T19:20:04.364Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/settings/CustomerId/getOption","timestamp":"2025-06-12T19:20:19.451Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/settings/CustomerId/getOption","timestamp":"2025-06-12T19:20:19.462Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/settings/updateOption","timestamp":"2025-06-12T19:20:25.558Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/settings/CustomerId/getOption","timestamp":"2025-06-12T19:21:05.374Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/settings/CustomerId/getOption","timestamp":"2025-06-12T19:21:05.381Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/settings/updateOption","timestamp":"2025-06-12T19:21:08.416Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/adminRoutes/getPersonList","timestamp":"2025-06-12T19:21:12.443Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/adminRoutes/getPersonList","timestamp":"2025-06-12T19:21:12.452Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/settings/CustomerId/getOption","timestamp":"2025-06-12T19:21:16.869Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/settings/CustomerId/getOption","timestamp":"2025-06-12T19:21:16.877Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/settings/updateOption","timestamp":"2025-06-12T19:21:19.923Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/adminRoutes/getPersonList","timestamp":"2025-06-12T19:21:24.256Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/adminRoutes/getPersonList","timestamp":"2025-06-12T19:21:24.264Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/settings/CustomerId/getOption","timestamp":"2025-06-12T19:21:27.681Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/settings/CustomerId/getOption","timestamp":"2025-06-12T19:21:27.688Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/settings/updateOption","timestamp":"2025-06-12T19:21:30.003Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/settings/updateOption","timestamp":"2025-06-12T19:21:35.243Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/settings/CustomerId/getOption","timestamp":"2025-06-12T19:22:13.898Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/settings/CustomerId/getOption","timestamp":"2025-06-12T19:22:13.916Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/refDashboard/Count","timestamp":"2025-06-12T19:25:10.191Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/refDashboard/Count","timestamp":"2025-06-12T19:25:10.205Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/refDashboard/Count","timestamp":"2025-06-12T19:25:10.235Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/settings/CustomerId/getOption","timestamp":"2025-06-12T19:25:11.434Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/settings/CustomerId/getOption","timestamp":"2025-06-12T19:25:11.443Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/settings/updateOption","timestamp":"2025-06-12T19:25:17.344Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/settings/CustomerId/getOption","timestamp":"2025-06-12T19:25:28.554Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/settings/CustomerId/getOption","timestamp":"2025-06-12T19:25:28.563Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/settings/CustomerId/getOption","timestamp":"2025-06-12T19:31:23.407Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/settings/LoanId/getOption","timestamp":"2025-06-12T19:31:23.418Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/settings/CustomerId/getOption","timestamp":"2025-06-12T19:31:23.433Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/settings/LoanId/getOption","timestamp":"2025-06-12T19:31:23.444Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/settings/CustomerId/getOption","timestamp":"2025-06-12T19:32:03.860Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/settings/LoanId/getOption","timestamp":"2025-06-12T19:32:03.870Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/settings/CustomerId/getOption","timestamp":"2025-06-12T19:32:03.879Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/settings/LoanId/getOption","timestamp":"2025-06-12T19:32:03.894Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/settings/updateOption","timestamp":"2025-06-12T19:34:20.430Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/settings/updateOption","timestamp":"2025-06-12T19:36:03.635Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/refDashboard/Count","timestamp":"2025-06-12T19:38:34.915Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/refDashboard/Count","timestamp":"2025-06-12T19:38:34.930Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/refDashboard/Count","timestamp":"2025-06-12T19:38:34.953Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-12T19:38:38.071Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-12T19:38:38.077Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-12T19:39:13.414Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-12T19:39:13.421Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-06-13T03:44:09.863Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-13T03:45:44.205Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-13T03:45:44.245Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/updateArea","timestamp":"2025-06-13T03:47:10.992Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-13T03:47:11.266Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-13T03:48:08.831Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-13T03:48:08.858Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-13T03:48:15.424Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-13T03:48:15.435Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/updateArea","timestamp":"2025-06-13T03:48:30.005Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-13T03:48:30.049Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-13T03:48:44.967Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-13T03:48:44.986Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/updateArea","timestamp":"2025-06-13T03:50:48.089Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-13T03:50:48.287Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-13T03:50:57.617Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-13T03:50:57.640Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-13T04:01:14.452Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-13T04:01:14.462Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-13T04:01:14.475Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-13T04:01:14.505Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/updateArea","timestamp":"2025-06-13T04:03:01.609Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-13T04:03:01.891Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-13T04:03:01.982Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-13T04:03:02.028Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-13T04:03:25.671Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-13T04:03:25.677Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-13T04:03:25.689Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-13T04:03:25.702Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-13T04:03:28.784Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-13T04:03:28.788Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-13T04:03:28.796Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-13T04:03:28.805Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/updateArea","timestamp":"2025-06-13T04:03:41.449Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-13T04:03:41.476Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-13T04:03:41.496Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-13T04:03:41.506Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-13T04:19:32.788Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-13T04:19:32.794Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-13T04:19:32.805Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-13T04:19:32.825Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-13T04:19:34.915Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-13T04:19:34.926Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-13T04:19:34.931Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-13T04:19:34.941Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/updateArea","timestamp":"2025-06-13T04:20:05.291Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-13T04:20:05.485Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-13T04:20:05.522Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-13T04:20:05.574Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/updateArea","timestamp":"2025-06-13T04:21:14.251Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-13T04:21:14.341Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-13T04:21:14.372Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-13T04:21:14.434Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/updateArea","timestamp":"2025-06-13T04:23:36.977Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-13T04:23:37.067Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-13T04:23:37.096Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-13T04:23:37.106Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/updateArea","timestamp":"2025-06-13T04:26:21.069Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-13T04:26:21.250Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-13T04:26:21.270Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-13T04:26:21.289Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-13T04:27:13.956Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-13T04:27:14.006Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-13T04:27:14.024Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-13T04:27:14.072Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/updateArea","timestamp":"2025-06-13T04:27:34.813Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-13T04:27:34.838Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-13T04:27:34.854Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-13T04:27:34.865Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/updateArea","timestamp":"2025-06-13T04:28:03.267Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-13T04:28:03.309Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-13T04:28:03.376Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-13T04:28:03.395Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/updateArea","timestamp":"2025-06-13T04:29:25.125Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-13T04:29:25.318Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-13T04:29:25.336Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-13T04:29:25.351Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/updateArea","timestamp":"2025-06-13T04:32:05.207Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-13T04:32:05.287Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-13T04:32:05.315Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-13T04:32:05.319Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-13T04:32:05.328Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-13T04:32:05.342Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-13T04:32:07.269Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-13T04:32:07.274Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/updateArea","timestamp":"2025-06-13T04:32:18.983Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-13T04:32:19.000Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-13T04:32:19.023Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-13T04:32:19.028Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-13T04:32:20.577Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-13T04:32:20.586Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-13T04:33:07.140Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-13T04:33:07.157Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-13T04:33:12.022Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-13T04:33:12.028Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-13T04:33:12.040Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-13T04:33:12.045Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/refDashboard/Count","timestamp":"2025-06-13T04:33:15.177Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/refDashboard/Count","timestamp":"2025-06-13T04:33:15.187Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/refDashboard/Count","timestamp":"2025-06-13T04:33:15.199Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/settings/CustomerId/getOption","timestamp":"2025-06-13T04:33:21.243Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/settings/CustomerId/getOption","timestamp":"2025-06-13T04:33:21.251Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/settings/LoanId/getOption","timestamp":"2025-06-13T04:33:21.261Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/settings/LoanId/getOption","timestamp":"2025-06-13T04:33:21.271Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-13T05:41:47.910Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-13T05:41:47.921Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-13T05:41:47.925Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-13T05:41:47.936Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-13T05:41:50.576Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-13T05:41:50.597Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-13T05:48:12.723Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-13T05:48:12.728Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-13T05:48:12.733Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-13T05:48:12.738Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-13T05:53:17.380Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/area/listArea","timestamp":"2025-06-13T05:53:17.430Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-06-13T06:29:31.531Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-06-13T06:29:41.167Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-06-13T06:30:04.043Z"}
+{"level":"error","message":"Server not running ---  New route /api/v1/fund/selfTransfer conflicts with existing /api/v1/fund/selfTransfer","name":"AssertError","stack":"AssertError: New route /api/v1/fund/selfTransfer conflicts with existing /api/v1/fund/selfTransfer\n    at module.exports.internals.Segment.internals.Segment.add (C:\\Users\\VIJAY L\\Desktop\\Finance\\ZAdPro_MicroFin_Service\\node_modules\\@hapi\\call\\lib\\segment.js:47:14)\n    at exports.Router.internals.Router.internals.Router.add (C:\\Users\\VIJAY L\\Desktop\\Finance\\ZAdPro_MicroFin_Service\\node_modules\\@hapi\\call\\lib\\index.js:65:16)\n    at internals.Server._addRoute (C:\\Users\\VIJAY L\\Desktop\\Finance\\ZAdPro_MicroFin_Service\\node_modules\\@hapi\\hapi\\lib\\server.js:529:46)\n    at internals.Server.route (C:\\Users\\VIJAY L\\Desktop\\Finance\\ZAdPro_MicroFin_Service\\node_modules\\@hapi\\hapi\\lib\\server.js:518:22)\n    at C:\\Users\\VIJAY L\\Desktop\\Finance\\ZAdPro_MicroFin_Service\\src\\api\\Testing\\routes.ts:10:14\n    at new Promise (<anonymous>)\n    at testingRoutes.<anonymous> (C:\\Users\\VIJAY L\\Desktop\\Finance\\ZAdPro_MicroFin_Service\\src\\api\\Testing\\routes.ts:8:12)\n    at Generator.next (<anonymous>)\n    at C:\\Users\\VIJAY L\\Desktop\\Finance\\ZAdPro_MicroFin_Service\\src\\api\\Testing\\routes.ts:8:71\n    at new Promise (<anonymous>)","timestamp":"2025-06-13T06:30:12.856Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-06-13T06:30:59.150Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-06-13T06:31:34.738Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-06-13T06:32:25.691Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-06-13T06:32:44.961Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-06-13T06:33:17.230Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-06-13T06:33:23.006Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-06-13T06:34:00.142Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-06-13T06:34:15.075Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-06-13T06:34:26.670Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-06-13T06:34:48.070Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/test/mail","timestamp":"2025-06-13T06:35:03.340Z"}
+{"level":"error","message":"Error In listing the Loan Cannot read properties of undefined (reading 'id')","stack":"TypeError: Cannot read properties of undefined (reading 'id')\n    at TestingController.<anonymous> (C:\\Users\\VIJAY L\\Desktop\\Finance\\ZAdPro_MicroFin_Service\\src\\api\\Testing\\controller.ts:18:35)\n    at Generator.next (<anonymous>)\n    at C:\\Users\\VIJAY L\\Desktop\\Finance\\ZAdPro_MicroFin_Service\\src\\api\\Testing\\controller.ts:8:71\n    at new Promise (<anonymous>)\n    at __awaiter (C:\\Users\\VIJAY L\\Desktop\\Finance\\ZAdPro_MicroFin_Service\\src\\api\\Testing\\controller.ts:4:12)\n    at TestingController.mail (C:\\Users\\VIJAY L\\Desktop\\Finance\\ZAdPro_MicroFin_Service\\src\\api\\Testing\\controller.ts:14:21)\n    at exports.Manager.execute (C:\\Users\\VIJAY L\\Desktop\\Finance\\ZAdPro_MicroFin_Service\\node_modules\\@hapi\\hapi\\lib\\toolkit.js:57:29)\n    at Object.internals.handler (C:\\Users\\VIJAY L\\Desktop\\Finance\\ZAdPro_MicroFin_Service\\node_modules\\@hapi\\hapi\\lib\\handler.js:46:48)\n    at exports.execute (C:\\Users\\VIJAY L\\Desktop\\Finance\\ZAdPro_MicroFin_Service\\node_modules\\@hapi\\hapi\\lib\\handler.js:31:36)\n    at Request._lifecycle (C:\\Users\\VIJAY L\\Desktop\\Finance\\ZAdPro_MicroFin_Service\\node_modules\\@hapi\\hapi\\lib\\request.js:370:68)","timestamp":"2025-06-13T06:35:03.354Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-06-13T06:35:26.662Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-06-13T06:35:34.656Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/test/mail","timestamp":"2025-06-13T06:35:35.209Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-06-13T06:35:53.877Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-06-13T06:37:56.549Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-06-13T06:38:10.325Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-06-13T06:38:23.758Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-06-13T06:38:50.668Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-06-13T06:39:15.319Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-06-13T06:39:32.357Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-06-13T06:39:38.257Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-06-13T06:39:48.026Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-06-13T06:40:01.353Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/test/mail","timestamp":"2025-06-13T06:40:10.174Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-06-13T07:01:48.404Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-06-13T07:02:12.895Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-06-13T07:02:20.972Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-06-13T07:13:19.793Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/test/mail","timestamp":"2025-06-13T07:13:42.568Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-06-13T07:18:06.130Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/test/mail","timestamp":"2025-06-13T07:18:09.446Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-06-13T07:24:42.026Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-06-13T07:25:09.158Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/test/mail","timestamp":"2025-06-13T07:25:13.527Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-06-13T07:30:13.685Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-06-13T07:30:23.219Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/test/mail","timestamp":"2025-06-13T07:30:26.195Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-06-13T07:43:35.370Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-06-13T07:43:59.225Z"}

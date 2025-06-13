@@ -77,17 +77,30 @@ export const insertDomainQuery = `
   RETURNING *;
 `;
 
+// export const getCustomersQuery = `SELECT
+//   *
+// FROM
+//   public."users" u
+//   JOIN public."refCommunication" rc ON rc."refUserId" = u."refUserId"
+// WHERE
+// u."refUserRole" = '3' AND  (
+//     u."refUserId" = $1
+
+//   );
+// `;
+
 export const getCustomersQuery = `SELECT
   *
 FROM
   public."users" u
   JOIN public."refCommunication" rc ON rc."refUserId" = u."refUserId"
+  LEFT JOIN public."refAreaPincode" ap ON CAST (ap."refAreaPinCode" AS TEXT) = rc."refUserPincode"::TEXT
+  LEFT JOIN public."refArea" ra ON CAST (ra."refAreaId" AS INTEGER) = ap."refAreaId"
 WHERE
 u."refUserRole" = '3' AND  (
     u."refUserId" = $1
    
-  );
-`;
+  );`;
 
 export const getReferenceQuery = `
 SELECT * FROM public."refReference" 
@@ -128,11 +141,51 @@ WHERE
 u."refUserRole" = '2'
 ORDER BY u."refUserId" DESC`;
 
+// export const getCustomersListQuery = `SELECT
+//   *
+// FROM
+//   public."users" u
+//   JOIN public."refCommunication" rc ON rc."refUserId" = u."refUserId"
+// WHERE
+//   u."refUserRole" = '3'
+// ORDER BY
+//   u."refUserId" DESC`;
 export const getCustomersListQuery = `SELECT
-  *
+  u."refUserId",
+  u."refUserFname",
+  u."refUserLname",
+  CASE
+    WHEN (
+      SELECT
+        s."refSettingValue"
+      FROM
+        settings."refSettings" s
+      WHERE
+        s."refSettingId" = 1
+    ) = 2 THEN ra."refAreaPrefix" || (u."refUserId"::NUMERIC + 10000)::text
+    ELSE (u."refUserId"::NUMERIC + 10000)::text
+  END AS "refCustId",
+  u."refUserDOB",
+  u."refAadharNo",
+  u."refPanNo",
+  u."refUserRole",
+  u."refActiveStatus",
+  u."refUserProfile",
+  u."refPanPath",
+  u."refAadharPath",
+  rc."refComId",
+  rc."refUserMobileNo",
+  rc."refUserEmail",
+  rc."refUserAddress",
+  rc."refUserDistrict",
+  rc."refUserState",
+  rc."refUserPincode",
+  ra."refAreaPrefix"
 FROM
   public."users" u
   JOIN public."refCommunication" rc ON rc."refUserId" = u."refUserId"
+  LEFT JOIN public."refAreaPincode" ap ON CAST(ap."refAreaPinCode" AS TEXT) = rc."refUserPincode"::TEXT
+  LEFT JOIN public."refArea" ra ON CAST(ra."refAreaId" AS INTEGER) = ap."refAreaId"
 WHERE
   u."refUserRole" = '3'
 ORDER BY
@@ -598,9 +651,39 @@ GROUP BY
 `;
 
 export const getAllLoanData = `SELECT
+  CASE
+  WHEN (
+    SELECT s."refSettingValue"
+    FROM settings."refSettings" s
+    WHERE s."refSettingId" = 2
+  ) = 2 THEN ra."refAreaPrefix" || l."refCustLoanId"::text
+
+  WHEN (
+    SELECT s."refSettingValue"
+    FROM settings."refSettings" s
+    WHERE s."refSettingId" = 2
+  ) = 3 THEN
+    CASE
+      WHEN l."refRePaymentType" = 1 THEN 'FL' || l."refCustLoanId"::text
+      WHEN l."refRePaymentType" = 2 THEN 'DL' || l."refCustLoanId"::text
+      WHEN l."refRePaymentType" = 3 THEN 'MI' || l."refCustLoanId"::text
+      ELSE l."refCustLoanId"::TEXT
+    END
+
+  ELSE l."refCustLoanId"::text
+END AS "refCustLoanId",
   l."refLoanId",
-  l."refCustLoanId",
-  u."refCustId",
+  CASE
+    WHEN (
+      SELECT
+        s."refSettingValue"
+      FROM
+        settings."refSettings" s
+      WHERE
+        s."refSettingId" = 1
+    ) = 2 THEN ra."refAreaPrefix" || (u."refUserId"::NUMERIC + 10000)::text
+    ELSE (u."refUserId"::NUMERIC + 10000)::text
+  END AS "refCustId",
   u."refUserId",
   u."refUserFname",
   u."refUserLname",
@@ -621,6 +704,8 @@ FROM
   LEFT JOIN public."refCommunication" rc ON CAST(rc."refUserId" AS INTEGER) = u."refUserId"
   LEFT JOIN public."refLoanStatus" ls ON CAST(ls."refLoanStatusId" AS INTEGER) = l."refLoanStatus"
   LEFT JOIN public."refBankAccounts" b ON CAST(b."refBankId" AS INTEGER) = l."refBankId"::INTEGER
+  LEFT JOIN public."refAreaPincode" ap ON CAST(ap."refAreaPinCode" AS TEXT) = rc."refUserPincode"::TEXT
+  LEFT JOIN public."refArea" ra ON CAST(ra."refAreaId" AS INTEGER) = ap."refAreaId"
 WHERE
   b."refAccountType" = ANY ($1)
 ORDER BY
@@ -763,3 +848,22 @@ FROM
   LEFT JOIN public."refProducts" rp ON CAST (rp."refProductId" AS INTEGER) = rl."refProductId"::INTEGER
 WHERE
   rl."refLoanId" = $1;`;
+
+export const addArea = `WITH addarea AS (
+  INSERT INTO public."refArea" ("refAreaName", "refAreaPrefix")
+  VALUES ($1, $2)
+  RETURNING "refAreaId"
+)
+INSERT INTO public."refAreaPincode" ("refAreaId", "refAreaPinCode")
+SELECT
+  a."refAreaId",
+  pincode
+FROM
+  addarea a,
+  unnest($3::text[]) AS pincode;`;
+
+export const addPincode = `INSERT INTO
+  public."refAreaPincode" ("refAreaId", "refAreaPinCode")
+VALUES
+  ($1, $2);
+`;
