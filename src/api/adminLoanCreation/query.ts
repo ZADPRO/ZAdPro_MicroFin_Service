@@ -560,8 +560,7 @@ export const addNewLoan = `WITH
         CASE
           WHEN $19::Numeric = 3 THEN 0
           ELSE r.loan_amount::Numeric / r.product_duration::Numeric
-        END,
-        2
+        END
       ) AS refPrincipal,
       ROUND(
         CASE
@@ -620,8 +619,7 @@ export const addNewLoan = `WITH
             ELSE 1
           END
           ELSE 0
-        END,
-        2
+        END
       ) AS refInterest,
       'Pending' AS refPrincipalStatus,
       gs.period_num AS refRepaymentNumber,
@@ -712,8 +710,7 @@ export const addNewLoan = `WITH
               WHEN r.duration_type::Numeric = 3 THEN 1
             END
           )
-        END,
-        2
+        END
       ) AS refRepaymentAmount,
       $11 AS createdAt,
       $12 AS createdBy,

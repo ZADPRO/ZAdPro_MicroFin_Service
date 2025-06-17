@@ -105,7 +105,7 @@ export class rePaymentRepository {
       console.log("balanceAmt line ----- 89", balanceAmt);
       RepaymentDetails[0] = {
         ...RepaymentDetails[0],
-        refBalanceAmt: balanceAmt,
+        refBalanceAmt: Math.round(balanceAmt),
       };
 
       const bankDetails = await executeQuery(bankList);
@@ -463,8 +463,10 @@ export class rePaymentRepository {
       let RepaymentDetails = await executeQuery(LoanDetails, [
         user_data.LoanId,
       ]);
+      console.log("RepaymentDetails line ---- 466", RepaymentDetails);
 
       const calData: any = await TopUpBalance(user_data.LoanId);
+      console.log("calData line ----- 469", calData);
 
       RepaymentDetails.map((Data, index) => {
         const balanceAmt = calData.finalBalanceAmt;

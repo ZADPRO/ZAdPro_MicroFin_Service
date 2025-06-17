@@ -175,8 +175,7 @@ const getLoanData = `WITH
               AND rs."refPrincipalStatus" = 'paid'
           ),
           0
-        )::NUMERIC,
-        2
+        )::NUMERIC
       ) AS "totalPrincipal",
       ROUND(
         COALESCE(
@@ -190,8 +189,7 @@ const getLoanData = `WITH
               AND rs."refInterestStatus" = 'paid'
           ),
           0
-        )::NUMERIC,
-        2
+        )::NUMERIC
       ) AS "totalInterest",
       -- Calculate total days in the months covered by refInterestMonthCount
       (
@@ -368,8 +366,7 @@ const adminGetLoanData1 = `WITH
               AND rs."refPrincipalStatus" = 'paid'
           ),
           0
-        )::NUMERIC,
-        2
+        )::NUMERIC
       ) AS "totalPrincipal",
       ROUND(
         COALESCE(
@@ -384,7 +381,6 @@ const adminGetLoanData1 = `WITH
           ),
           0
         )::NUMERIC,
-        2
       ) AS "totalInterest",
       -- Calculate total days in the months covered by refInterestMonthCount
       (
@@ -541,8 +537,7 @@ const adminGetLoanData = `WITH
               AND rs."refPrincipalStatus" = 'paid'
           ),
           0
-        )::NUMERIC,
-        2
+        )::NUMERIC
       ) AS "totalPrincipal",
       ROUND(
         COALESCE(
@@ -556,8 +551,7 @@ const adminGetLoanData = `WITH
               AND rs."refInterestStatus" = 'paid'
           ),
           0
-        )::NUMERIC,
-        2
+        )::NUMERIC
       ) AS "totalInterest",
       -- Calculate total days in the months covered by refInterestMonthCount
       (
@@ -727,8 +721,7 @@ const TotalPreMonthInterest = `SELECT
           AND rs."refInterestStatus" = 'paid'
       ),
       0
-    )::NUMERIC,
-    2
+    )::NUMERIC
   ) AS "TotalInterest"
 FROM
   public."refRepaymentSchedule" rs
@@ -753,8 +746,7 @@ const adminTotalPreMonthInterest = `SELECT
           AND rs."refInterestStatus" = 'paid'
       ),
       0
-    )::NUMERIC,
-    2
+    )::NUMERIC
   ) AS "TotalInterest"
 FROM
   public."refRepaymentSchedule" rs
@@ -844,8 +836,7 @@ const newLoanBalanceCalculation = `SELECT
           AND rs."refPrincipalStatus" = 'paid'
       ),
       0
-    )::NUMERIC,
-    2
+    )::NUMERIC
   ) AS "PaidPrincipal",
   ROUND(
     COALESCE(
@@ -859,8 +850,7 @@ const newLoanBalanceCalculation = `SELECT
           AND rs."refInterestStatus" = 'paid'
       ),
       0
-    )::NUMERIC,
-    2
+    )::NUMERIC
   ) AS "PaidInterest",
   CASE
     WHEN TO_CHAR(
@@ -968,8 +958,7 @@ const newLoanBalanceCalculation = `SELECT
           )
       ),
       0
-    )::NUMERIC,
-    2
+    )::NUMERIC
   ) AS "InterestBeforeMonth",
   (
     DATE_PART(
@@ -1066,11 +1055,11 @@ export const TopUpBalance = async (loanId: any) => {
         console.log(" -> Line Number ----------------------------------- 420");
         if (result[0].check) {
           const amt = Number(result[0].refInterest) - dayIntPaid;
-          balanceAmt = balanceAmt - amt;
+          balanceAmt = Math.round(balanceAmt - amt);
           TotalInterestPaid = TotalInterestPaid - amt;
           console.log("TotalInterestPaid line ----- 232", TotalInterestPaid);
         } else {
-          balanceAmt = balanceAmt + dayIntPaid;
+          balanceAmt = Math.round(balanceAmt + dayIntPaid);
           TotalInterestPaid = 0;
           console.log("TotalInterestPaid line ----- 236", TotalInterestPaid);
           totalInitialInterest =
@@ -1084,7 +1073,7 @@ export const TopUpBalance = async (loanId: any) => {
           ]);
           let IntAmt = Number(loanData[0].DayCount) * dayInt;
           IntAmt = IntAmt + Number(preMonInt[0].TotalInterest || 0);
-          balanceAmt = balanceAmt - (TotalInterestPaid - IntAmt);
+          balanceAmt = Math.round(balanceAmt - (TotalInterestPaid - IntAmt));
           TotalInterestPaid = IntAmt;
         } else {
           const intAmtResult = await executeQuery(getDayDefference, [
@@ -1096,8 +1085,9 @@ export const TopUpBalance = async (loanId: any) => {
           const extIntAmt =
             Number(loanData[0].refInitialInterest) - Number(intAmt);
 
-          balanceAmt =
-            balanceAmt - (extIntAmt + Number(loanData[0].InterestFirst));
+          balanceAmt = Math.round(
+            balanceAmt - (extIntAmt + Number(loanData[0].InterestFirst))
+          );
           TotalInterestPaid = intAmt;
           console.log("TotalInterestPaid line ----- 266", TotalInterestPaid);
         }
@@ -1110,9 +1100,10 @@ export const TopUpBalance = async (loanId: any) => {
       const dayIntPaid = Number(loanData[0].DayCount) * dayInt;
 
       if (monthCheckResult[0].isSameMonthYear) {
-        balanceAmt =
+        balanceAmt = Math.round(
           Number(balanceAmt) -
-          Number(monthCheckResult[0].RemainingDays) * Number(dayInt);
+            Number(monthCheckResult[0].RemainingDays) * Number(dayInt)
+        );
         console.log("Number(dayInt)", Number(dayInt));
         console.log(
           "Number(monthCheckResult[0].RemainingDays)",
@@ -1126,10 +1117,10 @@ export const TopUpBalance = async (loanId: any) => {
         console.log("result line ---- 945", result);
         if (result[0].check) {
           const amt = Number(result[0].refInterest) - dayIntPaid;
-          balanceAmt = balanceAmt - amt;
+          balanceAmt = Math.round(balanceAmt - amt);
           TotalInterestPaid = TotalInterestPaid - amt;
         } else {
-          balanceAmt = balanceAmt + dayIntPaid;
+          balanceAmt = Math.round(balanceAmt + dayIntPaid);
           TotalInterestPaid = TotalInterestPaid + dayIntPaid;
         }
       }
@@ -1194,11 +1185,11 @@ export const adminTopUpBalance = async (loanId: any) => {
         console.log(" -> Line Number ----------------------------------- 420");
         if (result[0].check) {
           const amt = Number(result[0].refInterest) - dayIntPaid;
-          balanceAmt = balanceAmt - amt;
+          balanceAmt = Math.round(balanceAmt - amt);
           TotalInterestPaid = TotalInterestPaid - amt;
           console.log("TotalInterestPaid line ----- 232", TotalInterestPaid);
         } else {
-          balanceAmt = balanceAmt + dayIntPaid;
+          balanceAmt = Math.round(balanceAmt + dayIntPaid);
           TotalInterestPaid = 0;
           console.log("TotalInterestPaid line ----- 236", TotalInterestPaid);
           totalInitialInterest =
@@ -1212,7 +1203,7 @@ export const adminTopUpBalance = async (loanId: any) => {
           ]);
           let IntAmt = Number(loanData[0].DayCount) * dayInt;
           IntAmt = IntAmt + Number(preMonInt[0].TotalInterest || 0);
-          balanceAmt = balanceAmt - (TotalInterestPaid - IntAmt);
+          balanceAmt = Math.round(balanceAmt - (TotalInterestPaid - IntAmt));
           TotalInterestPaid = IntAmt;
         } else {
           const intAmtResult = await executeQuery(adminGetDayDeefference, [
@@ -1224,8 +1215,9 @@ export const adminTopUpBalance = async (loanId: any) => {
           const extIntAmt =
             Number(loanData[0].refInitialInterest) - Number(intAmt);
 
-          balanceAmt =
-            balanceAmt - (extIntAmt + Number(loanData[0].InterestFirst));
+          balanceAmt = Math.round(
+            balanceAmt - (extIntAmt + Number(loanData[0].InterestFirst))
+          );
           TotalInterestPaid = intAmt;
           console.log("TotalInterestPaid line ----- 266", TotalInterestPaid);
         }
@@ -1238,9 +1230,10 @@ export const adminTopUpBalance = async (loanId: any) => {
       const dayIntPaid = Number(loanData[0].DayCount) * dayInt;
 
       if (monthCheckResult[0].isSameMonthYear) {
-        balanceAmt =
+        balanceAmt = Math.round(
           Number(balanceAmt) -
-          Number(monthCheckResult[0].RemainingDays) * Number(dayInt);
+            Number(monthCheckResult[0].RemainingDays) * Number(dayInt)
+        );
         console.log("Number(dayInt)", Number(dayInt));
         console.log(
           "Number(monthCheckResult[0].RemainingDays)",
@@ -1254,10 +1247,10 @@ export const adminTopUpBalance = async (loanId: any) => {
         ]);
         if (result[0].check) {
           const amt = Number(result[0].refInterest) - dayIntPaid;
-          balanceAmt = balanceAmt - amt;
+          balanceAmt = Math.round(balanceAmt - amt);
           TotalInterestPaid = TotalInterestPaid - amt;
         } else {
-          balanceAmt = balanceAmt + dayIntPaid;
+          balanceAmt = Math.round(balanceAmt + dayIntPaid);
           TotalInterestPaid = TotalInterestPaid + dayIntPaid;
         }
       }
