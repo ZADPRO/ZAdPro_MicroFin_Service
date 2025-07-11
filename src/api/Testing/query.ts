@@ -28,7 +28,8 @@ export const updateFund = `INSERT INTO public."refBankFund" (
     "refTxnId",
     "createdAt",
     "createdBy",
-    "refFundType"
+    "refFundType",
+    "refFundTypeId"
   )
   VALUES
     (
@@ -52,3 +53,91 @@ export const updateFund = `INSERT INTO public."refBankFund" (
       'Self Transfer'
     );
   `;
+
+export const testQuery = `SELECT
+  l."refLoanId",
+  l."refLoanAmount",
+  ROUND(
+    COALESCE(
+      (
+        SELECT
+          SUM(CAST(rs."refPaidPrincipal" AS NUMERIC))
+        FROM
+          public."refRepaymentSchedule" rs
+        WHERE
+          CAST(rs."refLoanId" AS INTEGER) = l."refLoanId"
+      ),
+      0
+    )
+  ) AS "totalPrincipalPaid",
+  ROUND(
+    COALESCE(
+      (
+        SELECT
+          SUM(CAST(rs."refPaidInterest" AS NUMERIC))
+        FROM
+          public."refRepaymentSchedule" rs
+        WHERE
+          CAST(rs."refLoanId" AS INTEGER) = l."refLoanId"
+      ),
+      0
+    )
+  ) AS "totalInterestPaid",
+  l."refInitialInterest",
+  ROUND(
+    COALESCE(
+      (
+        SELECT
+          SUM(CAST(rs."refInterest" AS NUMERIC))
+        FROM
+          public."refRepaymentSchedule" rs
+        WHERE
+          CAST(rs."refLoanId" AS INTEGER) = l."refLoanId"
+          AND l."isInterestFirst" = true
+          AND (
+            SELECT
+              COUNT(*)
+            FROM
+              public."refRepaymentSchedule" rs_inner
+            WHERE
+              rs_inner."refLoanId" = rs."refLoanId"
+              AND TO_DATE(rs_inner."refPaymentDate", 'DD-MM-YYYY') <= TO_DATE(rs."refPaymentDate", 'DD-MM-YYYY')
+          ) <= l."refInterestMonthCount"
+      ),
+      0
+    )
+  ) AS "interestPaidFirstAmount",
+  l."refInterestMonthCount",
+  rp."refProductDuration",
+  rp."refProductInterest",
+  rp."refLoanDueType",
+  rp."refInterestCalType",
+  rp."refRePaymentType",
+  l."refRepaymentStartDate",
+  (
+    SELECT
+      "refSettingValue"
+    FROM
+      settings."refSettings" s
+    WHERE
+      s."refSettingId" = 4
+  ) AS "refSettingValue"
+FROM
+  public."refLoan" l
+  LEFT JOIN public."refLoanProducts" rp ON CAST(rp."refProductId" AS INTEGER) = l."refProductId"::INTEGER
+  LEFT JOIN public."refRepaymentSchedule" rs ON CAST(rs."refLoanId" AS INTEGER) = l."refLoanId"::INTEGER
+WHERE
+  l."refLoanId" = $1
+GROUP BY
+  l."refLoanId",
+  l."isInterestFirst",
+  l."refInterestMonthCount",
+  rp."refProductInterest",
+  rp."refProductDuration",
+  rp."refInterestCalType",
+  rp."refLoanDueType",
+  l."refLoanAmount",
+  l."createdAt",
+  l."refInitialInterest",
+  l."refRepaymentStartDate",
+  rp."refRePaymentType"`;

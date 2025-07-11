@@ -89,6 +89,39 @@ export class AreaRoutes implements IRoute {
             auth: false,
           },
         },
+
+        // Version 2
+
+        {
+          method: "POST",
+          path: "/api/v1/area/addNewArea",
+          config: {
+            pre: [{ method: validateToken, assign: "token" }],
+            handler: controller.addNewArea,
+            description: "Adding New Area in V2",
+            auth: false,
+          },
+        },
+        {
+          method: "GET",
+          path: "/api/v1/area/allAreaList",
+          config: {
+            pre: [{ method: validateToken, assign: "token" }],
+            handler: controller.allAreaList,
+            description: "List All The Area",
+            auth: false,
+          },
+        },
+        {
+          method: "POST",
+          path: "/api/v1/area/allAreaList",
+          config: {
+            pre: [{ method: validateToken, assign: "token" }],
+            handler: controller.filteredAreaList,
+            description: "Get Filtered Area List",
+            auth: false,
+          },
+        },
       ]);
       resolve(true);
     });

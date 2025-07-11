@@ -6,6 +6,7 @@ import logger from "./helper/logger";
 import Router from "./routes";
 
 import * as DotEnv from "dotenv";
+import { startCronJobs } from "../src/BatchProgram/OpenClosingBalanceJob";
 
 const init = async () => {
   try {
@@ -29,6 +30,7 @@ const init = async () => {
     });
 
     await Router.loadRoutes(server);
+    startCronJobs();
 
     await server.start((error: any) => {
       if (error) {

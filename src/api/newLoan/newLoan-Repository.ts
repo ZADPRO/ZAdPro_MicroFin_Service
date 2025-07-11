@@ -14,7 +14,9 @@ import {
   addNewLoan,
   getBankQuery,
   getLoanList,
+  getLoanType,
   getProductsDurationQuery,
+  getRepaymentType,
   getUserList,
   insertRepaymentSchedule,
   updateBankAccountDebitQuery,
@@ -25,6 +27,7 @@ import {
   calculateDueDate,
   convertToYMD,
   CurrentTime,
+  formatDate_Time,
   formatDateMonthYear,
   formatYearMonthDate,
 } from "../../helper/common";
@@ -62,6 +65,8 @@ export class newLoanRepository {
 
     try {
       const userList = await executeQuery(getUserList, []);
+      const loanType = await executeQuery(getLoanType);
+      const rePaymentType = await executeQuery(getRepaymentType);
 
       return encrypt(
         {
@@ -69,6 +74,8 @@ export class newLoanRepository {
           message: "Get The User List For Loan Creation",
           token: generateTokenWithoutExpire(token, true),
           data: userList,
+          loanType: loanType,
+          rePaymentType: rePaymentType,
         },
         true
       );
@@ -93,6 +100,7 @@ export class newLoanRepository {
       const productDetails = await executeQuery(getProductsDurationQuery, [
         user_data.refProductId,
       ]);
+      console.log("productDetails", productDetails);
       const getBankAccount = await executeQuery(getBankQuery, [
         parseInt(user_data.refBankId),
       ]);
@@ -114,7 +122,7 @@ export class newLoanRepository {
       const dueDate = calculateDueDate(
         user_data.refRepaymentStartDate,
         productDetails[0].refProductDuration,
-        productDetails[0].refProductDurationType
+        productDetails[0].refLoanDueType
       );
       console.log("dueDate", dueDate);
 
@@ -125,11 +133,11 @@ export class newLoanRepository {
         dueDate,
         user_data.refPayementType,
         user_data.refRepaymentStartDate,
-        convertToYMD(),
+        convertToYMD(formatDate_Time(user_data.todayDate)),
         user_data.refBankId,
         user_data.refLoanBalance,
         user_data.isInterestFirst,
-        CurrentTime(),
+        formatDate_Time(user_data.todayDate),
         tokendata.id,
         user_data.refExLoanId,
         user_data.refLoanExt,
@@ -142,7 +150,7 @@ export class newLoanRepository {
       ];
       console.log("params line ------ 106", params);
       const queryResult = await client.query(addNewLoan, params);
-
+      console.log(" -> Line Number ----------------------------------- 152");
       const newLoanId = queryResult.rows[0].refLoanId;
       const custLoanId = queryResult.rows[0].refCustLoanId;
       const paramsLoanDebit = [

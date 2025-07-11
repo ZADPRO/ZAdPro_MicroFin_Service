@@ -118,3 +118,52 @@ WHERE
 
 export const listAreaPrefix = `SELECT * FROM public."refArea"`;
 
+// Area Repository Version 2
+
+export const checkPinCode = `SELECT
+  ap."refAreaPinCodeId"
+FROM
+  public."refAreaPincode" ap
+WHERE
+  (
+    ap."refAreaPinCode" = $1
+    AND ap."refMainAreaName" = $2
+  )`;
+
+export const addPinCode = `INSERT INTO
+  public."refAreaPincode" ("refAreaPinCode", "refMainAreaName")
+VALUES
+  ($1, $2)
+RETURNING
+  "refAreaPinCodeId";`;
+
+export const addNewAreas = `INSERT INTO
+  public."refArea" (
+    "refAreaName",
+    "refAreaPrefix",
+    "refPinCodeId"
+  )
+values
+  ($1, $2, $3)`;
+
+export const getAllArea = `SELECT
+  ra."refAreaId",
+  ra."refAreaName",
+  ra."refAreaPrefix",
+  ap."refAreaPinCodeId",
+  ap."refAreaPinCode",
+  ap."refMainAreaName"
+FROM
+  public."refArea" ra
+  LEFT JOIN public."refAreaPincode" ap ON CAST(ap."refAreaPinCodeId" AS INTEGER) = ra."refPinCodeId"`;
+
+export const filteredArea = `SELECT
+  *
+FROM
+  public."refAreaPincode" ap
+  LEFT JOIN public."refArea" ra ON CAST (ra."refPinCodeId" AS INTEGER) = ap."refAreaPinCodeId"
+WHERE
+  (
+    ap."refAreaPinCode" = $1
+    AND ap."refMainAreaName" = $2
+  )`;

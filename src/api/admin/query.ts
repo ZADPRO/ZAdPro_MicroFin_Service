@@ -43,10 +43,11 @@ export const updateBankFundQuery = `INSERT INTO
      "refFundTypeId",
      "createdAt",
      "createdBy",
-     "refPaymentType"
+     "refPaymentType",
+     "refFundTypeId"
   )
  VALUES
-   ($1, $2, $3, $4, $5, $6, $7, $8,$9)
+   ($1, $2, $3, $4, $5, $6, $7, $8,$9,$10)
    RETURNING *;`;
 
 export const insertCommunicationQuery = `
@@ -58,10 +59,13 @@ export const insertCommunicationQuery = `
     "refUserDistrict",
     "refUserState",
     "refUserPincode",
+    "refUserCity",
+    "refUserAreaId",
+    "refUserTaluk",
     "createdAt",
     "createdBy"
   )
-  VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
+  VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9,$10,$11,$12)
   RETURNING *;
 `;
 
@@ -94,8 +98,7 @@ export const getCustomersQuery = `SELECT
 FROM
   public."users" u
   JOIN public."refCommunication" rc ON rc."refUserId" = u."refUserId"
-  LEFT JOIN public."refAreaPincode" ap ON CAST (ap."refAreaPinCode" AS TEXT) = rc."refUserPincode"::TEXT
-  LEFT JOIN public."refArea" ra ON CAST (ra."refAreaId" AS INTEGER) = ap."refAreaId"
+	LEFT JOIN public."refArea" ra ON CAST (ra."refAreaId" AS INTEGER) = rc."refUserAreaId"
 WHERE
 u."refUserRole" = '3' AND  (
     u."refUserId" = $1
@@ -141,15 +144,15 @@ WHERE
 u."refUserRole" = '2'
 ORDER BY u."refUserId" DESC`;
 
-// export const getCustomersListQuery = `SELECT
-//   *
-// FROM
-//   public."users" u
-//   JOIN public."refCommunication" rc ON rc."refUserId" = u."refUserId"
-// WHERE
-//   u."refUserRole" = '3'
-// ORDER BY
-//   u."refUserId" DESC`;
+export const getCustomersListQuery1 = `SELECT
+  *
+FROM
+  public."users" u
+  JOIN public."refCommunication" rc ON rc."refUserId" = u."refUserId"
+WHERE
+  u."refUserRole" = '3'
+ORDER BY
+  u."refUserId" DESC`;
 export const getCustomersListQuery = `SELECT
   u."refUserId",
   u."refUserFname",
@@ -162,7 +165,7 @@ export const getCustomersListQuery = `SELECT
         settings."refSettings" s
       WHERE
         s."refSettingId" = 1
-    ) = 2 THEN ra."refAreaPrefix" || (u."refUserId"::NUMERIC + 10000)::text
+    ) = 2 THEN ra."refAreaPrefix" || '/' || (u."refUserId"::NUMERIC + 10000)::text
     ELSE (u."refUserId"::NUMERIC + 10000)::text
   END AS "refCustId",
   u."refUserDOB",
@@ -180,16 +183,60 @@ export const getCustomersListQuery = `SELECT
   rc."refUserDistrict",
   rc."refUserState",
   rc."refUserPincode",
-  ra."refAreaPrefix"
+  ra."refAreaPrefix",
+  rc."refUserCity",
+  rc."refUserTaluk",
+  rr."refRName"
 FROM
   public."users" u
   JOIN public."refCommunication" rc ON rc."refUserId" = u."refUserId"
-  LEFT JOIN public."refAreaPincode" ap ON CAST(ap."refAreaPinCode" AS TEXT) = rc."refUserPincode"::TEXT
-  LEFT JOIN public."refArea" ra ON CAST(ra."refAreaId" AS INTEGER) = ap."refAreaId"
+  LEFT JOIN public."refArea" ra ON CAST(ra."refAreaId" AS INTEGER) = rc."refUserAreaId"
+  LEFT JOIN public."refReference" rr ON CAST (rr."refUserId" AS INTEGER) = u."refUserId"
 WHERE
   u."refUserRole" = '3'
 ORDER BY
   u."refUserId" DESC`;
+
+// export const getCustomersListQuery = `SELECT
+//   u."refUserId",
+//   u."refUserFname",
+//   u."refUserLname",
+//   CASE
+//     WHEN (
+//       SELECT
+//         s."refSettingValue"
+//       FROM
+//         settings."refSettings" s
+//       WHERE
+//         s."refSettingId" = 1
+//     ) = 2 THEN ra."refAreaPrefix" || (u."refUserId"::NUMERIC + 10000)::text
+//     ELSE (u."refUserId"::NUMERIC + 10000)::text
+//   END AS "refCustId",
+//   u."refUserDOB",
+//   u."refAadharNo",
+//   u."refPanNo",
+//   u."refUserRole",
+//   u."refActiveStatus",
+//   u."refUserProfile",
+//   u."refPanPath",
+//   u."refAadharPath",
+//   rc."refComId",
+//   rc."refUserMobileNo",
+//   rc."refUserEmail",
+//   rc."refUserAddress",
+//   rc."refUserDistrict",
+//   rc."refUserState",
+//   rc."refUserPincode",
+//   ra."refAreaPrefix"
+// FROM
+//   public."users" u
+//   JOIN public."refCommunication" rc ON rc."refUserId" = u."refUserId"
+//   LEFT JOIN public."refAreaPincode" ap ON CAST(ap."refAreaPinCode" AS TEXT) = rc."refUserPincode"::TEXT
+//   LEFT JOIN public."refArea" ra ON CAST(ra."refAreaId" AS INTEGER) = ap."refAreaId"
+// WHERE
+//   u."refUserRole" = '3'
+// ORDER BY
+//   u."refUserId" DESC`;
 
 export const nameQuery = `SELECT "refUserFname" , "refUserLname" FROM public."users" WHERE "refUserId" = $1
 `;
@@ -272,7 +319,7 @@ export const getAllBankAccountQuery = `SELECT
   rb."refBankAccountNo",
   rb."refIFSCsCode",
   rb."refBankAddress",
-  rb."refBalance",
+  ROUND(rb."refBalance"::NUMERIC, 0) AS "refBalance",
   rb."createdAt",
   rb."createdBy",
   rb."updatedAt",
@@ -281,8 +328,9 @@ export const getAllBankAccountQuery = `SELECT
   rbt."refAccountTypeName"
 FROM
   public."refBankAccounts" rb
-  LEFT JOIN public."refBankAccountType" rbt ON CAST (rbt."refAccountId" AS INTEGER) = rb."refAccountType"::INTEGER
-  WHERE rb."refAccountType" = ANY($1)
+  LEFT JOIN public."refBankAccountType" rbt ON CAST(rbt."refAccountId" AS INTEGER) = rb."refAccountType"::INTEGER
+WHERE
+  rb."refAccountType" = ANY ($1)
 ORDER BY
   "refBankId" DESC;
 `;
@@ -302,10 +350,11 @@ export const addBankFundQuery = `INSERT INTO
     "refFundType",
     "createdAt",
     "createdBy",
-    "refPaymentType"
+    "refPaymentType",
+    "refFundTypeId"
   )
 VALUES
-  ($1, $2, $3, $4, $5, $6, $7, $8,$9)
+  ($1, $2, $3, $4, $5, $6, $7, $8,$9,$10)
   RETURNING *;`;
 
 export const getBankListQuery = `SELECT
@@ -371,22 +420,15 @@ WHERE "refProductId" = $1;
 `;
 
 export const getProductsListQuery = `SELECT
-  rp."refProductId",
-rp."refProductName",
-  rp."refProductInterest",
-  rp."refProductDuration",
-  rp."refProductStatus",
-  rp."refProductDescription",
-  rp."createdAt",
-  rp."createdBy",
-  rp."updatedAt",
-  rp."updatedBy",
-  rp."refProductDurationType",
-  rp."refProductMonthlyCal"
+  rp.*,
+  rt."refRepaymentTypeName"
 FROM
-  public."refProducts" rp
+  public."refLoanProducts" rp
+  LEFT JOIN public."refRepaymentType" rt ON CAST(rt."refRepaymentTypeId" AS INTEGER) = rp."refRePaymentType"
+WHERE
+  rp."refStatus" = 'active'
 ORDER BY
-  "refProductId" DESC; 
+  "refProductId" DESC;
 `;
 
 export const getProductsQuery = `SELECT *
@@ -420,7 +462,17 @@ ORDER BY
 `;
 
 export const getBankFundListQuery = `SELECT
-  rbf.*,
+  rbf."refBankFId",
+  rbf."refBankId",
+  rbf."refbfTransactionDate",
+  rbf."refbfTrasactionType",
+  ROUND(rbf."refbfTransactionAmount"::NUMERIC,0) AS "refbfTransactionAmount",
+  rbf."refTxnId",
+  rbf."createdAt",
+  rbf."createdBy",
+  rbf."refFundType",
+  rbf."refPaymentType",
+  rbf."refFundTypeId",
   rba."refBankName",
   rba."refBankAccountNo",
   bt."refAccountTypeName"
@@ -428,7 +480,8 @@ FROM
   public."refBankFund" rbf
   LEFT JOIN public."refBankAccounts" rba ON rba."refBankId" = rbf."refBankId"::INTEGER
   LEFT JOIN public."refBankAccountType" bt ON CAST(bt."refAccountId" AS INTEGER) = rba."refAccountType"
-  WHERE rba."refAccountType" = ANY ($1)
+WHERE
+  rba."refAccountType" = ANY ($1)
 ORDER BY
   rbf."refBankFId" DESC;`;
 
@@ -656,7 +709,7 @@ export const getAllLoanData = `SELECT
     SELECT s."refSettingValue"
     FROM settings."refSettings" s
     WHERE s."refSettingId" = 2
-  ) = 2 THEN ra."refAreaPrefix" || l."refCustLoanId"::text
+  ) = 2 THEN ra."refAreaPrefix" || '/' ||l."refCustLoanId"::text
 
   WHEN (
     SELECT s."refSettingValue"
@@ -664,9 +717,9 @@ export const getAllLoanData = `SELECT
     WHERE s."refSettingId" = 2
   ) = 3 THEN
     CASE
-      WHEN l."refRePaymentType" = 1 THEN 'FL' || l."refCustLoanId"::text
-      WHEN l."refRePaymentType" = 2 THEN 'DL' || l."refCustLoanId"::text
-      WHEN l."refRePaymentType" = 3 THEN 'MI' || l."refCustLoanId"::text
+      WHEN l."refRePaymentType" = 1 THEN 'FL' || '/' || l."refCustLoanId"::text
+      WHEN l."refRePaymentType" = 2 THEN 'DL' || '/' || l."refCustLoanId"::text
+      WHEN l."refRePaymentType" = 3 THEN 'MI' || '/' || l."refCustLoanId"::text
       ELSE l."refCustLoanId"::TEXT
     END
 
@@ -681,7 +734,7 @@ END AS "refCustLoanId",
         settings."refSettings" s
       WHERE
         s."refSettingId" = 1
-    ) = 2 THEN ra."refAreaPrefix" || (u."refUserId"::NUMERIC + 10000)::text
+    ) = 2 THEN ra."refAreaPrefix" || '/' ||(u."refUserId"::NUMERIC + 10000)::text
     ELSE (u."refUserId"::NUMERIC + 10000)::text
   END AS "refCustId",
   u."refUserId",
@@ -689,23 +742,22 @@ END AS "refCustLoanId",
   u."refUserLname",
   rc."refUserMobileNo",
   rc."refUserEmail",
-  rp."refProductDuration",
-  rp."refProductInterest",
+  rp."refProductDuration" AS "refProductDuration",
+  rp."refProductInterest" AS "refProductInterest",
   l."refLoanAmount",
   l."refLoanStartDate",
   ls."refLoanStatusId",
   ls."refLoanStatus",
-  rp."refProductDurationType",
-  rp."refProductMonthlyCal"
+  rp."refLoanDueType" AS "refProductDurationType",
+  rp."refInterestCalType" AS "refProductMonthlyCal"
 FROM
   public."refLoan" l
   LEFT JOIN public.users u ON CAST(u."refUserId" AS INTEGER) = l."refUserId"::INTEGER
-  LEFT JOIN public."refProducts" rp ON CAST(rp."refProductId" AS INTEGER) = l."refProductId"::INTEGER
+  LEFT JOIN public."refLoanProducts" rp ON CAST(rp."refProductId" AS INTEGER) = l."refProductId"::INTEGER
   LEFT JOIN public."refCommunication" rc ON CAST(rc."refUserId" AS INTEGER) = u."refUserId"
   LEFT JOIN public."refLoanStatus" ls ON CAST(ls."refLoanStatusId" AS INTEGER) = l."refLoanStatus"
   LEFT JOIN public."refBankAccounts" b ON CAST(b."refBankId" AS INTEGER) = l."refBankId"::INTEGER
-  LEFT JOIN public."refAreaPincode" ap ON CAST(ap."refAreaPinCode" AS TEXT) = rc."refUserPincode"::TEXT
-  LEFT JOIN public."refArea" ra ON CAST(ra."refAreaId" AS INTEGER) = ap."refAreaId"
+  LEFT JOIN public."refArea" ra ON CAST(ra."refAreaId" AS INTEGER) = rc."refUserAreaId"
 WHERE
   b."refAccountType" = ANY ($1)
 ORDER BY

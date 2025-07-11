@@ -764,7 +764,7 @@ export const updateBankFundQuery = `INSERT INTO
      "refFundType", 
      "refFundTypeId",
      "createdAt",
-     "createdBy"
+     "createdBy",
       )
  VALUES
    ($1, $2, $3, $4, $5, $6, $7, $8,$9)
@@ -1089,10 +1089,11 @@ public."refBankFund" (
   "createdAt",
   "createdBy",
   "refFundType",
-  "refPaymentType"
+  "refPaymentType",
+  "refFundTypeId"
 )
 VALUES
-($1, $2, $3, $4, $5, $6, $7, $8, $9)
+($1, $2, $3, $4, $5, $6, $7, $8, $9,$10)
 RETURNING
 *;`;
 

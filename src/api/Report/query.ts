@@ -131,7 +131,7 @@ export const overAllReport = `SELECT
         settings."refSettings" s
       WHERE
         s."refSettingId" = 2
-    ) = 2 THEN ra."refAreaPrefix" || l."refCustLoanId"::text
+    ) = 2 THEN ra."refAreaPrefix" || '/' ||l."refCustLoanId"::text
     WHEN (
       SELECT
         s."refSettingValue"
@@ -140,9 +140,9 @@ export const overAllReport = `SELECT
       WHERE
         s."refSettingId" = 2
     ) = 3 THEN CASE
-      WHEN l."refRePaymentType" = 1 THEN 'FL' || l."refCustLoanId"::text
-      WHEN l."refRePaymentType" = 2 THEN 'DL' || l."refCustLoanId"::text
-      WHEN l."refRePaymentType" = 3 THEN 'MI' || l."refCustLoanId"::text
+      WHEN l."refRePaymentType" = 1 THEN 'FL' || '/' ||l."refCustLoanId"::text
+      WHEN l."refRePaymentType" = 2 THEN 'DL' || '/' ||l."refCustLoanId"::text
+      WHEN l."refRePaymentType" = 3 THEN 'MI' || '/' ||l."refCustLoanId"::text
       ELSE l."refCustLoanId"::TEXT
     END
     ELSE l."refCustLoanId"::text
@@ -202,7 +202,8 @@ export const overAllReport = `SELECT
         ELSE 0
       END
     )::NUMERIC
-  ) AS "BalancePrincipalAmount"
+  ) AS "BalancePrincipalAmount",
+     rr."refRName"
 FROM
   public."refLoan" l
   LEFT JOIN public."refLoanStatus" ls ON CAST(ls."refLoanStatusId" AS INTEGER) = l."refLoanStatus"::INTEGER
@@ -211,8 +212,8 @@ FROM
   LEFT JOIN public.users u ON CAST(u."refUserId" AS INTEGER) = l."refUserId"::INTEGER
   LEFT JOIN public."refCommunication" rc ON CAST(u."refUserId" AS INTEGER) = rc."refUserId"::INTEGER
   LEFT JOIN public."refRepaymentType" rpt ON CAST(rpt."refRepaymentTypeId" AS INTEGER) = l."refRePaymentType"::INTEGER
-  LEFT JOIN public."refAreaPincode" ap ON CAST(ap."refAreaPinCode" AS TEXT) = rc."refUserPincode"::TEXT
-  LEFT JOIN public."refArea" ra ON CAST(ra."refAreaId" AS INTEGER) = ap."refAreaId"
+  LEFT JOIN public."refArea" ra ON CAST(ra."refAreaId" AS INTEGER) = u."refUserId"
+  LEFT JOIN public."refReference" rr ON CAST (rr."refUserId" AS INTEGER) = u."refUserId"
 WHERE
   l."refRePaymentType"::INTEGER = ANY ($1)
   AND l."refLoanStatus"::INTEGER = ANY ($2)
@@ -236,7 +237,8 @@ GROUP BY
   l."refCustLoanId",
   ls."refLoanStatus",
   ra."refAreaPrefix",
-  ra."refAreaName"
+  ra."refAreaName",
+  rr."refRName"
 ORDER BY
   l."refLoanId";`;
 
@@ -364,7 +366,7 @@ export const monthlyReportCustomer = `SELECT
         settings."refSettings" s
       WHERE
         s."refSettingId" = 2
-    ) = 2 THEN ra."refAreaPrefix" || l."refCustLoanId"::text
+    ) = 2 THEN ra."refAreaPrefix" || '/' ||l."refCustLoanId"::text
     WHEN (
       SELECT
         s."refSettingValue"
@@ -373,9 +375,9 @@ export const monthlyReportCustomer = `SELECT
       WHERE
         s."refSettingId" = 2
     ) = 3 THEN CASE
-      WHEN l."refRePaymentType" = 1 THEN 'FL' || l."refCustLoanId"::text
-      WHEN l."refRePaymentType" = 2 THEN 'DL' || l."refCustLoanId"::text
-      WHEN l."refRePaymentType" = 3 THEN 'MI' || l."refCustLoanId"::text
+      WHEN l."refRePaymentType" = 1 THEN 'FL' || '/' ||l."refCustLoanId"::text
+      WHEN l."refRePaymentType" = 2 THEN 'DL' || '/' ||l."refCustLoanId"::text
+      WHEN l."refRePaymentType" = 3 THEN 'MI' || '/' ||l."refCustLoanId"::text
       ELSE l."refCustLoanId"::TEXT
     END
     ELSE l."refCustLoanId"::text
@@ -393,15 +395,17 @@ export const monthlyReportCustomer = `SELECT
   rs."refInterestStatus",
   ra."refAreaName",
   ra."refAreaPrefix",
-  ra."refAreaId"
+  ra."refAreaId",
+  rr."refRName"
 FROM
   public."refLoan" l
   LEFT JOIN public."refRepaymentSchedule" rs ON CAST(rs."refLoanId" AS INTEGER) = l."refLoanId"::INTEGER
   LEFT JOIN public.users u ON CAST(u."refUserId" AS INTEGER) = l."refUserId"::INTEGER
   LEFT JOIN public."refCommunication" rc ON CAST(rc."refUserId" AS INTEGER) = l."refUserId"::INTEGER
   LEFT JOIN public."refRepaymentType" rt ON CAST(rt."refRepaymentTypeId" AS INTEGER) = l."refRePaymentType"
-  LEFT JOIN public."refAreaPincode" ap ON CAST(ap."refAreaPinCode" AS TEXT) = rc."refUserPincode"::TEXT
-  LEFT JOIN public."refArea" ra ON CAST(ra."refAreaId" AS INTEGER) = ap."refAreaId"
+  LEFT JOIN public."refArea" ra ON CAST(ra."refAreaId" AS INTEGER) = u."refUserId"
+  LEFT JOIN public."refReference" rr ON CAST (rr."refUserId" AS INTEGER) = u."refUserId"
+
 WHERE
   l."refLoanStatus" = 1
   AND rs."refPrincipalStatus" = ANY ($1)

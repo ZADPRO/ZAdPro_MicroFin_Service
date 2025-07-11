@@ -18,6 +18,36 @@ export class testingRoutes implements IRoute {
             auth: false,
           },
         },
+        {
+          method: "POST",
+          path: "/api/v1/test/GenerateURL",
+          config: {
+            // pre: [{ method: validateToken, assign: "token" }],
+            handler: controller.GenerateURL,
+            description: "Self Amount Transfer",
+            auth: false,
+          },
+        },
+        {
+          method: "GET",
+          path: "/api/v1/test/GetFileUrl",
+          config: {
+            // pre: [{ method: validateToken, assign: "token" }],
+            handler: controller.GetFileUrl,
+            description: "Self Amount Transfer",
+            auth: false,
+          },
+        },
+        {
+          method: "GET",
+          path: "/api/v1/test/GetFileObjectUrl",
+          config: {
+            // pre: [{ method: validateToken, assign: "token" }],
+            handler: controller.GetFileObjectUrl,
+            description: "Self Amount Transfer",
+            auth: false,
+          },
+        },
       ]);
       resolve(true);
     });

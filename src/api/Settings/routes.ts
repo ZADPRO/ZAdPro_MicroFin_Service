@@ -29,11 +29,31 @@ export class SettingsRoutes implements IRoute {
           },
         },
         {
+          method: "GET",
+          path: "/api/v1/settings/paymentMethod/getOption",
+          config: {
+            pre: [{ method: validateToken, assign: "token" }],
+            handler: controller.PaymentMethodGetOption,
+            description: "Get Payment Method Options",
+            auth: false,
+          },
+        },
+        {
           method: "POST",
           path: "/api/v1/settings/updateOption",
           config: {
             pre: [{ method: validateToken, assign: "token" }],
             handler: controller.CustomerIdUpdateOption,
+            description: "Update Customer Id Option",
+            auth: false,
+          },
+        },
+        {
+          method: "GET",
+          path: "/api/v1/settings/overAllData",
+          config: {
+            pre: [{ method: validateToken, assign: "token" }],
+            handler: controller.getSettingsData,
             description: "Update Customer Id Option",
             auth: false,
           },

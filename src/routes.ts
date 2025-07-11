@@ -13,6 +13,9 @@ import { CashFlowRoutes } from "./api/CashFlow/routes";
 import { AreaRoutes } from "./api/Area/routes";
 import { SettingsRoutes } from "./api/Settings/routes";
 import { testingRoutes } from "./api/Testing/routes";
+import { CustomerRepaymentRoutes } from "./api/CustomerRepayment/routes";
+import { ProductRoutes } from "./api/LoanProduct/routes";
+import { openClosingBalRoutes } from "./api/OpenClosingBalance/routes";
 export default class Router {
   public static async loadRoutes(server: Hapi.Server): Promise<any> {
     await new adminRoutes().register(server);
@@ -29,5 +32,8 @@ export default class Router {
     await new AreaRoutes().register(server);
     await new SettingsRoutes().register(server);
     await new testingRoutes().register(server);
+    await new CustomerRepaymentRoutes().register(server);
+    await new ProductRoutes().register(server);
+    await new openClosingBalRoutes().register(server);
   }
 }

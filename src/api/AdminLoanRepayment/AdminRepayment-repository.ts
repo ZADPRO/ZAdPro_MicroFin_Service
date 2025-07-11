@@ -29,6 +29,7 @@ import {
   formatDate,
   formatYearMonthDate,
   formatDateMonthYear,
+  formatDate_Time,
 } from "../../helper/common";
 import { loanQuery } from "../admin/query";
 import { loanReminderSend } from "../../helper/mailcontent";
@@ -132,7 +133,7 @@ export class AdminRePaymentRepository {
         "paid",
         "paid",
         user_data.priAmt + user_data.interest,
-        CurrentTime(),
+        formatDate_Time(user_data.todayDate),
         tokendata.id,
         user_data.rePayId,
       ];
@@ -175,20 +176,21 @@ export class AdminRePaymentRepository {
       console.log(" -> Line Number ----------------------------------- 171");
       const FundUpdate = [
         user_data.bankId,
-        formatYearMonthDate(CurrentTime()),
+        formatYearMonthDate(formatDate_Time(user_data.todayDate)),
         "debit",
         user_data.priAmt + user_data.interest,
         updateRepayment.rows[0].refRpayId,
-        CurrentTime(),
+        formatDate_Time(user_data.todayDate),
         tokendata.id,
         userData[0].refVendorName,
         user_data.paymentType,
+        4,
       ];
       await client.query(bankFundUpdate, FundUpdate);
       const params3 = [
         user_data.priAmt + user_data.interest,
         user_data.bankId,
-        CurrentTime(),
+        formatDate_Time(user_data.todayDate),
         "Admin",
       ];
       console.log(" -> Line Number ----------------------------------- 190");
@@ -204,7 +206,7 @@ export class AdminRePaymentRepository {
         await client.query(updateLoan, [
           parseInt(updateRepayment.rows[0].refLoanId),
           2,
-          CurrentTime(),
+          formatDate_Time(user_data.todayDate),
           "Admin",
         ]);
       } else if (amt < 0) {

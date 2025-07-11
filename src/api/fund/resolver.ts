@@ -29,4 +29,28 @@ export class fundResolver {
       domain_code
     );
   }
+  public async viewAddedFundsV1(
+    user_data: any,
+    token_data: any,
+    domain_code: any
+  ): Promise<any> {
+    console.log("Resolver Started");
+    return await this.fundRepository.viewAddedFundsV1(
+      user_data,
+      token_data,
+      domain_code
+    );
+  }
+  public async updateFundsV1(
+    user_data: any,
+    token_data: any,
+    domain_code: any
+  ): Promise<any> {
+    console.log("Resolver Started");
+    return await this.fundRepository.updateFundsV1(
+      user_data,
+      token_data,
+      domain_code
+    );
+  }
 }

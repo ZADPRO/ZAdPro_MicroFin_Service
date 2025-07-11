@@ -16,6 +16,7 @@ import {
   calculateDueDate,
   formatDateMonthYear,
   replaceDayInDate,
+  formatDate_Time,
 } from "../../helper/common";
 import { loanQuery } from "../admin/query";
 import { loanReminderSend } from "../../helper/mailcontent";
@@ -139,7 +140,6 @@ export class adminLoanCreationRepository {
     }
   }
   public async CreateNewLoanV1(user_data: any, tokendata?: any): Promise<any> {
-    console.log("user_data line -------------- 57", user_data);
     const token = { id: tokendata.id, cash: tokendata.cash };
     const client: PoolClient = await getClient();
 
@@ -161,7 +161,6 @@ export class adminLoanCreationRepository {
           true
         );
       }
-      console.log(" -> Line Number ----------------------------------- 162");
       const dueDate = calculateDueDate(
         user_data.refRepaymentStartDate,
         user_data.refLoanDuration,
@@ -177,11 +176,11 @@ export class adminLoanCreationRepository {
         dueDate,
         user_data.refPayementType,
         user_data.refRepaymentStartDate,
-        convertToYMD(),
+        convertToYMD(formatDate_Time(user_data.todayDate)),
         user_data.refBankId,
         user_data.refLoanBalance,
         user_data.isInterestFirst,
-        CurrentTime(),
+        formatDate_Time(user_data.todayDate),
         tokendata.id,
         user_data.refExLoanId,
         user_data.refLoanExt,
@@ -549,7 +548,7 @@ export class adminLoanCreationRepository {
       await client.query("BEGIN");
       const check = await executeQuery(checkLoanPaid, [
         user_data.LoanId,
-        CurrentTime(),
+        formatDate_Time(user_data.todayDate),
       ]);
       console.log("check line ---- 433", check);
       console.log("check[0].unpaid_count", check[0].unpaid_count);
@@ -566,7 +565,10 @@ export class adminLoanCreationRepository {
           true
         );
       } else {
-        const loanDetails: any = await adminTopUpBalance(user_data.LoanId);
+        const loanDetails: any = await adminTopUpBalance(
+          user_data.LoanId,
+          user_data.todayDate
+        );
         if (
           Number(loanDetails.finalBalanceAmt) < Number(user_data.principalAmt)
         ) {
@@ -588,7 +590,7 @@ export class adminLoanCreationRepository {
           const result = await client.query(updateCloseLoan, [
             parseInt(user_data.LoanId),
             2,
-            CurrentTime(),
+            formatDate_Time(user_data.todayDate),
             "Admin",
           ]);
 
@@ -601,7 +603,7 @@ export class adminLoanCreationRepository {
             0.0,
             "paid",
             "paid",
-            CurrentTime(),
+            formatDate_Time(user_data.todayDate),
             tokendata.id,
           ];
           console.log("repaymentParams line -------- 538", repaymentParams);
@@ -609,26 +611,27 @@ export class adminLoanCreationRepository {
 
           await client.query(updateRepayment, [
             user_data.LoanId,
-            formatToYearMonth(CurrentTime()),
+            formatToYearMonth(formatDate_Time(user_data.todayDate)),
           ]);
 
           const FundUpdate = [
             user_data.bankId,
-            formatYearMonthDate(CurrentTime()),
+            formatYearMonthDate(formatDate_Time(user_data.todayDate)),
             "debit",
             user_data.principalAmt,
             user_data.LoanId,
-            CurrentTime(),
+            formatDate_Time(user_data.todayDate),
             tokendata.id,
             "Admin Loan Re-Pay",
             user_data.paymentType,
+            4,
           ];
           await client.query(bankFundUpdate, FundUpdate);
 
           const params3 = [
             user_data.principalAmt,
             user_data.bankId,
-            CurrentTime(),
+            formatDate_Time(user_data.todayDate),
             "Admin",
           ];
           await client.query(updateBankAccountBalanceQuery, params3);
@@ -637,7 +640,7 @@ export class adminLoanCreationRepository {
         ) {
           let paramsData = await executeQuery(getReCalParams, [
             user_data.LoanId,
-            formatToYearMonth(CurrentTime()),
+            formatToYearMonth(formatDate_Time(user_data.todayDate)),
           ]);
           console.log("paramsData line ----- 625", paramsData);
 
@@ -672,7 +675,7 @@ export class adminLoanCreationRepository {
 
           const repaymentParams = [
             user_data.LoanId,
-            formatDateMonthYear(CurrentTime()),
+            formatDateMonthYear(formatDate_Time(user_data.todayDate)),
             paramsData[0].refLoanAmount,
             user_data.principalAmt,
             0.0,
@@ -686,21 +689,22 @@ export class adminLoanCreationRepository {
 
           const FundUpdate = [
             user_data.bankId,
-            formatYearMonthDate(CurrentTime()),
+            formatYearMonthDate(formatDate_Time(user_data.todayDate)),
             "debit",
             user_data.principalAmt,
             user_data.LoanId,
-            CurrentTime(),
+            formatDate_Time(user_data.todayDate),
             tokendata.id,
             "Admin Loan Repay",
             user_data.paymentType,
+            4,
           ];
           await client.query(bankFundUpdate, FundUpdate);
 
           const params3 = [
             user_data.principalAmt,
             user_data.bankId,
-            CurrentTime(),
+            formatDate_Time(user_data.todayDate),
             "Admin",
           ];
           await client.query(updateBankAccountBalanceQuery, params3);

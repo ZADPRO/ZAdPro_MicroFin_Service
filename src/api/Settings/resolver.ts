@@ -29,6 +29,18 @@ export class SettingsResolver {
       domain_code
     );
   }
+  public async PaymentMethodGetOptionV1(
+    user_data: any,
+    token_data: any,
+    domain_code: any
+  ): Promise<any> {
+    console.log("Resolver Started");
+    return await this.SettingsRepository.PaymentMethodGetOptionV1(
+      user_data,
+      token_data,
+      domain_code
+    );
+  }
   public async CustomerIdUpdateOptionV1(
     user_data: any,
     token_data: any,
@@ -36,6 +48,18 @@ export class SettingsResolver {
   ): Promise<any> {
     console.log("Resolver Started");
     return await this.SettingsRepository.CustomerIdUpdateOptionV1(
+      user_data,
+      token_data,
+      domain_code
+    );
+  }
+  public async getSettingsDataV1(
+    user_data: any,
+    token_data: any,
+    domain_code: any
+  ): Promise<any> {
+    console.log("Resolver Started");
+    return await this.SettingsRepository.getSettingsDataV1(
       user_data,
       token_data,
       domain_code

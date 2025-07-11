@@ -8,7 +8,12 @@ import jwt from "jsonwebtoken";
 import { generateTokenWithoutExpire } from "../../helper/token";
 import {
   addNewArea,
+  addNewAreas,
+  addPinCode,
+  checkPinCode,
   createNewAreaFromOld,
+  filteredArea,
+  getAllArea,
   listArea,
   listAreaPrefix,
   movePincode,
@@ -261,6 +266,121 @@ export class AreaRepository {
         {
           success: false,
           message: "Error in getting the Area Options",
+          token: generateTokenWithoutExpire(token, true),
+        },
+        true
+      );
+    }
+  }
+  // Area Version 2
+  public async addNewAreaV1(user_data: any, tokendata?: any): Promise<any> {
+    const token = { id: tokendata.id, cash: tokendata.cash };
+    const client: PoolClient = await getClient();
+
+    try {
+      const pinCodeCheck = await executeQuery(checkPinCode, [
+        user_data.pinCode,
+        user_data.mainAreaName,
+      ]);
+      console.log("pinCodeCheck", pinCodeCheck);
+      await client.query("BEGIN");
+      let pinCodeId;
+      if (pinCodeCheck.length === 0) {
+        const addPinCodeResult = await client.query(addPinCode, [
+          user_data.pinCode,
+          user_data.mainAreaName,
+        ]);
+        pinCodeId = addPinCodeResult.rows[0].refAreaPinCodeId;
+      } else {
+        pinCodeId = pinCodeCheck[0].refAreaPinCodeId;
+      }
+      console.log("pinCodeId", pinCodeId);
+      const params = [user_data.areaName, user_data.areaPrefix, pinCodeId];
+      await client.query(addNewAreas, params);
+      await client.query("COMMIT");
+      return encrypt(
+        {
+          success: true,
+          message: "New Area Added Successfully",
+          token: generateTokenWithoutExpire(token, true),
+        },
+        true
+      );
+    } catch (error) {
+      const errorMessage = "Error In Adding New Area In Version 2";
+      console.log("errorMessage error line ------ 289", errorMessage);
+      logger.error(`\n\n ${errorMessage} \n\n`, error);
+      await client.query("ROLLBACK");
+      return encrypt(
+        {
+          success: false,
+          message: errorMessage,
+          token: generateTokenWithoutExpire(token, true),
+        },
+        true
+      );
+    } finally {
+      client.release();
+    }
+  }
+
+  public async allAreaListV1(user_data: any, tokendata?: any): Promise<any> {
+    const token = { id: tokendata.id, cash: tokendata.cash };
+
+    try {
+      const areaList = await executeQuery(getAllArea);
+      return encrypt(
+        {
+          success: true,
+          message: "Pass All the Area List",
+          token: generateTokenWithoutExpire(token, true),
+          data: areaList,
+        },
+        true
+      );
+    } catch (error) {
+      const errorMessage = "Error In Getting the Area List";
+      console.log("errorMessage error line ------ 289", errorMessage);
+      logger.error(`\n\n ${errorMessage} \n\n`, error);
+      return encrypt(
+        {
+          success: false,
+          message: errorMessage,
+          token: generateTokenWithoutExpire(token, true),
+        },
+        true
+      );
+    }
+  }
+
+  public async filteredAreaListV1(
+    user_data: any,
+    tokendata?: any
+  ): Promise<any> {
+    const token = { id: tokendata.id, cash: tokendata.cash };
+
+    try {
+      const areaList = await executeQuery(filteredArea, [
+        user_data.pinCode,
+        user_data.cityName,
+      ]);
+      return encrypt(
+        {
+          success: true,
+          message: "Filtered Area List Passed Successfully",
+          token: generateTokenWithoutExpire(token, true),
+          data: areaList,
+        },
+        true
+      );
+    } catch (error) {
+      const errorMessage = "Error In Passing the Filtered the Area ";
+      console.log("errorMessage error line ------ 376", errorMessage);
+      logger.error(`\n\n ${errorMessage} \n\n`, error);
+      return encrypt(
+        {
+          success: false,
+          message: errorMessage,
           token: generateTokenWithoutExpire(token, true),
         },
         true

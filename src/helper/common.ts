@@ -389,24 +389,21 @@ export const dayInterest = async (loanAmt: number, interest: number) => {
   }
 };
 
-export function convertToYMD(): string {
-  const [datePart, timePartWithPeriod] = CurrentTime().split(", ");
+
+export function convertToYMD(todayDate: string = ""): string {
+  if (!todayDate) return ""; // or handle default case
+
+  const [datePart, timePartWithPeriod] = todayDate.split(", ");
   const [day, month, year] = datePart.split("/").map(Number);
 
   const [timePart, period] = timePartWithPeriod.split(" ");
   let [hours, minutes, seconds] = timePart.split(":").map(Number);
 
-  if (period.toUpperCase() === "PM" && hours < 12) {
-    hours += 12;
-  }
-  if (period.toUpperCase() === "AM" && hours === 12) {
-    hours = 0;
-  }
+  if (period.toUpperCase() === "PM" && hours < 12) hours += 12;
+  if (period.toUpperCase() === "AM" && hours === 12) hours = 0;
 
-  // Create Date object
   const date = new Date(year, month - 1, day, hours, minutes, seconds);
 
-  // Format to YYYY-MM-DD
   const y = date.getFullYear();
   const m = String(date.getMonth() + 1).padStart(2, "0");
   const d = String(date.getDate()).padStart(2, "0");
@@ -421,3 +418,21 @@ export const bankType = (status: boolean) => {
     return [1];
   }
 };
+
+export function formatToCustomDateTime(dateInput: string | Date): string {
+  const date = new Date(dateInput);
+
+  const day = String(date.getDate()).padStart(2, "0");
+  const month = String(date.getMonth() + 1).padStart(2, "0"); // Month is 0-indexed
+  const year = date.getFullYear();
+
+  let hours = date.getHours();
+  const minutes = String(date.getMinutes()).padStart(2, "0");
+  const seconds = String(date.getSeconds()).padStart(2, "0");
+
+  const period = hours >= 12 ? "pm" : "am";
+  hours = hours % 12 || 12; // Convert 0 to 12 for 12-hour format
+  const formattedHours = String(hours).padStart(2, "0");
+
+  return `${day}/${month}/${year}, ${formattedHours}:${minutes}:${seconds} ${period}`;
+}

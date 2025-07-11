@@ -168,8 +168,8 @@ export class adminRepository {
       const roleType = basicDetails.user.refRollId;
       console.log("roleType", roleType);
       const referenceDetails = user_data.referenceInfo;
-      const areaData = user_data.Area;
-      console.log("areaData line ---- 171", areaData);
+      // const areaData = user_data.Area;
+      // console.log("areaData line ---- 171", areaData);
 
       // Get count for generating user ID
       const countQuery =
@@ -215,32 +215,36 @@ export class adminRepository {
         basicDetails.Communtication.refPerDistrict,
         basicDetails.Communtication.refPerState,
         basicDetails.Communtication.refPerPincode,
+        basicDetails.Communtication.refPerCity,
+        basicDetails.Communtication.refPerAreaId,
+        basicDetails.Communtication.refPerTaluk,
         CurrentTime(),
         "Admin",
       ];
+      console.log("userCommunication", userCommunication);
       const communicationData = await client.query(
         insertCommunicationQuery,
         userCommunication
       );
 
-      if (areaData.addArea) {
-        if (areaData.areaType === 1) {
-          const params = [
-            areaData.areaId,
-            basicDetails.Communtication.refPerPincode,
-          ];
-          await client.query(addPincode, params);
-        } else if (areaData.areaType == 2) {
-          const params = [
-            areaData.areaName,
-            areaData.areaPrifix,
-            [basicDetails.Communtication.refPerPincode],
-          ];
-          await client.query(addArea, params);
-        } else {
-          logger.info("\t Area Type come Undefined Type \n");
-        }
-      }
+      // if (areaData.addArea) {
+      //   if (areaData.areaType === 1) {
+      //     const params = [
+      //       areaData.areaId,
+      //       basicDetails.Communtication.refPerPincode,
+      //     ];
+      //     await client.query(addPincode, params);
+      //   } else if (areaData.areaType == 2) {
+      //     const params = [
+      //       areaData.areaName,
+      //       areaData.areaPrifix,
+      //       [basicDetails.Communtication.refPerPincode],
+      //     ];
+      //     await client.query(addArea, params);
+      //   } else {
+      //     logger.info("\t Area Type come Undefined Type \n");
+      //   }
+      // }
 
       // Hash the password using bcrypt
       const hashedPassword = await bcrypt.hash(
@@ -363,12 +367,12 @@ export class adminRepository {
       );
 
       const getAudit = await executeQuery(getAuditPageQuery, [refUserId]);
-
+      console.log(" -> Line Number ----------------------------------- 370");
       const result = await client.query(query, params);
-
+      console.log(" -> Line Number ----------------------------------- 372");
       // Extract the data from query result
       const data = result.rows;
-
+      console.log(" -> Line Number ----------------------------------- 375");
       // Convert images to base64 format
       const dataWithImages = await Promise.all(
         data.map(async (row: any) => {
@@ -455,10 +459,9 @@ export class adminRepository {
   }
   public async getPersonListV1(userData: any, tokendata: any): Promise<any> {
     const client: PoolClient = await getClient();
-    const token = { id: tokendata.id, cash: tokendata.cash }; // Extract token ID
+    const token = { id: tokendata.id, cash: tokendata.cash }; 
     console.log("tokendata.id", tokendata.id);
     try {
-      // Ensure roleId is provided
       if (!userData.roleId) {
         throw new Error("Role ID is missing");
       }
@@ -658,23 +661,10 @@ export class adminRepository {
           refUserDistrict: Communtication.refPerDistrict,
           refUserState: Communtication.refPerState,
           refUserPincode: Communtication.refPerPincode,
+          refUserCity: Communtication.refPerCity,
+          refUserAreaId: Communtication.refPerAreaId,
+          refUserTaluk: Communtication.refPerTaluk,
         });
-
-        if (areaData.addArea) {
-          if (areaData.areaType === 1) {
-            const params = [areaData.areaId, Communtication.refPerPincode];
-            await client.query(addPincode, params);
-          } else if (areaData.areaType == 2) {
-            const params = [
-              areaData.areaName,
-              areaData.areaPrifix,
-              [Communtication.refPerPincode],
-            ];
-            await client.query(addArea, params);
-          } else {
-            logger.info("\t Area Type come Undefined Type \n");
-          }
-        }
       }
 
       // Remove undefined values
@@ -1423,6 +1413,7 @@ export class adminRepository {
   public async addBankFundV1(userData: any, tokendata: any): Promise<any> {
     const client: PoolClient = await getClient();
     const token = { id: tokendata.id, cash: tokendata.cash }; // Extract token ID
+    console.log('userData', userData)
 
     try {
       await client.query("BEGIN"); // Start Transaction
@@ -1434,6 +1425,7 @@ export class adminRepository {
         refbfTransactionAmount, // Assuming it's in the userData
         refTxnId,
         refFundType,
+        Description,
       } = userData;
 
       const insertBankFundResult = await client.query(addBankFundQuery, [
@@ -1442,10 +1434,11 @@ export class adminRepository {
         refbfTransactionType,
         refbfTransactionAmount,
         refTxnId,
-        refFundType,
+        Description,
         CurrentTime(),
         "Admin",
         "online",
+        5,
       ]);
 
       // 2. Update refBalance in refBankAccounts table based on refbfTransactionType
@@ -1784,6 +1777,7 @@ export class adminRepository {
           CurrentTime(),
           "Admin",
           refPayementType === "bank" ? "online" : "cash",
+          1
         ];
         await client.query(updateBankFundQuery, params2);
         if (isInterestFirst) {
@@ -1798,6 +1792,7 @@ export class adminRepository {
             CurrentTime(),
             "Admin",
             refPayementType === "bank" ? "online" : "cash",
+            2
           ];
 
           await client.query(updateBankFundQuery, paramsCredit);
@@ -1871,6 +1866,7 @@ export class adminRepository {
           CurrentTime(),
           "Admin",
           refPayementType === "bank" ? "online" : "cash",
+          2
         ];
         console.log("paramsLoanCredit", paramsLoanCredit);
         await client.query(updateBankFundQuery, paramsLoanCredit);
@@ -1885,6 +1881,7 @@ export class adminRepository {
           CurrentTime(),
           "Admin",
           refPayementType === "bank" ? "online" : "cash",
+          1
         ];
         console.log("paramsLoanDebit line ----- 1807", paramsLoanDebit);
         if (isInterestFirst) {
@@ -1926,6 +1923,7 @@ export class adminRepository {
             CurrentTime(),
             "Admin",
             refPayementType === "bank" ? "online" : "cash",
+            2
           ];
 
           console.log("paramsCredit line --------- 1834", paramsCredit);

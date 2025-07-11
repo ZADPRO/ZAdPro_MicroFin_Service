@@ -101,4 +101,42 @@ export class AreaResolver {
       domain_code
     );
   }
+
+  // Version 2
+  public async addNewAreaV1(
+    user_data: any,
+    token_data: any,
+    domain_code: any
+  ): Promise<any> {
+    console.log("Resolver Started");
+    return await this.AreaRepository.addNewAreaV1(
+      user_data,
+      token_data,
+      domain_code
+    );
+  }
+  public async allAreaListV1(
+    user_data: any,
+    token_data: any,
+    domain_code: any
+  ): Promise<any> {
+    console.log("Resolver Started");
+    return await this.AreaRepository.allAreaListV1(
+      user_data,
+      token_data,
+      domain_code
+    );
+  }
+  public async filteredAreaListV1(
+    user_data: any,
+    token_data: any,
+    domain_code: any
+  ): Promise<any> {
+    console.log("Resolver Started");
+    return await this.AreaRepository.filteredAreaListV1(
+      user_data,
+      token_data,
+      domain_code
+    );
+  }
 }
