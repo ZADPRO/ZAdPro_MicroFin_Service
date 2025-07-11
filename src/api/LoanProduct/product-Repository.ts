@@ -5,7 +5,6 @@ import qs from "qs";
 require("isomorphic-fetch");
 
 import { Client } from "minio";
-import { createUploadUrl } from "../../helper/minIoStorage";
 import { executeQuery, getClient } from "../../helper/db";
 import {
   addNewProduct,

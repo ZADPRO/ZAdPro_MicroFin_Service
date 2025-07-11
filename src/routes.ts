@@ -12,7 +12,6 @@ import { ReportRoutes } from "./api/Report/routes";
 import { CashFlowRoutes } from "./api/CashFlow/routes";
 import { AreaRoutes } from "./api/Area/routes";
 import { SettingsRoutes } from "./api/Settings/routes";
-import { testingRoutes } from "./api/Testing/routes";
 import { CustomerRepaymentRoutes } from "./api/CustomerRepayment/routes";
 import { ProductRoutes } from "./api/LoanProduct/routes";
 import { openClosingBalRoutes } from "./api/OpenClosingBalance/routes";
@@ -31,7 +30,6 @@ export default class Router {
     await new CashFlowRoutes().register(server);
     await new AreaRoutes().register(server);
     await new SettingsRoutes().register(server);
-    await new testingRoutes().register(server);
     await new CustomerRepaymentRoutes().register(server);
     await new ProductRoutes().register(server);
     await new openClosingBalRoutes().register(server);

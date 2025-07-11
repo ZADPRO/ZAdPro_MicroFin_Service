@@ -1114,3 +1114,12 @@
 {"level":"info","message":"Server running --- from server.ts","timestamp":"2025-07-11T10:30:49.142Z"}
 {"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/fund/selfTransfer","timestamp":"2025-07-11T10:30:57.326Z"}
 {"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/adminRoutes/getBankFundList","timestamp":"2025-07-11T10:30:57.508Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-07-11T11:17:40.433Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/adminRoutes/adminLogin","timestamp":"2025-07-11T11:18:18.845Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/cashFlow/getCashFlow","timestamp":"2025-07-11T11:18:19.990Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/refDashboard/Count","timestamp":"2025-07-11T11:18:20.000Z"}
+{"level":"info","message":"ROUTE API CALL => \n http://localhost:6201/api/v1/refDashboard/Count","timestamp":"2025-07-11T11:18:20.014Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-07-11T11:44:07.791Z"}
+{"address":"0.0.0.0","code":"EADDRINUSE","errno":-4091,"level":"error","message":"Server not running ---  listen EADDRINUSE: address already in use 0.0.0.0:6201","port":6201,"stack":"Error: listen EADDRINUSE: address already in use 0.0.0.0:6201\n    at Server.setupListenHandle [as _listen2] (node:net:1904:16)\n    at listenInCluster (node:net:1961:12)\n    at doListen (node:net:2135:7)\n    at processTicksAndRejections (node:internal/process/task_queues:83:21)","syscall":"listen","timestamp":"2025-07-11T11:47:55.625Z"}
+{"address":"0.0.0.0","code":"EADDRINUSE","errno":-4091,"level":"error","message":"Server not running ---  listen EADDRINUSE: address already in use 0.0.0.0:6201","port":6201,"stack":"Error: listen EADDRINUSE: address already in use 0.0.0.0:6201\n    at Server.setupListenHandle [as _listen2] (node:net:1904:16)\n    at listenInCluster (node:net:1961:12)\n    at doListen (node:net:2135:7)\n    at processTicksAndRejections (node:internal/process/task_queues:83:21)","syscall":"listen","timestamp":"2025-07-11T11:48:36.322Z"}
+{"level":"info","message":"Server running --- from server.ts","timestamp":"2025-07-11T11:49:56.045Z"}
