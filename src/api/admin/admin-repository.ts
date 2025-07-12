@@ -9,6 +9,7 @@ import { generateTokenWithoutExpire } from "../../helper/token";
 import {
   bankType,
   CurrentTime,
+  formatDate_Time,
   formatYearMonthDate,
   getImageBase64,
   getMonthDifference,
@@ -459,7 +460,7 @@ export class adminRepository {
   }
   public async getPersonListV1(userData: any, tokendata: any): Promise<any> {
     const client: PoolClient = await getClient();
-    const token = { id: tokendata.id, cash: tokendata.cash }; 
+    const token = { id: tokendata.id, cash: tokendata.cash };
     console.log("tokendata.id", tokendata.id);
     try {
       if (!userData.roleId) {
@@ -1413,7 +1414,7 @@ export class adminRepository {
   public async addBankFundV1(userData: any, tokendata: any): Promise<any> {
     const client: PoolClient = await getClient();
     const token = { id: tokendata.id, cash: tokendata.cash }; // Extract token ID
-    console.log('userData', userData)
+    console.log("userData", userData);
 
     try {
       await client.query("BEGIN"); // Start Transaction
@@ -1426,21 +1427,26 @@ export class adminRepository {
         refTxnId,
         refFundType,
         Description,
+        date
       } = userData;
-
-      const insertBankFundResult = await client.query(addBankFundQuery, [
+      console.log(' -> Line Number ----------------------------------- 1432',);
+      const fundParams = [
         refBankId,
         refbfTransactionDate,
         refbfTransactionType,
         refbfTransactionAmount,
         refTxnId,
         Description,
-        CurrentTime(),
+        formatDate_Time(date),
         "Admin",
         "online",
         5,
-      ]);
-
+      ];
+      const insertBankFundResult = await client.query(
+        addBankFundQuery,
+        fundParams
+      );
+console.log(' -> Line Number ----------------------------------- 1445', );
       // 2. Update refBalance in refBankAccounts table based on refbfTransactionType
       let updatedBalanceQuery: string;
       let balanceUpdateAmount: number;
@@ -1467,7 +1473,12 @@ export class adminRepository {
       }
 
       // Execute balance update
-      const params = [balanceUpdateAmount, refBankId, CurrentTime(), "Admin"];
+      const params = [
+        balanceUpdateAmount,
+        refBankId,
+        formatDate_Time(date),
+        "Admin",
+      ];
       const balanceResult = await client.query(updatedBalanceQuery, params);
 
       console.log(
@@ -1777,7 +1788,7 @@ export class adminRepository {
           CurrentTime(),
           "Admin",
           refPayementType === "bank" ? "online" : "cash",
-          1
+          1,
         ];
         await client.query(updateBankFundQuery, params2);
         if (isInterestFirst) {
@@ -1792,7 +1803,7 @@ export class adminRepository {
             CurrentTime(),
             "Admin",
             refPayementType === "bank" ? "online" : "cash",
-            2
+            2,
           ];
 
           await client.query(updateBankFundQuery, paramsCredit);
@@ -1866,7 +1877,7 @@ export class adminRepository {
           CurrentTime(),
           "Admin",
           refPayementType === "bank" ? "online" : "cash",
-          2
+          2,
         ];
         console.log("paramsLoanCredit", paramsLoanCredit);
         await client.query(updateBankFundQuery, paramsLoanCredit);
@@ -1881,7 +1892,7 @@ export class adminRepository {
           CurrentTime(),
           "Admin",
           refPayementType === "bank" ? "online" : "cash",
-          1
+          1,
         ];
         console.log("paramsLoanDebit line ----- 1807", paramsLoanDebit);
         if (isInterestFirst) {
@@ -1923,7 +1934,7 @@ export class adminRepository {
             CurrentTime(),
             "Admin",
             refPayementType === "bank" ? "online" : "cash",
-            2
+            2,
           ];
 
           console.log("paramsCredit line --------- 1834", paramsCredit);

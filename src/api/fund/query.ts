@@ -40,8 +40,8 @@ export const updateFund = `INSERT INTO public."refBankFund" (
       NULL,
       $4,
       $5,
-      'Self Transfer',
-      $6
+      $6,
+      $7
     ),
     (
       $2,
@@ -51,7 +51,8 @@ export const updateFund = `INSERT INTO public."refBankFund" (
       NULL,
       $4,
       $5,
-      'Self Transfer',$6
+      $6,
+      $7
     );
   `;
 

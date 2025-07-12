@@ -14,6 +14,7 @@ import { error } from "console";
 import {
   convertToYMD,
   CurrentTime,
+  formatDate_Time,
   formatYearMonthDate,
 } from "../../helper/common";
 import { ExtensionBalance, TopUpBalance } from "../../helper/LoanCalculation";
@@ -38,18 +39,18 @@ export class fundRepository {
         user_data.fromId,
         user_data.toId,
         user_data.amt,
-        CurrentTime(),
+        formatDate_Time(user_data.date),
         tokendata.id,
       ];
       const params2 = [
         user_data.fromId,
         user_data.toId,
         user_data.amt,
-        CurrentTime(),
+        formatDate_Time(user_data.date),
         tokendata.id,
+        user_data.fundType,
         6,
       ];
-      console.log("params", params);
       await client.query(addFund, params);
       await client.query(updateFund, params2);
       await client.query("COMMIT");
