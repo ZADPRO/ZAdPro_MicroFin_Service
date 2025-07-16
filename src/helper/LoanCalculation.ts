@@ -1047,12 +1047,13 @@ export const TopUpBalance = async (loanId: any) => {
 };
 
 export const adminTopUpBalance = async (loanId: any, date?: Date) => {
-  const todayDate = date ?? CurrentTime();
+  const todayDate = date ?? new Date();
+  console.log(" -> Line Number ----------------------------------- 1051");
   try {
-    const loanData = await executeQuery(adminGetLoanData, [
-      loanId,
-      formatDate_Time(todayDate),
-    ]);
+    console.log(" -> Line Number ----------------------------------- 1053");
+    console.log("todayDate", todayDate);
+    const params = [loanId, formatDate_Time(todayDate)];
+    const loanData = await executeQuery(adminGetLoanData, params);
     console.log("loanData line --------------- > 998", loanData);
     let balanceAmt =
       loanData[0].refLoanAmount - Number(loanData[0].totalPrincipal);
@@ -1188,6 +1189,7 @@ export const adminTopUpBalance = async (loanId: any, date?: Date) => {
 
     return loanCalData;
   } catch (error) {
+    console.log(" -> Line Number ----------------------------------- 1193");
     console.log("error line ----- 127", error);
     const loanCalData = {
       message: "Error in Calculating the Loan Balance",

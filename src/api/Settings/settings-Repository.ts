@@ -12,6 +12,7 @@ import {
   getCustomerIdTypeOption,
   getLoanAdvanceCalOption,
   getLoanClosingCal,
+  getLoanDueType,
   getLoanIdTypeOption,
   getLoanType,
   getLoanTypeVisible,
@@ -74,6 +75,7 @@ export class SettingsRepository {
       const loanTypeVisible = await executeQuery(getLoanTypeVisible);
       const rePaymentTypeVisible = await executeQuery(getRePaymentTypeVisible);
       const loanAdvanceCalOption = await executeQuery(getLoanAdvanceCalOption);
+      const loanDueType = await executeQuery(getLoanDueType);
 
       return encrypt(
         {
@@ -88,6 +90,7 @@ export class SettingsRepository {
           loanTypeVisible: loanTypeVisible,
           rePaymentTypeVisible: rePaymentTypeVisible,
           loanAdvanceCalOption: loanAdvanceCalOption,
+          loanDueType: loanDueType,
         },
         true
       );

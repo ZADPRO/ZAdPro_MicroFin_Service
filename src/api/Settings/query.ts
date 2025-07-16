@@ -60,3 +60,5 @@ FROM
   settings."refLoanAdvanceCal"
 ORDER BY
   "refLoanAdvanceCalId"`;
+
+  export const getLoanDueType = `SELECT * FROM settings."refLoanDueTypes"`;

@@ -503,12 +503,19 @@ export class adminLoanCreationRepository {
     const tokens = generateTokenWithoutExpire(token, true);
 
     try {
+
+      console.log(" -> Line Number ----------------------------------- 507");
       const bank = await executeQuery(bankData);
       let RepaymentDetails = await executeQuery(closingData, [
         user_data.LoanId,
       ]);
+      console.log("RepaymentDetails", RepaymentDetails);
 
-      const calData: any = await adminTopUpBalance(user_data.LoanId);
+      const calData: any = await adminTopUpBalance(
+        user_data.LoanId,
+        user_data.todayDate
+      );
+      console.log("calData", calData);
 
       RepaymentDetails.map((Data, index) => {
         const balanceAmt = calData.finalBalanceAmt;

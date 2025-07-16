@@ -469,7 +469,7 @@ export const addNewLoan2 = `WITH
     RETURNING
       "refLoanId"`;
 
-export const addNewLoan = `WITH
+export const addNewLoanV11 = `WITH
   inserted_refLoan AS (
     INSERT INTO
       adminloan."refLoan" (
@@ -753,6 +753,304 @@ FROM
 RETURNING
   "refLoanId",
   (SELECT "refCustLoanId" FROM inserted_refLoan LIMIT 1) AS "refCustLoanId";`;
+
+export const addNewLoan = `WITH
+  inserted_refLoan AS (
+    INSERT INTO
+      adminloan."refLoan" (
+        "refVenderId",
+        "refLoanDuration",
+        "refLoanInterest",
+        "refLoanAmount",
+        "refLoanDueDate",
+        "refPayementType",
+        "refRepaymentStartDate",
+        "refLoanStartDate",
+        "refBankId",
+        "refLoanBalance",
+        "isInterestFirst",
+        "createdAt",
+        "createdBy",
+        "refExLoanId",
+        "refLoanExt",
+        "refLoanStatus",
+        "refInterestMonthCount",
+        "refInitialInterest",
+        "refRePaymentType",
+        "refDocFee",
+        "refSecurity",
+        "refProductDurationType",
+        "refProductMonthlyCal"
+      )
+    VALUES
+      (
+        $1,
+        $2::INTEGER,
+        $3::Numeric,
+        $4,
+        $5,
+        $6,
+        $7,
+        $8,
+        $9,
+        $10,
+        $11,
+        $12,
+        $13,
+        $14,
+        $15,
+        $16,
+        $17,
+        $18,
+        $19,
+        $20,
+        $21,
+        $22,
+        $23
+      )
+    RETURNING
+      "refLoanId",
+      "refCustLoanId",
+      "refLoanAmount",
+      "refLoanDuration",
+      "refLoanInterest",
+      "refProductDurationType",
+      "refProductMonthlyCal"
+  ),
+  repayment_input AS (
+    SELECT
+      ir."refLoanId" AS loan_id,
+      ir."refLoanAmount"::NUMERIC AS loan_amount,
+      ir."refLoanDuration"::INTEGER AS product_duration,
+      ir."refLoanInterest"::NUMERIC AS product_interest,
+      ir."refProductDurationType"::INTEGER AS duration_type,
+      ir."refProductMonthlyCal"::INTEGER AS monthly_cal,
+      TO_TIMESTAMP($7, 'YYYY-MM-DD"T"HH24:MI:SS.MS"Z"') AS repayment_start_date,
+      CASE
+        WHEN ir."refProductDurationType" = 1 THEN TO_TIMESTAMP($7, 'YYYY-MM-DD"T"HH24:MI:SS.MS"Z"') + INTERVAL '1 month'
+        WHEN ir."refProductDurationType" = 2 THEN TO_TIMESTAMP($7, 'YYYY-MM-DD"T"HH24:MI:SS.MS"Z"') + INTERVAL '7 days'
+        WHEN ir."refProductDurationType" = 3 THEN TO_TIMESTAMP($7, 'YYYY-MM-DD"T"HH24:MI:SS.MS"Z"') + INTERVAL '1 day'
+        ELSE TO_TIMESTAMP($7, 'YYYY-MM-DD"T"HH24:MI:SS.MS"Z"')
+      END AS payment_date
+    FROM
+      inserted_refLoan ir
+  ),
+  repayment_schedule AS (
+    SELECT
+      r.loan_id,
+      TO_CHAR(
+        CASE
+          WHEN r.duration_type = 1 THEN r.payment_date + (gs.period_num - 1) * INTERVAL '1 month'
+          WHEN r.duration_type = 2 THEN r.payment_date + (gs.period_num - 1) * INTERVAL '1 week'
+          WHEN r.duration_type = 3 THEN r.payment_date + (gs.period_num - 1) * INTERVAL '1 day'
+        END,
+        'DD-MM-YYYY'
+      ) AS refPaymentDate,
+      r.loan_amount::Numeric AS refPaymentAmount,
+      ROUND(
+        CASE
+          WHEN $19::Numeric = 3 THEN 0
+          ELSE r.loan_amount::Numeric / r.product_duration::Numeric
+        END
+      ) AS refPrincipal,
+      ROUND(
+        CASE
+          WHEN $19 IN (1, 3) THEN (
+            (r.loan_amount * (r.product_interest * 12) / 100) / CASE
+              WHEN r.duration_type = 1
+              AND r.monthly_cal = 1 THEN 365
+              WHEN r.duration_type = 1
+              AND r.monthly_cal = 2 THEN 12
+              WHEN r.duration_type IN (2, 3) THEN 365
+              ELSE 1
+            END
+          ) * CASE
+            WHEN r.duration_type = 1
+            AND r.monthly_cal = 1 THEN EXTRACT(
+              DAY
+              FROM
+                DATE_TRUNC(
+                  'MONTH',
+                  r.repayment_start_date + (gs.period_num - 1) * INTERVAL '1 month'
+                ) + INTERVAL '1 month' - INTERVAL '1 day'
+            )
+            WHEN r.duration_type = 1
+            AND r.monthly_cal = 2 THEN 1
+            WHEN r.duration_type = 2 THEN 7
+            WHEN r.duration_type = 3 THEN 1
+            ELSE 1
+          END
+          WHEN $19 = 2 THEN (
+            (
+              r.loan_amount - (
+                (r.loan_amount / r.product_duration) * (gs.period_num - 1)
+              )
+            ) * (r.product_interest * 12) / 100 / CASE
+              WHEN r.duration_type = 1
+              AND r.monthly_cal = 1 THEN 365
+              WHEN r.duration_type = 1
+              AND r.monthly_cal = 2 THEN 12
+              WHEN r.duration_type IN (2, 3) THEN 365
+              ELSE 1
+            END
+          ) * CASE
+            WHEN r.duration_type = 1
+            AND r.monthly_cal = 1 THEN EXTRACT(
+              DAY
+              FROM
+                DATE_TRUNC(
+                  'MONTH',
+                  r.repayment_start_date + (gs.period_num - 1) * INTERVAL '1 month'
+                ) + INTERVAL '1 month' - INTERVAL '1 day'
+            )
+            WHEN r.duration_type = 1
+            AND r.monthly_cal = 2 THEN 1
+            WHEN r.duration_type = 2 THEN 7
+            WHEN r.duration_type = 3 THEN 1
+            ELSE 1
+          END
+          ELSE 0
+        END
+      ) AS refInterest,
+      'Pending' AS refPrincipalStatus,
+      gs.period_num AS refRepaymentNumber,
+      ROUND(
+        CASE
+          WHEN $19 IN (1, 2) THEN (
+            (
+              r.loan_amount::Numeric / r.product_duration::Numeric
+            ) + CASE
+              WHEN $19 = 1 THEN (
+                (
+                  r.loan_amount::Numeric * (r.product_interest::Numeric * 12) / 100
+                ) / CASE
+                  WHEN r.duration_type::Numeric = 1
+                  AND r.monthly_cal::Numeric = 1 THEN 365
+                  WHEN r.duration_type::Numeric = 1
+                  AND r.monthly_cal::Numeric = 2 THEN 12
+                  WHEN r.duration_type::Numeric = 2 THEN 365
+                  WHEN r.duration_type::Numeric = 3 THEN 365
+                END
+              ) * CASE
+                WHEN r.duration_type::Numeric = 1 THEN EXTRACT(
+                  DAY
+                  FROM
+                    DATE_TRUNC(
+                      'MONTH',
+                      r.repayment_start_date + (gs.period_num - 1) * INTERVAL '1 month'
+                    ) + INTERVAL '1 month' - INTERVAL '1 day'
+                )
+                WHEN r.duration_type::Numeric = 2 THEN 7
+                WHEN r.duration_type::Numeric = 3 THEN 1
+              END
+              WHEN $19::Numeric = 2 THEN (
+                (
+                  (
+                    r.loan_amount::Numeric - (
+                      (
+                        r.loan_amount::Numeric / r.product_duration::Numeric
+                      ) * (gs.period_num - 1)
+                    )
+                  ) * (r.product_interest::Numeric * 12) / 100
+                ) / CASE
+                  WHEN r.duration_type::Numeric = 1
+                  AND r.monthly_cal::Numeric = 1 THEN 365
+                  WHEN r.duration_type::Numeric = 1
+                  AND r.monthly_cal::Numeric = 2 THEN 12
+                  WHEN r.duration_type::Numeric = 2 THEN 365
+                  WHEN r.duration_type::Numeric = 3 THEN 365
+                END
+              ) * CASE
+                WHEN r.duration_type::Numeric = 1 THEN EXTRACT(
+                  DAY
+                  FROM
+                    DATE_TRUNC(
+                      'MONTH',
+                      r.repayment_start_date + (gs.period_num - 1) * INTERVAL '1 month'
+                    ) + INTERVAL '1 month' - INTERVAL '1 day'
+                )
+                WHEN r.duration_type::Numeric = 2 THEN 7
+                WHEN r.duration_type::Numeric = 3 THEN 1
+              END
+            END
+          )
+          ELSE (
+            (
+              r.loan_amount::Numeric / r.product_duration::Numeric
+            ) + (
+              (
+                r.loan_amount::Numeric * (r.product_interest::Numeric * 12) / 100
+              ) / CASE
+                WHEN r.duration_type::Numeric = 1
+                AND r.monthly_cal::Numeric = 1 THEN 365
+                WHEN r.duration_type::Numeric = 1
+                AND r.monthly_cal::Numeric = 2 THEN 12
+                WHEN r.duration_type::Numeric = 2 THEN 365
+                WHEN r.duration_type::Numeric = 3 THEN 365
+              END
+            ) * CASE
+              WHEN r.duration_type::Numeric = 1 THEN EXTRACT(
+                DAY
+                FROM
+                  DATE_TRUNC(
+                    'MONTH',
+                    r.repayment_start_date + (gs.period_num - 1) * INTERVAL '1 month'
+                  ) + INTERVAL '1 month' - INTERVAL '1 day'
+              )
+              WHEN r.duration_type::Numeric = 2 THEN 7
+              WHEN r.duration_type::Numeric = 3 THEN 1
+            END
+          )
+        END
+      ) AS refRepaymentAmount,
+      $11 AS createdAt,
+      $12 AS createdBy,
+      CASE
+        WHEN gs.period_num <= $17 THEN 'paid'
+        ELSE 'Pending'
+      END AS refInterestStatus
+    FROM
+      repayment_input r
+      JOIN generate_series(1, r.product_duration::Numeric) AS gs (period_num) ON TRUE
+  )
+INSERT INTO
+  adminloan."refRepaymentSchedule" (
+    "refLoanId",
+    "refPaymentDate",
+    "refPaymentAmount",
+    "refPrincipal",
+    "refInterest",
+    "refPrincipalStatus",
+    "refRepaymentNumber",
+    "refRepaymentAmount",
+    "createdAt",
+    "createdBy",
+    "refInterestStatus"
+  )
+SELECT
+  loan_id,
+  refPaymentDate,
+  refPaymentAmount,
+  refPrincipal,
+  refInterest,
+  refPrincipalStatus,
+  refRepaymentNumber,
+  refRepaymentAmount,
+  createdAt,
+  createdBy,
+  refInterestStatus
+FROM
+  repayment_schedule
+RETURNING
+  "refLoanId",
+  (
+    SELECT
+      "refCustLoanId"
+    FROM
+      inserted_refLoan
+    LIMIT
+      1
+  ) AS "refCustLoanId";`;
 
 export const updateBankFundQuery = `INSERT INTO 
    public."refBankFund" (
